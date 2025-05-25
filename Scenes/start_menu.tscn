@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://da1ggkg37rl0a"]
+
+[ext_resource type="Script" uid="uid://dexnnk5hu8nyq" path="res://Scripts/StartGame.cs" id="1_juhg0"]
+
+[node name="startMenu" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="startGame" type="Button" parent="."]
+offset_left = -147.0
+offset_top = 61.0
+offset_right = 147.0
+offset_bottom = 121.0
+text = "Start Game"
+script = ExtResource("1_juhg0")
+
+[connection signal="pressed" from="startGame" to="startGame" method="onPressed"]
