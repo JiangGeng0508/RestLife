@@ -4,14 +4,14 @@ using System;
 public partial class InteractableItem : Area2D
 {
 	bool Interactable = false;
-
+	public Area2D CharaReachArea;
 	public override void _MouseEnter()
 	{
-		GD.Print("Mouse Entered");
+		//外边框发光效果
 	}
 	public override void _MouseExit()
 	{
-		GD.Print("Mouse Exited");
+
 	}
 	public override void _Input(InputEvent @event)
 	{
@@ -26,8 +26,21 @@ public partial class InteractableItem : Area2D
 			}
 		}
 	}
-	public void Action()
+	public void onAreaEntered(Area2D area)
 	{
-		GD.Print("Action");
+		if (area is ReachArea reachArea)
+		{
+			GD.Print("ReachArea entered");
+			Interactable = true;
+			CharaReachArea = area;
+		}
 	}
+	public void onAreaExited(Area2D area)
+	{
+		if (area is ReachArea reachArea)
+		{
+			Interactable = false;
+		}
+	}
+	public virtual void Action(){}
 }

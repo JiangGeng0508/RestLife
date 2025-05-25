@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://qohbm2a8mwou"]
+[gd_scene load_steps=7 format=3 uid="uid://qohbm2a8mwou"]
 
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Wall.tscn" id="1_idj7w"]
 [ext_resource type="PackedScene" uid="uid://b25yhbndwexxv" path="res://Scenes/Chara.tscn" id="2_kln2b"]
 [ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/InteractableItem.tscn" id="3_kln2b"]
 [ext_resource type="Script" uid="uid://cu47gi6m5t7t" path="res://Scripts/MainCamera.cs" id="3_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://c43ww4608wcvp" path="res://Scenes/TargetNotifer.tscn" id="5_pbw6q"]
+[ext_resource type="PackedScene" uid="uid://be1hn8uakht15" path="res://Scenes/RideableItem.tscn" id="6_v1gob"]
 
 [node name="MainScence" type="Node2D"]
 
@@ -13,10 +14,7 @@ position = Vector2(-1, 321)
 
 [node name="Chara" parent="." instance=ExtResource("2_kln2b")]
 position = Vector2(-1, 232)
-
-[node name="MainCamera" type="Camera2D" parent="Chara"]
-position = Vector2(1, -232)
-script = ExtResource("3_rgh2o")
+disable_mode = 1
 
 [node name="InteractableItem" parent="." instance=ExtResource("3_kln2b")]
 position = Vector2(-366, 150)
@@ -24,3 +22,11 @@ scale = Vector2(4, 4)
 
 [node name="TargetNotifier" parent="." instance=ExtResource("5_pbw6q")]
 position = Vector2(716, -63)
+
+[node name="MainCamera" type="Camera2D" parent="."]
+script = ExtResource("3_rgh2o")
+
+[node name="RideableItem" parent="." instance=ExtResource("6_v1gob")]
+position = Vector2(284, 232)
+scale = Vector2(2, 2)
+riderOffset = Vector2(0, 20)
