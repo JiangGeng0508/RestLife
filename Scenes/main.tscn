@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://qohbm2a8mwou"]
 
-[ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/wall.tscn" id="1_sblpm"]
-[ext_resource type="PackedScene" uid="uid://b25yhbndwexxv" path="res://Scenes/chara.tscn" id="2_r34rm"]
+[ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Wall.tscn" id="1_idj7w"]
+[ext_resource type="PackedScene" uid="uid://b25yhbndwexxv" path="res://Scenes/Chara.tscn" id="2_kln2b"]
 
-[node name="mainScence" type="Node2D"]
+[node name="MainScence" type="Node2D"]
 
-[node name="wallBody" parent="." instance=ExtResource("1_sblpm")]
+[node name="WallBody" parent="." instance=ExtResource("1_idj7w")]
 position = Vector2(-1, 321)
 
-[node name="chara" parent="." instance=ExtResource("2_r34rm")]
+[node name="Chara" parent="." instance=ExtResource("2_kln2b")]
 position = Vector2(-1, 232)
 
-[node name="mainCamera" type="Camera2D" parent="."]
+[node name="MainCamera" type="Camera2D" parent="."]

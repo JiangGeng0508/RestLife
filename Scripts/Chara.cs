@@ -3,11 +3,15 @@ using System;
 
 public partial class Chara : CharacterBody2D
 {
+	Area2D interactArea;
+
 	bool isMoving = false;
 	Vector2 targetPosition = Vector2.Zero;
 	float speed = 10f;
 	public override void _Ready()
 	{
+		interactArea = GetNode<Area2D>("InteractArea");
+
 		targetPosition = Position;
 	}
 
@@ -18,8 +22,6 @@ public partial class Chara : CharacterBody2D
 			Velocity = (targetPosition - Position) / (targetPosition - Position).Length() * speed;
 			Velocity = new Vector2(Velocity.X, 0);
 			MoveAndCollide(Velocity);
-			// MoveAndSlide();
-			// MoveAndCollide((targetPosition - Position) / (targetPosition - Position).Length() * speed);
 		}
 		else
 		{
@@ -33,12 +35,10 @@ public partial class Chara : CharacterBody2D
 		{
 			if (mouseEvent.ButtonIndex == MouseButton.Right && mouseEvent.IsPressed())
 			{
-				GD.Print("Right Mouse Button Pressed");
 				if (IsOnFloor() || true)
 				{
 					isMoving = true;
 					targetPosition = GetGlobalMousePosition();
-					GD.Print($"from {Position} to {targetPosition}");
 				}
 			}
 		}
