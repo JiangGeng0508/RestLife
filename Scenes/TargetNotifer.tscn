@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c43ww4608wcvp"]
+
+[ext_resource type="Script" uid="uid://gulcj7s30h1q" path="res://Scripts/TargetNotifer.cs" id="1_4f3i1"]
+[ext_resource type="Texture2D" uid="uid://bjqegcecet3ha" path="res://icon.svg" id="1_cvmin"]
+
+[node name="TargetNotifer" type="Node2D"]
+script = ExtResource("1_4f3i1")
+
+[node name="Sprite1" type="Sprite2D" parent="."]
+rotation = 0.261799
+scale = Vector2(0.5, 0.5)
+skew = 1.0472
+texture = ExtResource("1_cvmin")
+
+[node name="Sprite2" type="Sprite2D" parent="."]
+position = Vector2(0, -100)
+rotation = 1.8326
+scale = Vector2(0.5, 0.5)
+skew = 1.0472
+texture = ExtResource("1_cvmin")

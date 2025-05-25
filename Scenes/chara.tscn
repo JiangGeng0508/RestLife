@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b25yhbndwexxv"]
+[gd_scene load_steps=6 format=3 uid="uid://b25yhbndwexxv"]
 
 [ext_resource type="Texture2D" uid="uid://bjqegcecet3ha" path="res://icon.svg" id="1_852gr"]
 [ext_resource type="Script" uid="uid://c3iwm8ok3abkl" path="res://Scripts/Chara.cs" id="1_nlhix"]
+[ext_resource type="Script" uid="uid://b0blwc4br202a" path="res://Scripts/ReachArea.cs" id="3_gi8q4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_567wp"]
 
@@ -19,7 +20,11 @@ shape = SubResource("CapsuleShape2D_567wp")
 scale = Vector2(0.125, 0.1875)
 texture = ExtResource("1_852gr")
 
-[node name="InteractArea" type="Area2D" parent="."]
+[node name="ReachArea" type="Area2D" parent="."]
+script = ExtResource("3_gi8q4")
 
-[node name="InteractShape" type="CollisionShape2D" parent="InteractArea"]
+[node name="ReachShape" type="CollisionShape2D" parent="ReachArea"]
 shape = SubResource("CircleShape2D_jp4cy")
+
+[connection signal="area_entered" from="ReachArea" to="." method="onAreaEntered"]
+[connection signal="area_exited" from="ReachArea" to="." method="onAreaExited"]
