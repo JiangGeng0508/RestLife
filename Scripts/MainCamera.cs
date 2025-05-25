@@ -12,7 +12,7 @@ public partial class MainCamera : Camera2D
 	// {
 	// 	if (Position.DistanceTo(chara.Position) > 1f)
 	// 	{
-	// 		Position += (chara.Position - Position) / 2;
+	// 		Position += (chara.Position - Position) / 2 * (float)delta;
 	// 	}
 	// }
 }

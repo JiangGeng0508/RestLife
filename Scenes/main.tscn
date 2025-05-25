@@ -22,5 +22,5 @@ script = ExtResource("3_rgh2o")
 position = Vector2(-366, 150)
 scale = Vector2(4, 4)
 
-[node name="TargetNotifer" parent="." instance=ExtResource("5_pbw6q")]
+[node name="TargetNotifier" parent="." instance=ExtResource("5_pbw6q")]
 position = Vector2(716, -63)

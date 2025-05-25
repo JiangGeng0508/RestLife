@@ -15,7 +15,7 @@ public partial class Chara : CharacterBody2D
 	{
 		Id = GetInstanceId();
 		reachArea = GetNode<Area2D>("ReachArea");
-		tarPosNotifer = GetNode<TargetNotifer>("TargetNotifier");
+		tarPosNotifer = GetNode<TargetNotifer>("../TargetNotifier");
 
 		targetPosition = Position;
 	}
@@ -58,7 +58,7 @@ public partial class Chara : CharacterBody2D
 				if (IsOnFloor() || true)
 				{
 					var mousePos = GetGlobalMousePosition();
-					tarPosNotifer.Position = mousePos;
+					tarPosNotifer.Position = new Vector2(mousePos.X, Position.Y);
 					tarPosNotifer.ShowTarget();
 					isMoving = true;
 					targetPosition = mousePos;
