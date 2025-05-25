@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b25yhbndwexxv"]
+
+[ext_resource type="Texture2D" uid="uid://bjqegcecet3ha" path="res://icon.svg" id="1_852gr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_567wp"]
+
+[node name="chara" type="CharacterBody2D"]
+metadata/_edit_group_ = true
+
+[node name="charaShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_567wp")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.1875)
+texture = ExtResource("1_852gr")
