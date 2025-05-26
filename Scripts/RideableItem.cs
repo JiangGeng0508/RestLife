@@ -13,12 +13,9 @@ public partial class RideableItem : InteractableItem
 		{
 			rider = CharaReachArea.GetParent() as CharacterBody2D;
 			_lastPosition = rider.Position;
-			GD.Print($"{_lastPosition}");
 			rider.Position = Position + riderOffset;
-			GD.Print($"{rider.Position}");
 			isRiding = true;
 			rider.ProcessMode = ProcessModeEnum.Disabled;
-			GD.Print("Riding");
 		}
 	}
 	public override void _Input(InputEvent @event)
@@ -35,7 +32,6 @@ public partial class RideableItem : InteractableItem
 			if (Interactable && mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed)
 			{
 				Action();
-				GD.Print("Action");
 			}
 		}
 	}

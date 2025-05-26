@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://qohbm2a8mwou"]
+[gd_scene load_steps=10 format=3 uid="uid://qohbm2a8mwou"]
 
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Wall.tscn" id="1_idj7w"]
 [ext_resource type="PackedScene" uid="uid://b25yhbndwexxv" path="res://Scenes/Chara.tscn" id="2_kln2b"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://24j0uebnqktv" path="res://Scripts/Inventory.cs" id="7_jw32o"]
 [ext_resource type="PackedScene" uid="uid://b47gxbo06clen" path="res://Scenes/RideableItem.tscn" id="8_50glp"]
 [ext_resource type="PackedScene" uid="uid://b0kw6xwewc6vv" path="res://Scenes/Stair.tscn" id="8_vy5pj"]
+[ext_resource type="PackedScene" uid="uid://861bfrm35j5o" path="res://Scenes/SelectIntItem.tscn" id="9_vy5pj"]
 
 [node name="MainScence" type="Node2D"]
 
@@ -19,7 +20,7 @@ position = Vector2(-366, 0)
 scale = Vector2(4, 4)
 
 [node name="TargetNotifier" parent="." instance=ExtResource("5_pbw6q")]
-position = Vector2(716, -63)
+position = Vector2(-33, -644)
 
 [node name="MainCamera" type="Camera2D" parent="."]
 script = ExtResource("3_rgh2o")
@@ -41,10 +42,6 @@ script = ExtResource("7_jw32o")
 position = Vector2(500, 0)
 Direction = -1
 
-[node name="Stair2" parent="Buildings" instance=ExtResource("8_vy5pj")]
-position = Vector2(500, -200)
-Direction = -1
-
 [node name="Stair3" parent="Buildings" instance=ExtResource("8_vy5pj")]
 position = Vector2(500, 200)
 Direction = -1
@@ -61,6 +58,5 @@ Direction = 1
 position = Vector2(598, -200)
 Direction = 1
 
-[node name="Stair6" parent="Buildings" instance=ExtResource("8_vy5pj")]
-position = Vector2(598, 200)
-Direction = 1
+[node name="SelectIntItem" parent="." instance=ExtResource("9_vy5pj")]
+position = Vector2(-154, -6)

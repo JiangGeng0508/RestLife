@@ -13,6 +13,7 @@ public partial class InteractableItem : Area2D
 		label = new Label();
 		AddChild(label);
 		label.Show();
+		Init();
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -34,7 +35,7 @@ public partial class InteractableItem : Area2D
 			if (Interactable && mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed)
 			{
 				Action();
-				GD.Print("Action");
+				// GD.Print("Action");
 			}
 		}
 	}
@@ -44,7 +45,7 @@ public partial class InteractableItem : Area2D
 		{
 			Interactable = true;
 			CharaReachArea = area;
-			GD.Print("Enter ReachArea");
+			// GD.Print("Enter ReachArea");
 		}
 	}
 	public void onAreaExited(Area2D area)
@@ -55,5 +56,6 @@ public partial class InteractableItem : Area2D
 			CharaReachArea = null;
 		}
 	}
-	public virtual void Action(){}
+	public virtual void Init() { }
+	public virtual void Action() { }
 }
