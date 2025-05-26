@@ -92,12 +92,12 @@ public partial class Character : CharacterBody2D
 			}
 			else if (keyEvent.Pressed && keyEvent.Keycode == Key.A)
 			{
-				MoveAndCollide(new Vector2(Position.X - speed * 2, Position.Y));
+				targetPosition = new Vector2(Position.X - speed * 3, Position.Y);
 				state = CharacterState.MovingbyKeyboard;
 			}
 			else if (keyEvent.Pressed && keyEvent.Keycode == Key.D)
 			{
-				MoveAndCollide(new Vector2(Position.X + speed * 2, Position.Y));
+				targetPosition = new Vector2(Position.X + speed * 3, Position.Y);
 				state = CharacterState.MovingbyKeyboard;
 			}
 		}
