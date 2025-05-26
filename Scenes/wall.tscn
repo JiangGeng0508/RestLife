@@ -1,18 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpft6b8dk6e0w"]
-
-[ext_resource type="Texture2D" uid="uid://bjqegcecet3ha" path="res://icon.svg" id="1_xxgf6"]
+[gd_scene load_steps=2 format=3 uid="uid://cpft6b8dk6e0w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oh6kn"]
-size = Vector2(142.89, 119)
+size = Vector2(140, 120)
 
 [node name="Wall" type="StaticBody2D"]
 position = Vector2(2, -1)
 scale = Vector2(16.4, 1)
-metadata/_edit_group_ = true
 
 [node name="WallShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_oh6kn")
 
-[node name="WalSprite" type="Sprite2D" parent="."]
-scale = Vector2(1.11756, 1)
-texture = ExtResource("1_xxgf6")
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -60.0
+offset_right = 70.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,19 +1,16 @@
 [gd_scene load_steps=10 format=3 uid="uid://qohbm2a8mwou"]
 
-[ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Wall.tscn" id="1_idj7w"]
-[ext_resource type="PackedScene" uid="uid://b25yhbndwexxv" path="res://Scenes/Chara.tscn" id="2_kln2b"]
+[ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/wall.tscn" id="1_idj7w"]
+[ext_resource type="PackedScene" uid="uid://b25yhbndwexxv" path="res://Scenes/Character.tscn" id="2_kln2b"]
 [ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/InteractableItem.tscn" id="3_kln2b"]
-[ext_resource type="Script" uid="uid://cu47gi6m5t7t" path="res://Scripts/MainCamera.cs" id="3_rgh2o"]
+[ext_resource type="Script" uid="uid://clihekd8ip2rv" path="res://Scripts/MainCamera.cs" id="3_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://c43ww4608wcvp" path="res://Scenes/TargetNotifer.tscn" id="5_pbw6q"]
-[ext_resource type="Script" uid="uid://24j0uebnqktv" path="res://Scripts/Inventory.cs" id="7_jw32o"]
+[ext_resource type="Script" uid="uid://crheoxyowc6xm" path="res://Scripts/Inventory.cs" id="7_jw32o"]
 [ext_resource type="PackedScene" uid="uid://b47gxbo06clen" path="res://Scenes/RideableItem.tscn" id="8_50glp"]
 [ext_resource type="PackedScene" uid="uid://b0kw6xwewc6vv" path="res://Scenes/Stair.tscn" id="8_vy5pj"]
 [ext_resource type="PackedScene" uid="uid://861bfrm35j5o" path="res://Scenes/SelectIntItem.tscn" id="9_vy5pj"]
 
 [node name="MainScence" type="Node2D"]
-
-[node name="Character" parent="." instance=ExtResource("2_kln2b")]
-disable_mode = 1
 
 [node name="InteractableItem" parent="." instance=ExtResource("3_kln2b")]
 position = Vector2(-366, 0)
@@ -60,3 +57,6 @@ Direction = 1
 
 [node name="SelectIntItem" parent="." instance=ExtResource("9_vy5pj")]
 position = Vector2(-154, -6)
+
+[node name="Character" parent="." instance=ExtResource("2_kln2b")]
+disable_mode = 1

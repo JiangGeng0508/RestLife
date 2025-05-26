@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b25yhbndwexxv"]
+[gd_scene load_steps=5 format=3 uid="uid://b25yhbndwexxv"]
 
-[ext_resource type="Texture2D" uid="uid://bjqegcecet3ha" path="res://icon.svg" id="1_852gr"]
-[ext_resource type="Script" uid="uid://c3iwm8ok3abkl" path="res://Scripts/Chara.cs" id="1_nlhix"]
-[ext_resource type="Script" uid="uid://b0blwc4br202a" path="res://Scripts/ReachArea.cs" id="3_gi8q4"]
+[ext_resource type="Script" uid="uid://bpqc71ebqcmge" path="res://Scripts/Character.cs" id="1_677pu"]
+[ext_resource type="Script" uid="uid://bs0mnasjf45co" path="res://Scripts/ReachArea.cs" id="3_gi8q4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_567wp"]
 
@@ -10,15 +9,25 @@
 radius = 31.1448
 
 [node name="Character" type="CharacterBody2D"]
-script = ExtResource("1_nlhix")
+script = ExtResource("1_677pu")
 metadata/_edit_group_ = true
 
 [node name="CharaShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_567wp")
 
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.125, 0.1875)
-texture = ExtResource("1_852gr")
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0.815686, 1)
 
 [node name="ReachArea" type="Area2D" parent="."]
 script = ExtResource("3_gi8q4")
