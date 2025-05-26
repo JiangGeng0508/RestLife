@@ -3,10 +3,10 @@ using System;
 
 public partial class MainCamera : Camera2D
 {
-	Chara chara;
+	Character chara;
 	public override void _Ready()
 	{
-		chara = GetNode<Chara>("../Character");
+		chara = GetNode<Character>("../Character");
 	}
 	public override void _PhysicsProcess(double delta)
 	{
