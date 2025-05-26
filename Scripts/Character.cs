@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Chara : CharacterBody2D
+public partial class Character : CharacterBody2D
 {
 	Area2D reachArea;
 	TargetNotifer tarPosNotifer;
