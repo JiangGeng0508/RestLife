@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://861bfrm35j5o"]
-
-[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/InteractableItem.tscn" id="1_kwufc"]
-[ext_resource type="Script" uid="uid://b58gmfrwsbc1o" path="res://Scripts/SelectIntItem.cs" id="2_ptdhd"]
-
-[node name="SelectIntItem" instance=ExtResource("1_kwufc")]
-script = ExtResource("2_ptdhd")
-
-[node name="PopupMenu" type="PopupMenu" parent="." index="2"]
