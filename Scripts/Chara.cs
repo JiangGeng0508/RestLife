@@ -6,6 +6,7 @@ public partial class Chara : CharacterBody2D
 	Area2D reachArea;
 	TargetNotifer tarPosNotifer;
 	InteractableItem interactItem;
+	Sprite2D sprite;
 	ulong Id = 0;
 	bool handable = false;
 	bool isMoving = false;
@@ -16,12 +17,14 @@ public partial class Chara : CharacterBody2D
 		Id = GetInstanceId();
 		reachArea = GetNode<Area2D>("ReachArea");
 		tarPosNotifer = GetNode<TargetNotifer>("../TargetNotifier");
+		sprite = GetNode<Sprite2D>("Icon");
 
 		targetPosition = Position;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+		sprite.Position = Vector2.Zero;
 		if (isMoving && (targetPosition - Position).Length() > speed)
 		{
 			Velocity = (targetPosition - Position) / (targetPosition - Position).Length() * speed;

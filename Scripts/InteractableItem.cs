@@ -3,8 +3,22 @@ using System;
 
 public partial class InteractableItem : Area2D
 {
-	bool Interactable = false;
+	public bool Interactable = false;
 	public Area2D CharaReachArea;
+	public Label label;
+	public override void _Ready()
+	{
+		Connect("area_entered", new Callable(this, nameof(onAreaEntered)));
+		Connect("area_exited", new Callable(this, nameof(onAreaExited)));
+		label = new Label();
+		AddChild(label);
+		label.Show();
+	}
+	public override void _PhysicsProcess(double delta)
+	{
+		label.Text = "Interactable: " + Interactable;
+	}
+
 	public override void _MouseEnter()
 	{
 		//外边框发光效果
@@ -17,12 +31,10 @@ public partial class InteractableItem : Area2D
 	{
 		if (@event is InputEventMouseButton mouseEvent)
 		{
-			if (mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed)
+			if (Interactable && mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed)
 			{
-				if (Interactable)
-				{
-					Action();
-				}
+				Action();
+				GD.Print("Action");
 			}
 		}
 	}
@@ -30,9 +42,9 @@ public partial class InteractableItem : Area2D
 	{
 		if (area is ReachArea reachArea)
 		{
-			GD.Print("ReachArea entered");
 			Interactable = true;
 			CharaReachArea = area;
+			GD.Print("Enter ReachArea");
 		}
 	}
 	public void onAreaExited(Area2D area)
@@ -40,6 +52,7 @@ public partial class InteractableItem : Area2D
 		if (area is ReachArea reachArea)
 		{
 			Interactable = false;
+			CharaReachArea = null;
 		}
 	}
 	public virtual void Action(){}

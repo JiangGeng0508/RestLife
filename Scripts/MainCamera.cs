@@ -6,7 +6,7 @@ public partial class MainCamera : Camera2D
 	Chara chara;
 	public override void _Ready()
 	{
-		chara = GetNode<Chara>("../Chara");
+		chara = GetNode<Chara>("../Character");
 	}
 	public override void _PhysicsProcess(double delta)
 	{
