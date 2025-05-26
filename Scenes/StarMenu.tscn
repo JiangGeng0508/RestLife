@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://da1ggkg37rl0a"]
 
-[ext_resource type="Script" uid="uid://dexnnk5hu8nyq" path="res://Scripts/StartGame.cs" id="1_u70cc"]
+[ext_resource type="Script" uid="uid://c36y03raatkr2" path="res://Scripts/StartGame.cs" id="1_u70cc"]
 
 [node name="StartMenu" type="Node2D"]
 
