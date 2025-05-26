@@ -1,18 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://be1hn8uakht15"]
+[gd_scene load_steps=3 format=3 uid="uid://b47gxbo06clen"]
 
-[ext_resource type="Texture2D" uid="uid://bjqegcecet3ha" path="res://icon.svg" id="2_klv3y"]
-[ext_resource type="Script" uid="uid://cdykmqbg2u1vx" path="res://Scripts/RideableItem.cs" id="2_wfxdo"]
+[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/InteractableItem.tscn" id="1_7kffp"]
+[ext_resource type="Script" uid="uid://cdykmqbg2u1vx" path="res://Scripts/RideableItem.cs" id="2_2s702"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qtwvc"]
-radius = 18.0278
-
-[node name="RideableItem" type="Area2D"]
-script = ExtResource("2_wfxdo")
-metadata/_edit_group_ = true
-
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_klv3y")
-
-[node name="IntShape" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_qtwvc")
+[node name="RideableItem" instance=ExtResource("1_7kffp")]
+script = ExtResource("2_2s702")
+riderOffset = Vector2(0, -20)
