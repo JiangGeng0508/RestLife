@@ -41,7 +41,8 @@ public partial class InteractableItem : Area2D
 			if (Interactable && mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed)
 			{
 				Action();
-				// GD.Print("Action");
+				CharaReachArea.GetParent().Call("AfterAction");
+
 			}
 		}
 	}
@@ -51,7 +52,6 @@ public partial class InteractableItem : Area2D
 		{
 			Interactable = true;
 			CharaReachArea = area;
-			// GD.Print("Enter ReachArea");
 		}
 	}
 	public void onAreaExited(Area2D area)

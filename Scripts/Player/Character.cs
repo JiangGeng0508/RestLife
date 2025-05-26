@@ -5,6 +5,7 @@ public enum CharacterState
 {
 	Idle,
 	Moving,
+	MovingbyKeyboard,
 	Riding,
 }
 public partial class Character : CharacterBody2D
@@ -91,14 +92,13 @@ public partial class Character : CharacterBody2D
 			}
 			else if (keyEvent.Pressed && keyEvent.Keycode == Key.A)
 			{
-				targetPosition = new Vector2(Position.X - speed * 2, Position.Y);
-				state = CharacterState.Moving;
-				
+				MoveAndCollide(new Vector2(Position.X - speed * 2, Position.Y));
+				state = CharacterState.MovingbyKeyboard;
 			}
 			else if (keyEvent.Pressed && keyEvent.Keycode == Key.D)
 			{
-				targetPosition = new Vector2(Position.X + speed * 2, Position.Y);
-				state = CharacterState.Moving;
+				MoveAndCollide(new Vector2(Position.X + speed * 2, Position.Y));
+				state = CharacterState.MovingbyKeyboard;
 			}
 		}
 	}
@@ -118,11 +118,26 @@ public partial class Character : CharacterBody2D
 	}
 	public bool IsRiding()
 	{
-		return (state == CharacterState.Riding);
+		return state == CharacterState.Riding;
 	}
 	public bool IsMoving()
 	{
-		return (state == CharacterState.Moving);
+		return state == CharacterState.Moving || state == CharacterState.MovingbyKeyboard;
+	}
+	// public void ChangeState(CharacterState newState)
+	// {
+	// 	state = newState;
+	// }
+	// public void ChangeState(string newState)
+	// {
+	// 	state = (CharacterState)Enum.Parse(typeof(CharacterState), newState);
+	// }
+	public void AfterAction()
+	{
+		if (IsMoving())
+		{
+			state = CharacterState.Idle;
+		}
 	}
 	public void OnAreaEntered(Area2D area)
 	{
