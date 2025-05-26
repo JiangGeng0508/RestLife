@@ -57,19 +57,16 @@ public partial class Character : CharacterBody2D
 		{
 			if (mouseEvent.ButtonIndex == MouseButton.Right && mouseEvent.IsPressed())
 			{
-				if (IsOnFloor() || true)
-				{
-					var mousePos = GetGlobalMousePosition();
-					tarPosNotifer.Position = new Vector2(mousePos.X, Position.Y);
-					tarPosNotifer.ShowTarget();
-					isMoving = true;
-					targetPosition = new Vector2(mousePos.X, Position.Y);
-				}
+				var mousePos = GetGlobalMousePosition();
+				tarPosNotifer.Position = new Vector2(mousePos.X, Position.Y);
+				tarPosNotifer.ShowTarget();
+				isMoving = true;
+				targetPosition = new Vector2(mousePos.X, Position.Y);
 			}
 		}
 		if (@event is InputEventKey keyEvent)
 		{
-			if (keyEvent.Pressed && keyEvent.Keycode == Key.E && handable)
+			if (keyEvent.Pressed && keyEvent.Keycode == Key.E)
 			{
 				interactItem.Action();
 			}
