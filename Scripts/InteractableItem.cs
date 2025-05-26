@@ -6,18 +6,24 @@ public partial class InteractableItem : Area2D
 	public bool Interactable = false;
 	public Area2D CharaReachArea;
 	public Label label;
+	public ColorRect sprite;
 	public override void _Ready()
 	{
 		Connect("area_entered", new Callable(this, nameof(onAreaEntered)));
 		Connect("area_exited", new Callable(this, nameof(onAreaExited)));
-		label = new Label();
-		AddChild(label);
-		label.Show();
+		// label = new Label();
+		// AddChild(label);
+		// label.Show();
+
+		sprite = GetNode<ColorRect>("ColorRect");
+
 		Init();
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		label.Text = "Interactable: " + Interactable;
+		if (Interactable) sprite.Color = new Color(255, 0, 0, 1);
+		else sprite.Color = new Color(0, 1, 0, 1);
+		// label.Text = "Interactable: " + Interactable;
 	}
 
 	public override void _MouseEnter()

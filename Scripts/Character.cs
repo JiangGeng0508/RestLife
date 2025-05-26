@@ -28,7 +28,6 @@ public partial class Character : CharacterBody2D
 		if (isMoving && (targetPosition - Position).Length() > speed)
 		{
 			Velocity = (targetPosition - Position) / (targetPosition - Position).Length() * speed;
-			Velocity = new Vector2(Velocity.X, 0);
 			MoveAndCollide(Velocity);
 		}
 		else
@@ -64,7 +63,7 @@ public partial class Character : CharacterBody2D
 					tarPosNotifer.Position = new Vector2(mousePos.X, Position.Y);
 					tarPosNotifer.ShowTarget();
 					isMoving = true;
-					targetPosition = mousePos;
+					targetPosition = new Vector2(mousePos.X, Position.Y);
 				}
 			}
 		}
@@ -73,6 +72,16 @@ public partial class Character : CharacterBody2D
 			if (keyEvent.Pressed && keyEvent.Keycode == Key.E && handable)
 			{
 				interactItem.Action();
+			}
+			else if (keyEvent.Pressed && keyEvent.Keycode == Key.A)
+			{
+				isMoving = true;
+				targetPosition = new Vector2(Position.X - speed * 20, Position.Y);
+			}
+			else if (keyEvent.Pressed && keyEvent.Keycode == Key.D)
+			{
+				isMoving = true;
+				targetPosition = new Vector2(Position.X + speed * 20, Position.Y);
 			}
 		}
 	}
