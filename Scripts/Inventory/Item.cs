@@ -1,23 +1,11 @@
 using System;
 using Godot;
-public enum ItemType
+
+public partial class Item : Node2D
 {
-	Food,
-	Tool
-}
-public partial class Item : Object 
-{
-	public string Name { get; set; }
-	public string Description { get; set; }
-	public float Price { get; set; }
-	public string SpritePath { get; set; }
-	public ItemType Type { get; set; }
-	public Item(string name, string description, float price, string spritePath, ItemType type)
+	public Vector2[] Shape;
+	public Item(Vector2[] shape)
 	{
-		Name = name;
-		Description = description;
-		Price = price;
-		SpritePath = spritePath;
-		Type = type;
+		Shape = shape;
 	}
 }
