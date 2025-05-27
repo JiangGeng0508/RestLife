@@ -56,27 +56,7 @@ public partial class Character : CharacterBody2D
 			case CharacterState.Idle:
 				break;
 			case CharacterState.Moving:
-				if ((targetPosition - Position).Length() > 1f)
-				{
-					Velocity = (targetPosition - Position).Normalized() * speed;
-					MoveAndSlide();
-				}
-				else
-				{
-          			tarPosNotifer.HideTarget();
-					state = CharacterState.Idle;
-				}
-				break;
-			case CharacterState.MovingbyKeyboard:
-				if (KeyDirection != 0)
-				{
-					Velocity =  new Vector2(KeyDirection, 0) * speed;
-					MoveAndSlide();
-				}
-				else
-				{
-					state = CharacterState.Idle;
-				}
+				Move();
 				break;
 			case CharacterState.Riding:
 				break;
@@ -99,6 +79,22 @@ public partial class Character : CharacterBody2D
 			handable = false;
 		}
 	}
+
+	private void Move()
+	{
+		Velocity = (targetPosition - Position).Length() > 2f ? (targetPosition - Position).Normalized() * speed : Vector2.Zero;
+		if(KeyDirection != 0) Velocity = new Vector2(KeyDirection, 0) * speed;
+		if (Velocity.Length() > 2f)
+		{
+			MoveAndSlide();
+		}
+		else
+		{
+			tarPosNotifer.HideTarget();
+			state = CharacterState.Idle;
+		}
+	}
+
 	public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventMouseButton mouseEvent)
@@ -132,12 +128,12 @@ public partial class Character : CharacterBody2D
 					if (keyEvent.Keycode == Key.A)
 					{
 						KeyDirection = -1;
-						state = CharacterState.MovingbyKeyboard;
+						state = CharacterState.Moving;
 					}
 					else if (keyEvent.Keycode == Key.D)
 					{
 						KeyDirection = 1;
-						state = CharacterState.MovingbyKeyboard;
+						state = CharacterState.Moving;
 					}
 				}
 				else if (IsRiding() && keyEvent.Keycode == Key.R)
