@@ -12,26 +12,8 @@
 
 [node name="MainScence" type="Node2D"]
 
-[node name="InteractableItem" parent="." instance=ExtResource("3_kln2b")]
-position = Vector2(-366, 0)
-scale = Vector2(4, 4)
-
-[node name="TargetNotifier" parent="." instance=ExtResource("5_pbw6q")]
-position = Vector2(-33, -644)
-
 [node name="MainCamera" type="Camera2D" parent="."]
 script = ExtResource("3_rgh2o")
-
-[node name="RideableItem" parent="." instance=ExtResource("8_50glp")]
-position = Vector2(284, 0)
-scale = Vector2(2, 2)
-
-[node name="Inventory" type="BoxContainer" parent="."]
-offset_left = 134.0
-offset_top = -294.0
-offset_right = 536.0
-offset_bottom = 73.0
-script = ExtResource("7_jw32o")
 
 [node name="Buildings" type="Node" parent="."]
 
@@ -55,8 +37,28 @@ Direction = 1
 position = Vector2(500, -200)
 Direction = 1
 
-[node name="SelectIntItem" parent="." instance=ExtResource("9_vy5pj")]
+[node name="SelectIntItem" parent="Buildings" instance=ExtResource("9_vy5pj")]
 position = Vector2(-154, -6)
+
+[node name="RideableItem" parent="Buildings" instance=ExtResource("8_50glp")]
+position = Vector2(284, 0)
+scale = Vector2(2, 2)
+
+[node name="InteractableItem" parent="Buildings" instance=ExtResource("3_kln2b")]
+position = Vector2(-366, 0)
+scale = Vector2(4, 4)
 
 [node name="Character" parent="." instance=ExtResource("2_kln2b")]
 disable_mode = 1
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Inventory" type="BoxContainer" parent="UI"]
+offset_left = 134.0
+offset_top = -294.0
+offset_right = 536.0
+offset_bottom = 73.0
+script = ExtResource("7_jw32o")
+
+[node name="TargetNotifier" parent="UI" instance=ExtResource("5_pbw6q")]
+position = Vector2(-33, -644)
