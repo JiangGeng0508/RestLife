@@ -1,23 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://cquf0bgb1saia"]
+[gd_scene load_steps=13 format=3 uid="uid://3x8uir2iv31g"]
 
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Item/wall.tscn" id="1_idj7w"]
 [ext_resource type="PackedScene" uid="uid://b25yhbndwexxv" path="res://Scenes/Player/Character.tscn" id="2_kln2b"]
 [ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Item/InteractableItem.tscn" id="3_kln2b"]
 [ext_resource type="Script" uid="uid://clihekd8ip2rv" path="res://Scripts/UI/MainCamera.cs" id="3_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://c43ww4608wcvp" path="res://Scenes/Player/TargetNotifer.tscn" id="5_pbw6q"]
-[ext_resource type="Script" uid="uid://crheoxyowc6xm" path="res://Scripts/Inventory/Inventory.cs" id="7_jw32o"]
 [ext_resource type="PackedScene" uid="uid://b47gxbo06clen" path="res://Scenes/Item/RideableItem.tscn" id="8_50glp"]
 [ext_resource type="PackedScene" uid="uid://b0kw6xwewc6vv" path="res://Scenes/Item/Stair.tscn" id="8_vy5pj"]
 [ext_resource type="PackedScene" uid="uid://861bfrm35j5o" path="res://Scenes/Item/SelectIntItem.tscn" id="9_vy5pj"]
+[ext_resource type="Script" uid="uid://crheoxyowc6xm" path="res://Scripts/UI/Inventory.cs" id="10_4kpch"]
 [ext_resource type="Script" uid="uid://di14nm0jvgxks" path="res://Scripts/UI/Cursur.cs" id="10_bmxlf"]
+[ext_resource type="Script" uid="uid://b78vbe0hqa2ni" path="res://Scripts/UI/SelectMenu.cs" id="10_grg3l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmxlf"]
 radius = 3.0
 
 [node name="MainScence" type="Node2D"]
-
-[node name="MainCamera" type="Camera2D" parent="."]
-script = ExtResource("3_rgh2o")
 
 [node name="Buildings" type="Node" parent="."]
 
@@ -55,18 +53,6 @@ scale = Vector2(4, 4)
 [node name="Character" parent="." instance=ExtResource("2_kln2b")]
 disable_mode = 1
 
-[node name="UI" type="Node2D" parent="."]
-
-[node name="Inventory" type="BoxContainer" parent="UI"]
-offset_left = 134.0
-offset_top = -294.0
-offset_right = 536.0
-offset_bottom = 73.0
-script = ExtResource("7_jw32o")
-
-[node name="TargetNotifier" parent="UI" instance=ExtResource("5_pbw6q")]
-position = Vector2(-33, -644)
-
 [node name="Cursur" type="Area2D" parent="."]
 script = ExtResource("10_bmxlf")
 
@@ -77,6 +63,36 @@ text = "12"
 
 [node name="CursurShape" type="CollisionShape2D" parent="Cursur"]
 shape = SubResource("CircleShape2D_bmxlf")
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="TargetNotifier" parent="UI" instance=ExtResource("5_pbw6q")]
+position = Vector2(-33, -644)
+
+[node name="MainCamera" type="Camera2D" parent="UI"]
+script = ExtResource("3_rgh2o")
+
+[node name="SelectMenu" type="TabContainer" parent="UI/MainCamera"]
+visible = false
+offset_left = 133.0
+offset_top = -293.0
+offset_right = 559.0
+offset_bottom = 74.0
+current_tab = 0
+script = ExtResource("10_grg3l")
+
+[node name="Inventory" type="BoxContainer" parent="UI/MainCamera/SelectMenu"]
+clip_contents = true
+custom_minimum_size = Vector2(30, 50)
+layout_mode = 2
+vertical = true
+script = ExtResource("10_4kpch")
+metadata/_tab_index = 0
+
+[node name="LineEdit" type="LineEdit" parent="UI/MainCamera/SelectMenu/Inventory"]
+layout_mode = 2
+text = "Search"
+placeholder_text = "somethin"
 
 [connection signal="area_entered" from="Cursur" to="Cursur" method="OnAreaEntered"]
 [connection signal="area_exited" from="Cursur" to="Cursur" method="OnAreaExited"]

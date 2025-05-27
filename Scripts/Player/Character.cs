@@ -7,6 +7,7 @@ public enum CharacterState
 	Moving,
 	MovingbyKeyboard,
 	Riding,
+	Waiting
 }
 public partial class Character : CharacterBody2D
 {
@@ -18,6 +19,7 @@ public partial class Character : CharacterBody2D
 	bool handable = false;
 	CharacterState state = CharacterState.Idle;
 	Vector2 targetPosition = Vector2.Zero;
+	CharacterState prevState = CharacterState.Idle;
 
 	float speed = 10f;
 	private Vector2 _prevPosition = Vector2.Zero;
@@ -39,18 +41,6 @@ public partial class Character : CharacterBody2D
 		//debug
 		label.Text = $"{state}";
 
-		// if (IsMoving())
-		// {
-		// 	if ((targetPosition - Position).Length() > speed)
-		// 	{
-		// 		Velocity = (targetPosition - Position) / (targetPosition - Position).Length() * speed;
-		// 		MoveAndCollide(Velocity);
-		// 	}
-		// 	else
-		// 	{
-		// 		state = CharacterState.Idle;
-		// 	}
-		// }
 		switch (state)
 		{
 			case CharacterState.Idle:
@@ -59,7 +49,10 @@ public partial class Character : CharacterBody2D
 				if ((targetPosition - Position).Length() > speed * 1.5f)
 				{
 					Velocity = (targetPosition - Position).Normalized() * speed;
-					MoveAndCollide(Velocity);
+					if (MoveAndCollide(Velocity) != null)
+					{
+						state = CharacterState.Idle;
+					}
 				}
 				else
 				{
@@ -69,7 +62,7 @@ public partial class Character : CharacterBody2D
 			case CharacterState.MovingbyKeyboard:
 				if (KeyDirection != 0)
 				{
-					Velocity =  new Vector2(KeyDirection, 0) * speed;
+					Velocity = new Vector2(KeyDirection, 0) * speed;
 					MoveAndCollide(Velocity);
 				}
 				else
@@ -78,6 +71,8 @@ public partial class Character : CharacterBody2D
 				}
 				break;
 			case CharacterState.Riding:
+				break;
+			case CharacterState.Waiting:
 				break;
 		}
 
@@ -104,7 +99,7 @@ public partial class Character : CharacterBody2D
 		{
 			if (mouseEvent.ButtonIndex == MouseButton.Right && mouseEvent.IsPressed())
 			{
-				if (!IsRiding())
+				if (!IsRiding() && !IsWaiting())
 				{
 					var mousePos = GetGlobalMousePosition();
 					tarPosNotifer.Position = new Vector2(mousePos.X, Position.Y);
@@ -122,12 +117,12 @@ public partial class Character : CharacterBody2D
 		{
 			if (keyEvent.Pressed)
 			{
-				if (keyEvent.Keycode == Key.E && handable)
+				if (keyEvent.Keycode == Key.E && handable && !IsWaiting())
 				{
 					state = CharacterState.Idle;
 					interactItem.Action();
 				}
-				if (!IsRiding())
+				if (!IsRiding() && !IsWaiting())
 				{
 					KeyDirection = 0;
 					if (keyEvent.Keycode == Key.A)
@@ -145,6 +140,18 @@ public partial class Character : CharacterBody2D
 				{
 					StopRiding();
 				}
+				if (keyEvent.Keycode == Key.Tab)
+				{
+					if (!IsWaiting())
+					{
+						prevState = state;
+						state = CharacterState.Waiting;
+					}
+					else
+					{						
+						state = prevState;
+					}
+				}
 			}
 			else if (IsMovingbyKeyboard())
 			{
@@ -155,7 +162,7 @@ public partial class Character : CharacterBody2D
 	}
 	public void Ride(RideableItem chair)
 	{
-		if (!IsRiding())
+		if (!IsRiding() && !IsWaiting())
 		{
 			_prevPosition = Position;
 			Position = chair.Position + chair.riderOffset;
@@ -182,6 +189,10 @@ public partial class Character : CharacterBody2D
 	public bool IsIdle()
 	{
 		return state == CharacterState.Idle;
+	}
+	public bool IsWaiting()
+	{
+		return state == CharacterState.Waiting;
 	}
 	// public void ChangeState(CharacterState newState)
 	// {

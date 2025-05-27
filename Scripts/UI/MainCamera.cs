@@ -14,7 +14,7 @@ public partial class MainCamera : Camera2D
 
     public override void _Ready()
     {
-        chara = GetNode<Character>("../Character");
+        chara = GetNode<Character>("../../Character");
         targetZoom = Zoom; // 初始化目标缩放值为默认缩放值
     }
 
