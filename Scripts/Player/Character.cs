@@ -5,7 +5,6 @@ public enum CharacterState
 {
 	Idle,
 	Moving,
-	MovingbyKeyboard,
 	Riding,
 }
 public partial class Character : CharacterBody2D
@@ -19,7 +18,7 @@ public partial class Character : CharacterBody2D
 	CharacterState state = CharacterState.Idle;
 	Vector2 targetPosition = Vector2.Zero;
 
-	float speed = 10f;
+	float speed = 200f;
 	private Vector2 _prevPosition = Vector2.Zero;
 	int KeyDirection = 0;
   
@@ -56,26 +55,7 @@ public partial class Character : CharacterBody2D
 			case CharacterState.Idle:
 				break;
 			case CharacterState.Moving:
-				if ((targetPosition - Position).Length() > speed * 1.5f)
-				{
-					Velocity = (targetPosition - Position).Normalized() * speed;
-					MoveAndCollide(Velocity);
-				}
-				else
-				{
-					state = CharacterState.Idle;
-				}
-				break;
-			case CharacterState.MovingbyKeyboard:
-				if (KeyDirection != 0)
-				{
-					Velocity =  new Vector2(KeyDirection, 0) * speed;
-					MoveAndCollide(Velocity);
-				}
-				else
-				{
-					state = CharacterState.Idle;
-				}
+				Move();
 				break;
 			case CharacterState.Riding:
 				break;
@@ -133,12 +113,12 @@ public partial class Character : CharacterBody2D
 					if (keyEvent.Keycode == Key.A)
 					{
 						KeyDirection += -1;
-						state = CharacterState.MovingbyKeyboard;
+						state = CharacterState.Moving;
 					}
 					if (keyEvent.Keycode == Key.D)
 					{
 						KeyDirection += 1;
-						state = CharacterState.MovingbyKeyboard;
+						state = CharacterState.Moving;
 					}
 				}
 				else if (IsRiding() && keyEvent.Keycode == Key.R)
@@ -146,13 +126,33 @@ public partial class Character : CharacterBody2D
 					StopRiding();
 				}
 			}
-			else if (IsMovingbyKeyboard())
+			else if (IsMoving())
 			{
 				KeyDirection = 0;
 				state = CharacterState.Idle;
 			}
 		}
 	}
+
+	private void Move()
+	{
+		Velocity = (targetPosition - Position).Length() > 2f ? (targetPosition - Position).Normalized() * speed : Vector2.Zero;
+		if(KeyDirection != 0) Velocity = new Vector2(KeyDirection, 0) * speed;
+
+		if (Velocity.Length() > 2f)
+		{
+			_prevPosition = Position;
+			MoveAndSlide();
+		}
+		else
+		{
+			tarPosNotifer.HideTarget();
+			state = CharacterState.Idle;
+		}
+
+		if(IsMoving() && _prevPosition == Position) state = CharacterState.Idle;
+	}
+
 	public void Ride(RideableItem chair)
 	{
 		if (!IsRiding())
@@ -174,10 +174,6 @@ public partial class Character : CharacterBody2D
 	public bool IsMoving()
 	{
 		return state == CharacterState.Moving;
-	}
-	public bool IsMovingbyKeyboard()
-	{
-		return state == CharacterState.MovingbyKeyboard;
 	}
 	public bool IsIdle()
 	{
