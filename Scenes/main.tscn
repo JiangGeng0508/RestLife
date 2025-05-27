@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cquf0bgb1saia"]
+[gd_scene load_steps=12 format=3 uid="uid://cquf0bgb1saia"]
 
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Item/wall.tscn" id="1_idj7w"]
 [ext_resource type="PackedScene" uid="uid://b25yhbndwexxv" path="res://Scenes/Player/Character.tscn" id="2_kln2b"]
@@ -9,6 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://b47gxbo06clen" path="res://Scenes/Item/RideableItem.tscn" id="8_50glp"]
 [ext_resource type="PackedScene" uid="uid://b0kw6xwewc6vv" path="res://Scenes/Item/Stair.tscn" id="8_vy5pj"]
 [ext_resource type="PackedScene" uid="uid://861bfrm35j5o" path="res://Scenes/Item/SelectIntItem.tscn" id="9_vy5pj"]
+[ext_resource type="Script" uid="uid://di14nm0jvgxks" path="res://Scripts/UI/Cursur.cs" id="10_bmxlf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bmxlf"]
+radius = 3.0
 
 [node name="MainScence" type="Node2D"]
 
@@ -62,3 +66,17 @@ script = ExtResource("7_jw32o")
 
 [node name="TargetNotifier" parent="UI" instance=ExtResource("5_pbw6q")]
 position = Vector2(-33, -644)
+
+[node name="Cursur" type="Area2D" parent="."]
+script = ExtResource("10_bmxlf")
+
+[node name="TooltipLabel" type="Label" parent="Cursur"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "12"
+
+[node name="CursurShape" type="CollisionShape2D" parent="Cursur"]
+shape = SubResource("CircleShape2D_bmxlf")
+
+[connection signal="area_entered" from="Cursur" to="Cursur" method="OnAreaEntered"]
+[connection signal="area_exited" from="Cursur" to="Cursur" method="OnAreaExited"]

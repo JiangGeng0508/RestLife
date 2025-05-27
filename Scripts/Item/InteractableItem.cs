@@ -35,16 +35,6 @@ public partial class InteractableItem : Area2D
 		}
 	}
 
-	public override void _MouseEnter()
-	{
-		MouseIn = true;
-		// GD.Print($"MouseEnter{Time.GetUnixTimeFromSystem()}");
-	}
-	public override void _MouseExit()
-	{
-		MouseIn = false;
-		// GD.Print($"MouseExit{Time.GetUnixTimeFromSystem()}");
-	}
 	public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventMouseButton mouseEvent)
@@ -61,9 +51,13 @@ public partial class InteractableItem : Area2D
 		if (area is ReachArea reachArea)
 		{
 			var id = reachArea.GetParent().GetInstanceId();
-			AddToGroup("ReachedItem"+id.ToString());
+			AddToGroup("ReachedItem" + id.ToString());
 			Interactable = true;
 			CharaReachArea = area;
+		}
+		else if (area is Cursur cursur)
+		{
+			MouseIn = true;
 		}
 	}
 	public void onAreaExited(Area2D area)
@@ -71,9 +65,13 @@ public partial class InteractableItem : Area2D
 		if (area is ReachArea reachArea)
 		{
 			var id = reachArea.GetParent().GetInstanceId();
-			RemoveFromGroup("ReachedItem"+id.ToString());
+			RemoveFromGroup("ReachedItem" + id.ToString());
 			Interactable = false;
 			CharaReachArea = null;
+		}
+		else if (area is Cursur cursur)
+		{
+			MouseIn = false;
 		}
 	}
 	public virtual void Init() { }

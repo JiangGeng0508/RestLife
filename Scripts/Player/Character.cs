@@ -129,14 +129,15 @@ public partial class Character : CharacterBody2D
 				}
 				if (!IsRiding())
 				{
+					KeyDirection = 0;
 					if (keyEvent.Keycode == Key.A)
 					{
-						KeyDirection = -1;
+						KeyDirection += -1;
 						state = CharacterState.MovingbyKeyboard;
 					}
-					else if (keyEvent.Keycode == Key.D)
+					if (keyEvent.Keycode == Key.D)
 					{
-						KeyDirection = 1;
+						KeyDirection += 1;
 						state = CharacterState.MovingbyKeyboard;
 					}
 				}
@@ -195,18 +196,6 @@ public partial class Character : CharacterBody2D
 		if (IsMoving())
 		{
 			state = CharacterState.Idle;
-		}
-	}
-	public void OnAreaEntered(Area2D area)
-	{
-		if (area is InteractableItem item)
-		{
-		}
-	}
-	public void OnAreaExited(Area2D area)
-	{
-		if (area.IsInGroup($"ReachedItem{Id}"))
-		{
 		}
 	}
 }
