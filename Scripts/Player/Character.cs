@@ -19,7 +19,7 @@ public partial class Character : CharacterBody2D
 	CharacterState state = CharacterState.Idle;
 	Vector2 targetPosition = Vector2.Zero;
 
-	float speed = 100f;
+	float speed = 200f;
 	private Vector2 _prevPosition = Vector2.Zero;
 	int KeyDirection = 0;
   
@@ -56,14 +56,14 @@ public partial class Character : CharacterBody2D
 			case CharacterState.Idle:
 				break;
 			case CharacterState.Moving:
-				if ((targetPosition - Position).Length() > speed)
+				if ((targetPosition - Position).Length() > 1f)
 				{
 					Velocity = (targetPosition - Position).Normalized() * speed;
 					MoveAndSlide();
 				}
 				else
 				{
-          tarPosNotifer.HideTarget();
+          			tarPosNotifer.HideTarget();
 					state = CharacterState.Idle;
 				}
 				break;
