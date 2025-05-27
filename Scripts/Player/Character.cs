@@ -3,210 +3,225 @@ using System;
 
 public enum CharacterState
 {
-	Idle,
-	Moving,
-	MovingbyKeyboard,
-	Riding,
-	Waiting
+    Idle,
+    Moving,      // 合并后的移动状态
+    Riding,
+    Waiting
 }
+
 public partial class Character : CharacterBody2D
 {
-	Area2D reachArea;
-	TargetNotifer tarPosNotifer;
-	InteractableItem interactItem;
-	Label label;//debug
-	public ulong Id = 0;
-	bool handable = false;
-	CharacterState state = CharacterState.Idle;
-	Vector2 targetPosition = Vector2.Zero;
-	CharacterState prevState = CharacterState.Idle;
+    // 节点引用
+    Area2D reachArea;
+    TargetNotifer tarPosNotifer;
+    InteractableItem interactItem;
+    Label label; // debug
+    
+    // 角色属性
+    public ulong Id = 0;
+    bool handable = false;
+    CharacterState state = CharacterState.Idle;
+    Vector2 targetPosition = Vector2.Zero;
+    CharacterState prevState = CharacterState.Idle;
+    
+    // 移动参数
+    float speed = 10f;
+    private Vector2 _prevPosition = Vector2.Zero;
+    int KeyDirection = 0; // -1左, 0无, 1右
 
-	float speed = 10f;
-	private Vector2 _prevPosition = Vector2.Zero;
-	int KeyDirection = 0;
-  
-	public override void _Ready()
-	{
-		Id = GetInstanceId();
-		reachArea = GetNode<Area2D>("ReachArea");
-		tarPosNotifer = GetNode<TargetNotifer>("../UI/TargetNotifier");
-		label = new Label();//debug
-		AddChild(label);//debug
-		label.Show();//debug
-		targetPosition = Position;
-	}
+    public override void _Ready()
+    {
+        Id = GetInstanceId();
+        reachArea = GetNode<Area2D>("ReachArea");
+        tarPosNotifer = GetNode<TargetNotifer>("../UI/TargetNotifier");
+        
+        // 调试标签
+        label = new Label();
+        AddChild(label);
+        label.Show();
+        
+        targetPosition = Position;
+    }
 
-	public override void _PhysicsProcess(double delta)
+    public override void _PhysicsProcess(double delta)
 	{
-		//debug
+		// 调试显示当前状态
 		label.Text = $"{state}";
 
-		switch (state)
+		// 统一移动处理
+		if (state == CharacterState.Moving)
 		{
-			case CharacterState.Idle:
-				break;
-			case CharacterState.Moving:
-				if ((targetPosition - Position).Length() > speed * 1.5f)
-				{
-					Velocity = (targetPosition - Position).Normalized() * speed;
-					if (MoveAndCollide(Velocity) != null)
-					{
-						state = CharacterState.Idle;
-					}
-				}
-				else
-				{
-					state = CharacterState.Idle;
-				}
-				break;
-			case CharacterState.MovingbyKeyboard:
-				if (KeyDirection != 0)
-				{
-					Velocity = new Vector2(KeyDirection, 0) * speed;
-					MoveAndCollide(Velocity);
-				}
-				else
-				{
-					state = CharacterState.Idle;
-				}
-				break;
-			case CharacterState.Riding:
-				break;
-			case CharacterState.Waiting:
-				break;
-		}
-
-		if (GetTree().GetNodesInGroup($"ReachedItem{Id}").Count > 0)
-		{
-			handable = true;
-			interactItem = GetTree().GetFirstNodeInGroup($"ReachedItem{Id}") as InteractableItem;
-			foreach (InteractableItem item in GetTree().GetNodesInGroup($"ReachedItem{Id}"))
+			Vector2 moveDirection = Vector2.Zero;
+			bool hasMovement = false;
+			
+			// 键盘移动
+			if (KeyDirection != 0)
 			{
-				if (interactItem.Position.DistanceTo(Position) > item.Position.DistanceTo(Position))
-				{
-					interactItem = item;
-				}
+				moveDirection = new Vector2(KeyDirection, 0);
+				hasMovement = true;
 			}
-		}
-		else
-		{
-			handable = false;
-		}
-	}
-	public override void _Input(InputEvent @event)
-	{
-		if (@event is InputEventMouseButton mouseEvent)
-		{
-			if (mouseEvent.ButtonIndex == MouseButton.Right && mouseEvent.IsPressed())
+			// 鼠标点击移动（仅在无键盘输入时执行）
+			else if ((targetPosition - Position).Length() > speed * 1.5f)
 			{
-				if (!IsRiding() && !IsWaiting())
-				{
-					var mousePos = GetGlobalMousePosition();
-					tarPosNotifer.Position = new Vector2(mousePos.X, Position.Y);
-					tarPosNotifer.ShowTarget();
-					targetPosition = new Vector2(mousePos.X, Position.Y);
-					state = CharacterState.Moving;
-				}
-				else if (IsRiding())
-				{
-					StopRiding();
-				}
+				moveDirection = (targetPosition - Position).Normalized();
+				hasMovement = true;
 			}
-		}
-		if (@event is InputEventKey keyEvent)
-		{
-			if (keyEvent.Pressed)
+			
+			// 有移动输入则执行移动
+			if (hasMovement)
 			{
-				if (keyEvent.Keycode == Key.E && handable && !IsWaiting())
+				Velocity = moveDirection * speed;
+				KinematicCollision2D collision = MoveAndCollide(Velocity);
+				
+				// 检测碰撞停止（同时适用于键盘和鼠标移动）
+				if (collision != null)
 				{
 					state = CharacterState.Idle;
-					interactItem.Action();
-				}
-				if (!IsRiding() && !IsWaiting())
-				{
-					KeyDirection = 0;
-					if (keyEvent.Keycode == Key.A)
+					KeyDirection = 0; // 重置键盘方向
+					
+					// 如果是鼠标移动，清除目标位置
+					if (KeyDirection == 0)
 					{
-						KeyDirection += -1;
-						state = CharacterState.MovingbyKeyboard;
-					}
-					if (keyEvent.Keycode == Key.D)
-					{
-						KeyDirection += 1;
-						state = CharacterState.MovingbyKeyboard;
-					}
-				}
-				else if (IsRiding() && keyEvent.Keycode == Key.R)
-				{
-					StopRiding();
-				}
-				if (keyEvent.Keycode == Key.Tab)
-				{
-					if (!IsWaiting())
-					{
-						prevState = state;
-						state = CharacterState.Waiting;
-					}
-					else
-					{						
-						state = prevState;
+						targetPosition = Position;
 					}
 				}
 			}
-			else if (IsMovingbyKeyboard())
+			else
 			{
-				KeyDirection = 0;
+				// 无移动输入则返回空闲状态
 				state = CharacterState.Idle;
 			}
 		}
-	}
-	public void Ride(RideableItem chair)
-	{
-		if (!IsRiding() && !IsWaiting())
-		{
-			_prevPosition = Position;
-			Position = chair.Position + chair.riderOffset;
-			state = CharacterState.Riding;
-		}
-	}
-	public void StopRiding()
-	{
-		Position = _prevPosition;
-		state = CharacterState.Idle;
-	}
-	public bool IsRiding()
-	{
-		return state == CharacterState.Riding;
-	}
-	public bool IsMoving()
-	{
-		return state == CharacterState.Moving;
-	}
-	public bool IsMovingbyKeyboard()
-	{
-		return state == CharacterState.MovingbyKeyboard;
-	}
-	public bool IsIdle()
-	{
-		return state == CharacterState.Idle;
-	}
-	public bool IsWaiting()
-	{
-		return state == CharacterState.Waiting;
-	}
-	// public void ChangeState(CharacterState newState)
-	// {
-	// 	state = newState;
-	// }
-	// public void ChangeState(string newState)
-	// {
-	// 	state = (CharacterState)Enum.Parse(typeof(CharacterState), newState);
-	// }
-	public void AfterAction()
-	{
-		if (IsMoving())
-		{
-			state = CharacterState.Idle;
-		}
-	}
+
+
+        // 交互物品检测
+        if (GetTree().GetNodesInGroup($"ReachedItem{Id}").Count > 0)
+        {
+            handable = true;
+            interactItem = GetTree().GetFirstNodeInGroup($"ReachedItem{Id}") as InteractableItem;
+            
+            // 找出距离最近的交互物品
+            foreach (InteractableItem item in GetTree().GetNodesInGroup($"ReachedItem{Id}"))
+            {
+                if (interactItem.Position.DistanceTo(Position) > item.Position.DistanceTo(Position))
+                {
+                    interactItem = item;
+                }
+            }
+        }
+        else
+        {
+            handable = false;
+        }
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        // 鼠标右键点击移动
+        if (@event is InputEventMouseButton mouseEvent)
+        {
+            if (mouseEvent.ButtonIndex == MouseButton.Right && mouseEvent.IsPressed())
+            {
+                if (!IsRiding() && !IsWaiting())
+                {
+                    var mousePos = GetGlobalMousePosition();
+                    tarPosNotifer.Position = new Vector2(mousePos.X, Position.Y);
+                    tarPosNotifer.ShowTarget();
+                    targetPosition = new Vector2(mousePos.X, Position.Y);
+                    state = CharacterState.Moving;
+                }
+                else if (IsRiding())
+                {
+                    StopRiding();
+                }
+            }
+        }
+        
+        // 键盘输入处理
+        if (@event is InputEventKey keyEvent)
+        {
+            if (keyEvent.Pressed)
+            {
+                // E键交互
+                if (keyEvent.Keycode == Key.E && handable && !IsWaiting())
+                {
+                    state = CharacterState.Idle;
+                    interactItem.Action();
+                }
+                
+                // 移动控制
+                if (!IsRiding() && !IsWaiting())
+                {
+                    if (keyEvent.Keycode == Key.A)
+                    {
+                        KeyDirection = -1;
+                        state = CharacterState.Moving;
+                    }
+                    else if (keyEvent.Keycode == Key.D)
+                    {
+                        KeyDirection = 1;
+                        state = CharacterState.Moving;
+                    }
+                }
+                
+                // R键停止骑乘
+                else if (IsRiding() && keyEvent.Keycode == Key.R)
+                {
+                    StopRiding();
+                }
+                
+                // Tab键切换等待状态
+                if (keyEvent.Keycode == Key.Tab)
+                {
+                    if (!IsWaiting())
+                    {
+                        prevState = state;
+                        state = CharacterState.Waiting;
+                    }
+                    else
+                    {                        
+                        state = prevState;
+                    }
+                }
+            }
+            // 按键释放处理
+            else if ((keyEvent.Keycode == Key.A || keyEvent.Keycode == Key.D) && IsMoving())
+            {
+                KeyDirection = 0;
+                state = CharacterState.Idle;
+            }
+        }
+    }
+
+    // 骑乘功能
+    public void Ride(RideableItem chair)
+    {
+        if (!IsRiding() && !IsWaiting())
+        {
+            _prevPosition = Position;
+            Position = chair.Position + chair.riderOffset;
+            state = CharacterState.Riding;
+        }
+    }
+
+    public void StopRiding()
+    {
+        Position = _prevPosition;
+        state = CharacterState.Idle;
+    }
+
+    // 状态检查方法
+    public bool IsRiding() => state == CharacterState.Riding;
+    public bool IsMoving() => state == CharacterState.Moving;
+    public bool IsIdle() => state == CharacterState.Idle;
+    public bool IsWaiting() => state == CharacterState.Waiting;
+
+    // 动作后处理
+    public void AfterAction()
+    {
+        if (IsMoving())
+        {
+            state = CharacterState.Idle;
+        }
+    }
 }
