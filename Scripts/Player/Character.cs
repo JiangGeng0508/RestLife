@@ -18,9 +18,11 @@ public partial class Character : CharacterBody2D
 	bool handable = false;
 	CharacterState state = CharacterState.Idle;
 	Vector2 targetPosition = Vector2.Zero;
+
 	float speed = 100f;
-	Vector2 _lastPosition = Vector2.Zero;
+	private Vector2 _prevPosition = Vector2.Zero;
 	int KeyDirection = 0;
+  
 	public override void _Ready()
 	{
 		Id = GetInstanceId();
@@ -56,11 +58,12 @@ public partial class Character : CharacterBody2D
 			case CharacterState.Moving:
 				if ((targetPosition - Position).Length() > speed)
 				{
-					Velocity = (targetPosition - Position) / (targetPosition - Position).Length() * speed;
+					Velocity = (targetPosition - Position).Normalized() * speed;
 					MoveAndSlide();
 				}
 				else
 				{
+          tarPosNotifer.HideTarget();
 					state = CharacterState.Idle;
 				}
 				break;
@@ -153,14 +156,14 @@ public partial class Character : CharacterBody2D
 	{
 		if (!IsRiding())
 		{
-			_lastPosition = Position;
+			_prevPosition = Position;
 			Position = chair.Position + chair.riderOffset;
 			state = CharacterState.Riding;
 		}
 	}
 	public void StopRiding()
 	{
-		Position = _lastPosition;
+		Position = _prevPosition;
 		state = CharacterState.Idle;
 	}
 	public bool IsRiding()
