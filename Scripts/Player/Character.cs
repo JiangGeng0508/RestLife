@@ -5,6 +5,7 @@ public enum CharacterState
 {
     Idle,
     Moving,      // 合并后的移动状态
+    Running,     // 新增跑步状态
     Riding,
     Waiting
 }
@@ -25,9 +26,11 @@ public partial class Character : CharacterBody2D
     CharacterState prevState = CharacterState.Idle;
     
     // 移动参数
-    float speed = 10f;
+    float walkSpeed = 10f;       // 行走速度
+    float runSpeed = 20f;        // 跑步速度
     private Vector2 _prevPosition = Vector2.Zero;
     int KeyDirection = 0; // -1左, 0无, 1右
+    bool isRunning = false;      // 是否正在跑步
 
     public override void _Ready()
     {
@@ -44,55 +47,55 @@ public partial class Character : CharacterBody2D
     }
 
     public override void _PhysicsProcess(double delta)
-	{
-		// 调试显示当前状态
-		label.Text = $"{state}";
+    {
+        // 调试显示当前状态
+        label.Text = $"{state}";
 
-		// 统一移动处理
-		if (state == CharacterState.Moving)
-		{
-			Vector2 moveDirection = Vector2.Zero;
-			bool hasMovement = false;
-			
-			// 键盘移动
-			if (KeyDirection != 0)
-			{
-				moveDirection = new Vector2(KeyDirection, 0);
-				hasMovement = true;
-			}
-			// 鼠标点击移动（仅在无键盘输入时执行）
-			else if ((targetPosition - Position).Length() > speed * 1.5f)
-			{
-				moveDirection = (targetPosition - Position).Normalized();
-				hasMovement = true;
-			}
-			
-			// 有移动输入则执行移动
-			if (hasMovement)
-			{
-				Velocity = moveDirection * speed;
-				KinematicCollision2D collision = MoveAndCollide(Velocity);
-				
-				// 检测碰撞停止（同时适用于键盘和鼠标移动）
-				if (collision != null)
-				{
-					state = CharacterState.Idle;
-					KeyDirection = 0; // 重置键盘方向
-					
-					// 如果是鼠标移动，清除目标位置
-					if (KeyDirection == 0)
-					{
-						targetPosition = Position;
-					}
-				}
-			}
-			else
-			{
-				// 无移动输入则返回空闲状态
-				state = CharacterState.Idle;
-			}
-		}
-
+        // 统一移动处理
+        if (state == CharacterState.Moving || state == CharacterState.Running)
+        {
+            Vector2 moveDirection = Vector2.Zero;
+            bool hasMovement = false;
+            
+            // 键盘移动
+            if (KeyDirection != 0)
+            {
+                moveDirection = new Vector2(KeyDirection, 0);
+                hasMovement = true;
+            }
+            // 鼠标点击移动（仅在无键盘输入时执行）
+            else if ((targetPosition - Position).Length() > (isRunning ? runSpeed : walkSpeed) * 1.5f)
+            {
+                moveDirection = (targetPosition - Position).Normalized();
+                hasMovement = true;
+            }
+            
+            // 有移动输入则执行移动
+            if (hasMovement)
+            {
+                float currentSpeed = isRunning ? runSpeed : walkSpeed;
+                Velocity = moveDirection * currentSpeed;
+                KinematicCollision2D collision = MoveAndCollide(Velocity);
+                
+                // 检测碰撞停止（同时适用于键盘和鼠标移动）
+                if (collision != null)
+                {
+                    state = CharacterState.Idle;
+                    KeyDirection = 0; // 重置键盘方向
+                    
+                    // 如果是鼠标移动，清除目标位置
+                    if (KeyDirection == 0)
+                    {
+                        targetPosition = Position;
+                    }
+                }
+            }
+            else
+            {
+                // 无移动输入则返回空闲状态
+                state = CharacterState.Idle;
+            }
+        }
 
         // 交互物品检测
         if (GetTree().GetNodesInGroup($"ReachedItem{Id}").Count > 0)
@@ -117,6 +120,16 @@ public partial class Character : CharacterBody2D
 
     public override void _Input(InputEvent @event)
     {
+		// 处理Shift键按下/释放
+		if (@event is InputEventKey shiftKeyEvent && shiftKeyEvent.Keycode == Key.Shift)
+		{
+			isRunning = shiftKeyEvent.Pressed;
+			// 如果正在移动，更新状态
+			if (IsMoving())
+			{
+				state = isRunning ? CharacterState.Running : CharacterState.Moving;
+			}
+		}
         // 鼠标右键点击移动
         if (@event is InputEventMouseButton mouseEvent)
         {
@@ -128,7 +141,7 @@ public partial class Character : CharacterBody2D
                     tarPosNotifer.Position = new Vector2(mousePos.X, Position.Y);
                     tarPosNotifer.ShowTarget();
                     targetPosition = new Vector2(mousePos.X, Position.Y);
-                    state = CharacterState.Moving;
+                    state = isRunning ? CharacterState.Running : CharacterState.Moving;
                 }
                 else if (IsRiding())
                 {
@@ -155,12 +168,12 @@ public partial class Character : CharacterBody2D
                     if (keyEvent.Keycode == Key.A)
                     {
                         KeyDirection = -1;
-                        state = CharacterState.Moving;
+                        state = isRunning ? CharacterState.Running : CharacterState.Moving;
                     }
                     else if (keyEvent.Keycode == Key.D)
                     {
                         KeyDirection = 1;
-                        state = CharacterState.Moving;
+                        state = isRunning ? CharacterState.Running : CharacterState.Moving;
                     }
                 }
                 
@@ -185,7 +198,7 @@ public partial class Character : CharacterBody2D
                 }
             }
             // 按键释放处理
-            else if ((keyEvent.Keycode == Key.A || keyEvent.Keycode == Key.D) && IsMoving())
+            else if ((keyEvent.Keycode == Key.A || keyEvent.Keycode == Key.D) && (IsMoving() || IsRunning()))
             {
                 KeyDirection = 0;
                 state = CharacterState.Idle;
@@ -213,13 +226,14 @@ public partial class Character : CharacterBody2D
     // 状态检查方法
     public bool IsRiding() => state == CharacterState.Riding;
     public bool IsMoving() => state == CharacterState.Moving;
+    public bool IsRunning() => state == CharacterState.Running; // 新增跑步状态检查
     public bool IsIdle() => state == CharacterState.Idle;
     public bool IsWaiting() => state == CharacterState.Waiting;
 
     // 动作后处理
     public void AfterAction()
     {
-        if (IsMoving())
+        if (IsMoving() || IsRunning())
         {
             state = CharacterState.Idle;
         }
