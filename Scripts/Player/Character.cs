@@ -19,7 +19,7 @@ public partial class Character : CharacterBody2D
 	CharacterState state = CharacterState.Idle;
 	Vector2 targetPosition = Vector2.Zero;
 
-	float speed = 200f;
+	float speed = 10f;
 	private Vector2 _prevPosition = Vector2.Zero;
 	int KeyDirection = 0;
   
@@ -37,7 +37,7 @@ public partial class Character : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		//debug
-		label.Text = $"{handable} {GetTree().GetNodesInGroup($"ReachedItem{Id}").Count}";
+		label.Text = $"{state}";
 
 		// if (IsMoving())
 		// {
@@ -56,14 +56,13 @@ public partial class Character : CharacterBody2D
 			case CharacterState.Idle:
 				break;
 			case CharacterState.Moving:
-				if ((targetPosition - Position).Length() > 1f)
+				if ((targetPosition - Position).Length() > speed * 1.5f)
 				{
 					Velocity = (targetPosition - Position).Normalized() * speed;
-					MoveAndSlide();
+					MoveAndCollide(Velocity);
 				}
 				else
 				{
-          			tarPosNotifer.HideTarget();
 					state = CharacterState.Idle;
 				}
 				break;
@@ -71,7 +70,7 @@ public partial class Character : CharacterBody2D
 				if (KeyDirection != 0)
 				{
 					Velocity =  new Vector2(KeyDirection, 0) * speed;
-					MoveAndSlide();
+					MoveAndCollide(Velocity);
 				}
 				else
 				{
@@ -125,6 +124,7 @@ public partial class Character : CharacterBody2D
 			{
 				if (keyEvent.Keycode == Key.E && handable)
 				{
+					state = CharacterState.Idle;
 					interactItem.Action();
 				}
 				if (!IsRiding())
@@ -145,7 +145,7 @@ public partial class Character : CharacterBody2D
 					StopRiding();
 				}
 			}
-			else
+			else if (IsMovingbyKeyboard())
 			{
 				KeyDirection = 0;
 				state = CharacterState.Idle;

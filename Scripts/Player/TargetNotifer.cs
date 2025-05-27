@@ -14,6 +14,7 @@ public partial class TargetNotifer : Node2D
 	public void ShowTarget()
 	{
 		polygon.Visible = true;
+		GetTree().CreateTimer(1.5f).Connect("timeout",new Callable(this,nameof(HideTarget)));
 	}
 	public void HideTarget()
 	{
