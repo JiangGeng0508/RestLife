@@ -35,5 +35,5 @@ script = ExtResource("3_gi8q4")
 [node name="ReachShape" type="CollisionShape2D" parent="ReachArea"]
 shape = SubResource("CircleShape2D_jp4cy")
 
-[connection signal="area_entered" from="ReachArea" to="." method="onAreaEntered"]
-[connection signal="area_exited" from="ReachArea" to="." method="onAreaExited"]
+[connection signal="area_entered" from="ReachArea" to="." method="OnAreaEntered"]
+[connection signal="area_exited" from="ReachArea" to="." method="OnAreaExited"]

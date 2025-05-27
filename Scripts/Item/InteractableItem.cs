@@ -60,6 +60,8 @@ public partial class InteractableItem : Area2D
 	{
 		if (area is ReachArea reachArea)
 		{
+			var id = reachArea.GetParent().GetInstanceId();
+			AddToGroup("ReachedItem"+id.ToString());
 			Interactable = true;
 			CharaReachArea = area;
 		}
@@ -68,6 +70,8 @@ public partial class InteractableItem : Area2D
 	{
 		if (area is ReachArea reachArea)
 		{
+			var id = reachArea.GetParent().GetInstanceId();
+			RemoveFromGroup("ReachedItem"+id.ToString());
 			Interactable = false;
 			CharaReachArea = null;
 		}

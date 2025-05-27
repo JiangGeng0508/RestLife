@@ -14,48 +14,80 @@ public partial class Character : CharacterBody2D
 	TargetNotifer tarPosNotifer;
 	InteractableItem interactItem;
 	Label label;//debug
-	ulong Id = 0;
+	public ulong Id = 0;
 	bool handable = false;
 	CharacterState state = CharacterState.Idle;
 	Vector2 targetPosition = Vector2.Zero;
-	float speed = 10f;
+	float speed = 100f;
 	Vector2 _lastPosition = Vector2.Zero;
+	int KeyDirection = 0;
 	public override void _Ready()
 	{
 		Id = GetInstanceId();
 		reachArea = GetNode<Area2D>("ReachArea");
-		tarPosNotifer = GetNode<TargetNotifer>("../TargetNotifier");
+		tarPosNotifer = GetNode<TargetNotifer>("../UI/TargetNotifier");
 		label = new Label();//debug
 		AddChild(label);//debug
-		label.Text = state.ToString();//debug
 		label.Show();//debug
 		targetPosition = Position;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		label.Text = state.ToString();//debug
-		if (IsMoving())
+		//debug
+		label.Text = $"{handable} {GetTree().GetNodesInGroup($"ReachedItem{Id}").Count}";
+
+		// if (IsMoving())
+		// {
+		// 	if ((targetPosition - Position).Length() > speed)
+		// 	{
+		// 		Velocity = (targetPosition - Position) / (targetPosition - Position).Length() * speed;
+		// 		MoveAndCollide(Velocity);
+		// 	}
+		// 	else
+		// 	{
+		// 		state = CharacterState.Idle;
+		// 	}
+		// }
+		switch (state)
 		{
-			if ((targetPosition - Position).Length() > speed)
-			{
-				Velocity = (targetPosition - Position) / (targetPosition - Position).Length() * speed;
-				MoveAndCollide(Velocity);
-			}
-			else
-			{
-				state = CharacterState.Idle;
-			}
+			case CharacterState.Idle:
+				break;
+			case CharacterState.Moving:
+				if ((targetPosition - Position).Length() > speed)
+				{
+					Velocity = (targetPosition - Position) / (targetPosition - Position).Length() * speed;
+					MoveAndSlide();
+				}
+				else
+				{
+					state = CharacterState.Idle;
+				}
+				break;
+			case CharacterState.MovingbyKeyboard:
+				if (KeyDirection != 0)
+				{
+					Velocity =  new Vector2(KeyDirection, 0) * speed;
+					MoveAndSlide();
+				}
+				else
+				{
+					state = CharacterState.Idle;
+				}
+				break;
+			case CharacterState.Riding:
+				break;
 		}
+
 		if (GetTree().GetNodesInGroup($"ReachedItem{Id}").Count > 0)
 		{
+			handable = true;
 			interactItem = GetTree().GetFirstNodeInGroup($"ReachedItem{Id}") as InteractableItem;
 			foreach (InteractableItem item in GetTree().GetNodesInGroup($"ReachedItem{Id}"))
 			{
 				if (interactItem.Position.DistanceTo(Position) > item.Position.DistanceTo(Position))
 				{
 					interactItem = item;
-					handable = true;
 				}
 			}
 		}
@@ -86,19 +118,34 @@ public partial class Character : CharacterBody2D
 		}
 		if (@event is InputEventKey keyEvent)
 		{
-			if (keyEvent.Pressed && keyEvent.Keycode == Key.E && handable)
+			if (keyEvent.Pressed)
 			{
-				interactItem.Action();
+				if (keyEvent.Keycode == Key.E && handable)
+				{
+					interactItem.Action();
+				}
+				if (!IsRiding())
+				{
+					if (keyEvent.Keycode == Key.A)
+					{
+						KeyDirection = -1;
+						state = CharacterState.MovingbyKeyboard;
+					}
+					else if (keyEvent.Keycode == Key.D)
+					{
+						KeyDirection = 1;
+						state = CharacterState.MovingbyKeyboard;
+					}
+				}
+				else if (IsRiding() && keyEvent.Keycode == Key.R)
+				{
+					StopRiding();
+				}
 			}
-			else if (keyEvent.Pressed && keyEvent.Keycode == Key.A)
+			else
 			{
-				targetPosition = new Vector2(Position.X - speed * 3, Position.Y);
-				state = CharacterState.MovingbyKeyboard;
-			}
-			else if (keyEvent.Pressed && keyEvent.Keycode == Key.D)
-			{
-				targetPosition = new Vector2(Position.X + speed * 3, Position.Y);
-				state = CharacterState.MovingbyKeyboard;
+				KeyDirection = 0;
+				state = CharacterState.Idle;
 			}
 		}
 	}
@@ -122,7 +169,15 @@ public partial class Character : CharacterBody2D
 	}
 	public bool IsMoving()
 	{
-		return state == CharacterState.Moving || state == CharacterState.MovingbyKeyboard;
+		return state == CharacterState.Moving;
+	}
+	public bool IsMovingbyKeyboard()
+	{
+		return state == CharacterState.MovingbyKeyboard;
+	}
+	public bool IsIdle()
+	{
+		return state == CharacterState.Idle;
 	}
 	// public void ChangeState(CharacterState newState)
 	// {
@@ -143,14 +198,12 @@ public partial class Character : CharacterBody2D
 	{
 		if (area is InteractableItem item)
 		{
-			item.AddToGroup($"ReachedItem{Id}");
 		}
 	}
 	public void OnAreaExited(Area2D area)
 	{
 		if (area.IsInGroup($"ReachedItem{Id}"))
 		{
-			area.RemoveFromGroup($"ReachedItem{Id}");
 		}
 	}
 }
