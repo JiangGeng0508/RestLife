@@ -188,7 +188,7 @@ public partial class Character : CharacterBody2D
                 {
                     if (!IsWaiting())
                     {
-                        prevState = state;
+                        prevState = (state == CharacterState.Moving) ? CharacterState.Idle : state;
                         state = CharacterState.Waiting;
                     }
                     else
