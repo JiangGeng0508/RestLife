@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqasg0wnvrl4s"]
+[gd_scene load_steps=14 format=3 uid="uid://drmht7cvfu0xw"]
 
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Item/wall.tscn" id="1_idj7w"]
 [ext_resource type="PackedScene" uid="uid://b25yhbndwexxv" path="res://Scenes/Player/Character.tscn" id="2_kln2b"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://di14nm0jvgxks" path="res://Scripts/UI/Cursur.cs" id="10_bmxlf"]
 [ext_resource type="Script" uid="uid://b78vbe0hqa2ni" path="res://Scripts/UI/SelectMenu.cs" id="10_grg3l"]
 [ext_resource type="Texture2D" uid="uid://bjqegcecet3ha" path="res://icon.svg" id="12_grg3l"]
-[ext_resource type="Script" uid="uid://dm7328n8mnagc" path="res://Scripts/Inventory/ItemButton.cs" id="13_frkhe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmxlf"]
 radius = 3.0
@@ -66,7 +65,7 @@ text = "12"
 [node name="CursurShape" type="CollisionShape2D" parent="Cursur"]
 shape = SubResource("CircleShape2D_bmxlf")
 
-[node name="UI" type="Node2D" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
 [node name="TargetNotifier" parent="UI" instance=ExtResource("5_pbw6q")]
 position = Vector2(-33, -644)
@@ -74,32 +73,24 @@ position = Vector2(-33, -644)
 [node name="MainCamera" type="Camera2D" parent="UI"]
 script = ExtResource("3_rgh2o")
 
-[node name="SelectMenu" type="TabContainer" parent="UI/MainCamera"]
-offset_left = -540.0
+[node name="SelectMenu" type="TabContainer" parent="UI"]
+offset_left = 201.0
 offset_top = -308.0
 offset_right = 541.0
 offset_bottom = 289.0
 current_tab = 0
 script = ExtResource("10_grg3l")
 
-[node name="Inventory" type="ItemList" parent="UI/MainCamera/SelectMenu"]
+[node name="Inventory" type="ItemList" parent="UI/SelectMenu"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+item_count = 2
+item_0/text = "12"
+item_0/icon = ExtResource("12_grg3l")
+item_1/text = "123"
+item_1/icon = ExtResource("12_grg3l")
 script = ExtResource("10_4kpch")
 metadata/_tab_index = 0
-
-[node name="ItemButton" type="TextureButton" parent="UI/MainCamera/SelectMenu/Inventory"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 60.0
-offset_bottom = 60.0
-button_mask = 2
-keep_pressed_outside = true
-texture_normal = ExtResource("12_grg3l")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("13_frkhe")
 
 [connection signal="area_entered" from="Cursur" to="Cursur" method="OnAreaEntered"]
 [connection signal="area_exited" from="Cursur" to="Cursur" method="OnAreaExited"]
