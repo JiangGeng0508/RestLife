@@ -19,7 +19,8 @@ public partial class Character : CharacterBody2D
 	CharacterState state = CharacterState.Idle;
 	Vector2 targetPosition = Vector2.Zero;
 	float speed = 10f;
-	Vector2 _lastPosition = Vector2.Zero;
+	private Vector2 _prevPosition = Vector2.Zero;
+
 	public override void _Ready()
 	{
 		Id = GetInstanceId();
@@ -37,13 +38,15 @@ public partial class Character : CharacterBody2D
 		label.Text = state.ToString();//debug
 		if (IsMoving())
 		{
+
 			if ((targetPosition - Position).Length() > speed)
 			{
-				Velocity = (targetPosition - Position) / (targetPosition - Position).Length() * speed;
+				Velocity = (targetPosition - Position).Normalized() * speed;
 				MoveAndCollide(Velocity);
 			}
 			else
 			{
+				tarPosNotifer.HideTarget();
 				state = CharacterState.Idle;
 			}
 		}
@@ -106,14 +109,14 @@ public partial class Character : CharacterBody2D
 	{
 		if (!IsRiding())
 		{
-			_lastPosition = Position;
+			_prevPosition = Position;
 			Position = chair.Position + chair.riderOffset;
 			state = CharacterState.Riding;
 		}
 	}
 	public void StopRiding()
 	{
-		Position = _lastPosition;
+		Position = _prevPosition;
 		state = CharacterState.Idle;
 	}
 	public bool IsRiding()
