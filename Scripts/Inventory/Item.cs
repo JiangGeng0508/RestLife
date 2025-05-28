@@ -4,10 +4,11 @@ using Godot;
 
 public partial class Item : Node2D
 {
-	[Signal] public delegate void InventoryUpdateEventHandler();
 	public Action[] actions;
+	Inventory inventory;
 	public override void _Ready()
 	{
+		inventory = GetParent<Inventory>();
 		//Default actions
 		actions = new Action[9];
 		AddAction(Delete);
@@ -21,7 +22,7 @@ public partial class Item : Node2D
 	{
 		RemoveFromGroup("Inventory");
 		QueueFree();
-		EmitSignal(nameof(InventoryUpdateEventHandler));
+		inventory.InventoryUpdate();
 	}
 	public void AddAction(Action action)
 	{

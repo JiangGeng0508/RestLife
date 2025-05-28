@@ -15,7 +15,6 @@ public partial class RightClickMenu : PopupMenu
 	{
 		//获取item
 		var item = GetTree().GetNodesInGroup("Inventory")[index] as Item;
-		GD.Print(item.Name);
 		foreach (var action in item.actions)
 		{
 			if (action is null) continue;
