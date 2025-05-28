@@ -135,17 +135,16 @@ public partial class Character : CharacterBody2D
 					state = CharacterState.Idle;
 					interactItem.Action();
 				}
-				if (!IsRiding() && !IsWaiting() || (keyEvent.Keycode == Key.A || keyEvent.Keycode == Key.D))
+				if (!IsRiding() && !IsWaiting())
 				{
-					KeyDirection = 0;
 					if (keyEvent.Keycode == Key.A)
 					{
-						KeyDirection -= 1;
+						KeyDirection = -1;
 						state = CharacterState.MovingbyKeyboard;
 					}
-					if (keyEvent.Keycode == Key.D)
+					else if (keyEvent.Keycode == Key.D)
 					{
-						KeyDirection += 1;
+						KeyDirection = 1;
 						state = CharacterState.MovingbyKeyboard;
 					}
 				}
@@ -176,7 +175,7 @@ public partial class Character : CharacterBody2D
 				{
 					KeyDirection = (KeyDirection == -1) ? -1 : 0;
 				}
-				else
+				else if (keyEvent.Keycode == Key.A || keyEvent.Keycode == Key.D)
 				{
 					KeyDirection = 0;
 					state = CharacterState.Idle;
