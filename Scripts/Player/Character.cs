@@ -64,13 +64,15 @@ public partial class Character : CharacterBody2D
         // 调试显示当前状态
         label.Text = $"{state}";
 
-		if(_isRightMouseDown)
-		{
-			var mousePos = GetGlobalMousePosition();
-			tarPosNotifer.Position = new Vector2(mousePos.X, Position.Y);
-			tarPosNotifer.ShowTarget();
-			targetPosition = new Vector2(mousePos.X, Position.Y);
-		}
+        // 更新鼠标追踪目标位置
+        if (_isRightMouseDown)
+        {
+            var mousePos = GetGlobalMousePosition();
+            tarPosNotifer.Position = new Vector2(mousePos.X, Position.Y);
+            tarPosNotifer.ShowTarget();
+            targetPosition = new Vector2(mousePos.X, Position.Y);
+            state = _isRunning ? CharacterState.Running : CharacterState.Moving;
+        }
 
         // 统一移动处理
         if (state == CharacterState.Moving || state == CharacterState.Running)
@@ -79,9 +81,8 @@ public partial class Character : CharacterBody2D
             bool hasMovement = false;
             
             // 键盘移动
-            if (KeyDirectionLeft == 1 || KeyDirectionRight == 1)
+            if (KeyDirection != 0)
             {
-				KeyDirection = KeyDirectionRight - KeyDirectionLeft;
                 moveDirection = new Vector2(KeyDirection, 0);
                 hasMovement = true;
             }
@@ -106,7 +107,7 @@ public partial class Character : CharacterBody2D
                     KeyDirection = 0; // 重置键盘方向
                     
                     // 如果是鼠标移动，清除目标位置
-                    if (KeyDirection == 0)
+                    if (!_isRightMouseDown)
                     {
                         targetPosition = Position;
                     }
@@ -142,16 +143,16 @@ public partial class Character : CharacterBody2D
 
     public override void _Input(InputEvent @event)
     {
-		// 处理Shift键按下/释放
-		if (@event is InputEventKey shiftKeyEvent && shiftKeyEvent.Keycode == Key.Shift)
-		{
-			_isRunning = shiftKeyEvent.Pressed;
-			// 如果正在移动，更新状态
-			if (IsMoving())
-			{
-				state = _isRunning ? CharacterState.Running : CharacterState.Moving;
-			}
-		}
+        // 处理Shift键按下/释放
+        if (@event is InputEventKey shiftKeyEvent && shiftKeyEvent.Keycode == Key.Shift)
+        {
+            _isRunning = shiftKeyEvent.Pressed;
+            // 如果正在移动，更新状态
+            if (IsMoving())
+            {
+                state = _isRunning ? CharacterState.Running : CharacterState.Moving;
+            }
+        }
         // 鼠标右键点击移动
         if (@event is InputEventMouseButton mouseEvent)
         {
@@ -159,7 +160,7 @@ public partial class Character : CharacterBody2D
             {
                 if (!IsRiding() && !IsWaiting())
                 {
-					_isRightMouseDown = true;
+                    _isRightMouseDown = true;
                     state = _isRunning ? CharacterState.Running : CharacterState.Moving;
                 }
                 else if (IsRiding())
@@ -170,9 +171,10 @@ public partial class Character : CharacterBody2D
             else if (mouseEvent.ButtonIndex == MouseButton.Right && !mouseEvent.IsPressed())
             {
                 _isRightMouseDown = false;
+                state = CharacterState.Idle; // 确保释放右键后状态变为Idle
             }
-		}
-        
+        }
+    
         // 键盘输入处理
         if (@event is InputEventKey keyEvent)
         {
@@ -189,15 +191,15 @@ public partial class Character : CharacterBody2D
                 if (!IsRiding() && !IsWaiting())
                 {
                     if (keyEvent.Keycode == Key.A)
-					{
-						KeyDirectionLeft = 1;
-						state = _isRunning ? CharacterState.Running : CharacterState.Moving;
-					}
-					if (keyEvent.Keycode == Key.D)
-					{
-						KeyDirectionRight = 1;
-						state = _isRunning ? CharacterState.Running : CharacterState.Moving;
-					}
+                    {
+                        KeyDirectionLeft = 1;
+                        UpdateMovementState();
+                    }
+                    if (keyEvent.Keycode == Key.D)
+                    {
+                        KeyDirectionRight = 1;
+                        UpdateMovementState();
+                    }
                 }
                 
                 // R键停止骑乘
@@ -220,12 +222,12 @@ public partial class Character : CharacterBody2D
                     }
                 }
             }
-			else if(keyEvent.Keycode == Key.A) KeyDirectionLeft = 0;
-			else if(keyEvent.Keycode == Key.D) KeyDirectionRight = 0;
-            // 按键释放处理
-            else if (IsMoving() || IsRunning())
+            else
             {
-                state = CharacterState.Idle;
+                if (keyEvent.Keycode == Key.A) KeyDirectionLeft = 0;
+                else if (keyEvent.Keycode == Key.D) KeyDirectionRight = 0;
+                // 按键释放处理
+                UpdateMovementState();
             }
         }
     }
@@ -260,6 +262,22 @@ public partial class Character : CharacterBody2D
         if (IsMoving() || IsRunning())
         {
             state = CharacterState.Idle;
+        }
+    }
+
+    // 更新移动状态方法
+    private void UpdateMovementState()
+    {
+        // 计算最终的方向
+        KeyDirection = KeyDirectionRight - KeyDirectionLeft;
+        if (KeyDirection != 0 && !IsRiding() && !IsWaiting())
+        {
+            state = _isRunning ? CharacterState.Running : CharacterState.Moving;
+        }
+        else
+        {
+            state = CharacterState.Idle;
+            Velocity = Vector2.Zero; // 确保速度被重置
         }
     }
 }
