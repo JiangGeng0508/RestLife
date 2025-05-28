@@ -175,16 +175,17 @@ public partial class Character : CharacterBody2D
                 // 移动控制
                 if (!IsRiding() && !IsWaiting())
                 {
+					KeyDirection = 0;
                     if (keyEvent.Keycode == Key.A)
-                    {
-                        KeyDirection = -1;
-                        state = _isRunning ? CharacterState.Running : CharacterState.Moving;
-                    }
-                    else if (keyEvent.Keycode == Key.D)
-                    {
-                        KeyDirection = 1;
-                        state = _isRunning ? CharacterState.Running : CharacterState.Moving;
-                    }
+					{
+						KeyDirection -= 1;
+						state = _isRunning ? CharacterState.Running : CharacterState.Moving;
+					}
+					else if (keyEvent.Keycode == Key.D)
+					{
+						KeyDirection += 1;
+						state = _isRunning ? CharacterState.Running : CharacterState.Moving;
+					}
                 }
                 
                 // R键停止骑乘
@@ -208,9 +209,8 @@ public partial class Character : CharacterBody2D
                 }
             }
             // 按键释放处理
-            else if ((keyEvent.Keycode == Key.A || keyEvent.Keycode == Key.D) && (IsMoving() || IsRunning()))
+            else if (IsMoving() || IsRunning())
             {
-                KeyDirection = 0;
                 state = CharacterState.Idle;
             }
         }

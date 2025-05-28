@@ -4,23 +4,24 @@ using Godot;
 
 public partial class Item : Node2D
 {
+	[Signal] public delegate void InventoryUpdateEventHandler();
 	public Action[] actions;
 	public override void _Ready()
 	{
 		//Default actions
-		actions = new Action[1];
-		AddAction(Suicide);
-		GD.Print("Item Ready");
+		actions = new Action[9];
+		AddAction(Delete);
 		Init();
 	}
 	public Item()
 	{
 		Name = "None";
 	}
-	public void Suicide()
+	public void Delete()
 	{
 		RemoveFromGroup("Inventory");
 		QueueFree();
+		EmitSignal(nameof(InventoryUpdateEventHandler));
 	}
 	public void AddAction(Action action)
 	{

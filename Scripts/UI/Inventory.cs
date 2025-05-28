@@ -11,31 +11,31 @@ public partial class Inventory : ItemList
 		var item = new Item();
 		item.Name = "Item1";
 		AddItem(item);
-		item = new Item();
-		item.Name = "Item2";
-		AddItem(item);
-		item = new Item();
-		item.Name = "Item3";
-		AddItem(item);
 	}
 	public void AddItem(Item item)//添加物品,默认加入第一个位置
 	{
 		AddChild(item);
 		AddItem(item.Name);//继承ItemList类的方法
 		item.AddToGroup("Inventory");
-		GD.Print("Item added: " + item.Name + "\n Index: " + GetTree().GetNodesInGroup("Inventory").IndexOf(item));
 	}
 	public void OnItemClicked(int index, Vector2 position, int mouseButtonIndex)
 	{
-		GD.Print("Item clicked: " + index + " at position: " + position + " with button index: " + mouseButtonIndex);
 		if (mouseButtonIndex == 2)//右键点击
 		{
 			rightClickMenu.Invoke(index);
 			rightClickMenu.Show();
 		}
 	}
-	public void TestVoidFunc()
+	public void InventoryUpdate()//更新背包
 	{
-		GD.Print("TestVoidFunc called");
+		Clear();
+		foreach (var item in GetTree().GetNodesInGroup("Inventory"))
+		{
+			AddItem(item as Item);
+		}
+	}
+	public void DeleteItem(int index)
+	{
+		RemoveItem(index);
 	}
 }
