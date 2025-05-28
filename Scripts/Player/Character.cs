@@ -64,7 +64,6 @@ public partial class Character : CharacterBody2D
 					{
 						state = CharacterState.Idle;
 					}
-					else Energy -= 0.1f;
 				}
 				else
 				{
@@ -75,10 +74,7 @@ public partial class Character : CharacterBody2D
 				if (KeyDirection != 0)
 				{
 					Velocity = new Vector2(KeyDirection, 0) * speed;
-					if (MoveAndCollide(Velocity) == null)
-					{
-						Energy -= 0.1f;
-					}
+					MoveAndCollide(Velocity);
 				}
 				else
 				{
