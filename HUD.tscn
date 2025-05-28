@@ -37,6 +37,7 @@ auto_translate_mode = 1
 visible = true
 unfocusable = true
 item_count = 1
+item_0/text = "nothing"
 item_0/id = 0
 script = ExtResource("4_1and6")
 

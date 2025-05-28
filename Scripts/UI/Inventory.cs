@@ -23,7 +23,7 @@ public partial class Inventory : ItemList
 		if (mouseButtonIndex == 2)//右键点击
 		{
 			rightClickMenu.Show();
-			rightClickMenu.Position = (Vector2I)position;
+			rightClickMenu.Position = (Vector2I)GetGlobalMousePosition();
 			rightClickMenu.MergeVoidFunc(TestVoidFunc);
 		}
 	}
