@@ -5,10 +5,19 @@ using Godot;
 public partial class Item : Node2D
 {
 	public Action[] actions;
-	Inventory inventory;
+	public int number;
+	[Export(PropertyHint.Range, "0,99,1")]
+	public int Number
+	{
+		get => number;
+		set
+		{
+			if (value > 0) number = value;
+			else Delete();
+		}
+	}
 	public override void _Ready()
 	{
-		inventory = GetParent<Inventory>();
 		//Default actions
 		actions = new Action[9];
 		AddAction(Delete);
@@ -22,7 +31,7 @@ public partial class Item : Node2D
 	{
 		RemoveFromGroup("Inventory");
 		QueueFree();
-		inventory.InventoryUpdate();
+		GetParent<Inventory>().InventoryUpdate();
 	}
 	public void AddAction(Action action)
 	{

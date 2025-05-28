@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://5nipr26mclua"]
+
+[ext_resource type="Script" uid="uid://cuw0ucr33anru" path="res://Scripts/Inventory/DataLoader.cs" id="1_nmk35"]
+
+[node name="DataLoader" type="Node"]
+script = ExtResource("1_nmk35")
