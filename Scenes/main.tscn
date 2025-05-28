@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://drmht7cvfu0xw"]
+[gd_scene load_steps=15 format=3 uid="uid://bto6gsdtdxftl"]
 
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Item/wall.tscn" id="1_idj7w"]
 [ext_resource type="PackedScene" uid="uid://b25yhbndwexxv" path="res://Scenes/Player/Character.tscn" id="2_kln2b"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://di14nm0jvgxks" path="res://Scripts/UI/Cursur.cs" id="10_bmxlf"]
 [ext_resource type="Script" uid="uid://b78vbe0hqa2ni" path="res://Scripts/UI/SelectMenu.cs" id="10_grg3l"]
 [ext_resource type="Texture2D" uid="uid://bjqegcecet3ha" path="res://icon.svg" id="12_grg3l"]
+[ext_resource type="Script" uid="uid://cmss037nrmq3g" path="res://Scripts/UI/RightClickMenu.cs" id="13_frkhe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmxlf"]
 radius = 3.0
@@ -54,18 +55,7 @@ scale = Vector2(4, 4)
 [node name="Character" parent="." instance=ExtResource("2_kln2b")]
 disable_mode = 1
 
-[node name="Cursur" type="Area2D" parent="."]
-script = ExtResource("10_bmxlf")
-
-[node name="TooltipLabel" type="Label" parent="Cursur"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "12"
-
-[node name="CursurShape" type="CollisionShape2D" parent="Cursur"]
-shape = SubResource("CircleShape2D_bmxlf")
-
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="Node2D" parent="."]
 
 [node name="TargetNotifier" parent="UI" instance=ExtResource("5_pbw6q")]
 position = Vector2(-33, -644)
@@ -73,17 +63,37 @@ position = Vector2(-33, -644)
 [node name="MainCamera" type="Camera2D" parent="UI"]
 script = ExtResource("3_rgh2o")
 
-[node name="SelectMenu" type="TabContainer" parent="UI"]
-offset_left = 201.0
-offset_top = -308.0
-offset_right = 541.0
-offset_bottom = 289.0
+[node name="Cursur" type="Area2D" parent="UI"]
+script = ExtResource("10_bmxlf")
+
+[node name="TooltipLabel" type="Label" parent="UI/Cursur"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "12"
+
+[node name="CursurShape" type="CollisionShape2D" parent="UI/Cursur"]
+shape = SubResource("CircleShape2D_bmxlf")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="SelectMenu" type="TabContainer" parent="HUD"]
+anchors_preset = -1
+anchor_left = -0.497
+anchor_top = -0.499
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 773.544
+offset_top = 15.352
+offset_right = -35.0
+offset_bottom = -35.0
 current_tab = 0
 script = ExtResource("10_grg3l")
 
-[node name="Inventory" type="ItemList" parent="UI/SelectMenu"]
+[node name="Inventory" type="ItemList" parent="HUD/SelectMenu"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+select_mode = 1
 item_count = 2
 item_0/text = "12"
 item_0/icon = ExtResource("12_grg3l")
@@ -92,5 +102,9 @@ item_1/icon = ExtResource("12_grg3l")
 script = ExtResource("10_4kpch")
 metadata/_tab_index = 0
 
-[connection signal="area_entered" from="Cursur" to="Cursur" method="OnAreaEntered"]
-[connection signal="area_exited" from="Cursur" to="Cursur" method="OnAreaExited"]
+[node name="RightClickMenu" type="PopupMenu" parent="HUD/SelectMenu/Inventory"]
+script = ExtResource("13_frkhe")
+
+[connection signal="area_entered" from="UI/Cursur" to="UI/Cursur" method="OnAreaEntered"]
+[connection signal="area_exited" from="UI/Cursur" to="UI/Cursur" method="OnAreaExited"]
+[connection signal="item_clicked" from="HUD/SelectMenu/Inventory" to="HUD/SelectMenu/Inventory" method="OnItemClicked"]
