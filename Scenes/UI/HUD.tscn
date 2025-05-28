@@ -40,47 +40,47 @@ script = ExtResource("4_1and6")
 [node name="Dress" type="GridContainer" parent="SelectMenu"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-columns = 3
+columns = 2
 script = ExtResource("4_4bm6u")
 metadata/_tab_index = 1
 
 [node name="HatSlot" type="PanelContainer" parent="SelectMenu/Dress"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
-[node name="UpperSlot" type="PanelContainer" parent="SelectMenu/Dress"]
-custom_minimum_size = Vector2(100, 100)
+[node name="ShirtSLot" type="PanelContainer" parent="SelectMenu/Dress"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
 [node name="CoatSlot" type="PanelContainer" parent="SelectMenu/Dress"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
 [node name="ShoesSlot" type="PanelContainer" parent="SelectMenu/Dress"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
-[node name="LowerSlot" type="PanelContainer" parent="SelectMenu/Dress"]
-custom_minimum_size = Vector2(100, 100)
+[node name="PantsSlot" type="PanelContainer" parent="SelectMenu/Dress"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
 [node name="BagSlot" type="PanelContainer" parent="SelectMenu/Dress"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
 [node name="MainHand" type="PanelContainer" parent="SelectMenu/Dress"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
-[node name="SubHand" type="PanelContainer" parent="SelectMenu/Dress"]
-custom_minimum_size = Vector2(100, 100)
+[node name="OffHand" type="PanelContainer" parent="SelectMenu/Dress"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 

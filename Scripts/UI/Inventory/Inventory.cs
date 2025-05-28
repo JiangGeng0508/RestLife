@@ -11,6 +11,10 @@ public partial class Inventory : ItemList
 		var item = new Item();
 		item.Name = "Item1";
 		AddItem(item);
+		var item2 = new EquipbleItem();
+		item2.Name = "EquipbleItem1";
+		item2.equipType = EquipType.MainHand;
+		AddItem(item2);
 	}
 	public void AddItem(Item item)//添加物品,默认加入第一个位置
 	{
