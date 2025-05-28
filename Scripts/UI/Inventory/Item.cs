@@ -5,7 +5,7 @@ using Godot;
 public partial class Item : Node2D
 {
 	public Action[] actions;
-	public int number;
+	private int number = 1;
 	[Export(PropertyHint.Range, "0,99,1")]
 	public int Number
 	{

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvmov36kc3mv6"]
+
+[ext_resource type="Script" uid="uid://cdvatkaygsein" path="res://Scripts/UI/Slot.cs" id="1_otx1m"]
+
+[node name="Slot" type="PanelContainer"]
+script = ExtResource("1_otx1m")
