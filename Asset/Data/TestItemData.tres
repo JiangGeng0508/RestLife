@@ -1,0 +1,7 @@
+[gd_resource type="JSON" format=3 uid="uid://bpaj7fjxjy4jg"]
+
+[resource]
+data = {
+"Name": "Test Item",
+"Number": 1.0
+}

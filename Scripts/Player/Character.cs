@@ -120,25 +120,6 @@ public partial class Character : CharacterBody2D
             }
         }
 
-        // 交互物品检测
-        if (GetTree().GetNodesInGroup($"ReachedItem{Id}").Count > 0)
-        {
-            handable = true;
-            interactItem = GetTree().GetFirstNodeInGroup($"ReachedItem{Id}") as InteractableItem;
-            
-            // 找出距离最近的交互物品
-            foreach (InteractableItem item in GetTree().GetNodesInGroup($"ReachedItem{Id}"))
-            {
-                if (interactItem.Position.DistanceTo(Position) > item.Position.DistanceTo(Position))
-                {
-                    interactItem = item;
-                }
-            }
-        }
-        else
-        {
-            handable = false;
-        }
     }
 
     public override void _Input(InputEvent @event)
@@ -181,10 +162,24 @@ public partial class Character : CharacterBody2D
             if (keyEvent.Pressed)
             {
                 // E键交互
-                if (keyEvent.Keycode == Key.E && handable && !IsWaiting())
+                if (keyEvent.Keycode == Key.E && !IsWaiting())
                 {
+					// 交互物品检测
+					if (GetTree().GetNodesInGroup($"ReachedItem{Id}").Count > 0)
+					{
+						interactItem = GetTree().GetFirstNodeInGroup($"ReachedItem{Id}") as InteractableItem;
+						
+						// 找出距离最近的交互物品
+						foreach (InteractableItem item in GetTree().GetNodesInGroup($"ReachedItem{Id}"))
+						{
+							if (interactItem.Position.DistanceTo(Position) > item.Position.DistanceTo(Position))
+							{
+								interactItem = item;
+							}
+						}
                     state = CharacterState.Idle;
                     interactItem.Action();
+					}
                 }
                 
                 // 移动控制
