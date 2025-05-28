@@ -9,8 +9,6 @@ public partial class RightClickMenu : PopupMenu
 	}
 	public void MergeVoidFunc(Action action)
 	{
-		var button = new Button();
-		button.Text = action.Method.Name;
-		button.Connect("pressed", new Callable(this, action.Method.Name));
+		AddItem("Merge");
 	}
 }

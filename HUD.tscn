@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc74ltyvfx87h"]
+
+[ext_resource type="Script" uid="uid://b78vbe0hqa2ni" path="res://Scripts/UI/SelectMenu.cs" id="1_ne771"]
+[ext_resource type="Texture2D" uid="uid://bjqegcecet3ha" path="res://icon.svg" id="2_xxqia"]
+[ext_resource type="Script" uid="uid://crheoxyowc6xm" path="res://Scripts/UI/Inventory.cs" id="3_gv1iq"]
+[ext_resource type="Script" uid="uid://cmss037nrmq3g" path="res://Scripts/UI/RightClickMenu.cs" id="4_1and6"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="SelectMenu" type="TabContainer" parent="."]
+anchors_preset = -1
+anchor_left = -0.497
+anchor_top = -0.499
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1350.54
+offset_top = 344.352
+offset_right = 542.0
+offset_bottom = 294.0
+current_tab = 0
+script = ExtResource("1_ne771")
+
+[node name="Inventory" type="ItemList" parent="SelectMenu"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+select_mode = 1
+item_count = 2
+item_0/text = "12"
+item_0/icon = ExtResource("2_xxqia")
+item_1/text = "123"
+item_1/icon = ExtResource("2_xxqia")
+script = ExtResource("3_gv1iq")
+metadata/_tab_index = 0
+
+[node name="RightClickMenu" type="PopupMenu" parent="SelectMenu/Inventory"]
+auto_translate_mode = 1
+visible = true
+unfocusable = true
+item_count = 1
+item_0/id = 0
+script = ExtResource("4_1and6")
+
+[connection signal="item_clicked" from="SelectMenu/Inventory" to="SelectMenu/Inventory" method="OnItemClicked"]
