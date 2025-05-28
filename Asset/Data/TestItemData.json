@@ -1,4 +1,9 @@
 {
 "Name": "Test Item",
-"Number": 1.0
+"Description": "This is a test item.",
+"Icon": "",
+"Type": "Item",
+"Weight": 1,
+"Value": 100,
+"Rarity": "Common"
 }

@@ -157,6 +157,7 @@ public partial class Character : CharacterBody2D
 					if (!IsWaiting())
 					{
 						prevState = (state == CharacterState.Moving) ? CharacterState.Idle : state;
+						KeyDirection = 0;
 						state = CharacterState.Waiting;
 					}
 					else
