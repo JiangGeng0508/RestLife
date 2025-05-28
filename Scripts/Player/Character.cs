@@ -73,11 +73,8 @@ public partial class Character : CharacterBody2D
 			case CharacterState.MovingbyKeyboard:
 				if (KeyDirection != 0)
 				{
-					Velocity = new Vector2(KeyDirection, 0).Normalized() * speed;
-					if(MoveAndCollide(Velocity) != null)
-					{
-						state = CharacterState.Idle;
-					}
+					Velocity = new Vector2(KeyDirection, 0) * speed;
+					MoveAndCollide(Velocity);
 				}
 				else
 				{
@@ -138,9 +135,9 @@ public partial class Character : CharacterBody2D
 					state = CharacterState.Idle;
 					interactItem.Action();
 				}
-				if (!IsRiding() && !IsWaiting())
+				if (!IsRiding() && !IsWaiting() || (keyEvent.Keycode == Key.A || keyEvent.Keycode == Key.D))
 				{
-					// KeyDirection = 0;
+					KeyDirection = 0;
 					if (keyEvent.Keycode == Key.A)
 					{
 						KeyDirection -= 1;
@@ -199,6 +196,7 @@ public partial class Character : CharacterBody2D
 	public void StopRiding()
 	{
 		Position = _prevPosition;
+		KeyDirection = 0;
 		state = CharacterState.Idle;
 	}
 	public bool IsRiding() => state == CharacterState.Riding;
@@ -210,6 +208,7 @@ public partial class Character : CharacterBody2D
 	{
 		if (IsMoving() || IsMovingbyKeyboard())
 		{
+			KeyDirection = 0;
 			state = CharacterState.Idle;
 		}
 	}
