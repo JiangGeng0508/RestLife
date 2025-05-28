@@ -18,17 +18,17 @@ public partial class Hud : CanvasLayer
 
     public override void _Process(double delta)
     {
-        _infoPanel.GetNode<Label>("HealthInfo").Text = _player.Health.ToString();
-        _infoPanel.GetNode<Label>("EnergyInfo").Text = _player.Energy.ToString();
-        _infoPanel.GetNode<Label>("HungerInfo").Text = _player.Hunger.ToString();
-        _infoPanel.GetNode<Label>("ThirstInfo").Text = _player.Thirst.ToString();
+        _infoPanel.GetNode<Label>("HealthInfo").Text = "Health: " + _player.Health.ToString();
+        _infoPanel.GetNode<Label>("EnergyInfo").Text = "Energy: " + _player.Energy.ToString();
+        _infoPanel.GetNode<Label>("HungerInfo").Text = "Hunger: " + _player.Hunger.ToString();
+        _infoPanel.GetNode<Label>("ThirstInfo").Text = "Thirst: " + _player.Thirst.ToString();
         if (_tabContainer.Visible)
         {
             _attributePanel.Visible = true;
-            _attributePanel.GetNode<Label>("IntelligenceInfo").Text = _player.Intelligence.ToString();
-            _attributePanel.GetNode<Label>("StrengthInfo").Text = _player.Strength.ToString();
-            _attributePanel.GetNode<Label>("CharismaInfo").Text = _player.Charisma.ToString();
-            _attributePanel.GetNode<Label>("AgilityInfo").Text = _player.Agility.ToString();
+            _attributePanel.GetNode<Label>("IntelligenceInfo").Text = "Intelligence: " + _player.Intelligence.ToString();
+            _attributePanel.GetNode<Label>("StrengthInfo").Text = "Strength: " + _player.Strength.ToString();
+            _attributePanel.GetNode<Label>("CharismaInfo").Text = "Charisma: " + _player.Charisma.ToString();
+            _attributePanel.GetNode<Label>("AgilityInfo").Text = "Agility: " + _player.Agility.ToString();
         }
         else
         {
