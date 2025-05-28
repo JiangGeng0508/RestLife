@@ -8,7 +8,6 @@ public partial class DataLoader : Node
 	ItemData itemData;
 	public override void _Ready()
 	{
-		LoadData("res://Asset/Data/TestItemData.tres");
 		LoadData("res://Asset/Data/TestItemData.json");
 	}
 	public void LoadData(string path)
@@ -16,10 +15,11 @@ public partial class DataLoader : Node
 		var file = FileAccess.Open(path, FileAccess.ModeFlags.Read);
 		var json = new Json();
 		var StringFile = file.GetAsText();
-		var Error = json.Parse(StringFile);
+		var Error = json.Parse(StringFile,true);
 		if (Error == Error.Ok)
 		{
-			var jsonData = Json.ToNative(json.Data, true);
+			var jsonData = json.Data.AsGodotDictionary();
+			GD.Print(jsonData["Name"]);
 		}
 		else
 		{
@@ -34,5 +34,4 @@ public partial class DataLoader : Node
 		file.StoreString(str);
 		file.Close();
 	}
-		
 }

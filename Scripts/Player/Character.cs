@@ -162,7 +162,7 @@ public partial class Character : CharacterBody2D
             if (keyEvent.Pressed)
             {
                 // E键交互
-                if (keyEvent.Keycode == Key.E && !IsWaiting())
+                if (keyEvent.Keycode == Key.E && !IsWaiting() && !IsRiding())
                 {
 					// 交互物品检测
 					if (GetTree().GetNodesInGroup($"ReachedItem{Id}").Count > 0)
