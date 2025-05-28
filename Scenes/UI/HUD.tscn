@@ -34,6 +34,57 @@ min_size = Vector2i(50, 100)
 max_size = Vector2i(100, 1000)
 script = ExtResource("4_1and6")
 
+[node name="Attributes" type="Node2D" parent="."]
+position = Vector2(777.996, 21)
+
+[node name="IntelligenceInfo" type="Label" parent="Attributes"]
+offset_left = -504.996
+offset_top = 215.0
+offset_right = -464.996
+offset_bottom = 238.0
+
+[node name="StrengthInfo" type="Label" parent="Attributes"]
+offset_left = -495.996
+offset_top = 170.0
+offset_right = -455.996
+offset_bottom = 193.0
+
+[node name="CharismaInfo" type="Label" parent="Attributes"]
+offset_left = -716.996
+offset_top = 129.0
+offset_right = -676.996
+offset_bottom = 152.0
+
+[node name="AgilityInfo" type="Label" parent="Attributes"]
+offset_left = -738.996
+offset_top = 180.0
+offset_right = -698.996
+offset_bottom = 203.0
+
+[node name="Info" type="Node2D" parent="."]
+
+[node name="HealthInfo" type="Label" parent="Info"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="EnergyInfo" type="Label" parent="Info"]
+offset_left = 96.0
+offset_top = -2.0
+offset_right = 136.0
+offset_bottom = 21.0
+
+[node name="HungerInfo" type="Label" parent="Info"]
+offset_left = 10.0
+offset_top = 41.0
+offset_right = 50.0
+offset_bottom = 64.0
+
+[node name="ThirstInfo" type="Label" parent="Info"]
+offset_left = 96.0
+offset_top = 38.0
+offset_right = 136.0
+offset_bottom = 61.0
+
 [connection signal="item_clicked" from="SelectMenu/Inventory" to="SelectMenu/Inventory" method="OnItemClicked"]
 [connection signal="id_pressed" from="SelectMenu/Inventory/RightClickMenu" to="SelectMenu/Inventory/RightClickMenu" method="OnIdPressed"]
 [connection signal="popup_hide" from="SelectMenu/Inventory/RightClickMenu" to="SelectMenu/Inventory/RightClickMenu" method="OnLoseFocus"]
