@@ -24,12 +24,24 @@ public partial class Character : CharacterBody2D
     CharacterState state = CharacterState.Idle;
     Vector2 targetPosition = Vector2.Zero;
     CharacterState prevState = CharacterState.Idle;
+
+	// 状态值
+	public float Health { get; set; } = 100f;
+	public float Energy { get; set; } = 100f;
+	public float Hunger { get; set; } = 100f;
+	public float Thirst { get; set; } = 100f;
+
+	// 属性值
+	public float Intelligence { get; set; } = 1f;
+	public float Strength { get; set; } = 1f;
+	public float Charisma { get; set; } = 1f;
+	public float Agility { get; set; } = 1f;
     
     // 移动参数
     float walkSpeed = 10f;       // 行走速度
     float runSpeed = 20f;        // 跑步速度
     private Vector2 _prevPosition = Vector2.Zero;
-    int KeyDirection = 0; // -1左, 0无, 1右
+    int KeyDirection = 0, KeyDirectionLeft = 0, KeyDirectionRight = 0; // -1左, 0无, 1右
     private bool _isRunning = false;      // 是否正在跑步
 	private bool _isRightMouseDown = false; // 是否右键按下
 
@@ -67,8 +79,9 @@ public partial class Character : CharacterBody2D
             bool hasMovement = false;
             
             // 键盘移动
-            if (KeyDirection != 0)
+            if (KeyDirectionLeft == 1 || KeyDirectionRight == 1)
             {
+				KeyDirection = KeyDirectionRight - KeyDirectionLeft;
                 moveDirection = new Vector2(KeyDirection, 0);
                 hasMovement = true;
             }
@@ -175,15 +188,14 @@ public partial class Character : CharacterBody2D
                 // 移动控制
                 if (!IsRiding() && !IsWaiting())
                 {
-					KeyDirection = 0;
                     if (keyEvent.Keycode == Key.A)
 					{
-						KeyDirection -= 1;
+						KeyDirectionLeft = 1;
 						state = _isRunning ? CharacterState.Running : CharacterState.Moving;
 					}
-					else if (keyEvent.Keycode == Key.D)
+					if (keyEvent.Keycode == Key.D)
 					{
-						KeyDirection += 1;
+						KeyDirectionRight = 1;
 						state = _isRunning ? CharacterState.Running : CharacterState.Moving;
 					}
                 }
@@ -203,11 +215,13 @@ public partial class Character : CharacterBody2D
                         state = CharacterState.Waiting;
                     }
                     else
-                    {                        
+                    {
                         state = prevState;
                     }
                 }
             }
+			else if(keyEvent.Keycode == Key.A) KeyDirectionLeft = 0;
+			else if(keyEvent.Keycode == Key.D) KeyDirectionRight = 0;
             // 按键释放处理
             else if (IsMoving() || IsRunning())
             {
