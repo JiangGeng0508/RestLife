@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b47gxbo06clen" path="res://Scenes/Item/RideableItem.tscn" id="8_50glp"]
 [ext_resource type="PackedScene" uid="uid://b0kw6xwewc6vv" path="res://Scenes/Item/Stair.tscn" id="8_vy5pj"]
 [ext_resource type="PackedScene" uid="uid://861bfrm35j5o" path="res://Scenes/Item/SelectIntItem.tscn" id="9_vy5pj"]
-[ext_resource type="PackedScene" uid="uid://dc74ltyvfx87h" path="res://HUD.tscn" id="10_4kpch"]
+[ext_resource type="PackedScene" uid="uid://dc74ltyvfx87h" path="res://Scenes/UI/HUD.tscn" id="10_4kpch"]
 [ext_resource type="Script" uid="uid://di14nm0jvgxks" path="res://Scripts/UI/Cursur.cs" id="10_bmxlf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmxlf"]
