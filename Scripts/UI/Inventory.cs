@@ -12,19 +12,19 @@ public partial class Inventory : ItemList
 		item.Name = "Item1";
 		AddItem(item);
 	}
-	public void AddItem(Item item)
+	public void AddItem(Item item)//添加物品,默认加入第一个位置
 	{
-		AddItem(item.Name);//ItemList类的方法
-
+		AddItem(item.Name);//继承ItemList类的方法
+		item.AddToGroup("Inventory");
+		GD.Print("Item added: " + item.Name + "\n Index: " + GetTree().GetNodesInGroup("Inventory").IndexOf(item));
 	}
 	public void OnItemClicked(int index, Vector2 position, int mouseButtonIndex)
 	{
 		GD.Print("Item clicked: " + GetItemText(index) + " at position: " + position + " with button index: " + mouseButtonIndex);
 		if (mouseButtonIndex == 2)//右键点击
 		{
+			rightClickMenu.Invoke(index);
 			rightClickMenu.Show();
-			rightClickMenu.Position = (Vector2I)GetGlobalMousePosition();
-			rightClickMenu.MergeVoidFunc(TestVoidFunc);
 		}
 	}
 	public void TestVoidFunc()
