@@ -72,6 +72,7 @@ text = "12"
 shape = SubResource("CircleShape2D_bmxlf")
 
 [node name="HUD" parent="." instance=ExtResource("10_4kpch")]
+script = ExtResource("11_6iyac")
 
 [connection signal="area_entered" from="UI/Cursur" to="UI/Cursur" method="OnAreaEntered"]
 [connection signal="area_exited" from="UI/Cursur" to="UI/Cursur" method="OnAreaExited"]
