@@ -4,7 +4,7 @@ using Godot;
 
 public partial class Item : Node2D
 {
-	public Action[] actions;
+	public Action[] actions = new Action[9];
 	private int number = 1;
 	[Export(PropertyHint.Range, "0,99,1")]
 	public int Number
@@ -16,16 +16,18 @@ public partial class Item : Node2D
 			else Delete();
 		}
 	}
+	public string ItemName { get; set; }
+
 	public override void _Ready()
 	{
 		//Default actions
-		actions = new Action[9];
 		AddAction(Delete);
 		Init();
 	}
 	public Item()
 	{
-		Name = "None";
+		// Why is this here?
+		// Name = "None";
 	}
 	public void Delete()
 	{

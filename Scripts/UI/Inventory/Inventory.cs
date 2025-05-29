@@ -9,6 +9,8 @@ public partial class Inventory : ItemList
 	{
 		Global.Inventory = this;
 		rightClickMenu = GetNode<RightClickMenu>("RightClickMenu");
+
+		// Test Items
 		var item = new Item();
 		item.Name = "Item1";
 		AddItem(item);
@@ -16,6 +18,9 @@ public partial class Inventory : ItemList
 		item2.Name = "EquipbleItem1";
 		item2.equipType = EquipType.MainHand;
 		AddItem(item2);
+		var item3 = new Food();
+		item3.Name = "Food1";
+		AddItem(item3);
 	}
 	public void AddItem(Item item)//添加物品,默认加入第一个位置
 	{
