@@ -50,6 +50,5 @@ public partial class SelectIntItem : InteractableItem
 	//debug
 	public void AddTestItem()
 	{
-		Global.Inventory.AddItem(new Item());
 	}
 }
