@@ -24,12 +24,9 @@ public partial class EquipbleItem : Item
 	public void Equip()
 	{
 		//从Inventory到Dress
-		GetParent<Inventory>().EquipToSlot(this, equipType);
 	}
 	public void Unequip()
 	{
 		//从Dress到Inventory
-		GetParent<Slot>().RemoveChild(this);
-		GetNode<Inventory>("../../Inventory}").AddChild(this);
 	}
 }

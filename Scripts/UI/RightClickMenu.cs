@@ -4,7 +4,7 @@ using System;
 public partial class RightClickMenu : PopupMenu
 {
 	int Id = 0;
-	public Item[] Items;
+	public Item ActionItem;//当前选中的item
 	public Action[] BindActions;
 	public override void _Ready()
 	{
@@ -14,12 +14,6 @@ public partial class RightClickMenu : PopupMenu
 	public void Invoke(int index)//调出时更新
 	{
 		//获取item
-		var item = GetTree().GetNodesInGroup("Inventory")[index] as Item;
-		foreach (var action in item.actions)
-		{
-			if (action is null) continue;
-			AddVoidSelection(action);
-		}
 	}
 	public void AddVoidSelection(Action action)
 	{
