@@ -39,7 +39,7 @@ public partial class Inventory : Node
 	}
 	public static void RemoveItem(Item item, int number = -1)
 	{
-		if (Items.ContainsKey(item.Name))
+		if (!Items.ContainsKey(item.Name))
 		{
 			return;
 		}

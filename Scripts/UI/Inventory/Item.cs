@@ -10,11 +10,17 @@ public partial class Item : GodotObject
 	[Export(PropertyHint.Range, "0,99,1")]
 	public int Number
 	{
-		get => _number;
+		get
+		{
+			return _number;
+		}
 		set
 		{
-			if (value > 0) _number = value;
-			// else Delete();
+			_number = value;
+			if (_number < 0)
+			{
+				Delete();
+			}
 		}
 	}
 	public Item()
@@ -27,7 +33,12 @@ public partial class Item : GodotObject
 	}
 	public void AddNumber(int number)
 	{
-		Number = Number + number;
+		Number += number;
+	}
+	public void Delete()
+	{
+		Inventory.RemoveItem(this);
 	}
 	public virtual void Init() { }
+	
 }
