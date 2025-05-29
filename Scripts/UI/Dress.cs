@@ -11,7 +11,7 @@ public partial class Dress : GridContainer
 	Slot BagSlot;
 	public override void _Ready()
 	{
-		//HatSlot
+		Global.Dress = this;
 	}
 	public void Equip(Item item, int slot)
 	{

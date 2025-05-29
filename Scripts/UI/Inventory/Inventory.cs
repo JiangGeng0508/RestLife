@@ -7,6 +7,7 @@ public partial class Inventory : ItemList
 	public RightClickMenu rightClickMenu;
 	public override void _Ready()
 	{
+		Global.Inventory = this;
 		rightClickMenu = GetNode<RightClickMenu>("RightClickMenu");
 		var item = new Item();
 		item.Name = "Item1";
@@ -18,6 +19,19 @@ public partial class Inventory : ItemList
 	}
 	public void AddItem(Item item)//添加物品,默认加入第一个位置
 	{
+		if (item == null) return;
+		var children = GetChildren(false);
+		foreach (var child in children)
+		{
+			if (child is Item)
+			{
+				if (child.Name == item.Name)
+				{
+					child.Call("AddNumber", item.Number);
+					return;
+				}
+			}
+		}
 		AddChild(item);
 		AddItem(item.Name);//继承ItemList类的方法
 		item.AddToGroup("Inventory");
@@ -37,6 +51,13 @@ public partial class Inventory : ItemList
 		{
 			AddItem(item as Item);
 		}
+	}
+	public void EquipToSlot(EquipbleItem item, EquipType equipType)
+	{
+		var slot = Global.Dress.GetNode<Slot>(equipType.ToString());
+		RemoveChild(item);
+		slot.AddChild(item);
+		InventoryUpdate();
 	}
 	public void DeleteItem(int index)
 	{

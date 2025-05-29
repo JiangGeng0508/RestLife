@@ -37,5 +37,9 @@ public partial class Item : Node2D
 	{
 		actions = actions.Append(action).ToArray();
 	}
+	public void AddNumber(int number)
+	{
+		Number += number;
+	}
 	public virtual void Init() { }
 }

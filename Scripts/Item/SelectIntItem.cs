@@ -14,6 +14,10 @@ public partial class SelectIntItem : InteractableItem
 		grid.Columns = 1;
 		AddChild(popup);
 		popup.AddChild(grid);
+
+		//debug
+		MergeVoidFunc(AddTestItem);
+
 		OnBegin();
 	}
 	public override void Action()
@@ -42,4 +46,10 @@ public partial class SelectIntItem : InteractableItem
 		}
 	}
 	public virtual void OnBegin() { }
+
+	//debug
+	public void AddTestItem()
+	{
+		Global.Inventory.AddItem(new Item());
+	}
 }
