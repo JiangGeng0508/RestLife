@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bto6gsdtdxftl"]
+[gd_scene load_steps=14 format=3 uid="uid://bto6gsdtdxftl"]
 
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Item/wall.tscn" id="1_idj7w"]
 [ext_resource type="PackedScene" uid="uid://b25yhbndwexxv" path="res://Scenes/Player/Character.tscn" id="2_kln2b"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://861bfrm35j5o" path="res://Scenes/Item/SelectIntItem.tscn" id="9_vy5pj"]
 [ext_resource type="PackedScene" uid="uid://dc74ltyvfx87h" path="res://Scenes/UI/HUD.tscn" id="10_4kpch"]
 [ext_resource type="Script" uid="uid://di14nm0jvgxks" path="res://Scripts/UI/Cursur.cs" id="10_bmxlf"]
+[ext_resource type="Script" uid="uid://105bb6xllrh0" path="res://Scripts/UI/Inventory/Inventory.cs" id="11_6iyac"]
+[ext_resource type="Script" uid="uid://ckul63kwa5hjw" path="res://Scripts/UI/Inventory/Dress.cs" id="12_fdnlq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmxlf"]
 radius = 3.0
@@ -72,6 +74,14 @@ text = "12"
 shape = SubResource("CircleShape2D_bmxlf")
 
 [node name="HUD" parent="." instance=ExtResource("10_4kpch")]
+
+[node name="Attributes" type="Node" parent="."]
+
+[node name="Inventory" type="Node" parent="Attributes"]
+script = ExtResource("11_6iyac")
+
+[node name="Dress" type="Node" parent="Attributes"]
+script = ExtResource("12_fdnlq")
 
 [connection signal="area_entered" from="UI/Cursur" to="UI/Cursur" method="OnAreaEntered"]
 [connection signal="area_exited" from="UI/Cursur" to="UI/Cursur" method="OnAreaExited"]

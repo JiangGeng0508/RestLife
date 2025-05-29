@@ -9,6 +9,7 @@ public partial class InventoryUI : ItemList
 	public static Dictionary<string, Item> ItemGroup = [];
 	public override void _Ready()
 	{
+		Global.InventoryUI = this;
 		rightClickMenu = GetNode<RightClickMenu>("RightClickMenu");
 
 		// Test Items

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Dress : GridContainer
+public partial class DressUI : GridContainer
 {
 	Slot HatSlot;
 	Slot UpperSlot;
@@ -11,7 +11,6 @@ public partial class Dress : GridContainer
 	Slot BagSlot;
 	public override void _Ready()
 	{
-		Global.Dress = this;
 	}
 	public void Equip(Item item, int slot)
 	{

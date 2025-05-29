@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b78vbe0hqa2ni" path="res://Scripts/UI/SelectMenu.cs" id="1_ne771"]
 [ext_resource type="Script" uid="uid://crheoxyowc6xm" path="res://Scripts/UI/Inventory/InventoryUI.cs" id="3_gv1iq"]
 [ext_resource type="Script" uid="uid://cmss037nrmq3g" path="res://Scripts/UI/RightClickMenu.cs" id="4_1and6"]
-[ext_resource type="Script" uid="uid://dg3q4agdhk2ds" path="res://Scripts/UI/Dress.cs" id="4_4bm6u"]
+[ext_resource type="Script" uid="uid://dg3q4agdhk2ds" path="res://Scripts/UI/DressUI.cs" id="4_4bm6u"]
 [ext_resource type="Script" uid="uid://cdvatkaygsein" path="res://Scripts/UI/Slot.cs" id="5_ykvyr"]
 
 [node name="HUD" type="CanvasLayer"]
