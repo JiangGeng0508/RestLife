@@ -11,9 +11,18 @@ public partial class RightClickMenu : PopupMenu
 		BindActions = new Action[9];
 		//从背包中读取items
 	}
-	public void Invoke(int index)//调出时更新
+	public void Invoke(string item)//调出时更新
 	{
 		//获取item
+		ActionItem = Inventory.Items[item];
+		foreach (var action in ActionItem.actions)
+		{
+			if (action is not null)
+			{
+				AddVoidSelection(action);
+			}
+		}
+		Show();
 	}
 	public void AddVoidSelection(Action action)
 	{
@@ -31,10 +40,6 @@ public partial class RightClickMenu : PopupMenu
 	}
 	public void OnIdPressed(int id)
 	{
-		if (BindActions[id] is not null)
-		{
-			GD.Print($"Invoke action {BindActions[id].Method.Name}");
-			BindActions[id].Invoke();
-		}
+		BindActions[id]?.Invoke();
 	}
 }

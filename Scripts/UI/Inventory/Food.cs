@@ -6,12 +6,12 @@ public partial class Food : Item
 
 	public void Consume()
 	{
-		Number--;
+		AddNumber(-1);
+		GD.Print($"Yum,yum,{Number} left");
 	}
 
 	public override void Init()
 	{
-		base.Init();
 		AddAction(Consume);
     }
 
