@@ -14,7 +14,7 @@ public partial class Character : CharacterBody2D
 	Area2D reachArea;
 	TargetNotifer tarPosNotifer;
 	InteractableItem interactItem;
-	Label label;//debug
+	public Attributes Attribute;
 	public ulong Id = 0;
 	bool handable = false;
 	CharacterState state = CharacterState.Idle;
@@ -40,18 +40,13 @@ public partial class Character : CharacterBody2D
 	{
 		Id = GetInstanceId();
 		reachArea = GetNode<Area2D>("ReachArea");
+		Attribute = GetNode<Attributes>("Attributes");
 		tarPosNotifer = GetNode<TargetNotifer>("../UI/TargetNotifier");
-		label = new Label();//debug
-		AddChild(label);//debug
-		label.Show();//debug
-		targetPosition = Position;
+		targetPosition = Position;;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		//debug
-		label.Text = $"{state}";
-
 		switch (state)
 		{
 			case CharacterState.Idle:
