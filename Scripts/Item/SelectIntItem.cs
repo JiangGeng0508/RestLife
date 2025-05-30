@@ -50,5 +50,8 @@ public partial class SelectIntItem : InteractableItem
 	//debug
 	public void AddTestItem()
 	{
+		var item3 = new Food();
+		item3.Name = "Food1";
+		Inventory.AddItem(item3);
 	}
 }

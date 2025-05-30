@@ -101,6 +101,18 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
+[node name="GameWorldInfo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 80.0
+offset_right = 40.0
+offset_bottom = 120.0
+
+[node name="Time" type="Label" parent="GameWorldInfo"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="PlayerState" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
