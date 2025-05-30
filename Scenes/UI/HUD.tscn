@@ -24,17 +24,21 @@ script = ExtResource("1_ne771")
 [node name="Inventory" type="SplitContainer" parent="SelectMenu"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
+dragging_enabled = false
+dragger_visibility = 2
 script = ExtResource("2_lelo4")
 metadata/_tab_index = 0
 
 [node name="InventoryList" type="ItemList" parent="SelectMenu/Inventory"]
-custom_minimum_size = Vector2(200, 50)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 select_mode = 1
 fixed_icon_size = Vector2i(20, 20)
 
 [node name="NumberList" type="ItemList" parent="SelectMenu/Inventory"]
 layout_mode = 2
+auto_width = true
 
 [node name="RightClickMenu" type="PopupMenu" parent="SelectMenu/Inventory"]
 auto_translate_mode = 1
