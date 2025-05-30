@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dc74ltyvfx87h"]
 
 [ext_resource type="Script" uid="uid://b78vbe0hqa2ni" path="res://Scripts/UI/SelectMenu.cs" id="1_ne771"]
-[ext_resource type="Script" uid="uid://crheoxyowc6xm" path="res://Scripts/UI/Inventory/InventoryUI.cs" id="3_gv1iq"]
+[ext_resource type="Script" uid="uid://cihgy0uhufudw" path="res://Scripts/UI/InventoryUI.cs" id="2_lelo4"]
 [ext_resource type="Script" uid="uid://cmss037nrmq3g" path="res://Scripts/UI/RightClickMenu.cs" id="4_1and6"]
 [ext_resource type="Script" uid="uid://dg3q4agdhk2ds" path="res://Scripts/UI/DressUI.cs" id="4_4bm6u"]
 [ext_resource type="Script" uid="uid://cdvatkaygsein" path="res://Scripts/UI/Slot.cs" id="5_ykvyr"]
@@ -21,15 +21,22 @@ offset_bottom = 294.0
 current_tab = 0
 script = ExtResource("1_ne771")
 
-[node name="InventoryUI" type="ItemList" parent="SelectMenu"]
-custom_minimum_size = Vector2(50, 50)
+[node name="Inventory" type="SplitContainer" parent="SelectMenu"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+script = ExtResource("2_lelo4")
+metadata/_tab_index = 0
+
+[node name="InventoryList" type="ItemList" parent="SelectMenu/Inventory"]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 select_mode = 1
 fixed_icon_size = Vector2i(20, 20)
-script = ExtResource("3_gv1iq")
-metadata/_tab_index = 0
 
-[node name="RightClickMenu" type="PopupMenu" parent="SelectMenu/InventoryUI"]
+[node name="NumberList" type="ItemList" parent="SelectMenu/Inventory"]
+layout_mode = 2
+
+[node name="RightClickMenu" type="PopupMenu" parent="SelectMenu/Inventory"]
 auto_translate_mode = 1
 position = Vector2i(700, 200)
 size = Vector2i(50, 100)
@@ -37,54 +44,57 @@ min_size = Vector2i(50, 100)
 max_size = Vector2i(100, 1000)
 script = ExtResource("4_1and6")
 
-[node name="DressUI" type="GridContainer" parent="SelectMenu"]
+[node name="Dress" type="Control" parent="SelectMenu"]
 visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="DressUI" type="GridContainer" parent="SelectMenu/Dress"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 columns = 2
 script = ExtResource("4_4bm6u")
-metadata/_tab_index = 1
 
-[node name="HatSlot" type="PanelContainer" parent="SelectMenu/DressUI"]
+[node name="HatSlot" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
-[node name="ShirtSlot" type="PanelContainer" parent="SelectMenu/DressUI"]
+[node name="ShirtSlot" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
-[node name="CoatSlot" type="PanelContainer" parent="SelectMenu/DressUI"]
+[node name="CoatSlot" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
-[node name="ShoesSlot" type="PanelContainer" parent="SelectMenu/DressUI"]
+[node name="ShoesSlot" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
-[node name="PantsSlot" type="PanelContainer" parent="SelectMenu/DressUI"]
+[node name="PantsSlot" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
-[node name="BagSlot" type="PanelContainer" parent="SelectMenu/DressUI"]
+[node name="BagSlot" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
-[node name="MainHand" type="PanelContainer" parent="SelectMenu/DressUI"]
+[node name="MainHand" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
-[node name="OffHand" type="PanelContainer" parent="SelectMenu/DressUI"]
+[node name="OffHand" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
 
-[connection signal="item_clicked" from="SelectMenu/InventoryUI" to="SelectMenu/InventoryUI" method="OnItemClicked"]
-[connection signal="id_pressed" from="SelectMenu/InventoryUI/RightClickMenu" to="SelectMenu/InventoryUI/RightClickMenu" method="OnIdPressed"]
-[connection signal="popup_hide" from="SelectMenu/InventoryUI/RightClickMenu" to="SelectMenu/InventoryUI/RightClickMenu" method="OnLoseFocus"]
+[connection signal="item_clicked" from="SelectMenu/Inventory/InventoryList" to="SelectMenu/Inventory" method="OnItemClicked"]
+[connection signal="id_pressed" from="SelectMenu/Inventory/RightClickMenu" to="SelectMenu/Inventory/RightClickMenu" method="OnIdPressed"]
+[connection signal="popup_hide" from="SelectMenu/Inventory/RightClickMenu" to="SelectMenu/Inventory/RightClickMenu" method="OnLoseFocus"]
