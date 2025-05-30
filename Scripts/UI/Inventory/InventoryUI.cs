@@ -17,7 +17,7 @@ public partial class InventoryUI : ItemList
 	public void AddItem(Item item)//添加物品,默认加入第一个位置
 	{
 		if (item == null) return;
-		AddItem(item.Name);
+		AddItem($"{item.Name} ({item.Number})", item.Icon);
 		Update();
 	}
 	public void OnItemClicked(int index, Vector2 position, int mouseButtonIndex)
@@ -33,7 +33,7 @@ public partial class InventoryUI : ItemList
 		Clear();
 		foreach (var item in items)
 		{
-			ItemsInUI[item.Key] = AddItem(item.Value.Name);
+			ItemsInUI[item.Key] = AddItem($"{item.Value.Name} ({item.Value.Number})", item.Value.Icon);
 		}
 	}
 	public void EquipToSlot(EquipbleItem item, EquipType equipType)
