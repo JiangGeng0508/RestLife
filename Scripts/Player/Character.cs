@@ -60,6 +60,9 @@ public partial class Character : CharacterBody2D
 					{
 						state = CharacterState.Idle;
 					}
+					Energy -= 0.1f * (float)delta;
+					Hunger -= 0.01f * (float)delta;
+					Thirst -= 0.01f * (float)delta;
 				}
 				else
 				{
@@ -71,6 +74,9 @@ public partial class Character : CharacterBody2D
 				{
 					Velocity = new Vector2(KeyDirection, 0) * speed;
 					MoveAndCollide(Velocity);
+					Energy -= 0.1f * (float)delta;
+					Hunger -= 0.01f * (float)delta;
+					Thirst -= 0.01f * (float)delta;
 				}
 				else
 				{

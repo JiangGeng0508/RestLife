@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc74ltyvfx87h"]
+[gd_scene load_steps=7 format=3 uid="uid://dc74ltyvfx87h"]
 
+[ext_resource type="Script" uid="uid://bn5qycss666ik" path="res://Scripts/UI/Hud.cs" id="1_lelo4"]
 [ext_resource type="Script" uid="uid://b78vbe0hqa2ni" path="res://Scripts/UI/SelectMenu.cs" id="1_ne771"]
 [ext_resource type="Script" uid="uid://cihgy0uhufudw" path="res://Scripts/UI/InventoryUI.cs" id="2_lelo4"]
 [ext_resource type="Script" uid="uid://cmss037nrmq3g" path="res://Scripts/UI/RightClickMenu.cs" id="4_1and6"]
@@ -7,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cdvatkaygsein" path="res://Scripts/UI/Slot.cs" id="5_ykvyr"]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_lelo4")
 
 [node name="SelectMenu" type="TabContainer" parent="."]
 anchors_preset = -1
@@ -98,6 +100,32 @@ script = ExtResource("5_ykvyr")
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
+
+[node name="PlayerState" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 319.0
+offset_bottom = 60.0
+
+[node name="HealthInfo" type="Label" parent="PlayerState"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="EnergyInfo" type="Label" parent="PlayerState"]
+offset_left = 145.0
+offset_right = 185.0
+offset_bottom = 23.0
+
+[node name="HungerInfo" type="Label" parent="PlayerState"]
+offset_top = 30.0
+offset_right = 40.0
+offset_bottom = 53.0
+
+[node name="ThirstInfo" type="Label" parent="PlayerState"]
+offset_left = 145.0
+offset_top = 30.0
+offset_right = 185.0
+offset_bottom = 53.0
 
 [connection signal="item_clicked" from="SelectMenu/Inventory/InventoryList" to="SelectMenu/Inventory" method="OnItemClicked"]
 [connection signal="id_pressed" from="SelectMenu/Inventory/RightClickMenu" to="SelectMenu/Inventory/RightClickMenu" method="OnIdPressed"]
