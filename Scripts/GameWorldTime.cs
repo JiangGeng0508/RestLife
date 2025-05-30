@@ -4,9 +4,9 @@ using System;
 public partial class GameWorldTime : Node2D
 {
     public float Seconds;
-    public float Minutes;
-    public float Hours;
-    public float Days;
+    public int Minutes;
+    public int Hours;
+    public int Days;
 
     public override void _Ready()
     {
@@ -16,7 +16,7 @@ public partial class GameWorldTime : Node2D
     public override void _Process(double delta)
     {
         Seconds += (float)delta;
-        if (Seconds >= 2)
+        if (Seconds >= 1.5)
         {
             Seconds = 0;
             Minutes++;

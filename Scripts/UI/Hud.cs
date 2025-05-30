@@ -19,6 +19,7 @@ public partial class Hud : CanvasLayer
         PlayerState.GetNode<Label>("HungerInfo").Text = "Hunger: " + Global.Player.Hunger.ToString();
         PlayerState.GetNode<Label>("ThirstInfo").Text = "Thirst: " + Global.Player.Thirst.ToString();
 
-        GameWorldInfo.GetNode<Label>("Time").Text = "Day: " + Global.GameWorldTime.Days.ToString() + " Time: " + Global.GameWorldTime.Hours.ToString() + ":" + Global.GameWorldTime.Minutes.ToString() + ":" + Global.GameWorldTime.Seconds.ToString();
+        string formattedTime = $"Day: {Global.GameWorldTime.Days} Time: {Global.GameWorldTime.Hours.ToString("D2")}:{Global.GameWorldTime.Minutes.ToString("D2")}";
+        GameWorldInfo.GetNode<Label>("Time").Text = formattedTime;
     }
 }
