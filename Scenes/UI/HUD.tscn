@@ -15,9 +15,9 @@ anchor_top = -0.499
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 1350.54
-offset_top = 344.352
-offset_right = 542.0
-offset_bottom = 294.0
+offset_top = 347.352
+offset_right = 542.004
+offset_bottom = 297.0
 current_tab = 0
 script = ExtResource("1_ne771")
 

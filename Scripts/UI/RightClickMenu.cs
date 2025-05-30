@@ -4,14 +4,16 @@ using System;
 public partial class RightClickMenu : PopupMenu
 {
 	int Id = 0;
+	private Vector2I ParentOffset = new(0, 0);
 	public Item ActionItem;//当前选中的item
 	public Action[] BindActions;
 	public override void _Ready()
 	{
 		BindActions = new Action[9];
-		//从背包中读取items
+		ParentOffset = (Vector2I)GetParent<Control>().GlobalPosition;
+		Hide();
 	}
-	public void Invoke(string item)//调出时更新
+	public void Invoke(string item,Vector2 position)//调出时更新
 	{
 		//获取item
 		ActionItem = Inventory.Items[item];
@@ -22,6 +24,7 @@ public partial class RightClickMenu : PopupMenu
 				AddVoidSelection(action);
 			}
 		}
+		Position = (Vector2I)position + ParentOffset;
 		Show();
 	}
 	public void AddVoidSelection(Action action)

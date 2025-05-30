@@ -16,7 +16,6 @@ public partial class InventoryUI : SplitContainer
 		rightClickMenu = GetNode<RightClickMenu>("RightClickMenu");
 		InventoryList = GetNode<ItemList>("InventoryList");
 		NumberList = GetNode<ItemList>("NumberList");
-		Update();
 	}
 	public void AddItem(Item item)//添加物品,默认加入第一个位置
 	{
@@ -29,7 +28,7 @@ public partial class InventoryUI : SplitContainer
 	{
 		if (mouseButtonIndex == 2)//右键点击
 		{
-			rightClickMenu.Invoke(InventoryList.GetItemText(index));
+			rightClickMenu.Invoke(InventoryList.GetItemText(index), position);
 		}
 	}
 	public void Update()//更新背包显示
