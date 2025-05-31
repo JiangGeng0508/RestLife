@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b25yhbndwexxv"]
 
-[ext_resource type="Script" uid="uid://bpqc71ebqcmge" path="res://Scripts/Player/Character.cs" id="1_677pu"]
-[ext_resource type="Script" uid="uid://bs0mnasjf45co" path="res://Scripts/Player/ReachArea.cs" id="3_gi8q4"]
+[ext_resource type="Script" uid="uid://bpqc71ebqcmge" path="res://Scripts/Entities/Player/Character.cs" id="1_b3ei2"]
+[ext_resource type="Script" uid="uid://bs0mnasjf45co" path="res://Scripts/Entities/Player/ReachArea.cs" id="2_l3y44"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_567wp"]
 
@@ -9,7 +9,7 @@
 radius = 31.1448
 
 [node name="Character" type="CharacterBody2D"]
-script = ExtResource("1_677pu")
+script = ExtResource("1_b3ei2")
 metadata/_edit_group_ = true
 
 [node name="CharaShape" type="CollisionShape2D" parent="."]
@@ -30,7 +30,7 @@ grow_vertical = 2
 color = Color(1, 0, 0.815686, 1)
 
 [node name="ReachArea" type="Area2D" parent="."]
-script = ExtResource("3_gi8q4")
+script = ExtResource("2_l3y44")
 
 [node name="ReachShape" type="CollisionShape2D" parent="ReachArea"]
 shape = SubResource("CircleShape2D_jp4cy")
