@@ -15,12 +15,40 @@ public partial class Saver : Node
 		GD.Print("Saving game...");
 		using var file = FileAccess.Open(SavePath, FileAccess.ModeFlags.Write);
 		var scene = new PackedScene();
+		
 		var saveData = new Dictionary();
 		saveData["Player"] = Global.Player;
 		saveData["GameWorldTime"] = Global.GameWorldTime;
-		saveData["Inventory"] = (Variant)Global.Inventory;
-		saveData["Dress"] = (Variant)Global.Dress;
+		saveData["Inventory"] = Global.Inventory;
+		saveData["Dress"] = Global.Dress;
 		file.StoreVar(saveData.Duplicate());
 		file.Close();
+		GD.Print("Game saved.");
+	}
+	public static void SaveScene(Node node)
+	{
+		using var file = FileAccess.Open($"res://Save/{node.Name}1.tscn", FileAccess.ModeFlags.Write);
+		var scene = new PackedScene();
+		if (scene.Pack(node) == Error.Ok)
+		{
+			Error error = ResourceSaver.Save(scene, $"res://Save/{node.Name}.tscn");
+			if (error != Error.Ok)
+			{
+				GD.PushError($"An error occurred while saving the scene: {error}");
+			}
+		}
+		file.StoreVar(scene.Duplicate());
+		file.Close();
+	}
+	public static void Load()
+	{
+		GD.Print("Loading game...");
+		using var file = FileAccess.Open(SavePath, FileAccess.ModeFlags.Read);
+		var saveData = file.GetVar();
+		switch (saveData.GetType())
+		{
+			default:
+				break;
+		}
 	}
 }

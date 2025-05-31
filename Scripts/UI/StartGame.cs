@@ -5,6 +5,6 @@ public partial class StartGame : Button
 {
 	public void onPressed()
 	{
-		GetTree().ChangeSceneToFile("res://Scenes/Main.tscn");
+		GetTree().ChangeSceneToFile("res://Scenes/MainScene.tscn");
 	}
 }

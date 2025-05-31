@@ -1,0 +1,110 @@
+[gd_scene load_steps=21 format=3]
+
+[ext_resource type="PackedScene" path="res://Scenes/Item/Stair.tscn" id="1_s7g4m"]
+[ext_resource type="Script" path="res://Scripts/Item/Elevator.cs" id="2_m4rmu"]
+[ext_resource type="PackedScene" path="res://Scenes/Item/wall.tscn" id="3_m61vm"]
+[ext_resource type="PackedScene" path="res://Scenes/Item/SelectIntItem.tscn" id="4_4gvua"]
+[ext_resource type="Script" path="res://Scripts/Item/SelectIntItem.cs" id="5_v8xl8"]
+[ext_resource type="PackedScene" path="res://Scenes/Item/RideableItem.tscn" id="6_js41p"]
+[ext_resource type="Script" path="res://Scripts/Item/RideableItem.cs" id="7_gbh2u"]
+[ext_resource type="PackedScene" path="res://Scenes/Item/InteractableItem.tscn" id="8_d4xdt"]
+[ext_resource type="Script" path="res://Scripts/Item/InteractableItem.cs" id="9_pvbxu"]
+[ext_resource type="PackedScene" path="res://Scenes/Player/Character.tscn" id="10_ed27s"]
+[ext_resource type="Script" path="res://Scripts/Player/Character.cs" id="11_xuyg6"]
+[ext_resource type="PackedScene" path="res://Scenes/Player/TargetNotifer.tscn" id="12_8jb80"]
+[ext_resource type="Script" path="res://Scripts/Player/TargetNotifer.cs" id="13_okrf6"]
+[ext_resource type="Script" path="res://Scripts/UI/MainCamera.cs" id="14_xeq3v"]
+[ext_resource type="Script" path="res://Scripts/UI/Cursur.cs" id="15_i4rvj"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/HUD.tscn" id="16_3tj4k"]
+[ext_resource type="Script" path="res://Scripts/UI/Hud.cs" id="17_krn6o"]
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/Inventory.cs" id="18_doobr"]
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/Dress.cs" id="19_1uut6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bmxlf"]
+radius = 3.0
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Buildings" type="Node" parent="."]
+
+[node name="Stair" type="Area2D" parent="Buildings" instance=ExtResource("1_s7g4m")]
+position = Vector2(500, 0)
+script = ExtResource("2_m4rmu")
+metadata/_edit_group_ = true
+
+[node name="Stair3" type="Area2D" parent="Buildings" instance=ExtResource("1_s7g4m")]
+position = Vector2(600, 200)
+script = ExtResource("2_m4rmu")
+metadata/_edit_group_ = true
+
+[node name="WallBody" type="StaticBody2D" parent="Buildings" instance=ExtResource("3_m61vm")]
+position = Vector2(-575, 3)
+scale = Vector2(1, 3)
+
+[node name="Stair4" type="Area2D" parent="Buildings" instance=ExtResource("1_s7g4m")]
+position = Vector2(600, 0)
+script = ExtResource("2_m4rmu")
+Direction = 1
+metadata/_edit_group_ = true
+
+[node name="Stair5" type="Area2D" parent="Buildings" instance=ExtResource("1_s7g4m")]
+position = Vector2(500, -200)
+script = ExtResource("2_m4rmu")
+Direction = 1
+metadata/_edit_group_ = true
+
+[node name="SelectIntItem" type="Area2D" parent="Buildings" instance=ExtResource("4_4gvua")]
+position = Vector2(-154, -6)
+script = ExtResource("5_v8xl8")
+metadata/_edit_group_ = true
+
+[node name="RideableItem" type="Area2D" parent="Buildings" instance=ExtResource("6_js41p")]
+position = Vector2(284, 0)
+scale = Vector2(2, 2)
+script = ExtResource("7_gbh2u")
+metadata/_edit_group_ = true
+
+[node name="InteractableItem" type="Area2D" parent="Buildings" instance=ExtResource("8_d4xdt")]
+position = Vector2(-366, 0)
+scale = Vector2(4, 4)
+script = ExtResource("9_pvbxu")
+metadata/_edit_group_ = true
+
+[node name="Character" type="CharacterBody2D" parent="." instance=ExtResource("10_ed27s")]
+disable_mode = 1
+script = ExtResource("11_xuyg6")
+metadata/_edit_group_ = true
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="TargetNotifier" type="Node2D" parent="UI" instance=ExtResource("12_8jb80")]
+position = Vector2(-33, -644)
+script = ExtResource("13_okrf6")
+
+[node name="MainCamera" type="Camera2D" parent="UI"]
+script = ExtResource("14_xeq3v")
+
+[node name="Cursur" type="Area2D" parent="UI"]
+position = Vector2(367, -117)
+script = ExtResource("15_i4rvj")
+
+[node name="TooltipLabel" type="Label" parent="UI/Cursur"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="CursurShape" type="CollisionShape2D" parent="UI/Cursur"]
+shape = SubResource("CircleShape2D_bmxlf")
+
+[node name="HUD" type="CanvasLayer" parent="." instance=ExtResource("16_3tj4k")]
+script = ExtResource("17_krn6o")
+
+[node name="Attributes" type="Node" parent="."]
+
+[node name="Inventory" type="Node" parent="Attributes"]
+script = ExtResource("18_doobr")
+
+[node name="Dress" type="Node" parent="Attributes"]
+script = ExtResource("19_1uut6")
+
+[connection signal="area_entered" from="UI/Cursur" to="UI/Cursur" method="OnAreaEntered"]
+[connection signal="area_exited" from="UI/Cursur" to="UI/Cursur" method="OnAreaExited"]
