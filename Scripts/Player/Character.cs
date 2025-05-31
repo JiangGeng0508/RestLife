@@ -26,10 +26,94 @@ public partial class Character : CharacterBody2D
 	int KeyDirection = 0;
 
 	// 状态值
-	public float Health { get; set; } = 100f;
-	public float Energy { get; set; } = 100f;
-	public float Hunger { get; set; } = 100f;
-	public float Thirst { get; set; } = 100f;
+	private float _health = 100f;
+	public float Health
+	{
+		get
+		{
+			return _health;
+		}
+		set
+		{
+			if (value < 0)
+			{
+				_health = 0;
+			}
+			else
+			{
+				_health = value;
+			}
+		}
+	}
+	private float _energy = 100f;
+	public float Energy
+	{
+		get
+		{
+			return _energy;
+		}
+		set
+		{
+			if (value < 0)
+			{
+				_energy = 0;
+			}
+			else if (value > 100)
+			{
+				_energy = 100;
+			}
+			else
+			{
+				_energy = value;
+			}
+		}
+	}
+	private float _hunger = 100f;
+	public float Hunger
+	{
+		get
+		{
+			return _hunger;
+		}
+		set
+		{
+			if (value < 0)
+			{
+				_hunger = 0;
+			}
+			else if (value > 100)
+			{
+				_hunger = 100;
+			}
+			else
+			{
+				_hunger = value;
+			}
+		}
+	}
+	private float _thirst = 100f;
+	public float Thirst
+	{
+		get
+		{
+			return _thirst;
+		}
+		set
+		{
+			if (value < 0)
+			{
+				_thirst = 0;
+			}
+			else if (value > 100)
+			{
+				_thirst = 100;
+			}
+			else
+			{
+				_thirst = value;
+			}
+		}
+	}
 
 	// 属性值
 	public float Intelligence { get; set; } = 1f;
@@ -60,9 +144,6 @@ public partial class Character : CharacterBody2D
 					{
 						state = CharacterState.Idle;
 					}
-					Energy -= 0.1f * (float)delta;
-					Hunger -= 0.01f * (float)delta;
-					Thirst -= 0.01f * (float)delta;
 				}
 				else
 				{
@@ -74,9 +155,6 @@ public partial class Character : CharacterBody2D
 				{
 					Velocity = new Vector2(KeyDirection, 0) * speed;
 					MoveAndCollide(Velocity);
-					Energy -= 0.1f * (float)delta;
-					Hunger -= 0.01f * (float)delta;
-					Thirst -= 0.01f * (float)delta;
 				}
 				else
 				{
@@ -87,6 +165,20 @@ public partial class Character : CharacterBody2D
 				break;
 			case CharacterState.Waiting:
 				break;
+		}
+		//移动时消耗体力
+		if (IsMoving() || IsMovingbyKeyboard())
+		{
+			Energy -= 0.1f * (float)delta;
+			Hunger -= 0.01f * (float)delta;
+			Thirst -= 0.01f * (float)delta;
+		}
+		//静止时消耗
+		else
+		{
+			Energy -= 0.01f * (float)delta;
+			Hunger -= 0.001f * (float)delta;
+			Thirst -= 0.001f * (float)delta;
 		}
 	}
 	public override void _Input(InputEvent @event)

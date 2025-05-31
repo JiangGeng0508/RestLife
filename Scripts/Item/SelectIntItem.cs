@@ -12,11 +12,12 @@ public partial class SelectIntItem : InteractableItem
 		popup = new PopupMenu();
 		grid = new GridContainer();
 		grid.Columns = 1;
+		popup.Position = new Vector2I(600, 300);
 		AddChild(popup);
 		popup.AddChild(grid);
 
 		//debug
-		MergeVoidFunc(AddTestItem);
+		MergeVoidFunc(AddTestFood);
 
 		OnBegin();
 	}
@@ -48,7 +49,7 @@ public partial class SelectIntItem : InteractableItem
 	public virtual void OnBegin() { }
 
 	//debug
-	public void AddTestItem()
+	public void AddTestFood()
 	{
 		var item3 = new Food();
 		item3.Name = "Food1";

@@ -120,20 +120,24 @@ offset_right = 319.0
 offset_bottom = 60.0
 
 [node name="HealthInfo" type="Label" parent="PlayerState"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="EnergyInfo" type="Label" parent="PlayerState"]
+layout_mode = 0
 offset_left = 145.0
 offset_right = 185.0
 offset_bottom = 23.0
 
 [node name="HungerInfo" type="Label" parent="PlayerState"]
+layout_mode = 0
 offset_top = 30.0
 offset_right = 40.0
 offset_bottom = 53.0
 
 [node name="ThirstInfo" type="Label" parent="PlayerState"]
+layout_mode = 0
 offset_left = 145.0
 offset_top = 30.0
 offset_right = 185.0

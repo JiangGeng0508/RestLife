@@ -7,3 +7,4 @@
 script = ExtResource("2_ptdhd")
 
 [node name="PopupMenu" type="PopupMenu" parent="." index="2"]
+position = Vector2i(600, 300)
