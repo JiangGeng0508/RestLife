@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public enum CharacterState
 {
@@ -26,6 +27,7 @@ public partial class Character : CharacterBody2D
 	int KeyDirection = 0;
 
 	// 状态值
+	private static readonly float MaxHealth = 100f;
 	private float _health = 100f;
 	public float Health
 	{
@@ -39,12 +41,17 @@ public partial class Character : CharacterBody2D
 			{
 				_health = 0;
 			}
+			else if (value > MaxHealth)
+			{
+				_health = MaxHealth;
+			}
 			else
 			{
 				_health = value;
 			}
 		}
 	}
+	private static readonly float MaxEnergy = 100f;
 	private float _energy = 100f;
 	public float Energy
 	{
@@ -58,9 +65,9 @@ public partial class Character : CharacterBody2D
 			{
 				_energy = 0;
 			}
-			else if (value > 100)
+			else if (value > MaxEnergy)
 			{
-				_energy = 100;
+				_energy = MaxEnergy;
 			}
 			else
 			{
@@ -68,6 +75,7 @@ public partial class Character : CharacterBody2D
 			}
 		}
 	}
+	private static readonly float MaxHunger = 100f;
 	private float _hunger = 100f;
 	public float Hunger
 	{
@@ -81,9 +89,9 @@ public partial class Character : CharacterBody2D
 			{
 				_hunger = 0;
 			}
-			else if (value > 100)
+			else if (value > MaxHunger)
 			{
-				_hunger = 100;
+				_hunger = MaxHunger;
 			}
 			else
 			{
@@ -91,7 +99,8 @@ public partial class Character : CharacterBody2D
 			}
 		}
 	}
-	private float _thirst = 100f;
+	private static readonly float MaxThirst = 100f;
+	private float _thirst = MaxThirst;
 	public float Thirst
 	{
 		get
@@ -104,9 +113,9 @@ public partial class Character : CharacterBody2D
 			{
 				_thirst = 0;
 			}
-			else if (value > 100)
+			else if (value > MaxThirst)
 			{
-				_thirst = 100;
+				_thirst = MaxThirst;
 			}
 			else
 			{
@@ -135,6 +144,8 @@ public partial class Character : CharacterBody2D
 		switch (state)
 		{
 			case CharacterState.Idle:
+				Hunger -= 0.001f * (float)delta;
+				Thirst -= 0.001f * (float)delta;
 				break;
 			case CharacterState.Moving:
 				if ((targetPosition - Position).Length() > speed * 1.5f)
@@ -149,6 +160,9 @@ public partial class Character : CharacterBody2D
 				{
 					state = CharacterState.Idle;
 				}
+				Energy -= 0.01f * (float)delta;
+				Hunger -= 0.001f * (float)delta;
+				Thirst -= 0.001f * (float)delta;
 				break;
 			case CharacterState.MovingbyKeyboard:
 				if (KeyDirection != 0)
@@ -160,25 +174,16 @@ public partial class Character : CharacterBody2D
 				{
 					state = CharacterState.Idle;
 				}
+				Energy -= 0.01f * (float)delta;
+				Hunger -= 0.001f * (float)delta;
+				Thirst -= 0.001f * (float)delta;
 				break;
 			case CharacterState.Riding:
+				Hunger -= 0.001f * (float)delta;
+				Thirst -= 0.001f * (float)delta;
 				break;
 			case CharacterState.Waiting:
 				break;
-		}
-		//移动时消耗体力
-		if (IsMoving() || IsMovingbyKeyboard())
-		{
-			Energy -= 0.1f * (float)delta;
-			Hunger -= 0.01f * (float)delta;
-			Thirst -= 0.01f * (float)delta;
-		}
-		//静止时消耗
-		else
-		{
-			Energy -= 0.01f * (float)delta;
-			Hunger -= 0.001f * (float)delta;
-			Thirst -= 0.001f * (float)delta;
 		}
 	}
 	public override void _Input(InputEvent @event)

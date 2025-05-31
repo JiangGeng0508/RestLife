@@ -143,6 +143,15 @@ offset_top = 30.0
 offset_right = 185.0
 offset_bottom = 53.0
 
+[node name="EnergyBar" type="ProgressBar" parent="PlayerState"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 322.0
+offset_right = 22.0
+offset_bottom = 632.0
+fill_mode = 3
+show_percentage = false
+
 [connection signal="item_clicked" from="SelectMenu/Inventory/InventoryList" to="SelectMenu/Inventory" method="OnItemClicked"]
 [connection signal="id_pressed" from="SelectMenu/Inventory/RightClickMenu" to="SelectMenu/Inventory/RightClickMenu" method="OnIdPressed"]
 [connection signal="popup_hide" from="SelectMenu/Inventory/RightClickMenu" to="SelectMenu/Inventory/RightClickMenu" method="OnLoseFocus"]
