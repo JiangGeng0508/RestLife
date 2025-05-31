@@ -118,6 +118,7 @@ action_mode = 0
 text = "Save"
 
 [node name="SaveScene" type="Button" parent="SelectMenu/Menu"]
+layout_mode = 0
 offset_left = 73.004
 offset_top = 140.0
 offset_right = 232.004

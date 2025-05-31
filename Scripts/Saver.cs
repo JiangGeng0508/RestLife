@@ -40,15 +40,4 @@ public partial class Saver : Node
 		file.StoreVar(scene.Duplicate());
 		file.Close();
 	}
-	public static void Load()
-	{
-		GD.Print("Loading game...");
-		using var file = FileAccess.Open(SavePath, FileAccess.ModeFlags.Read);
-		var saveData = file.GetVar();
-		switch (saveData.GetType())
-		{
-			default:
-				break;
-		}
-	}
 }
