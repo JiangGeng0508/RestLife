@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dc74ltyvfx87h"]
+[gd_scene load_steps=8 format=3 uid="uid://dc74ltyvfx87h"]
 
 [ext_resource type="Script" uid="uid://bn5qycss666ik" path="res://Scripts/UI/Hud.cs" id="1_lelo4"]
 [ext_resource type="Script" uid="uid://b78vbe0hqa2ni" path="res://Scripts/UI/SelectMenu.cs" id="1_ne771"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cmss037nrmq3g" path="res://Scripts/UI/RightClickMenu.cs" id="4_1and6"]
 [ext_resource type="Script" uid="uid://dg3q4agdhk2ds" path="res://Scripts/UI/DressUI.cs" id="4_4bm6u"]
 [ext_resource type="Script" uid="uid://cdvatkaygsein" path="res://Scripts/UI/Slot.cs" id="5_ykvyr"]
+[ext_resource type="Script" uid="uid://dgpb36bqvvo54" path="res://Scripts/Menu.cs" id="7_1ree7"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_lelo4")
@@ -20,10 +21,11 @@ offset_left = 1350.54
 offset_top = 347.352
 offset_right = 542.004
 offset_bottom = 297.0
-current_tab = 0
+current_tab = 2
 script = ExtResource("1_ne771")
 
 [node name="Inventory" type="SplitContainer" parent="SelectMenu"]
+visible = false
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 dragging_enabled = false
@@ -100,6 +102,20 @@ script = ExtResource("5_ykvyr")
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("5_ykvyr")
+
+[node name="Menu" type="Control" parent="SelectMenu"]
+layout_mode = 2
+script = ExtResource("7_1ree7")
+metadata/_tab_index = 2
+
+[node name="Save" type="Button" parent="SelectMenu/Menu"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 68.0
+offset_right = 233.0
+offset_bottom = 114.0
+action_mode = 0
+text = "Save"
 
 [node name="GameWorldInfo" type="Control" parent="."]
 layout_mode = 3

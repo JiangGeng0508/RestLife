@@ -5,21 +5,14 @@ public partial class RideableItem : InteractableItem
 {
 	[Export] public Vector2 riderOffset { get; set; } = new Vector2(0, -20);
 	private Vector2 _lastPosition;
-	Character rider;
-	bool toggle = false;
+	public Character rider;
 
 	public override void Action()
 	{
-		toggle = !toggle;
-		if (CharaReachArea != null && toggle)
+		if (CharaReachArea != null && rider == null)
 		{
 			rider = CharaReachArea.GetParent() as Character;
 			rider.Ride(this);
-		}
-		else if(rider != null && !toggle)
-		{
-			rider.StopRiding();
-			rider = null;
 		}
 	}
 }

@@ -1,7 +1,6 @@
 using Godot;
-using Godot.NativeInterop;
+using Godot.Collections;
 using System;
-using System.Collections.Generic;
 //仅控件，实际数据由Inventory处理
 public partial class InventoryUI : SplitContainer
 {

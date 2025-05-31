@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class GameWorldTime : Node2D
+public partial class GameWorldTime : Node
 {
     public float Seconds;
     public int Minutes;

@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Collections.Generic;
 
 public enum CharacterState
 {
@@ -15,6 +14,7 @@ public partial class Character : CharacterBody2D
 	Area2D reachArea;
 	TargetNotifer tarPosNotifer;
 	InteractableItem interactItem;
+	RideableItem ridingItem;
 	public ulong Id = 0;
 	bool handable = false;
 	CharacterState state = CharacterState.Idle;
@@ -194,6 +194,7 @@ public partial class Character : CharacterBody2D
 		{
 			_prevPosition = Position;
 			Position = chair.Position + chair.riderOffset;
+			ridingItem = chair;
 			state = CharacterState.Riding;
 		}
 	}
@@ -201,6 +202,7 @@ public partial class Character : CharacterBody2D
 	{
 		Position = _prevPosition;
 		KeyDirection = 0;
+		ridingItem.rider = null;
 		state = CharacterState.Idle;
 	}
 	public bool IsRiding() => state == CharacterState.Riding;

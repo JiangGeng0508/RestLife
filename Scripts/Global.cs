@@ -10,4 +10,5 @@ public partial class Global : Node
 	public static InventoryUI InventoryUI;
 	public static Dress Dress;
 	public static DressUI DressUI;
+	public static Saver Saver;
 }
