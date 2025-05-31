@@ -27,10 +27,10 @@ public partial class Hud : CanvasLayer
 
     public override void _Process(double delta)
     {
-        HealthInfo.Text = "Health: " + Global.Player.Health.Value.ToString();
-        EnergyInfo.Text = "Energy: " + Global.Player.Energy.Value.ToString();
-        HungerInfo.Text = "Hunger: " + Global.Player.Hunger.Value.ToString();
-        ThirstInfo.Text = "Thirst: " + Global.Player.Thirst.Value.ToString();
+        HealthInfo.Text = "Health: " + Global.Player.Health.Value.ToString("F1");
+        EnergyInfo.Text = "Energy: " + Global.Player.Energy.Value.ToString("F1");
+        HungerInfo.Text = "Hunger: " + Global.Player.Hunger.Value.ToString("F1");
+        ThirstInfo.Text = "Thirst: " + Global.Player.Thirst.Value.ToString("F1");
 		EnergyBar.Value = Global.Player.Energy.Value;
 
         string formattedTime = $"Day: {Global.GameWorldTime.Days} Time: {Global.GameWorldTime.Hours.ToString("D2")}:{Global.GameWorldTime.Minutes.ToString("D2")}";

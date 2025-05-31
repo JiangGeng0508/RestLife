@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://bto6gsdtdxftl"]
+[gd_scene load_steps=15 format=3 uid="uid://bto6gsdtdxftl"]
 
 [ext_resource type="PackedScene" uid="uid://b0kw6xwewc6vv" path="res://Scenes/Item/Stair.tscn" id="1_xb4mg"]
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Item/wall.tscn" id="2_6t1o7"]
 [ext_resource type="PackedScene" uid="uid://861bfrm35j5o" path="res://Scenes/Item/SelectIntItem.tscn" id="3_5qxwa"]
 [ext_resource type="PackedScene" uid="uid://b47gxbo06clen" path="res://Scenes/Item/RideableItem.tscn" id="4_xc4hf"]
 [ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Item/InteractableItem.tscn" id="5_6rnll"]
-[ext_resource type="PackedScene" uid="uid://b25yhbndwexxv" path="res://Scenes/Player/Character.tscn" id="6_enc0b"]
-[ext_resource type="PackedScene" uid="uid://c43ww4608wcvp" path="res://Scenes/Player/TargetNotifer.tscn" id="7_hx8n4"]
+[ext_resource type="PackedScene" uid="uid://b25yhbndwexxv" path="res://Scenes/Entities/Player/Character.tscn" id="6_enc0b"]
+[ext_resource type="PackedScene" uid="uid://c45lo0s8hq66p" path="res://Scenes/Entities/NPC.tscn" id="7_6t1o7"]
+[ext_resource type="PackedScene" uid="uid://c43ww4608wcvp" path="res://Scenes/Entities/Player/TargetNotifer.tscn" id="7_hx8n4"]
 [ext_resource type="Script" uid="uid://clihekd8ip2rv" path="res://Scripts/UI/MainCamera.cs" id="8_i0j58"]
 [ext_resource type="Script" uid="uid://di14nm0jvgxks" path="res://Scripts/UI/Cursur.cs" id="9_c1ier"]
 [ext_resource type="PackedScene" uid="uid://dc74ltyvfx87h" path="res://Scenes/UI/HUD.tscn" id="10_gyaec"]
@@ -53,6 +54,9 @@ scale = Vector2(4, 4)
 
 [node name="Character" parent="." instance=ExtResource("6_enc0b")]
 disable_mode = 1
+
+[node name="Npc" parent="." instance=ExtResource("7_6t1o7")]
+position = Vector2(116, 0)
 
 [node name="UI" type="Node2D" parent="."]
 
