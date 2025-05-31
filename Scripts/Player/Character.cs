@@ -15,7 +15,6 @@ public partial class Character : CharacterBody2D
 	Area2D reachArea;
 	TargetNotifer tarPosNotifer;
 	InteractableItem interactItem;
-	public Attributes Attribute;
 	public ulong Id = 0;
 	bool handable = false;
 	CharacterState state = CharacterState.Idle;
@@ -27,103 +26,10 @@ public partial class Character : CharacterBody2D
 	int KeyDirection = 0;
 
 	// 状态值
-	private static readonly float MaxHealth = 100f;
-	private float _health = 100f;
-	public float Health
-	{
-		get
-		{
-			return _health;
-		}
-		set
-		{
-			if (value < 0)
-			{
-				_health = 0;
-			}
-			else if (value > MaxHealth)
-			{
-				_health = MaxHealth;
-			}
-			else
-			{
-				_health = value;
-			}
-		}
-	}
-	private static readonly float MaxEnergy = 100f;
-	private float _energy = 100f;
-	public float Energy
-	{
-		get
-		{
-			return _energy;
-		}
-		set
-		{
-			if (value < 0)
-			{
-				_energy = 0;
-			}
-			else if (value > MaxEnergy)
-			{
-				_energy = MaxEnergy;
-			}
-			else
-			{
-				_energy = value;
-			}
-		}
-	}
-	private static readonly float MaxHunger = 100f;
-	private float _hunger = 100f;
-	public float Hunger
-	{
-		get
-		{
-			return _hunger;
-		}
-		set
-		{
-			if (value < 0)
-			{
-				_hunger = 0;
-			}
-			else if (value > MaxHunger)
-			{
-				_hunger = MaxHunger;
-			}
-			else
-			{
-				_hunger = value;
-			}
-		}
-	}
-	private static readonly float MaxThirst = 100f;
-	private float _thirst = MaxThirst;
-	public float Thirst
-	{
-		get
-		{
-			return _thirst;
-		}
-		set
-		{
-			if (value < 0)
-			{
-				_thirst = 0;
-			}
-			else if (value > MaxThirst)
-			{
-				_thirst = MaxThirst;
-			}
-			else
-			{
-				_thirst = value;
-			}
-		}
-	}
-
+	public Attribute Health = new(50f);
+	public Attribute Energy = new(100f);
+	public Attribute Hunger = new(100f);
+	public Attribute Thirst = new(100f);
 	// 属性值
 	public float Intelligence { get; set; } = 1f;
 	public float Strength { get; set; } = 1f;
@@ -134,7 +40,6 @@ public partial class Character : CharacterBody2D
 		Global.Player = this;
 		Id = GetInstanceId();
 		reachArea = GetNode<Area2D>("ReachArea");
-		Attribute = GetNode<Attributes>("Attributes");
 		tarPosNotifer = GetNode<TargetNotifer>("../UI/TargetNotifier");
 		targetPosition = Position;;
 	}
@@ -144,8 +49,8 @@ public partial class Character : CharacterBody2D
 		switch (state)
 		{
 			case CharacterState.Idle:
-				Hunger -= 0.001f * (float)delta;
-				Thirst -= 0.001f * (float)delta;
+				Hunger.Value -= 0.001f * (float)delta;
+				Thirst.Value -= 0.001f * (float)delta;
 				break;
 			case CharacterState.Moving:
 				if ((targetPosition - Position).Length() > speed * 1.5f)
@@ -160,9 +65,9 @@ public partial class Character : CharacterBody2D
 				{
 					state = CharacterState.Idle;
 				}
-				Energy -= 0.01f * (float)delta;
-				Hunger -= 0.001f * (float)delta;
-				Thirst -= 0.001f * (float)delta;
+				Energy.Value -= 0.01f * (float)delta;
+				Hunger.Value -= 0.001f * (float)delta;
+				Thirst.Value -= 0.001f * (float)delta;
 				break;
 			case CharacterState.MovingbyKeyboard:
 				if (KeyDirection != 0)
@@ -174,13 +79,13 @@ public partial class Character : CharacterBody2D
 				{
 					state = CharacterState.Idle;
 				}
-				Energy -= 0.01f * (float)delta;
-				Hunger -= 0.001f * (float)delta;
-				Thirst -= 0.001f * (float)delta;
+				Energy.Value -= 0.01f * (float)delta;
+				Hunger.Value -= 0.001f * (float)delta;
+				Thirst.Value -= 0.001f * (float)delta;
 				break;
 			case CharacterState.Riding:
-				Hunger -= 0.001f * (float)delta;
-				Thirst -= 0.001f * (float)delta;
+				Hunger.Value -= 0.001f * (float)delta;
+				Thirst.Value -= 0.001f * (float)delta;
 				break;
 			case CharacterState.Waiting:
 				break;

@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b25yhbndwexxv"]
+[gd_scene load_steps=5 format=3 uid="uid://b25yhbndwexxv"]
 
 [ext_resource type="Script" uid="uid://bpqc71ebqcmge" path="res://Scripts/Player/Character.cs" id="1_677pu"]
-[ext_resource type="Script" uid="uid://dxnqmga2fkap3" path="res://Scripts/Player/Attributes.cs" id="3_aflf6"]
 [ext_resource type="Script" uid="uid://bs0mnasjf45co" path="res://Scripts/Player/ReachArea.cs" id="3_gi8q4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_567wp"]
@@ -35,9 +34,6 @@ script = ExtResource("3_gi8q4")
 
 [node name="ReachShape" type="CollisionShape2D" parent="ReachArea"]
 shape = SubResource("CircleShape2D_jp4cy")
-
-[node name="Attributes" type="Node2D" parent="."]
-script = ExtResource("3_aflf6")
 
 [connection signal="area_entered" from="ReachArea" to="." method="OnAreaEntered"]
 [connection signal="area_exited" from="ReachArea" to="." method="OnAreaExited"]
