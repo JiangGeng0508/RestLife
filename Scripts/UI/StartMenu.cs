@@ -3,15 +3,11 @@ using System;
 
 public partial class StartMenu : Node2D
 {
-	Button StartGame;
-	Button Load;
-
 	public override void _Ready()
 	{
-		StartGame = GetNode<Button>("StartGame");
-		Load = GetNode<Button>("Load");
-		StartGame.Connect("pressed", new Callable(this,nameof(StartGamePressed)));
-		Load.Connect("pressed", new Callable(this,nameof(LoadPressed)));
+		GetNode<Button>("StartGame").Pressed += StartGamePressed;
+		GetNode<Button>("Load").Pressed += LoadPressed;
+		GetNode<Button>("Quit").Pressed += QuitPressed;
 	}
 	public void StartGamePressed()
 	{
@@ -24,5 +20,9 @@ public partial class StartMenu : Node2D
 		{
 			GetTree().ChangeSceneToFile(file);
 		}
+	}
+	public void QuitPressed()
+	{
+		GetTree().Quit();
 	}
 }

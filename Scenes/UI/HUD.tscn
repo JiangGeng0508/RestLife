@@ -50,9 +50,6 @@ size = Vector2i(50, 100)
 visible = true
 min_size = Vector2i(50, 100)
 max_size = Vector2i(100, 1000)
-item_count = 1
-item_0/text = "12"
-item_0/id = 0
 script = ExtResource("4_1and6")
 
 [node name="Dress" type="Control" parent="SelectMenu"]

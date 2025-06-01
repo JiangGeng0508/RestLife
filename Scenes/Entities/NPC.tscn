@@ -1,22 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://c45lo0s8hq66p"]
 
 [ext_resource type="Script" uid="uid://bwqr58gsjrbq6" path="res://Scripts/Entities/Npc.cs" id="1_3twlq"]
+[ext_resource type="PackedScene" uid="uid://861bfrm35j5o" path="res://Scenes/Item/SelectIntItem.tscn" id="1_p23k1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p23k1"]
-size = Vector2(29, 69)
-
-[node name="Npc" type="Area2D"]
+[node name="Npc" instance=ExtResource("1_p23k1")]
 script = ExtResource("1_3twlq")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -14.0
-offset_top = -34.0
-offset_right = 15.0
-offset_bottom = 35.0
-color = Color(0, 0.415686, 1, 1)
+[node name="ColorRect" parent="." index="0"]
+offset_top = -117.0
+offset_bottom = 116.0
 
-[node name="NpcShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_p23k1")
-
-[node name="Timer" type="Timer" parent="."]
-process_callback = 0
+[node name="Timer" type="Timer" parent="." index="3"]

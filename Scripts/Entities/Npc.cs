@@ -11,12 +11,11 @@ public enum NpcState
 public partial class Npc : SelectIntItem
 {
 	public bool Interactable = true;
-	public Random Random = new();
-	public Vector2? TargetPosition = null;
+	Random Random = new();
+	Vector2? TargetPosition = null;
+	float RandomDirection = 0;
 	private NpcState _state = NpcState.Idle;
 	public Timer Timer;
-	//debug
-	public ColorRect ColorRect;
 	public NpcState State
 	{
 		get
@@ -26,6 +25,7 @@ public partial class Npc : SelectIntItem
 		set
 		{
 			ColorRect.Color = new Color(1, 1, 1);//白色
+			DelFunc(PickUpQuest);
 			switch (value)
 			{
 				case NpcState.Idle:
@@ -33,6 +33,7 @@ public partial class Npc : SelectIntItem
 					break;
 				case NpcState.WaitingWithQuest:
 					ColorRect.Color = new Color(1, 0, 0);//红色
+					MergeVoidFunc(PickUpQuest);
 					Interactable = true;
 					break;
 				case NpcState.Wandering:
@@ -74,7 +75,7 @@ public partial class Npc : SelectIntItem
 			case NpcState.WaitingWithQuest:
 				break;
 			case NpcState.Wandering:
-				Position += new Vector2(Random.Next(-1, 2), Random.Next(-1, 2));
+				Position += new Vector2(RandomDirection, 0);
 				break;
 			case NpcState.Forwarding:
 				break;
@@ -90,6 +91,7 @@ public partial class Npc : SelectIntItem
 	}
 	public void UpdataState()
 	{
+		RandomDirection = (float)Random.NextDouble() * 2 - 1;
 		switch (State)
 		{
 			case NpcState.Idle:
@@ -117,12 +119,12 @@ public partial class Npc : SelectIntItem
 		StateSelectionMenu.AddItem("Wandering", 2);
 		StateSelectionMenu.AddItem("Forwarding", 3);
 		StateSelectionMenu.AddItem("Busying", 4);
-		StateSelectionMenu.IdPressed += ChangeStateId;
+		StateSelectionMenu.IdPressed += ChangeState;
 		StateSelectionMenu.Position = new Vector2I(600, 300);
 		StateSelectionMenu.Show();
-		StateSelectionMenu.PopupHide += StateSelectionMenu.QueueFree;
+		StateSelectionMenu.MouseExited += StateSelectionMenu.QueueFree;
 	}
-	public void ChangeStateId(long Id)
+	public void ChangeState(long Id)
 	{
 		switch (Id)
 		{
@@ -142,5 +144,9 @@ public partial class Npc : SelectIntItem
 				State = NpcState.Busying;
 				break;
 		}
+	}
+	public void PickUpQuest()
+	{
+		GD.Print("PickUpQuest");
 	}
 }

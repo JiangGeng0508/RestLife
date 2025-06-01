@@ -14,8 +14,6 @@ public partial class Saver : Node
 	{
 		GD.Print("Saving game...");
 		using var file = FileAccess.Open(SavePath, FileAccess.ModeFlags.Write);
-		var scene = new PackedScene();
-		
 		var saveData = new Dictionary();
 		saveData["Player"] = Global.Player;
 		saveData["GameWorldTime"] = Global.GameWorldTime;
@@ -27,7 +25,6 @@ public partial class Saver : Node
 	}
 	public static void SaveScene(Node node)
 	{
-		using var file = FileAccess.Open($"res://Save/{node.Name}1.tscn", FileAccess.ModeFlags.Write);
 		var scene = new PackedScene();
 		if (scene.Pack(node) == Error.Ok)
 		{
@@ -37,7 +34,5 @@ public partial class Saver : Node
 				GD.PushError($"An error occurred while saving the scene: {error}");
 			}
 		}
-		file.StoreVar(scene.Duplicate());
-		file.Close();
 	}
 }

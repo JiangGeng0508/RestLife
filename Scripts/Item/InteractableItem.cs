@@ -7,12 +7,12 @@ public partial class InteractableItem : Area2D
 	public bool MouseIn = false;
 	public Area2D CharaReachArea;
 	public Label label;
-	public ColorRect sprite;
+	public ColorRect ColorRect;
 	public override void _Ready()
 	{
 		AreaEntered += onAreaEntered;
 		AreaExited += onAreaExited;
-		sprite = GetNode<ColorRect>("ColorRect");
+		ColorRect = GetNode<ColorRect>("ColorRect");
 
 		Init();
 	}
@@ -22,16 +22,16 @@ public partial class InteractableItem : Area2D
 		{
 			if (MouseIn)
 			{
-				sprite.Color = new Color(0, 1, 0, 1);//绿色
+				ColorRect.Color = new Color(0, 1, 0, 1);//绿色
 			}
 			else
 			{
-				sprite.Color = new Color(255, 0, 0, 1);//红色
+				ColorRect.Color = new Color(255, 0, 0, 1);//红色
 			}
 		}
 		else
 		{
-			sprite.Color = new Color(1, 1, 1, 1);//白色
+			ColorRect.Color = new Color(1, 1, 1, 1);//白色
 		}
 	}
 

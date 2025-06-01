@@ -49,8 +49,8 @@ public partial class Character : CharacterBody2D
 		switch (state)
 		{
 			case CharacterState.Idle:
-				Hunger.Value -= 0.001f * (float)delta;
-				Thirst.Value -= 0.001f * (float)delta;
+				Hunger.Value -= 0.1f * (float)delta;
+				Thirst.Value -= 0.1f * (float)delta;
 				break;
 			case CharacterState.Moving:
 				if ((targetPosition - Position).Length() > speed * 1.5f)
@@ -65,9 +65,9 @@ public partial class Character : CharacterBody2D
 				{
 					state = CharacterState.Idle;
 				}
-				Energy.Value -= 0.01f * (float)delta;
-				Hunger.Value -= 0.001f * (float)delta;
-				Thirst.Value -= 0.001f * (float)delta;
+				Energy.Value -= 0.1f * (float)delta;
+				Hunger.Value -= 0.1f * (float)delta;
+				Thirst.Value -= 0.1f * (float)delta;
 				break;
 			case CharacterState.MovingbyKeyboard:
 				if (KeyDirection != 0)
@@ -79,13 +79,13 @@ public partial class Character : CharacterBody2D
 				{
 					state = CharacterState.Idle;
 				}
-				Energy.Value -= 0.01f * (float)delta;
-				Hunger.Value -= 0.001f * (float)delta;
-				Thirst.Value -= 0.001f * (float)delta;
+				Energy.Value -= 0.1f * (float)delta;
+				Hunger.Value -= 0.1f * (float)delta;
+				Thirst.Value -= 0.1f * (float)delta;
 				break;
 			case CharacterState.Riding:
-				Hunger.Value -= 0.001f * (float)delta;
-				Thirst.Value -= 0.001f * (float)delta;
+				Hunger.Value -= 0.1f * (float)delta;
+				Thirst.Value -= 0.1f * (float)delta;
 				break;
 			case CharacterState.Waiting:
 				break;
