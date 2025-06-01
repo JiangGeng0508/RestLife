@@ -47,8 +47,12 @@ auto_width = true
 auto_translate_mode = 1
 position = Vector2i(700, 200)
 size = Vector2i(50, 100)
+visible = true
 min_size = Vector2i(50, 100)
 max_size = Vector2i(100, 1000)
+item_count = 1
+item_0/text = "12"
+item_0/id = 0
 script = ExtResource("4_1and6")
 
 [node name="Dress" type="Control" parent="SelectMenu"]
@@ -125,6 +129,14 @@ offset_right = 232.004
 offset_bottom = 186.0
 action_mode = 0
 text = "SaveScene"
+
+[node name="Esc" type="Button" parent="SelectMenu/Menu"]
+layout_mode = 0
+offset_left = 76.004
+offset_top = 212.0
+offset_right = 225.004
+offset_bottom = 254.0
+text = "Esc"
 
 [node name="GameWorldInfo" type="Control" parent="."]
 layout_mode = 3

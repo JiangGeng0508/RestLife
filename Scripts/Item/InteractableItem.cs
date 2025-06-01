@@ -10,8 +10,8 @@ public partial class InteractableItem : Area2D
 	public ColorRect sprite;
 	public override void _Ready()
 	{
-		Connect("area_entered", new Callable(this, nameof(onAreaEntered)));
-		Connect("area_exited", new Callable(this, nameof(onAreaExited)));
+		AreaEntered += onAreaEntered;
+		AreaExited += onAreaExited;
 		sprite = GetNode<ColorRect>("ColorRect");
 
 		Init();

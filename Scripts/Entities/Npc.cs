@@ -11,6 +11,7 @@ public enum NpcState
 public partial class Npc : SelectIntItem
 {
 	public bool Interactable = true;
+	public Random Random = new();
 	public Vector2? TargetPosition = null;
 	private NpcState _state = NpcState.Idle;
 	public Timer Timer;
@@ -58,7 +59,7 @@ public partial class Npc : SelectIntItem
 		Timer.Start();
 		Timer.WaitTime = 1f;
 		Timer.Connect("timeout", new Callable(this, "OnTimerTimeout"));
-		MergeVoidFunc(ChangeStateToQuest);
+		MergeVoidFunc(ChangeState);
 
 		//debug
 		ColorRect = GetNode<ColorRect>("ColorRect");
@@ -73,6 +74,7 @@ public partial class Npc : SelectIntItem
 			case NpcState.WaitingWithQuest:
 				break;
 			case NpcState.Wandering:
+				Position += new Vector2(Random.Next(-1, 2), Random.Next(-1, 2));
 				break;
 			case NpcState.Forwarding:
 				break;
@@ -92,10 +94,12 @@ public partial class Npc : SelectIntItem
 		{
 			case NpcState.Idle:
 				Interactable = true;
+				Timer.WaitTime = Random.Next(1, 5);
 				State = NpcState.Wandering;
 				break;
 			case NpcState.Wandering:
 				Interactable = true;
+				Timer.WaitTime = Random.Next(1, 5);
 				State = NpcState.Idle;
 				break;
 			default:
@@ -103,8 +107,40 @@ public partial class Npc : SelectIntItem
 		}
 	}
 	//debug
-	public void ChangeStateToQuest()
+	public void ChangeState()
 	{
-		State = NpcState.WaitingWithQuest;
+		GD.Print("ChangeState");
+		var StateSelectionMenu = new PopupMenu();
+		AddChild(StateSelectionMenu);
+		StateSelectionMenu.AddItem("Idle", 0);
+		StateSelectionMenu.AddItem("WaitingWithQuest", 1);
+		StateSelectionMenu.AddItem("Wandering", 2);
+		StateSelectionMenu.AddItem("Forwarding", 3);
+		StateSelectionMenu.AddItem("Busying", 4);
+		StateSelectionMenu.IdPressed += ChangeStateId;
+		StateSelectionMenu.Position = new Vector2I(600, 300);
+		StateSelectionMenu.Show();
+		StateSelectionMenu.PopupHide += StateSelectionMenu.QueueFree;
+	}
+	public void ChangeStateId(long Id)
+	{
+		switch (Id)
+		{
+			case 0:
+				State = NpcState.Idle;
+				break;
+			case 1:
+				State = NpcState.WaitingWithQuest;
+				break;
+			case 2:
+				State = NpcState.Wandering;
+				break;
+			case 3:
+				State = NpcState.Forwarding;
+				break;
+			case 4:
+				State = NpcState.Busying;
+				break;
+		}
 	}
 }

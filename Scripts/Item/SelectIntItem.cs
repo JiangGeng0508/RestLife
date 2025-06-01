@@ -32,7 +32,7 @@ public partial class SelectIntItem : InteractableItem
 			Text = func.Method.Name,
 			ActionMode = BaseButton.ActionModeEnum.Press,
 		};
-		button.Connect("pressed", new Callable(this, func.Method.Name));
+		button.Pressed += func;
 		grid.AddChild(button);
 	}
 	public void DelFunc(Action func)
