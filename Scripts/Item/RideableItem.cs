@@ -12,7 +12,7 @@ public partial class RideableItem : InteractableItem
 		if (CharaReachArea != null && rider == null)
 		{
 			rider = CharaReachArea.GetParent() as Character;
-			rider.Ride(this);
+			rider?.Ride(this);
 		}
 	}
 }

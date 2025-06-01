@@ -5,7 +5,6 @@ public partial class RightClickMenu : PopupMenu
 {
 	int Id = 0;
 	private Vector2I ParentOffset = new(0, 0);
-	public Item ActionItem;//当前选中的item
 	public Action[] BindActions;
 	public override void _Ready()
 	{
@@ -15,15 +14,19 @@ public partial class RightClickMenu : PopupMenu
 	}
 	public void Invoke(string item,Vector2 position)//调出时更新
 	{
-		//获取item
-		ActionItem = Inventory.Items[item];
-		foreach (var action in ActionItem.actions)
+		foreach (var action in Inventory.Items[item].actions)
 		{
 			if (action is not null)
 			{
 				AddVoidSelection(action);
 			}
 		}
+		Position = (Vector2I)position + ParentOffset;
+		Show();
+	}
+	public void Invoke(Vector2 position)//非物品node调用
+	{
+		//先加入选项AddVoidSelection()
 		Position = (Vector2I)position + ParentOffset;
 		Show();
 	}
@@ -35,10 +38,11 @@ public partial class RightClickMenu : PopupMenu
 		//绑定动作
 		Id++;
 	}
-	public void OnLoseFocus()
+	public void OnLoseFocus()//失焦归零
 	{
 		Hide();
 		Clear();
+		BindActions.Initialize();
 		Id = 0;
 	}
 	public void OnIdPressed(int id)

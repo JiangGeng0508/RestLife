@@ -8,7 +8,6 @@ public partial class Item : GodotObject
 	public Texture2D Icon { get; set; } = GD.Load<Texture2D>("res://icon.svg");//图标
 	public Action[] actions = new Action[9];
 
-	// Do Number Better
 	private int _number = 1;
 	[Export(PropertyHint.Range, "0,99,1")]
 	public int Number

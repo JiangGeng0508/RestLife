@@ -136,8 +136,8 @@ public partial class Character : CharacterBody2D
 			{
 				if (keyEvent.Keycode == Key.E && handable && !IsWaiting())
 				{
-					state = CharacterState.Idle;
 					interactItem.Action();
+					AfterAction();
 				}
 				if (!IsRiding() && !IsWaiting())
 				{
