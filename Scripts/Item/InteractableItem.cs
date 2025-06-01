@@ -3,7 +3,7 @@ using System;
 
 public partial class InteractableItem : Area2D
 {
-	public bool Interactable = false;
+	public bool IsPlayerClosed = false;
 	public bool MouseIn = false;
 	public Area2D CharaReachArea;
 	public Label label;
@@ -18,7 +18,7 @@ public partial class InteractableItem : Area2D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		if (Interactable)
+		if (IsPlayerClosed)
 		{
 			if (MouseIn)
 			{
@@ -39,7 +39,7 @@ public partial class InteractableItem : Area2D
 	{
 		if (@event is InputEventMouseButton mouseEvent)
 		{
-			if (Interactable && MouseIn && mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed )
+			if (IsPlayerClosed && MouseIn && mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed )
 			{
 				Action();
 				CharaReachArea.GetParent().Call("AfterAction");
@@ -52,7 +52,7 @@ public partial class InteractableItem : Area2D
 		{
 			var id = reachArea.GetParent().GetInstanceId();
 			AddToGroup("ReachedItem" + id.ToString());
-			Interactable = true;
+			IsPlayerClosed = true;
 			CharaReachArea = area;
 		}
 		else if (area is Cursur cursur)
@@ -66,7 +66,7 @@ public partial class InteractableItem : Area2D
 		{
 			var id = reachArea.GetParent().GetInstanceId();
 			RemoveFromGroup("ReachedItem" + id.ToString());
-			Interactable = false;
+			IsPlayerClosed = false;
 			CharaReachArea = null;
 		}
 		else if (area is Cursur cursur)

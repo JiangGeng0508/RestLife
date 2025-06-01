@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p23k1"]
 size = Vector2(29, 69)
 
-[node name="Npc" type="Node2D"]
+[node name="Npc" type="Area2D"]
 script = ExtResource("1_3twlq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -15,7 +15,8 @@ offset_right = 15.0
 offset_bottom = 35.0
 color = Color(0, 0.415686, 1, 1)
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="NpcShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_p23k1")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
