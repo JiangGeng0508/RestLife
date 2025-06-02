@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl043a1j6m64f"]
+
+[ext_resource type="Script" uid="uid://bcfcwrvroa6lo" path="res://Scripts/UI/GodMode.cs" id="1_klimb"]
+
+[node name="GodMode" type="VBoxContainer"]
+visible = false
+script = ExtResource("1_klimb")
+isDebug = true
+metadata/_tab_index = 3
