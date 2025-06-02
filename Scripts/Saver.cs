@@ -2,6 +2,7 @@ using System;
 using Godot;
 using Godot.Collections;
 
+//AutoLoad Script
 public partial class Saver : Node
 {
 	private static readonly string SavePath = "res://savegame.save";

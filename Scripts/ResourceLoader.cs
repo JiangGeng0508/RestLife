@@ -1,6 +1,7 @@
 using System;
 using Godot;
 
+//AutoLoad Script
 public partial class ResourceLoader : Node
 {
 	public Sprite2D NoneSprite;
