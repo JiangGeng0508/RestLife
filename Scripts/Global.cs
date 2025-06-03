@@ -12,4 +12,5 @@ public partial class Global : Node
 	public static DressUI DressUI;
 	public static Saver Saver;
 	public static EventBus EventBus;
+	public static MainProcess MainProcess;
 }

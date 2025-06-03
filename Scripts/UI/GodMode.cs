@@ -4,13 +4,16 @@ using System;
 public partial class GodMode : VBoxContainer
 {
 	[Export]
-	public bool isDebug { get; set; } = false;
+	public bool isDebug { get; set; } = true;
 
 	public override void _Ready()
 	{
+		Position = new Vector2(10, 10);
+		Size = new Vector2(200, 100);
 		if (!isDebug) return;
 		AddDebugSelection("DebugPrint", () => { GD.Print("Debug"); });
-		// AddDebugSelection("Pause", () => { GetTree().Paused = !GetTree().Paused; });
+		AddDebugSelection("NextDay", () => { Global.GameWorldTime.Days++; });
+		// AddDebugSelection("Pause", () => { Global.MainProcess.Pause(); });
 	}
 	public void AddDebugSelection(string name, Action action)
 	{
