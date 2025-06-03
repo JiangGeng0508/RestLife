@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://vvjn0laj7y1g"]
+
+[ext_resource type="Script" uid="uid://d2rew2e3y5lyx" path="res://Scripts/UI/DialogueLayer.cs" id="1_ev3om"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5qxwa"]
+font_size = 32
+
+[node name="DialogueLayer" type="CanvasLayer"]
+script = ExtResource("1_ev3om")
+
+[node name="DialogueLabel" type="Label" parent="."]
+visible = false
+offset_left = 397.0
+offset_top = 567.0
+offset_right = 784.0
+offset_bottom = 603.0
+text = "[ Dialogue ]"
+horizontal_alignment = 1
+
+[node name="DialogueTimer" type="Timer" parent="DialogueLabel"]
+
+[node name="DialoguePop" type="ConfirmationDialog" parent="."]
+auto_translate_mode = 1
+initial_position = 2
+size = Vector2i(500, 184)
+visible = true
+ok_button_text = "Accept"
+cancel_button_text = "Deny"
+
+[node name="DialogueTextLabel" type="RichTextLabel" parent="DialoguePop"]
+clip_contents = false
+custom_minimum_size = Vector2(200, 50)
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 492.0
+offset_bottom = 135.0
+text = "Dialogue Text For Test"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="SayLabel" type="Label" parent="."]
+visible = false
+offset_left = 235.0
+offset_top = 244.0
+offset_right = 963.0
+offset_bottom = 337.0
+text = "[ Say ]"
+label_settings = SubResource("LabelSettings_5qxwa")
+horizontal_alignment = 1
+
+[node name="SayTimer" type="Timer" parent="SayLabel"]

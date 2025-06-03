@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dc74ltyvfx87h" path="res://Scenes/UI/HUD.tscn" id="10_gyaec"]
 [ext_resource type="Script" uid="uid://105bb6xllrh0" path="res://Scripts/UI/Inventory/Inventory.cs" id="11_bpy1e"]
 [ext_resource type="Script" uid="uid://ckul63kwa5hjw" path="res://Scripts/UI/Inventory/Dress.cs" id="12_p5ymy"]
-[ext_resource type="Script" uid="uid://d2rew2e3y5lyx" path="res://Scripts/UI/DialogueLayer.cs" id="14_5qxwa"]
+[ext_resource type="PackedScene" uid="uid://vvjn0laj7y1g" path="res://DialogueLayer.tscn" id="14_5qxwa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmxlf"]
 radius = 3.0
@@ -88,35 +88,7 @@ script = ExtResource("11_bpy1e")
 [node name="Dress" type="Node" parent="Attributes"]
 script = ExtResource("12_p5ymy")
 
-[node name="DialogueLayer" type="CanvasLayer" parent="."]
-script = ExtResource("14_5qxwa")
-
-[node name="DialogueLabel" type="Label" parent="DialogueLayer"]
-offset_left = 397.0
-offset_top = 567.0
-offset_right = 784.0
-offset_bottom = 603.0
-text = "[ Dialogue ]"
-horizontal_alignment = 1
-
-[node name="Dialogue" type="ConfirmationDialog" parent="DialogueLayer"]
-initial_position = 2
-size = Vector2i(500, 184)
-visible = true
-ok_button_text = "Accept"
-cancel_button_text = "Deny"
-
-[node name="DialogueTextLabel" type="RichTextLabel" parent="DialogueLayer/Dialogue"]
-clip_contents = false
-custom_minimum_size = Vector2(200, 50)
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 492.0
-offset_bottom = 135.0
-text = "Dialogue Text For Test"
-fit_content = true
-autowrap_mode = 2
-horizontal_alignment = 1
+[node name="DialogueLayer" parent="." instance=ExtResource("14_5qxwa")]
 
 [connection signal="area_entered" from="UI/Cursur" to="UI/Cursur" method="OnAreaEntered"]
 [connection signal="area_exited" from="UI/Cursur" to="UI/Cursur" method="OnAreaExited"]

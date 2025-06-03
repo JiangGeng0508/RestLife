@@ -84,6 +84,7 @@ public partial class Character : CharacterBody2D
 				Thirst.Value -= 0.1f * (float)delta;
 				break;
 			case CharacterState.Riding:
+				Energy.Value += 0.1f * (float)delta;
 				Hunger.Value -= 0.1f * (float)delta;
 				Thirst.Value -= 0.1f * (float)delta;
 				break;
