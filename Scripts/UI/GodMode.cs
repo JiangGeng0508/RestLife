@@ -13,11 +13,12 @@ public partial class GodMode : VBoxContainer
 		if (!isDebug) return;
 		AddDebugSelection("DebugPrint", () => { GD.Print("Debug"); });
 		AddDebugSelection("NextDay", () => { Global.GameWorldTime.Days++; });
-		// AddDebugSelection("Pause", () => { Global.MainProcess.Pause(); });
+		AddDebugSelection("Pause", () => { Engine.TimeScale = 0; });
+		AddDebugSelection("Unpause", () => { Engine.TimeScale = 1; });
 	}
 	public void AddDebugSelection(string name, Action action)
 	{
-		Button button = new Button() { Text = name };
+		Button button = new() { Text = name };
 		button.Pressed += action;
 		button.Position = new Vector2(10, 10 + GetChildCount() * 30);
 		button.Size = new Vector2(100, 20);
