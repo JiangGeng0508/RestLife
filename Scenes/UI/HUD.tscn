@@ -178,13 +178,6 @@ offset_top = 30.0
 offset_right = 40.0
 offset_bottom = 53.0
 
-[node name="ThirstInfo" type="Label" parent="PlayerState"]
-layout_mode = 0
-offset_left = 145.0
-offset_top = 30.0
-offset_right = 185.0
-offset_bottom = 53.0
-
 [node name="EnergyBar" type="ProgressBar" parent="PlayerState"]
 layout_mode = 0
 offset_left = 11.0

@@ -9,7 +9,6 @@ public partial class Hud : CanvasLayer
 	public Label HealthInfo;
 	public Label EnergyInfo;
 	public Label HungerInfo;
-	public Label ThirstInfo;
 	public ProgressBar EnergyBar;
 
 	public override void _Ready()
@@ -20,7 +19,6 @@ public partial class Hud : CanvasLayer
 		HealthInfo = PlayerState.GetNode<Label>("HealthInfo");
 		EnergyInfo = PlayerState.GetNode<Label>("EnergyInfo");
 		HungerInfo = PlayerState.GetNode<Label>("HungerInfo");
-		ThirstInfo = PlayerState.GetNode<Label>("ThirstInfo");
 		EnergyBar = PlayerState.GetNode<ProgressBar>("EnergyBar");
 		EnergyBar.MaxValue = 100f;
 	}
@@ -30,7 +28,6 @@ public partial class Hud : CanvasLayer
         HealthInfo.Text = "Health: " + Global.Player.Health.Value.ToString("F1");
         EnergyInfo.Text = "Energy: " + Global.Player.Energy.Value.ToString("F1");
         HungerInfo.Text = "Hunger: " + Global.Player.Hunger.Value.ToString("F1");
-        ThirstInfo.Text = "Thirst: " + Global.Player.Thirst.Value.ToString("F1");
 		EnergyBar.Value = Global.Player.Energy.Value;
 
         string formattedTime = $"Day: {Global.GameWorldTime.Days} Time: {Global.GameWorldTime.Hours.ToString("D2")}:{Global.GameWorldTime.Minutes.ToString("D2")}";

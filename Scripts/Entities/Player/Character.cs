@@ -29,7 +29,6 @@ public partial class Character : CharacterBody2D
 	public Attribute Health = new(50f);
 	public Attribute Energy = new(100f);
 	public Attribute Hunger = new(100f);
-	public Attribute Thirst = new(100f);
 	// 属性值
 	public float Intelligence { get; set; } = 1f;
 	public float Strength { get; set; } = 1f;
@@ -50,7 +49,6 @@ public partial class Character : CharacterBody2D
 		{
 			case CharacterState.Idle:
 				Hunger.Value -= 0.1f * (float)delta;
-				Thirst.Value -= 0.1f * (float)delta;
 				break;
 			case CharacterState.Moving:
 				if ((targetPosition - Position).Length() > 10f)
@@ -67,7 +65,6 @@ public partial class Character : CharacterBody2D
 				}
 				Energy.Value -= 0.1f * (float)delta;
 				Hunger.Value -= 0.1f * (float)delta;
-				Thirst.Value -= 0.1f * (float)delta;
 				break;
 			case CharacterState.MovingbyKeyboard:
 				if (KeyDirection != 0)
@@ -81,12 +78,9 @@ public partial class Character : CharacterBody2D
 				}
 				Energy.Value -= 0.1f * (float)delta;
 				Hunger.Value -= 0.1f * (float)delta;
-				Thirst.Value -= 0.1f * (float)delta;
 				break;
 			case CharacterState.Riding:
-				Energy.Value += 0.1f * (float)delta;
 				Hunger.Value -= 0.1f * (float)delta;
-				Thirst.Value -= 0.1f * (float)delta;
 				break;
 			case CharacterState.Waiting:
 				break;
