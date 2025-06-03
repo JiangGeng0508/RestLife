@@ -21,7 +21,7 @@ public partial class Character : CharacterBody2D
 	Vector2 targetPosition = Vector2.Zero;
 	CharacterState prevState = CharacterState.Idle;
 
-	float speed = 10f;
+	float Speed = 500f;
 	private Vector2 _prevPosition = Vector2.Zero;
 	int KeyDirection = 0;
 
@@ -53,9 +53,9 @@ public partial class Character : CharacterBody2D
 				Thirst.Value -= 0.1f * (float)delta;
 				break;
 			case CharacterState.Moving:
-				if ((targetPosition - Position).Length() > speed * 1.5f)
+				if ((targetPosition - Position).Length() > Speed * 1.5f)
 				{
-					Velocity = (targetPosition - Position).Normalized() * speed;
+					Velocity = (targetPosition - Position).Normalized() * Speed * (float)delta;
 					if (MoveAndCollide(Velocity) != null)
 					{
 						state = CharacterState.Idle;
@@ -72,7 +72,7 @@ public partial class Character : CharacterBody2D
 			case CharacterState.MovingbyKeyboard:
 				if (KeyDirection != 0)
 				{
-					Velocity = new Vector2(KeyDirection, 0) * speed;
+					Velocity = new Vector2(KeyDirection, 0) * Speed * (float)delta;
 					MoveAndCollide(Velocity);
 				}
 				else
