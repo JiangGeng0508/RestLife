@@ -4,20 +4,24 @@ using System;
 public partial class TargetNotifer : Node2D
 {
 	Polygon2D polygon;
+	Timer timer;
 
 	public override void _Ready()
 	{
 		polygon = GetNode<Polygon2D>("Polygon2D");
+		timer = GetNode<Timer>("Timer");
+		timer.Timeout += HideTarget;
 		HideTarget();
 	}
 
 	public void ShowTarget()
 	{
 		polygon.Visible = true;
-		GetTree().CreateTimer(1.5f).Connect("timeout",new Callable(this,nameof(HideTarget)));
+		timer.Start();
 	}
 	public void HideTarget()
 	{
 		polygon.Visible = false;
+		timer.Stop();
 	}
 }

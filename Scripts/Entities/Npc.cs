@@ -5,14 +5,13 @@ public enum NpcState
 	Idle,//静止
 	WaitingWithQuest,//有任务，等待接取
 	Wandering,//漫游
-	Forwarding,//有目的地，前往目的地
+	Backwarding,//有目的地，前往目的地
 	Busying,//忙碌
 }
 public partial class Npc : SelectIntItem
 {
 	public bool Interactable = true;
 	Random Random = new();
-	Vector2? TargetPosition = null;
 	float RandomDirection = 0;
 	private NpcState _state = NpcState.Idle;
 	public Timer Timer;
@@ -39,12 +38,7 @@ public partial class Npc : SelectIntItem
 				case NpcState.Wandering:
 					Interactable = true;
 					break;
-				case NpcState.Forwarding:
-					if (TargetPosition == null)
-					{
-						State = NpcState.Idle;
-						break;
-					}
+				case NpcState.Backwarding:
 					Interactable = false;
 					break;
 				case NpcState.Busying:
@@ -77,7 +71,13 @@ public partial class Npc : SelectIntItem
 			case NpcState.Wandering:
 				Position += new Vector2(RandomDirection, 0);
 				break;
-			case NpcState.Forwarding:
+			case NpcState.Backwarding:
+				if (Position.DistanceTo(Vector2.Zero) < 1)
+				{
+					State = NpcState.Idle;
+					break;
+				}
+				Position += new Vector2(-Position.X, 0).Normalized();
 				break;
 			case NpcState.Busying:
 				break;
@@ -95,13 +95,16 @@ public partial class Npc : SelectIntItem
 		switch (State)
 		{
 			case NpcState.Idle:
-				Interactable = true;
 				Timer.WaitTime = Random.Next(1, 5);
 				State = NpcState.Wandering;
 				break;
 			case NpcState.Wandering:
-				Interactable = true;
 				Timer.WaitTime = Random.Next(1, 5);
+				if (Position.X < -100 || Position.X > 100)
+				{
+					State = NpcState.Backwarding;
+					break;
+				}
 				State = NpcState.Idle;
 				break;
 			default:
@@ -138,7 +141,7 @@ public partial class Npc : SelectIntItem
 				State = NpcState.Wandering;
 				break;
 			case 3:
-				State = NpcState.Forwarding;
+				State = NpcState.Backwarding;
 				break;
 			case 4:
 				State = NpcState.Busying;
@@ -148,5 +151,6 @@ public partial class Npc : SelectIntItem
 	public void PickUpQuest()
 	{
 		GD.Print("PickUpQuest");
+		State = NpcState.Idle;
 	}
 }

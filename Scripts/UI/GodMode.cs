@@ -13,8 +13,7 @@ public partial class GodMode : VBoxContainer
 		if (!isDebug) return;
 		AddDebugSelection("DebugPrint", () => { GD.Print("Debug"); });
 		AddDebugSelection("NextDay", () => { Global.GameWorldTime.Days++; });
-		AddDebugSelection("Pause", () => { Engine.TimeScale = 0; });
-		AddDebugSelection("Unpause", () => { Engine.TimeScale = 1; });
+		AddDebugSelection("TogglePause", () => { Engine.TimeScale = Engine.TimeScale == 0? 1 : 0; });
 	}
 	public void AddDebugSelection(string name, Action action)
 	{

@@ -10,3 +10,6 @@ color = Color(0, 0.329412, 1, 1)
 offset = Vector2(0, -80)
 polygon = PackedVector2Array(-20, -20, 20, -20, 20, 20, 40, 20, 0, 60, -40, 20, -20, 20)
 uv = PackedVector2Array(-64, 88, -64, -40, 16, -40, 16, 88, 72, 88, -24, 200, -128, 88)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
