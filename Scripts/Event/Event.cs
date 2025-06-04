@@ -27,7 +27,13 @@ public class Quest : IEvent
 	public virtual void Vanish() { }
 	public Quest()
 	{
-		TriggerCondition.Meet = Delegate.CreateDelegate(typeof(ConditionMeet), this, "Trigger");
+		TriggerCondition = new Condition()
+		{
+			Meet = () =>
+			{
+				Trigger();
+			}
+		};
 	}
 }
 public partial  class AutoActivateEvent : Node, IEvent

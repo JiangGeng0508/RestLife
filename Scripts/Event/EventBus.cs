@@ -39,6 +39,10 @@ public partial class EventBus : Node
 		{
 			TriggerCondition = new Condition(ConditionType.Time, "Day", ConditionOperator.Equal, 3f)
 		};
+		q.TriggerCondition.Meet = () =>
+				{
+					q.Trigger();
+				};
 		Register(q);
 	}
 }
