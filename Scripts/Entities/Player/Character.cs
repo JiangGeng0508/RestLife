@@ -12,12 +12,42 @@ public enum CharacterState
 public partial class Character : CharacterBody2D
 {
 	Area2D reachArea;
+	AnimatedSprite2D PlayerAnim;
 	TargetNotifer tarPosNotifer;
 	InteractableItem interactItem;
 	RideableItem ridingItem;
 	public ulong Id = 0;
 	bool handable = false;
-	CharacterState state = CharacterState.Idle;
+	private CharacterState _state = CharacterState.Idle;
+	public CharacterState State
+	{
+		get => _state;
+		set
+		{
+			if (_state != value)
+			{
+				_state = value;
+				switch (_state)
+				{
+					case CharacterState.Idle:
+						PlayerAnim.Play("Idle");
+						break;
+					case CharacterState.Moving:
+						PlayerAnim.Play("Walk");
+						break;
+					case CharacterState.MovingbyKeyboard:
+						PlayerAnim.Play("Walk");
+						break;
+					case CharacterState.Riding:
+						PlayerAnim.Play("Interact");
+						break;
+					case CharacterState.Waiting:
+						PlayerAnim.Play("Wait");
+						break;
+				}
+			}
+		}
+	}
 	Vector2 targetPosition = Vector2.Zero;
 	CharacterState prevState = CharacterState.Idle;
 
@@ -35,12 +65,14 @@ public partial class Character : CharacterBody2D
 		Id = GetInstanceId();
 		reachArea = GetNode<Area2D>("ReachArea");
 		tarPosNotifer = GetNode<TargetNotifer>("../TargetNotifier");
-		targetPosition = Position;;
+		targetPosition = Position;
+		PlayerAnim = GetNode<AnimatedSprite2D>("PlayerAnim");
+		PlayerAnim.Play("Idle");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		switch (state)
+		switch (State)
 		{
 			case CharacterState.Idle:
 				Hunger.Value -= 0.1f * (float)delta;
@@ -49,14 +81,22 @@ public partial class Character : CharacterBody2D
 				if ((targetPosition - Position).Length() > 10f)
 				{
 					Velocity = (targetPosition - Position).Normalized() * Speed * (float)delta;
+					if (Velocity.X > 0)
+					{
+						PlayerAnim.FlipH = false;
+					}
+					else if (Velocity.X < 0)
+					{
+						PlayerAnim.FlipH = true;
+					}
 					if (MoveAndCollide(Velocity) != null)
 					{
-						state = CharacterState.Idle;
+						State = CharacterState.Idle;
 					}
 				}
 				else
 				{
-					state = CharacterState.Idle;
+					State = CharacterState.Idle;
 				}
 				Energy.Value -= 0.1f * (float)delta;
 				Hunger.Value -= 0.1f * (float)delta;
@@ -66,11 +106,20 @@ public partial class Character : CharacterBody2D
 				{
 					Velocity = new Vector2(KeyDirection, 0) * Speed * (float)delta;
 					MoveAndCollide(Velocity);
+					if (Velocity.X > 0)
+					{
+						PlayerAnim.FlipH = false;
+					}
+					else if (Velocity.X < 0)
+					{
+						PlayerAnim.FlipH = true;
+					}
 				}
 				else
 				{
-					state = CharacterState.Idle;
+					State = CharacterState.Idle;
 				}
+				
 				Energy.Value -= 0.1f * (float)delta;
 				Hunger.Value -= 0.1f * (float)delta;
 				break;
@@ -94,7 +143,7 @@ public partial class Character : CharacterBody2D
 					tarPosNotifer.Position = new Vector2(mousePos.X, Position.Y);
 					tarPosNotifer.ShowTarget();
 					targetPosition = new Vector2(mousePos.X, Position.Y);
-					state = CharacterState.Moving;
+					State = CharacterState.Moving;
 					KeyDirection = 0;
 				}
 				else if (IsRiding())
@@ -135,12 +184,12 @@ public partial class Character : CharacterBody2D
 					if (keyEvent.Keycode == Key.A)
 					{
 						KeyDirection = -1;
-						state = CharacterState.MovingbyKeyboard;
+						State = CharacterState.MovingbyKeyboard;
 					}
 					else if (keyEvent.Keycode == Key.D)
 					{
 						KeyDirection = 1;
-						state = CharacterState.MovingbyKeyboard;
+						State = CharacterState.MovingbyKeyboard;
 					}
 				}
 				else if (IsRiding() && keyEvent.Keycode == Key.R)
@@ -151,13 +200,13 @@ public partial class Character : CharacterBody2D
 				{
 					if (!IsWaiting())
 					{
-						prevState = (state == CharacterState.Moving) ? CharacterState.Idle : state;
+						prevState = (State == CharacterState.Moving) ? CharacterState.Idle : State;
 						KeyDirection = 0;
-						state = CharacterState.Waiting;
+						State = CharacterState.Waiting;
 					}
 					else
 					{
-						state = prevState;
+						State = prevState;
 					}
 				}
 			}
@@ -174,7 +223,7 @@ public partial class Character : CharacterBody2D
 				else if (keyEvent.Keycode == Key.A || keyEvent.Keycode == Key.D)
 				{
 					KeyDirection = 0;
-					state = CharacterState.Idle;
+					State = CharacterState.Idle;
 				}
 			}
 		}
@@ -186,7 +235,7 @@ public partial class Character : CharacterBody2D
 			_prevPosition = Position;
 			Position = chair.Position + chair.riderOffset;
 			ridingItem = chair;
-			state = CharacterState.Riding;
+			State = CharacterState.Riding;
 		}
 	}
 	public void StopRiding()
@@ -194,19 +243,20 @@ public partial class Character : CharacterBody2D
 		Position = _prevPosition;
 		KeyDirection = 0;
 		ridingItem.rider = null;
-		state = CharacterState.Idle;
+		State = CharacterState.Idle;
 	}
-	public bool IsRiding() => state == CharacterState.Riding;
-	public bool IsMoving() => state == CharacterState.Moving;
-	public bool IsMovingbyKeyboard() => state == CharacterState.MovingbyKeyboard;
-	public bool IsIdle() => state == CharacterState.Idle;
-	public bool IsWaiting() => state == CharacterState.Waiting;
+	public bool IsRiding() => State == CharacterState.Riding;
+	public bool IsMoving() => State == CharacterState.Moving;
+	public bool IsMovingbyKeyboard() => State == CharacterState.MovingbyKeyboard;
+	public bool IsIdle() => State == CharacterState.Idle;
+	public bool IsWaiting() => State == CharacterState.Waiting;
 	public void AfterAction()
 	{
 		if (IsMoving() || IsMovingbyKeyboard())
 		{
 			KeyDirection = 0;
-			state = CharacterState.Idle;
+			State = CharacterState.Idle;
 		}
+		PlayerAnim.Play("Interact");
 	}
 }
