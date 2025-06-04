@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://brjs5rt1lhuj5"
+path="res://.godot/imported/grunting_2_ian.wav-41c83b20d48f4e6e1818a9d65daafa6f.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SimpleDialogue/9 - Grunting/Male/Ian Lampert/grunting_2_ian.wav"
+dest_files=["res://.godot/imported/grunting_2_ian.wav-41c83b20d48f4e6e1818a9d65daafa6f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

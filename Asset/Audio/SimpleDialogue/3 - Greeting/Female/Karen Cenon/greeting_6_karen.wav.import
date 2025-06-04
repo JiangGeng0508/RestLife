@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b2whlvnddl0st"
+path="res://.godot/imported/greeting_6_karen.wav-20de701ec8bcf1b21d5c1d09a654347c.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SimpleDialogue/3 - Greeting/Female/Karen Cenon/greeting_6_karen.wav"
+dest_files=["res://.godot/imported/greeting_6_karen.wav-20de701ec8bcf1b21d5c1d09a654347c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

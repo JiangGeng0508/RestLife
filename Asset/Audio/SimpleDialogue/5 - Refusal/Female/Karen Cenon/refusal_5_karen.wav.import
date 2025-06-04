@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://btcvknorgdb1c"
+path="res://.godot/imported/refusal_5_karen.wav-b7bedb853da5c6b283415ca1a8ab40cd.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SimpleDialogue/5 - Refusal/Female/Karen Cenon/refusal_5_karen.wav"
+dest_files=["res://.godot/imported/refusal_5_karen.wav-b7bedb853da5c6b283415ca1a8ab40cd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

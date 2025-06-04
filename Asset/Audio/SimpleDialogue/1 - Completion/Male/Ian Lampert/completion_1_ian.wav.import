@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bmttrj5doqxv4"
+path="res://.godot/imported/completion_1_ian.wav-3c7d6ba88b9cdaa653c44bd5655ac714.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SimpleDialogue/1 - Completion/Male/Ian Lampert/completion_1_ian.wav"
+dest_files=["res://.godot/imported/completion_1_ian.wav-3c7d6ba88b9cdaa653c44bd5655ac714.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

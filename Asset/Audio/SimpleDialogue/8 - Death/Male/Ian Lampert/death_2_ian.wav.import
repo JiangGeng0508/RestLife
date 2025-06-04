@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b62cjysyt05qy"
+path="res://.godot/imported/death_2_ian.wav-6421c42846c2dc5dccb1edc95e2fcf05.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SimpleDialogue/8 - Death/Male/Ian Lampert/death_2_ian.wav"
+dest_files=["res://.godot/imported/death_2_ian.wav-6421c42846c2dc5dccb1edc95e2fcf05.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

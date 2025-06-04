@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bp4vkaiu48rxg"
+path="res://.godot/imported/completion_8_karen.wav-714252f11d056fdaa20442cabae1e548.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SimpleDialogue/1 - Completion/Female/Karen Cenon/completion_8_karen.wav"
+dest_files=["res://.godot/imported/completion_8_karen.wav-714252f11d056fdaa20442cabae1e548.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

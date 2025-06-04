@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://iod72ktdr40e"
+path="res://.godot/imported/farewell_7_sean.wav-ac1f14a7e9e231d773fc0c3eeaf02a0f.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SimpleDialogue/4 - Farewell/Male/Sean Lenhart/farewell_7_sean.wav"
+dest_files=["res://.godot/imported/farewell_7_sean.wav-ac1f14a7e9e231d773fc0c3eeaf02a0f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

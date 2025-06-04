@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d15o5al4i0njc"
+path="res://.godot/imported/miscellaneous_13_karen.wav-be20ff162c63f347d9a6c5af3fdcaa25.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SimpleDialogue/6 - Miscellaneous/Female/Karen Cenon/miscellaneous_13_karen.wav"
+dest_files=["res://.godot/imported/miscellaneous_13_karen.wav-be20ff162c63f347d9a6c5af3fdcaa25.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

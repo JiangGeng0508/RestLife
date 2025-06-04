@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dubktt8g0jjl0"
+path="res://.godot/imported/refusal_1_alex.wav-1510062c7492f548c3c9f7bb56517e6e.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SimpleDialogue/5 - Refusal/Male/Alex Brodie/refusal_1_alex.wav"
+dest_files=["res://.godot/imported/refusal_1_alex.wav-1510062c7492f548c3c9f7bb56517e6e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://kcoet7t3fhiw"
+path="res://.godot/imported/miscellaneous_3_meghan.wav-aa4a08bffd03df659880570d0e21b831.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SimpleDialogue/6 - Miscellaneous/Female/Meghan Christian/miscellaneous_3_meghan.wav"
+dest_files=["res://.godot/imported/miscellaneous_3_meghan.wav-aa4a08bffd03df659880570d0e21b831.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

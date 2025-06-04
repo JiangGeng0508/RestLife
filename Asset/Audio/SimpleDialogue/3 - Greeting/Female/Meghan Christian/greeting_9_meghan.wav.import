@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ce4dy45ulv6j0"
+path="res://.godot/imported/greeting_9_meghan.wav-81dfb85f96128be0981b17066746dbdc.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SimpleDialogue/3 - Greeting/Female/Meghan Christian/greeting_9_meghan.wav"
+dest_files=["res://.godot/imported/greeting_9_meghan.wav-81dfb85f96128be0981b17066746dbdc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dp8wae2xpaywd"
+path="res://.godot/imported/miscellaneous_16_ian.wav-de484b24258d6b12403fc6599a8a18d7.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SimpleDialogue/6 - Miscellaneous/Male/Ian Lampert/miscellaneous_16_ian.wav"
+dest_files=["res://.godot/imported/miscellaneous_16_ian.wav-de484b24258d6b12403fc6599a8a18d7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

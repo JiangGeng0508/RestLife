@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cmjacqpn6d5b3"
+path="res://.godot/imported/completion_7_meghan.wav-10bf04b0042eb94f75c7d554a0e86594.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SimpleDialogue/1 - Completion/Female/Meghan Christian/completion_7_meghan.wav"
+dest_files=["res://.godot/imported/completion_7_meghan.wav-10bf04b0042eb94f75c7d554a0e86594.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

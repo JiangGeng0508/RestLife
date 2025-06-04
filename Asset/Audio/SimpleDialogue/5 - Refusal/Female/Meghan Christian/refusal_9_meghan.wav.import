@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://co1jwa8ys38x2"
+path="res://.godot/imported/refusal_9_meghan.wav-3c94965944fdcda6cd7a1b1bfd8f423e.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SimpleDialogue/5 - Refusal/Female/Meghan Christian/refusal_9_meghan.wav"
+dest_files=["res://.godot/imported/refusal_9_meghan.wav-3c94965944fdcda6cd7a1b1bfd8f423e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

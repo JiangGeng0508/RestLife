@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://duk6ff7fovqkh"
+path="res://.godot/imported/refusal_7_ian.wav-f53f7c088599a1ebbe49b4c8426dab94.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SimpleDialogue/5 - Refusal/Male/Ian Lampert/refusal_7_ian.wav"
+dest_files=["res://.godot/imported/refusal_7_ian.wav-f53f7c088599a1ebbe49b4c8426dab94.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
