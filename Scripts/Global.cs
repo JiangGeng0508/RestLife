@@ -16,6 +16,7 @@ public partial class Global : Node
 	public override void _Ready()
 	{
 		GameWorldTime = new();
+		AddChild(GameWorldTime);
 		Saver = new();
 		ResourceLoader = new();
 		EventBus = new();
