@@ -30,7 +30,7 @@ public partial class Hud : CanvasLayer
         HungerInfo.Text = "Hunger: " + Global.Player.Hunger.Value.ToString("F1");
 		EnergyBar.Value = Global.Player.Energy.Value;
 
-        string formattedTime = $"Day: {Global.GameWorldTime.Days} Time: {Global.GameWorldTime.Hours.ToString("D2")}:{Global.GameWorldTime.Minutes.ToString("D2")}";
+        string formattedTime = $"Day: {Global.GameWorldTime.Days} Time: {Global.GameWorldTime.Hours:D2}:{Global.GameWorldTime.Minutes:00.}";
         GameWorldInfo.GetNode<Label>("Time").Text = formattedTime;
     }
 }

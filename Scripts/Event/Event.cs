@@ -1,27 +1,33 @@
-using Godot;
 using System;
+using Godot;
 
 public interface IEvent
 {
 	void Check();
 	void Trigger();//调用事件
-	void Vanish();//失败时销毁事件
+	// void Vanish();//失败时销毁事件
 }
 
-public class Quest : IEvent
+public partial class Quest : GodotObject,IEvent
 {
 	public Condition TriggerCondition { get; set; }
-	public Condition VanishCondition { get; set; }
+	// public Condition VanishCondition { get; set; }
 	public void Check()
 	{
 		TriggerCondition.Check();
-		//VanishCondition.Check();
+		// VanishCondition.Check();
 	}
 	public virtual void Trigger()
 	{
 		GD.Print("void trigger");
+		Vanish();
 	}
-	public virtual void Vanish() { }
+	public virtual void Vanish()
+	{
+		Global.EventBus.Unregister(this);
+		TriggerCondition.Meet = null;
+		Free();
+	}
 	public Quest()
 	{
 		TriggerCondition = new Condition()
@@ -33,7 +39,7 @@ public class Quest : IEvent
 		};
 	}
 }
-public class QuestTimeTrigger : Quest
+public partial class QuestTimeTrigger : Quest
 {
 	public QuestTimeTrigger(string Resolution,string Operator, float value)
 	{
@@ -50,6 +56,15 @@ public class QuestTimeTrigger : Quest
 			case "<":
 				op = ConditionOperator.LessThan;
 				break;
+			case ">=":
+				op = ConditionOperator.GreaterThan;
+				break;
+			case "<=":
+				op = ConditionOperator.LessThan;
+				break;
+			case "!=":
+				op = ConditionOperator.NotEqual;
+				break;
 			default:
 				GD.Print($"Wrong Operator:{Operator}");
 				break;
@@ -58,7 +73,6 @@ public class QuestTimeTrigger : Quest
 		{
 			Meet = () =>
 			{
-				GD.Print($"Triggering Quest");
 				Trigger();
 			}
 		};

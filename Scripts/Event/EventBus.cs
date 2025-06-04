@@ -17,10 +17,14 @@ public partial class EventBus : Node
 	{
 
 	}
-	public int Register(Quest quest)
+	public void Register(Quest quest)
 	{
 		RegisteredEvents.Add(quest);
-		return 0;
+	}
+	public void Unregister(Quest quest)
+	{
+		RegisteredEvents.Remove(quest);
+		Global.GameWorldTime.OnDayChange -= quest.TriggerCondition.CheckHandler;
 	}
 	//debug
 	public void DebugRegister()

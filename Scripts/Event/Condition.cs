@@ -11,6 +11,9 @@ public enum ConditionOperator
 	Equal,
 	GreaterThan,
 	LessThan,
+	GreaterOrEqual,
+	LessOrEqual,
+	NotEqual,
 }
 public class Condition
 {
@@ -26,18 +29,27 @@ public class Condition
 		switch (Operator)
 		{
 			case ConditionOperator.Equal:
-				GD.Print("Equal Check");
 				if (Source == CheckValue)
 					Meet?.DynamicInvoke();
 				break;
 			case ConditionOperator.GreaterThan:
-				GD.Print("Greater Than Check");
-				if(Source > CheckValue)
+				if (Source < CheckValue)
 					Meet?.DynamicInvoke();
 				break;
 			case ConditionOperator.LessThan:
-				GD.Print("Less Than Check");
-				if(Source < CheckValue)
+				if (Source > CheckValue)
+					Meet?.DynamicInvoke();
+				break;
+			case ConditionOperator.GreaterOrEqual:
+				if (Source <= CheckValue)
+					Meet?.DynamicInvoke();
+				break;
+			case ConditionOperator.LessOrEqual:
+				if (Source >= CheckValue)
+					Meet?.DynamicInvoke();
+				break;
+			case ConditionOperator.NotEqual:
+				if (Source != CheckValue)
 					Meet?.DynamicInvoke();
 				break;
 			default:
@@ -49,6 +61,7 @@ public class Condition
 	public void CheckHandler(int PassInValue)
 	{
 		CheckValue = PassInValue;
+		Check();
 	}
 	public Condition() { }
 	public Condition(ConditionType type, string resolution, ConditionOperator op, float value)

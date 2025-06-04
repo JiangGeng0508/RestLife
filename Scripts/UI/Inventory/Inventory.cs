@@ -10,7 +10,10 @@ public partial class Inventory : Node
 	{
 		Global.Inventory = this;
 		UI = Global.InventoryUI;
-		// Test Items
+		Items.Clear();
+		//TODO: Load
+
+		//debug
 		var item = new Item();
 		item.Name = "Item1";
 		AddItem(item);

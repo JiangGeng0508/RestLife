@@ -6,9 +6,40 @@ public partial class GameWorldTime : Node
 {
 	[Signal]
 	public delegate void OnDayChangeEventHandler(int days);
-	public float Seconds = 0;
-	public int Minutes = 0;
-	public int Hours = 6;
+	private float _minutes = 0;
+	public float Minutes
+	{
+		get { return _minutes; }
+		set
+		{
+			if (Minutes >= 60)
+			{
+				_minutes = 0;
+				Hours++;
+			}
+			else
+			{
+				_minutes = value;
+			}
+		}
+	}
+	private int _hours = 6;
+	public int Hours
+	{
+		get { return _hours; }
+		set
+		{
+			if (value >= 24)
+			{
+				_hours = 0;
+				Days++;
+			}
+			else
+			{
+				_hours = value;
+			}
+		}
+	}
 	private int _days = 1;
 	public int Days
 	{
@@ -28,6 +59,6 @@ public partial class GameWorldTime : Node
 
 	public override void _Process(double delta)
 	{
-		Seconds += (float)delta;
+		Minutes += (float)delta;
 	}
 }
