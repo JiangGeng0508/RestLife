@@ -79,7 +79,6 @@ text = "12"
 shape = SubResource("CircleShape2D_bmxlf")
 
 [node name="HUD" parent="." instance=ExtResource("10_gyaec")]
-visible = false
 
 [node name="Attributes" type="Node" parent="."]
 

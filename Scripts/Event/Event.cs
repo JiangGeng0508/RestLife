@@ -3,32 +3,32 @@ using System;
 
 public interface IEvent
 {
-	void Trigger()//调用事件
-	{
-
-	}
-	void Vanish()//失败时销毁事件
-	{
-
-	}
+	void Check();
+	void Trigger();//调用事件
+	void Vanish();//失败时销毁事件
 }
-public class Condition
-{
-	public virtual bool Check()
-	{
-		return true;
-	}
-}
+
 public class Quest : IEvent
 {
 	public Condition TriggerCondition { get; set; }
 	public Condition VanishCondition { get; set; }
 	public void Check()
 	{
-		
+		GD.Print("Checking event");
+		if (TriggerCondition.Check() == true)
+			Trigger();
+		// if (VanishCondition.Check() == true)
+		// 	Vanish();
 	}
-	public virtual void Trigger() { }
+	public virtual void Trigger()
+	{
+		GD.Print("void trigger");
+	}
 	public virtual void Vanish() { }
+	public Quest()
+	{
+		TriggerCondition.Meet = Delegate.CreateDelegate(typeof(ConditionMeet), this, "Trigger");
+	}
 }
 public partial  class AutoActivateEvent : Node, IEvent
 {
@@ -37,12 +37,16 @@ public partial  class AutoActivateEvent : Node, IEvent
 	{
 		
 	}
+	public void Check()
+	{
+
+	}
 	public void Trigger()
 	{
-		Godot.GD.Print("Triggered event: " + EventAlias);
+		GD.Print("Triggered event: " + EventAlias);
 	}
 	public void Vanish()
 	{
-		Godot.GD.Print("Vanished event: " + EventAlias);
+		GD.Print("Vanished event: " + EventAlias);
 	}
 }

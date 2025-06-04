@@ -13,6 +13,7 @@ public partial class Npc : SelectIntItem
 	public bool Interactable = true;
 	Random Random = new();
 	float RandomDirection = 0;
+	float Speed = 100;
 	private NpcState _state = NpcState.Idle;
 	public Timer Timer;
 	public NpcState State
@@ -69,7 +70,7 @@ public partial class Npc : SelectIntItem
 			case NpcState.WaitingWithQuest:
 				break;
 			case NpcState.Wandering:
-				Position += new Vector2(RandomDirection, 0);
+				Position += new Vector2(RandomDirection, 0) * Speed * (float)delta;
 				break;
 			case NpcState.Backwarding:
 				if (Position.DistanceTo(Vector2.Zero) < 1)
@@ -77,7 +78,7 @@ public partial class Npc : SelectIntItem
 					State = NpcState.Idle;
 					break;
 				}
-				Position += new Vector2(-Position.X, 0).Normalized();
+				Position += new Vector2(-Position.X, 0).Normalized() * Speed * (float)delta;
 				break;
 			case NpcState.Busying:
 				break;
