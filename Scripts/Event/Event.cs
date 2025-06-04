@@ -14,11 +14,8 @@ public class Quest : IEvent
 	public Condition VanishCondition { get; set; }
 	public void Check()
 	{
-		GD.Print("Checking event");
-		if (TriggerCondition.Check() == true)
-			Trigger();
-		// if (VanishCondition.Check() == true)
-		// 	Vanish();
+		TriggerCondition.Check();
+		//VanishCondition.Check();
 	}
 	public virtual void Trigger()
 	{
@@ -36,23 +33,34 @@ public class Quest : IEvent
 		};
 	}
 }
-public partial  class AutoActivateEvent : Node, IEvent
+public class QuestTimeTrigger : Quest
 {
-	public string EventAlias { get; set; } = "Defalut Event";
-	public override void _Ready()
+	public QuestTimeTrigger(string Resolution,string Operator, float value)
 	{
-		
-	}
-	public void Check()
-	{
-
-	}
-	public void Trigger()
-	{
-		GD.Print("Triggered event: " + EventAlias);
-	}
-	public void Vanish()
-	{
-		GD.Print("Vanished event: " + EventAlias);
+		var op = ConditionOperator.Equal;
+		Global.EventBus.DayTimeTrigger += Check;
+		switch (Operator)
+		{
+			case "==":
+				op = ConditionOperator.Equal;
+				break;
+			case ">":
+				op = ConditionOperator.GreaterThan;
+				break;
+			case "<":
+				op = ConditionOperator.LessThan;
+				break;
+			default:
+				GD.Print($"Wrong Operator:{Operator}");
+				break;
+		}
+		TriggerCondition = new Condition(ConditionType.Time, Resolution, op, value)
+		{
+			Meet = () =>
+			{
+				GD.Print($"Triggering Quest");
+				Trigger();
+			}
+		};
 	}
 }

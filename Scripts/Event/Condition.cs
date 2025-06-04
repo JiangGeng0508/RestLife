@@ -12,7 +12,6 @@ public enum ConditionOperator
 	GreaterThan,
 	LessThan,
 }
-public delegate void ConditionMeet();
 public class Condition
 {
 	public ConditionType Type;
@@ -21,29 +20,35 @@ public class Condition
 	public Delegate Meet { get; set; }
 
 	ConditionOperator Operator;
-	public float Value;
-	public bool Check()
+	public float CheckValue;
+	public void Check()
 	{
-		GD.Print($"Checking Condition {Source} {Value}");
 		switch (Operator)
 		{
 			case ConditionOperator.Equal:
-				Meet?.DynamicInvoke();
-				return Source == Value;
+				GD.Print("Equal Check");
+				if (Source == CheckValue)
+					Meet?.DynamicInvoke();
+				break;
 			case ConditionOperator.GreaterThan:
-				return Source > Value;
+				GD.Print("Greater Than Check");
+				if(Source > CheckValue)
+					Meet?.DynamicInvoke();
+				break;
 			case ConditionOperator.LessThan:
-				return Source < Value;
+				GD.Print("Less Than Check");
+				if(Source < CheckValue)
+					Meet?.DynamicInvoke();
+				break;
 			default:
-				GD.Print("Invalid Operator Type");
-				return false;
+				GD.Print("Invalid Condition Operator");
+				break;
 		}
 		
 	}
 	public void CheckHandler(int PassInValue)
 	{
-		GD.Print($"CheckHandler Condition {Source} {PassInValue}");
-		Value = PassInValue;
+		CheckValue = PassInValue;
 	}
 	public Condition() { }
 	public Condition(ConditionType type, string resolution, ConditionOperator op, float value)
