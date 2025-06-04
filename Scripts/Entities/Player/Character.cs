@@ -29,11 +29,6 @@ public partial class Character : CharacterBody2D
 	public Attribute Health = new(50f);
 	public Attribute Energy = new(100f);
 	public Attribute Hunger = new(100f);
-	// 属性值
-	public float Intelligence { get; set; } = 1f;
-	public float Strength { get; set; } = 1f;
-	public float Charisma { get; set; } = 1f;
-	public float Agility { get; set; } = 1f;
 	public override void _Ready()
 	{
 		Global.Player = this;

@@ -18,7 +18,6 @@ public partial class Saver : Node
 		var saveData = new Dictionary();
 		saveData["Player"] = Global.Player;
 		saveData["GameWorldTime"] = Global.GameWorldTime;
-		saveData["Inventory"] = Global.Inventory;
 		saveData["Dress"] = Global.Dress;
 		file.StoreVar(saveData.Duplicate());
 		file.Close();
