@@ -51,7 +51,7 @@ public partial class Character : CharacterBody2D
 	Vector2 targetPosition = Vector2.Zero;
 	CharacterState prevState = CharacterState.Idle;
 
-	float Speed = 300f;
+	float Speed = 150f;
 	private Vector2 _prevPosition = Vector2.Zero;
 	int KeyDirection = 0;
 
