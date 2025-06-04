@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b25yhbndwexxv"]
+[gd_scene load_steps=6 format=3 uid="uid://b25yhbndwexxv"]
 
-[ext_resource type="Script" uid="uid://bpqc71ebqcmge" path="res://Scripts/Entities/Player/Character.cs" id="1_b3ei2"]
+[ext_resource type="Script" uid="uid://bpqc71ebqcmge" path="res://Scripts/Entities/Player/Player.cs" id="1_b3ei2"]
 [ext_resource type="Script" uid="uid://bs0mnasjf45co" path="res://Scripts/Entities/Player/ReachArea.cs" id="2_l3y44"]
+[ext_resource type="SpriteFrames" uid="uid://bt1u70i4bdu0a" path="res://Asset/Sprite/Human/Male/Character 1/Charactor1_Clothes1.tres" id="3_l3y44"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_567wp"]
 
@@ -20,6 +21,11 @@ script = ExtResource("2_l3y44")
 
 [node name="ReachShape" type="CollisionShape2D" parent="ReachArea"]
 shape = SubResource("CircleShape2D_jp4cy")
+
+[node name="PlayerAnim" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("3_l3y44")
+animation = &"Idle"
+frame_progress = 0.193571
 
 [connection signal="area_entered" from="ReachArea" to="." method="OnAreaEntered"]
 [connection signal="area_exited" from="ReachArea" to="." method="OnAreaExited"]

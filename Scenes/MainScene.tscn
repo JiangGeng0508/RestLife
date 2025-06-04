@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bto6gsdtdxftl"]
+[gd_scene load_steps=15 format=3 uid="uid://bto6gsdtdxftl"]
 
 [ext_resource type="PackedScene" uid="uid://b0kw6xwewc6vv" path="res://Scenes/Item/Stair.tscn" id="1_xb4mg"]
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Item/wall.tscn" id="2_6t1o7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dc74ltyvfx87h" path="res://Scenes/UI/HUD.tscn" id="10_gyaec"]
 [ext_resource type="Script" uid="uid://105bb6xllrh0" path="res://Scripts/UI/Inventory/Inventory.cs" id="11_bpy1e"]
 [ext_resource type="Script" uid="uid://ckul63kwa5hjw" path="res://Scripts/UI/Inventory/Dress.cs" id="12_p5ymy"]
+[ext_resource type="PackedScene" uid="uid://cll3uw2476v3x" path="res://Scenes/Item/TeleportItem.tscn" id="13_6t1o7"]
 [ext_resource type="PackedScene" uid="uid://vvjn0laj7y1g" path="res://Scenes/UI/DialogueLayer.tscn" id="14_5qxwa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmxlf"]
@@ -78,6 +79,10 @@ script = ExtResource("11_bpy1e")
 script = ExtResource("12_p5ymy")
 
 [node name="DialogueLayer" parent="." instance=ExtResource("14_5qxwa")]
+
+[node name="TeleportItem" parent="." instance=ExtResource("13_6t1o7")]
+position = Vector2(867, -21)
+scale = Vector2(1.12503, 3.14354)
 
 [connection signal="area_entered" from="Cursur" to="Cursur" method="OnAreaEntered"]
 [connection signal="area_exited" from="Cursur" to="Cursur" method="OnAreaExited"]

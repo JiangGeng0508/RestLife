@@ -1,14 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://t6xbv8fwvhft"]
+[gd_scene load_steps=5 format=3 uid="uid://t6xbv8fwvhft"]
 
-[ext_resource type="Script" uid="uid://d1y5dq6ius6ff" path="res://Scripts/Entities/Player/Player.cs" id="1_84utv"]
 [ext_resource type="PackedScene" uid="uid://b25yhbndwexxv" path="res://Scenes/Entities/Player/Character.tscn" id="1_pmdnf"]
 [ext_resource type="PackedScene" uid="uid://c43ww4608wcvp" path="res://Scenes/Entities/Player/TargetNotifer.tscn" id="2_akw4a"]
 [ext_resource type="SpriteFrames" uid="uid://bt1u70i4bdu0a" path="res://Asset/Sprite/Human/Male/Character 1/Charactor1_Clothes1.tres" id="2_tm67w"]
-[ext_resource type="Script" uid="uid://b6cvy8qbut8je" path="res://Scripts/Entities/Player/PlayAnim.cs" id="3_84utv"]
 [ext_resource type="Script" uid="uid://clihekd8ip2rv" path="res://Scripts/UI/MainCamera.cs" id="3_tm67w"]
 
 [node name="Player" type="Node2D"]
-script = ExtResource("1_84utv")
 
 [node name="Character" parent="." instance=ExtResource("1_pmdnf")]
 disable_mode = 1
@@ -17,7 +14,6 @@ disable_mode = 1
 sprite_frames = ExtResource("2_tm67w")
 animation = &"Idle"
 frame_progress = 0.193571
-script = ExtResource("3_84utv")
 
 [node name="TargetNotifier" parent="." instance=ExtResource("2_akw4a")]
 position = Vector2(151, -644)

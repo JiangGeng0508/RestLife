@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cll3uw2476v3x"]
+
+[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Item/InteractableItem.tscn" id="1_erhgy"]
+[ext_resource type="Script" uid="uid://ctxdnmvrjrwie" path="res://Scripts/Item/TeleportItem.cs" id="2_jm0yw"]
+
+[node name="TeleportItem" instance=ExtResource("1_erhgy")]
+script = ExtResource("2_jm0yw")
+ScenePath = "res://Scenes/Scene/Tutorial.tscn"
