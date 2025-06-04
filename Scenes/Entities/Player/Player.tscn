@@ -1,19 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://t6xbv8fwvhft"]
+[gd_scene load_steps=4 format=3 uid="uid://t6xbv8fwvhft"]
 
 [ext_resource type="PackedScene" uid="uid://b25yhbndwexxv" path="res://Scenes/Entities/Player/Character.tscn" id="1_pmdnf"]
 [ext_resource type="PackedScene" uid="uid://c43ww4608wcvp" path="res://Scenes/Entities/Player/TargetNotifer.tscn" id="2_akw4a"]
-[ext_resource type="SpriteFrames" uid="uid://bt1u70i4bdu0a" path="res://Asset/Sprite/Human/Male/Character 1/Charactor1_Clothes1.tres" id="2_tm67w"]
 [ext_resource type="Script" uid="uid://clihekd8ip2rv" path="res://Scripts/UI/MainCamera.cs" id="3_tm67w"]
 
 [node name="Player" type="Node2D"]
 
 [node name="Character" parent="." instance=ExtResource("1_pmdnf")]
 disable_mode = 1
-
-[node name="PlayerAnim" type="AnimatedSprite2D" parent="Character"]
-sprite_frames = ExtResource("2_tm67w")
-animation = &"Idle"
-frame_progress = 0.193571
 
 [node name="TargetNotifier" parent="." instance=ExtResource("2_akw4a")]
 position = Vector2(151, -644)
