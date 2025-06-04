@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bswjsiltxgp1c"]
+
+[ext_resource type="Texture2D" uid="uid://brevgmydtmix1" path="res://Asset/Sprite/Landscape/nature_1/1.png" id="1_vmgj0"]
+
+[node name="TutorialScene" type="Node2D"]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://t6xbv8fwvhft")
+spawn_path = NodePath("..")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_vmgj0")

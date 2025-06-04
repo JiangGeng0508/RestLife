@@ -12,4 +12,12 @@ public partial class Global : Node
 	public static DressUI DressUI;
 	public static Saver Saver;
 	public static EventBus EventBus;
+
+	public override void _Ready()
+	{
+		GameWorldTime = new();
+		Saver = new();
+		ResourceLoader = new();
+		EventBus = new();
+	}
 }

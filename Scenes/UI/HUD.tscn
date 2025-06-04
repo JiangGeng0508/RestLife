@@ -22,11 +22,10 @@ offset_left = 1350.54
 offset_top = 347.352
 offset_right = 542.004
 offset_bottom = 297.0
-current_tab = 3
+current_tab = 0
 script = ExtResource("1_ne771")
 
 [node name="Inventory" type="SplitContainer" parent="SelectMenu"]
-visible = false
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 dragging_enabled = false
@@ -139,6 +138,7 @@ offset_bottom = 254.0
 text = "Esc"
 
 [node name="GodMode" type="VBoxContainer" parent="SelectMenu"]
+visible = false
 layout_mode = 2
 script = ExtResource("8_d2sja")
 metadata/_tab_index = 3

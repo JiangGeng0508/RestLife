@@ -18,10 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Scripts/Global.cs"
-GameWorldTime="*res://Scripts/GameWorldTime.cs"
-Saver="*res://Scripts/Saver.cs"
-GlobalResourceLoader="*res://Scripts/ResourceLoader.cs"
-EventBus="*res://Scripts/Event/EventBus.cs"
 
 [dotnet]
 

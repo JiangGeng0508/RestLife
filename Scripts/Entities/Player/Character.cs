@@ -39,7 +39,7 @@ public partial class Character : CharacterBody2D
 		Global.Player = this;
 		Id = GetInstanceId();
 		reachArea = GetNode<Area2D>("ReachArea");
-		tarPosNotifer = GetNode<TargetNotifer>("../UI/TargetNotifier");
+		tarPosNotifer = GetNode<TargetNotifer>("../TargetNotifier");
 		targetPosition = Position;;
 	}
 
@@ -80,6 +80,7 @@ public partial class Character : CharacterBody2D
 				Hunger.Value -= 0.1f * (float)delta;
 				break;
 			case CharacterState.Riding:
+				Energy.Value += 0.5f * (float)delta;
 				Hunger.Value -= 0.1f * (float)delta;
 				break;
 			case CharacterState.Waiting:
