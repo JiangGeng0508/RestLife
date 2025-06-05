@@ -2,23 +2,28 @@ using System;
 using Godot;
 using Godot.Collections;
 
-//AutoLoad Script
 public partial class Saver : Node
 {
 	public SceneTree MainSceneTree;
 	private static readonly string SavePath = "res://savegame.save";
 
-	public override void _Ready()
-	{
-		Global.Saver = this;
-	}
 	public static void Save()
 	{
 		GD.Print("Saving game...");
-		//Player
-		//Time
+		using var file = FileAccess.Open("SavePath", FileAccess.ModeFlags.Write);
+		Dictionary<string, float> playerAttributes = new Dictionary<string, float>
+		{
+			{ "Health", Global.Player.Health.Value },
+			{ "Energy", Global.Player.Energy.Value },
+			{ "Hunger", Global.Player.Hunger.Value }
+		};
+		Dictionary<string, int> gameTime = new Dictionary<string, int>
+		{
+			{ "Day", Global.GameWorldTime.Days },
+			{ "Hour", Global.GameWorldTime.Hours }
+		};
 		//Inventory
-		//Dress
+		Dictionary<string, Item> inventoryData = new Dictionary<string, Item>();
 		//Event
 		//Scene
 		GD.Print("Game saved.");

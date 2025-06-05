@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://bn4agutinxfi"]
+
+[ext_resource type="Texture2D" uid="uid://f87qh4m6frf2" path="res://Asset/Sprite/Food/Food/Apple.png" id="1_fadlf"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_6vi2m"]
+
+[resource]
+script = ExtResource("2_6vi2m")
+EnergyBonus = 10.0
+HungerBonus = 10.0
+Name = "TestFood"
+Icon = ExtResource("1_fadlf")
+Number = 1
+metadata/_custom_type_script = "uid://klt430g1yd76"

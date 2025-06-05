@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bto6gsdtdxftl"]
+[gd_scene load_steps=15 format=3 uid="uid://bto6gsdtdxftl"]
 
 [ext_resource type="PackedScene" uid="uid://b0kw6xwewc6vv" path="res://Scenes/Buildings/StairDown.tscn" id="1_xb4mg"]
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Buildings/wall.tscn" id="2_6t1o7"]
@@ -10,8 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://c45lo0s8hq66p" path="res://Scenes/Entities/NPC.tscn" id="7_6t1o7"]
 [ext_resource type="Script" uid="uid://di14nm0jvgxks" path="res://Scripts/UI/Cursur.cs" id="9_c1ier"]
 [ext_resource type="PackedScene" uid="uid://dc74ltyvfx87h" path="res://Scenes/UI/HUD.tscn" id="10_gyaec"]
-[ext_resource type="Script" uid="uid://105bb6xllrh0" path="res://Scripts/UI/Inventory/Inventory.cs" id="11_bpy1e"]
-[ext_resource type="Script" uid="uid://ckul63kwa5hjw" path="res://Scripts/UI/Inventory/Dress.cs" id="12_p5ymy"]
 [ext_resource type="PackedScene" uid="uid://cll3uw2476v3x" path="res://Scenes/Buildings/TeleportItem.tscn" id="13_6t1o7"]
 [ext_resource type="PackedScene" uid="uid://vvjn0laj7y1g" path="res://Scenes/UI/DialogueLayer.tscn" id="14_5qxwa"]
 [ext_resource type="PackedScene" uid="uid://bdfw1wr7t12kg" path="res://Scenes/Buildings/StairUp.tscn" id="15_xc4hf"]
@@ -42,6 +40,8 @@ scale = Vector2(4, 4)
 position = Vector2(-588, 2)
 scale = Vector2(3.6, 1)
 
+[node name="HUD" parent="." instance=ExtResource("10_gyaec")]
+
 [node name="Player" parent="." instance=ExtResource("6_xb4mg")]
 
 [node name="Npc" parent="." instance=ExtResource("7_6t1o7")]
@@ -57,16 +57,6 @@ text = "12"
 
 [node name="CursurShape" type="CollisionShape2D" parent="Cursur"]
 shape = SubResource("CircleShape2D_bmxlf")
-
-[node name="HUD" parent="." instance=ExtResource("10_gyaec")]
-
-[node name="Attributes" type="Node" parent="."]
-
-[node name="Inventory" type="Node" parent="Attributes"]
-script = ExtResource("11_bpy1e")
-
-[node name="Dress" type="Node" parent="Attributes"]
-script = ExtResource("12_p5ymy")
 
 [node name="DialogueLayer" parent="." instance=ExtResource("14_5qxwa")]
 

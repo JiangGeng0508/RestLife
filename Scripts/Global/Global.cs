@@ -8,8 +8,6 @@ public partial class Global : Node
 	public static GameWorldTime GameWorldTime;
 	public static Inventory Inventory;
 	public static InventoryUI InventoryUI;
-	public static Dress Dress;
-	public static DressUI DressUI;
 	public static Saver Saver;
 	public static EventBus EventBus;
 
@@ -18,7 +16,9 @@ public partial class Global : Node
 		GameWorldTime = new();
 		AddChild(GameWorldTime);
 		Saver = new();
+		AddChild(Saver);
 		ResourceLoader = new();
+		AddChild(ResourceLoader);
 		EventBus = new();
 	}
 }

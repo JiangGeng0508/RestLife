@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dc74ltyvfx87h"]
+[gd_scene load_steps=7 format=3 uid="uid://dc74ltyvfx87h"]
 
 [ext_resource type="Script" uid="uid://bn5qycss666ik" path="res://Scripts/UI/Hud/Hud.cs" id="1_lelo4"]
 [ext_resource type="Script" uid="uid://b78vbe0hqa2ni" path="res://Scripts/UI/Hud/SelectMenu.cs" id="1_ne771"]
 [ext_resource type="Script" uid="uid://cihgy0uhufudw" path="res://Scripts/UI/Hud/InventoryUI.cs" id="2_lelo4"]
 [ext_resource type="Script" uid="uid://cmss037nrmq3g" path="res://Scripts/UI/Hud/RightClickMenu.cs" id="4_1and6"]
-[ext_resource type="Script" uid="uid://dg3q4agdhk2ds" path="res://Scripts/UI/Hud/DressUI.cs" id="4_4bm6u"]
-[ext_resource type="Script" uid="uid://cdvatkaygsein" path="res://Scripts/UI/Hud/Slot.cs" id="5_ykvyr"]
 [ext_resource type="Script" uid="uid://dgpb36bqvvo54" path="res://Scripts/Menu.cs" id="7_1ree7"]
 [ext_resource type="Script" uid="uid://bcfcwrvroa6lo" path="res://Scripts/UI/Hud/GodMode.cs" id="8_d2sja"]
 
@@ -54,62 +52,11 @@ min_size = Vector2i(50, 100)
 max_size = Vector2i(100, 1000)
 script = ExtResource("4_1and6")
 
-[node name="Dress" type="Control" parent="SelectMenu"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="DressUI" type="GridContainer" parent="SelectMenu/Dress"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-columns = 2
-script = ExtResource("4_4bm6u")
-
-[node name="HatSlot" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-script = ExtResource("5_ykvyr")
-
-[node name="ShirtSlot" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-script = ExtResource("5_ykvyr")
-
-[node name="CoatSlot" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-script = ExtResource("5_ykvyr")
-
-[node name="ShoesSlot" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-script = ExtResource("5_ykvyr")
-
-[node name="PantsSlot" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-script = ExtResource("5_ykvyr")
-
-[node name="BagSlot" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-script = ExtResource("5_ykvyr")
-
-[node name="MainHand" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-script = ExtResource("5_ykvyr")
-
-[node name="OffHand" type="PanelContainer" parent="SelectMenu/Dress/DressUI"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-script = ExtResource("5_ykvyr")
-
 [node name="Menu" type="Control" parent="SelectMenu"]
 visible = false
 layout_mode = 2
 script = ExtResource("7_1ree7")
-metadata/_tab_index = 2
+metadata/_tab_index = 1
 
 [node name="Save" type="Button" parent="SelectMenu/Menu"]
 layout_mode = 0
@@ -141,7 +88,7 @@ text = "Esc"
 visible = false
 layout_mode = 2
 script = ExtResource("8_d2sja")
-metadata/_tab_index = 3
+metadata/_tab_index = 2
 
 [node name="GameWorldInfo" type="Control" parent="."]
 layout_mode = 3

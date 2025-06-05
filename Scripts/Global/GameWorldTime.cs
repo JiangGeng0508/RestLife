@@ -1,7 +1,6 @@
 using Godot;
 using System;
 
-//AutoLoad Script
 public partial class GameWorldTime : Node
 {
 	[Signal]

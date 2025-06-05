@@ -2,9 +2,12 @@ using System;
 using System.Linq;
 using Godot;
 
-public partial class Item : GodotObject
+[GlobalClass]
+public partial class Item : Resource
 {
-	public String Name { get; set; } = "None";//标识符，不能重复
+	[Export]
+	public string Name { get; set; } = "None";//标识符，不能重复
+	[Export]
 	public Texture2D Icon { get; set; } = GD.Load<Texture2D>("res://icon.svg");//图标
 	public Action[] actions = new Action[9];
 
@@ -43,5 +46,5 @@ public partial class Item : GodotObject
 		Inventory.RemoveItem(this);
 	}
 	public virtual void Init() { }
-	
+
 }

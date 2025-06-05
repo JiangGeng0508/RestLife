@@ -1,9 +1,11 @@
 using System;
 using Godot;
-
+[GlobalClass]
 public partial class Food : Item
 {
+	[Export]
 	public float EnergyBonus { get; set; } = 10f;
+	[Export]
 	public float HungerBonus { get; set; } = 10f;
 
 	public void Consume()
@@ -16,5 +18,10 @@ public partial class Food : Item
 	public override void Init()
 	{
 		AddAction(Consume);
-    }
+	}
+	public Food() { }
+	public Food(string name, Texture2D icon, float energyBonus, float hungerBonus)
+	{
+
+	}
 }
