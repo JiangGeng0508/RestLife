@@ -7,21 +7,20 @@ public partial class Saver : Node
 	public SceneTree MainSceneTree;
 	private static readonly string SavePath = "res://savegame.save";
 
+	public override void _Ready()
+	{
+		Global.Saver = this;
+	}
 	public static void Save()
 	{
 		GD.Print("Saving game...");
-		using var file = FileAccess.Open("SavePath", FileAccess.ModeFlags.Write);
-		Dictionary<string, float> playerAttributes = new Dictionary<string, float>
-		{
-			{ "Health", Global.Player.Health.Value },
-			{ "Energy", Global.Player.Energy.Value },
-			{ "Hunger", Global.Player.Hunger.Value }
-		};
-		Dictionary<string, int> gameTime = new Dictionary<string, int>
-		{
-			{ "Day", Global.GameWorldTime.Days },
-			{ "Hour", Global.GameWorldTime.Hours }
-		};
+		Dictionary<string, float> playerAttributes = new Dictionary<string, float>();
+		playerAttributes.Add("Health", Global.Player.Character.Health.Value);
+		playerAttributes.Add("Energy", Global.Player.Character.Energy.Value);
+		playerAttributes.Add("Hunger", Global.Player.Character.Hunger.Value);
+		Dictionary<string, int> gameTime = new Dictionary<string, int>();
+		gameTime.Add("Day", Global.GameWorldTime.Days);
+		gameTime.Add("Hour", Global.GameWorldTime.Hours);
 		//Inventory
 		Dictionary<string, Item> inventoryData = new Dictionary<string, Item>();
 		//Event

@@ -41,10 +41,6 @@ public partial class InventoryUI : SplitContainer
 			NumberList.AddItem(item.Value.Number.ToString());
 		}
 	}
-	public void EquipToSlot(EquipbleItem item, EquipType equipType)
-	{
-
-	}
 	public void DeleteItem(string name)
 	{
 

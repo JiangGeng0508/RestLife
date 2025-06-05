@@ -10,20 +10,8 @@ public partial class Inventory : Node
 	{
 		Global.Inventory = this;
 		UI = Global.InventoryUI;
-		Items.Clear();
 		//TODO: Load
 
-		//debug
-		var item = new Item();
-		item.Name = "Item1";
-		AddItem(item);
-		var item2 = new EquipbleItem();
-		item2.Name = "EquipbleItem1";
-		item2.equipType = EquipType.MainHand;
-		AddItem(item2);
-		var item3 = new Food();
-		item3.Name = "Food1";
-		AddItem(item3);
 	}
 	public static void AddItem(Item item, int number = 1)
 	{

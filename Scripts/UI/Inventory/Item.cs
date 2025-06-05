@@ -29,6 +29,10 @@ public partial class Item : Resource
 			}
 		}
 	}
+	public void Drop(int number = 1)
+	{
+		var ItemDrop = new ItemDrop();
+	}
 	public Item()
 	{
 
@@ -46,5 +50,4 @@ public partial class Item : Resource
 		Inventory.RemoveItem(this);
 	}
 	public virtual void Init() { }
-
 }

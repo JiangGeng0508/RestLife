@@ -10,8 +10,8 @@ public partial class Food : Item
 
 	public void Consume()
 	{
-		Global.Player.Energy.Value += EnergyBonus;
-		Global.Player.Hunger.Value += HungerBonus;
+		Global.Player.Character.Energy.Value += EnergyBonus;
+		Global.Player.Character.Hunger.Value += HungerBonus;
 		AddNumber(-1);
 	}
 

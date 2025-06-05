@@ -7,7 +7,7 @@
 script = ExtResource("2_6vi2m")
 EnergyBonus = 10.0
 HungerBonus = 10.0
-Name = "TestFood"
+Name = "Apple"
 Icon = ExtResource("1_fadlf")
 Number = 1
 metadata/_custom_type_script = "uid://klt430g1yd76"

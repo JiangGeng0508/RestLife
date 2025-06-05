@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ivcafo2wbslr"]
+
+[ext_resource type="Texture2D" uid="uid://7hbqyswoygvb" path="res://Asset/Sprite/Food/Ghostpixxells_pixelfood/01_dish.png" id="1_qpwjj"]
+[ext_resource type="Script" uid="uid://ln761a4ckt8o" path="res://Scripts/UI/Inventory/Item.cs" id="2_c66fl"]
+
+[resource]
+script = ExtResource("2_c66fl")
+Name = "Dish"
+Icon = ExtResource("1_qpwjj")
+Number = 1
+metadata/_custom_type_script = "uid://ln761a4ckt8o"

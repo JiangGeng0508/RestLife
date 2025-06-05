@@ -70,7 +70,6 @@ public partial class Character : CharacterBody2D
 	public Attribute Hunger = new(100f);
 	public override void _Ready()
 	{
-		Global.Player = this;
 		Id = GetInstanceId();
 		reachArea = GetNode<Area2D>("ReachArea");
 		tarPosNotifer = GetNode<TargetNotifer>("../TargetNotifier");

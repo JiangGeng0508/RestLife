@@ -16,9 +16,6 @@ public partial class SelectIntItem : InteractableItem
 		AddChild(popup);
 		popup.AddChild(grid);
 
-		//debug
-		MergeVoidFunc(AddTestFood);
-
 		OnBegin();
 	}
 	public override void Action()
@@ -47,12 +44,4 @@ public partial class SelectIntItem : InteractableItem
 		}
 	}
 	public virtual void OnBegin() { }
-
-	//debug
-	public void AddTestFood()
-	{
-		var item3 = new Food();
-		item3.Name = "Food1";
-		Inventory.AddItem(item3);
-	}
 }
