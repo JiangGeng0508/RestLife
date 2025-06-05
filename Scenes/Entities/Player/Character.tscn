@@ -14,15 +14,18 @@ script = ExtResource("1_b3ei2")
 metadata/_edit_group_ = true
 
 [node name="CharaShape" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_567wp")
 
 [node name="ReachArea" type="Area2D" parent="."]
+scale = Vector2(1.3, 1.3)
 script = ExtResource("2_l3y44")
 
 [node name="ReachShape" type="CollisionShape2D" parent="ReachArea"]
 shape = SubResource("CircleShape2D_jp4cy")
 
 [node name="PlayerAnim" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("3_l3y44")
 animation = &"Idle"
 

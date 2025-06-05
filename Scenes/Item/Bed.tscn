@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://kdouq2pmhyo6"]
+
+[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Item/InteractableItem.tscn" id="1_4ciib"]
+[ext_resource type="Script" uid="uid://bd4842utkx5yw" path="res://Scripts/Item/Bed.cs" id="2_tfnd1"]
+
+[node name="Bed" instance=ExtResource("1_4ciib")]
+script = ExtResource("2_tfnd1")
+
+[node name="SleepConfirm" type="ConfirmationDialog" parent="." index="2"]
+initial_position = 2
+ok_button_text = "Yes"
+dialog_text = "Sure to sleep?"
+cancel_button_text = "Later"

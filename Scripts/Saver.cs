@@ -5,6 +5,7 @@ using Godot.Collections;
 //AutoLoad Script
 public partial class Saver : Node
 {
+	public SceneTree MainSceneTree;
 	private static readonly string SavePath = "res://savegame.save";
 
 	public override void _Ready()
@@ -14,13 +15,12 @@ public partial class Saver : Node
 	public static void Save()
 	{
 		GD.Print("Saving game...");
-		using var file = FileAccess.Open(SavePath, FileAccess.ModeFlags.Write);
-		var saveData = new Dictionary();
-		saveData["Player"] = Global.Player;
-		saveData["GameWorldTime"] = Global.GameWorldTime;
-		saveData["Dress"] = Global.Dress;
-		file.StoreVar(saveData.Duplicate());
-		file.Close();
+		//Player
+		//Time
+		//Inventory
+		//Dress
+		//Event
+		//Scene
 		GD.Print("Game saved.");
 	}
 	public static void SaveScene(Node node)

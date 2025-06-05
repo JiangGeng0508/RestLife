@@ -17,6 +17,7 @@ public partial class Character : CharacterBody2D
 	InteractableItem interactItem;
 	RideableItem ridingItem;
 	public ulong Id = 0;
+	bool isRunning = false;
 	bool handable = false;
 	private CharacterState _state = CharacterState.Idle;
 	public CharacterState State
@@ -34,9 +35,17 @@ public partial class Character : CharacterBody2D
 						break;
 					case CharacterState.Moving:
 						PlayerAnim.Play("Walk");
+						if (isRunning)
+						{
+							PlayerAnim.Play("Run");
+						}
 						break;
 					case CharacterState.MovingbyKeyboard:
 						PlayerAnim.Play("Walk");
+						if (isRunning)
+						{
+							PlayerAnim.Play("Run");
+						}
 						break;
 					case CharacterState.Riding:
 						PlayerAnim.Play("Interact");
@@ -100,6 +109,11 @@ public partial class Character : CharacterBody2D
 				}
 				Energy.Value -= 0.1f * (float)delta;
 				Hunger.Value -= 0.1f * (float)delta;
+				if (isRunning)
+				{
+					Hunger.Value -= 0.3f * (float)delta;
+					Energy.Value -= 0.2f * (float)delta;
+				}
 				break;
 			case CharacterState.MovingbyKeyboard:
 				if (KeyDirection != 0)
@@ -122,6 +136,11 @@ public partial class Character : CharacterBody2D
 				
 				Energy.Value -= 0.1f * (float)delta;
 				Hunger.Value -= 0.1f * (float)delta;
+				if (isRunning)
+				{
+					Hunger.Value -= 0.3f * (float)delta;
+					Energy.Value -= 0.2f * (float)delta;
+				}
 				break;
 			case CharacterState.Riding:
 				Energy.Value += 0.5f * (float)delta;
@@ -210,7 +229,7 @@ public partial class Character : CharacterBody2D
 					}
 				}
 			}
-			else if (IsMovingbyKeyboard())
+			else if (IsMovingbyKeyboard())//按键抬起时处理
 			{
 				if (keyEvent.Keycode == Key.A && KeyDirection != -1)
 				{
@@ -224,6 +243,28 @@ public partial class Character : CharacterBody2D
 				{
 					KeyDirection = 0;
 					State = CharacterState.Idle;
+				}
+			}
+			//跑步
+			if (keyEvent.Keycode == Key.Shift)
+			{
+				if (keyEvent.Pressed)
+				{
+					if (IsMoving() || IsMovingbyKeyboard())
+					{
+						isRunning = true;
+						Speed = 250f;
+						PlayerAnim.Play("Run");
+					}
+				}
+				else
+				{
+					if (isRunning)
+					{
+						PlayerAnim.Play("Walk");
+					}
+					isRunning = false;
+					Speed = 150f;
 				}
 			}
 		}

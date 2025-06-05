@@ -1,10 +1,8 @@
 using Godot;
 using System;
 
-public partial class Elevator : InteractableItem
+public partial class StairDown : InteractableItem
 {
-	[Export(PropertyHint.Enum, "Up:-1,Down:1")]
-	public int Direction { get; set; } = -1;
 	private Vector2 StairOffset = new Vector2(0, 200);
 	public override void Action()
 	{
@@ -12,7 +10,7 @@ public partial class Elevator : InteractableItem
 		{
 			CharacterBody2D chara = CharaReachArea.GetParent() as CharacterBody2D;
 			chara = CharaReachArea.GetParent() as CharacterBody2D;
-			chara.Position = Position + StairOffset * Direction;
+			chara.Position = Position + StairOffset;
 		}
 	}
 }
