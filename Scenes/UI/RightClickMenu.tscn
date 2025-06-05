@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dcb2dkl0sk4c7"]
 
-[ext_resource type="Script" uid="uid://cmss037nrmq3g" path="res://Scripts/UI/RightClickMenu.cs" id="1_oi0od"]
+[ext_resource type="Script" uid="uid://cmss037nrmq3g" path="res://Scripts/UI/Hud/RightClickMenu.cs" id="1_oi0od"]
 
 [node name="RightClickMenu" type="PopupMenu"]
 auto_translate_mode = 1

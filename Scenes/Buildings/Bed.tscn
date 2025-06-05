@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://kdouq2pmhyo6"]
 
-[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Item/InteractableItem.tscn" id="1_4ciib"]
-[ext_resource type="Script" uid="uid://bd4842utkx5yw" path="res://Scripts/Item/Bed.cs" id="2_tfnd1"]
+[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/InteractableItem.tscn" id="1_4ciib"]
+[ext_resource type="Script" uid="uid://bd4842utkx5yw" path="res://Scripts/Buildings/Bed.cs" id="2_tfnd1"]
 
 [node name="Bed" instance=ExtResource("1_4ciib")]
 script = ExtResource("2_tfnd1")

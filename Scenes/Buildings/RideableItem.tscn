@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b47gxbo06clen"]
+
+[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/InteractableItem.tscn" id="1_7kffp"]
+[ext_resource type="Script" uid="uid://dko28k4dtdaad" path="res://Scripts/Buildings/RideableItem.cs" id="2_2s702"]
+
+[node name="RideableItem" instance=ExtResource("1_7kffp")]
+script = ExtResource("2_2s702")
+riderOffset = Vector2(0, -20)

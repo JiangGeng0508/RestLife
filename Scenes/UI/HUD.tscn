@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://dc74ltyvfx87h"]
 
-[ext_resource type="Script" uid="uid://bn5qycss666ik" path="res://Scripts/UI/Hud.cs" id="1_lelo4"]
-[ext_resource type="Script" uid="uid://b78vbe0hqa2ni" path="res://Scripts/UI/SelectMenu.cs" id="1_ne771"]
-[ext_resource type="Script" uid="uid://cihgy0uhufudw" path="res://Scripts/UI/InventoryUI.cs" id="2_lelo4"]
-[ext_resource type="Script" uid="uid://cmss037nrmq3g" path="res://Scripts/UI/RightClickMenu.cs" id="4_1and6"]
-[ext_resource type="Script" uid="uid://dg3q4agdhk2ds" path="res://Scripts/UI/DressUI.cs" id="4_4bm6u"]
-[ext_resource type="Script" uid="uid://cdvatkaygsein" path="res://Scripts/UI/Slot.cs" id="5_ykvyr"]
+[ext_resource type="Script" uid="uid://bn5qycss666ik" path="res://Scripts/UI/Hud/Hud.cs" id="1_lelo4"]
+[ext_resource type="Script" uid="uid://b78vbe0hqa2ni" path="res://Scripts/UI/Hud/SelectMenu.cs" id="1_ne771"]
+[ext_resource type="Script" uid="uid://cihgy0uhufudw" path="res://Scripts/UI/Hud/InventoryUI.cs" id="2_lelo4"]
+[ext_resource type="Script" uid="uid://cmss037nrmq3g" path="res://Scripts/UI/Hud/RightClickMenu.cs" id="4_1and6"]
+[ext_resource type="Script" uid="uid://dg3q4agdhk2ds" path="res://Scripts/UI/Hud/DressUI.cs" id="4_4bm6u"]
+[ext_resource type="Script" uid="uid://cdvatkaygsein" path="res://Scripts/UI/Hud/Slot.cs" id="5_ykvyr"]
 [ext_resource type="Script" uid="uid://dgpb36bqvvo54" path="res://Scripts/Menu.cs" id="7_1ree7"]
-[ext_resource type="Script" uid="uid://bcfcwrvroa6lo" path="res://Scripts/UI/GodMode.cs" id="8_d2sja"]
+[ext_resource type="Script" uid="uid://bcfcwrvroa6lo" path="res://Scripts/UI/Hud/GodMode.cs" id="8_d2sja"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_lelo4")

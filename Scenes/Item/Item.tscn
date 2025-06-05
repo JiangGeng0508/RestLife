@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmbvhyb7akckr"]
-
-[ext_resource type="Script" uid="uid://ln761a4ckt8o" path="res://Scripts/UI/Inventory/Item.cs" id="1_aw4mf"]
-
-[node name="Item" type="Node2D"]
-script = ExtResource("1_aw4mf")

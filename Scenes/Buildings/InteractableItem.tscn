@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cnovmushulktm"]
 
-[ext_resource type="Script" uid="uid://dvuefufp5xcjt" path="res://Scripts/Item/InteractableItem.cs" id="1_qtwvc"]
+[ext_resource type="Script" uid="uid://dvuefufp5xcjt" path="res://Scripts/Buildings/InteractableItem.cs" id="1_qtwvc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qtwvc"]
 radius = 18.0

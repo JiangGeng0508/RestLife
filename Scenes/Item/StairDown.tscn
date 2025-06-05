@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0kw6xwewc6vv"]
-
-[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Item/InteractableItem.tscn" id="1_y1v7r"]
-[ext_resource type="Script" uid="uid://1h1s8ijx62al" path="res://Scripts/Item/StairDown.cs" id="2_ln1e2"]
-
-[node name="StairDown" instance=ExtResource("1_y1v7r")]
-script = ExtResource("2_ln1e2")
-Direction = 0
