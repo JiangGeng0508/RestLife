@@ -32,7 +32,7 @@ public partial class InventoryUI : SplitContainer
 	}
 	public void Update()//更新背包显示
 	{
-		var items = Global.Inventory.GetItems();
+		var items = Global.Player.Inventory.GetItems();
 		InventoryList.Clear();
 		NumberList.Clear();
 		foreach (var item in items)

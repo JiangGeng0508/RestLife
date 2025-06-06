@@ -5,3 +5,5 @@
 
 [node name="ItemDrop" instance=ExtResource("1_7romc")]
 script = ExtResource("2_dpubp")
+
+[node name="Icon" type="Sprite2D" parent="." index="2"]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bswjsiltxgp1c"]
+[gd_scene load_steps=5 format=3 uid="uid://bswjsiltxgp1c"]
 
 [ext_resource type="Texture2D" uid="uid://brevgmydtmix1" path="res://Asset/Sprite/Landscape/nature_1/1.png" id="1_vmgj0"]
-[ext_resource type="PackedScene" uid="uid://t6xbv8fwvhft" path="res://Scenes/Entities/Player/Player.tscn" id="2_onb61"]
 [ext_resource type="Texture2D" uid="uid://b4rj2xqkdnya4" path="res://Asset/Sprite/Landscape/nature_1/10.png" id="2_y6hft"]
 [ext_resource type="Texture2D" uid="uid://crgnpy5vw16re" path="res://Asset/Sprite/Landscape/nature_1/8.png" id="3_00hcm"]
 [ext_resource type="PackedScene" uid="uid://dc74ltyvfx87h" path="res://Scenes/UI/HUD.tscn" id="5_00hcm"]
@@ -21,7 +20,5 @@ texture = ExtResource("2_y6hft")
 [node name="8" type="Sprite2D" parent="Parallax2D"]
 scale = Vector2(2, 2)
 texture = ExtResource("3_00hcm")
-
-[node name="Player" parent="." instance=ExtResource("2_onb61")]
 
 [node name="HUD" parent="." instance=ExtResource("5_00hcm")]

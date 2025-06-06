@@ -3,10 +3,17 @@ using System;
 
 public partial class ItemDrop : InteractableItem
 {
-	Item item;
+	Item Item;
+	int Number;
 	public override void Action()
 	{
-		Global.Player.Inventory.Call("AddItem", item, 1);
+		Global.Player.Inventory.Call("AddItem", Item, Number);
 		QueueFree();
+	}
+	public ItemDrop(Item item)
+	{
+		Item = item;
+		GetNode<Sprite2D>("Icon").Texture = item.Icon;
+		Number = item.Number;
 	}
 }

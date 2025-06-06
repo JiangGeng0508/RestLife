@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bto6gsdtdxftl"]
+[gd_scene load_steps=16 format=3 uid="uid://bto6gsdtdxftl"]
 
 [ext_resource type="PackedScene" uid="uid://b0kw6xwewc6vv" path="res://Scenes/Buildings/StairDown.tscn" id="1_xb4mg"]
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Buildings/wall.tscn" id="2_6t1o7"]
@@ -6,10 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://b47gxbo06clen" path="res://Scenes/Buildings/RideableItem.tscn" id="4_xc4hf"]
 [ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/InteractableItem.tscn" id="5_6rnll"]
 [ext_resource type="PackedScene" uid="uid://kdouq2pmhyo6" path="res://Scenes/Buildings/Bed.tscn" id="6_5qxwa"]
-[ext_resource type="PackedScene" uid="uid://t6xbv8fwvhft" path="res://Scenes/Entities/Player/Player.tscn" id="6_xb4mg"]
 [ext_resource type="PackedScene" uid="uid://c45lo0s8hq66p" path="res://Scenes/Entities/NPC.tscn" id="7_6t1o7"]
+[ext_resource type="PackedScene" uid="uid://413h3wiwich5" path="res://InfCrate.tscn" id="9_5qxwa"]
 [ext_resource type="Script" uid="uid://di14nm0jvgxks" path="res://Scripts/UI/Cursur.cs" id="9_c1ier"]
 [ext_resource type="PackedScene" uid="uid://dc74ltyvfx87h" path="res://Scenes/UI/HUD.tscn" id="10_gyaec"]
+[ext_resource type="PackedScene" uid="uid://cicpm70axugfq" path="res://PlayerSpawner.tscn" id="13_5qxwa"]
 [ext_resource type="PackedScene" uid="uid://cll3uw2476v3x" path="res://Scenes/Buildings/TeleportItem.tscn" id="13_6t1o7"]
 [ext_resource type="PackedScene" uid="uid://vvjn0laj7y1g" path="res://Scenes/UI/DialogueLayer.tscn" id="14_5qxwa"]
 [ext_resource type="PackedScene" uid="uid://bdfw1wr7t12kg" path="res://Scenes/Buildings/StairUp.tscn" id="15_xc4hf"]
@@ -40,9 +41,26 @@ scale = Vector2(4, 4)
 position = Vector2(-588, 2)
 scale = Vector2(3.6, 1)
 
-[node name="HUD" parent="." instance=ExtResource("10_gyaec")]
+[node name="TeleportItem" parent="Buildings" instance=ExtResource("13_6t1o7")]
+position = Vector2(867, -21)
+scale = Vector2(1.12503, 3.14354)
 
-[node name="Player" parent="." instance=ExtResource("6_xb4mg")]
+[node name="StairDown" parent="Buildings" instance=ExtResource("1_xb4mg")]
+position = Vector2(500, -8)
+
+[node name="StairDown2" parent="Buildings" instance=ExtResource("1_xb4mg")]
+position = Vector2(638, -204)
+
+[node name="StairUp" parent="Buildings" instance=ExtResource("15_xc4hf")]
+position = Vector2(636, -4)
+
+[node name="StairUp2" parent="Buildings" instance=ExtResource("15_xc4hf")]
+position = Vector2(491, 193)
+
+[node name="InfCrate" parent="Buildings" instance=ExtResource("9_5qxwa")]
+position = Vector2(1071, -2)
+
+[node name="HUD" parent="." instance=ExtResource("10_gyaec")]
 
 [node name="Npc" parent="." instance=ExtResource("7_6t1o7")]
 position = Vector2(116, 0)
@@ -60,21 +78,8 @@ shape = SubResource("CircleShape2D_bmxlf")
 
 [node name="DialogueLayer" parent="." instance=ExtResource("14_5qxwa")]
 
-[node name="TeleportItem" parent="." instance=ExtResource("13_6t1o7")]
-position = Vector2(867, -21)
-scale = Vector2(1.12503, 3.14354)
-
-[node name="StairDown" parent="." instance=ExtResource("1_xb4mg")]
-position = Vector2(500, -8)
-
-[node name="StairDown2" parent="." instance=ExtResource("1_xb4mg")]
-position = Vector2(638, -204)
-
-[node name="StairUp" parent="." instance=ExtResource("15_xc4hf")]
-position = Vector2(636, -4)
-
-[node name="StairUp2" parent="." instance=ExtResource("15_xc4hf")]
-position = Vector2(491, 193)
+[node name="PlayerSpawner" parent="." instance=ExtResource("13_5qxwa")]
+position = Vector2(-51, 1)
 
 [connection signal="area_entered" from="Cursur" to="Cursur" method="OnAreaEntered"]
 [connection signal="area_exited" from="Cursur" to="Cursur" method="OnAreaExited"]

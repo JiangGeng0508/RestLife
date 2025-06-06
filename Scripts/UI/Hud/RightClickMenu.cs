@@ -14,7 +14,7 @@ public partial class RightClickMenu : PopupMenu
 	}
 	public void Invoke(string item,Vector2 position)//调出时更新
 	{
-		foreach (var action in Inventory.Items[item].actions)
+		foreach (var action in Global.Player.Inventory.Items[item].actions)
 		{
 			if (action is not null)
 			{

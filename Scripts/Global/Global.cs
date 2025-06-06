@@ -6,19 +6,22 @@ public partial class Global : Node
 	public static ResourceLoader ResourceLoader;
 	public static Player Player;
 	public static GameWorldTime GameWorldTime;
-	public static Inventory Inventory;
 	public static InventoryUI InventoryUI;
 	public static Saver Saver;
 	public static EventBus EventBus;
+	public static ItemManager ItemManager;
 
 	public override void _Ready()
 	{
 		GameWorldTime = new();
-		AddChild(GameWorldTime);
+		AddChild(GameWorldTime, true);
 		Saver = new();
-		AddChild(Saver);
+		AddChild(Saver, true);
 		ResourceLoader = new();
-		AddChild(ResourceLoader);
+		AddChild(ResourceLoader, true);
 		EventBus = new();
+		AddChild(EventBus, true);
+		ItemManager = new();
+		AddChild(ItemManager, true);
 	}
 }

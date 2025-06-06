@@ -1,19 +1,17 @@
 using Godot;
 using Godot.Collections;
-using System;
 
 public partial class Inventory : Node
 {
-	public static Dictionary<string, Item> Items = [];
-	public static InventoryUI UI;
+	public Dictionary<string, Item> Items = [];
+	public InventoryUI UI;
 	public override void _Ready()
 	{
-		Global.Inventory = this;
 		UI = Global.InventoryUI;
 		//TODO: Load
 
 	}
-	public static void AddItem(Item item, int number = 1)
+	public void AddItem(Item item, int number = 1)
 	{
 		if (Items.ContainsKey(item.Name))
 		{
@@ -26,7 +24,7 @@ public partial class Inventory : Node
 		}
 		UI.Update();
 	}
-	public static void RemoveItem(Item item, int number = -1)
+	public void RemoveItem(Item item, int number = -1)
 	{
 		if (!Items.ContainsKey(item.Name))
 		{
@@ -45,9 +43,5 @@ public partial class Inventory : Node
 	public Dictionary<string, Item> GetItems()
 	{
 		return Items;
-	}
-	public static void Equip()
-	{
-		//TODO
 	}
 }
