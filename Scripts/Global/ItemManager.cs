@@ -29,4 +29,10 @@ public partial class ItemManager : Node
 			RegisteredItems.Add(item);
 		}
 	}
+	public Item ShapeFromTexture(string texturePath)
+	{
+		var item = new Item();
+		item.Icon = GD.Load<Texture2D>(texturePath);
+		return item;
+	}
 }

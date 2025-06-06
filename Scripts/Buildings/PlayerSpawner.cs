@@ -7,7 +7,7 @@ public partial class PlayerSpawner : Node2D
 	{
 		if (Global.Player == null)
 		{
-			AddChild(ResourceLoader.Load<PackedScene>("res://Scenes/Entities/Player/Player.tscn").Instantiate<Player>());
+			AddChild(GD.Load<PackedScene>("res://Scenes/Entities/Player/Player.tscn").Instantiate<Player>());
 		}
 	}
 }
