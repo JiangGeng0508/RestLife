@@ -5,7 +5,7 @@ using Godot.Collections;
 public partial class Saver : Node
 {
 	public SceneTree MainSceneTree;
-	private static readonly string SavePath = "res://savegame.save";
+	//private static readonly string SavePath = "res://savegame.save";
 
 	public override void _Ready()
 	{

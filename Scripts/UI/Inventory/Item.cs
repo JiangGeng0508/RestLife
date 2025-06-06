@@ -22,17 +22,18 @@ public partial class Item : Resource
 		set
 		{
 			_number = value;
-			Global.InventoryUI.Update();
+			Global.InventoryUI?.Update();
 			if (_number <= 0)
 			{
 				Delete();
 			}
 		}
 	}
-	public void Drop(int number = 1)
+	public void Drop()
 	{
 		var ItemDrop = new ItemDrop(this);
 		ItemDrop.Position = Global.Player.Position;
+		Delete();
 	}
 	public Item()
 	{
@@ -50,5 +51,8 @@ public partial class Item : Resource
 	{
 		Global.Player.Inventory.RemoveItem(this);
 	}
-	public virtual void Init() { }
+	public virtual void Init()
+	{
+		AddAction(Drop);
+	}
 }

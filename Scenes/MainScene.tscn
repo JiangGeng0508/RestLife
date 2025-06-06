@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bto6gsdtdxftl"]
+[gd_scene load_steps=18 format=3 uid="uid://bto6gsdtdxftl"]
 
 [ext_resource type="PackedScene" uid="uid://b0kw6xwewc6vv" path="res://Scenes/Buildings/StairDown.tscn" id="1_xb4mg"]
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Buildings/wall.tscn" id="2_6t1o7"]
@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://cicpm70axugfq" path="res://PlayerSpawner.tscn" id="13_5qxwa"]
 [ext_resource type="PackedScene" uid="uid://cll3uw2476v3x" path="res://Scenes/Buildings/TeleportItem.tscn" id="13_6t1o7"]
 [ext_resource type="PackedScene" uid="uid://vvjn0laj7y1g" path="res://Scenes/UI/DialogueLayer.tscn" id="14_5qxwa"]
+[ext_resource type="PackedScene" uid="uid://dkaut72cokf7a" path="res://Scenes/Buildings/ItemDrop.tscn" id="15_6rnll"]
 [ext_resource type="PackedScene" uid="uid://bdfw1wr7t12kg" path="res://Scenes/Buildings/StairUp.tscn" id="15_xc4hf"]
+[ext_resource type="Resource" uid="uid://bn4agutinxfi" path="res://Asset/Data/Items/Apple.tres" id="16_6rnll"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmxlf"]
 radius = 3.0
@@ -80,6 +82,10 @@ shape = SubResource("CircleShape2D_bmxlf")
 
 [node name="PlayerSpawner" parent="." instance=ExtResource("13_5qxwa")]
 position = Vector2(-51, 1)
+
+[node name="ItemDrop" parent="." instance=ExtResource("15_6rnll")]
+position = Vector2(956, 1)
+Item = ExtResource("16_6rnll")
 
 [connection signal="area_entered" from="Cursur" to="Cursur" method="OnAreaEntered"]
 [connection signal="area_exited" from="Cursur" to="Cursur" method="OnAreaExited"]

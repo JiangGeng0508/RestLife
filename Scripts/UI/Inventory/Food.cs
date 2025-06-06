@@ -17,6 +17,7 @@ public partial class Food : Item
 
 	public override void Init()
 	{
+		base.Init();
 		AddAction(Consume);
 	}
 	public Food() { }

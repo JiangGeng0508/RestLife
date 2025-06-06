@@ -1,27 +1,21 @@
 using System;
 using System.Collections.Generic;
 using Godot;
-using System.IO;
 
 public partial class ItemManager : Node
 {
 	public List<Item> RegisteredItems { get; set; } = [];
 	public override void _Ready()
 	{
-		try
+		Global.ItemManager = this;
+		GD.Print("ItemManager is ready");
+		using var dir = DirAccess.Open("res://Asset/Data/Items/");
+		var files = dir.GetFiles();
+		foreach (var file in files)
 		{
-			if (Directory.Exists("res://Asset/Data/Items/"))
-			{
-				string[] files = Directory.GetFiles("res://Asset/Data/Items/", "*.tres", SearchOption.AllDirectories);
-				foreach (string file in files)
-				{
-
-				}
-			}
-		}
-		catch (Exception e)
-		{
-			GD.PrintErr(e.Message);
+			GD.Print("Loading item: " + file);
+			var item = GD.Load<Item>("res://Asset/Data/Items/" + file);
+			Register(item);
 		}
 	}
 	public void Register(Item item)

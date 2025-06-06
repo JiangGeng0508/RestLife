@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkaut72cokf7a"]
+
+[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/InteractableItem.tscn" id="1_eqe13"]
+[ext_resource type="Script" uid="uid://behfumwhg7ed4" path="res://ItemDrop.cs" id="2_l2wf7"]
+[ext_resource type="Texture2D" uid="uid://f87qh4m6frf2" path="res://Asset/Sprite/Food/Food/Apple.png" id="3_l2wf7"]
+
+[node name="ItemDrop" instance=ExtResource("1_eqe13")]
+script = ExtResource("2_l2wf7")
+Item = null
+
+[node name="ColorRect" parent="." index="0"]
+visible = false
+
+[node name="Icon" type="Sprite2D" parent="." index="2"]
+texture = ExtResource("3_l2wf7")
