@@ -31,9 +31,7 @@ public partial class Item : Resource
 	}
 	public void Drop()
 	{
-		var ItemDrop = new ItemDrop(this);
-		ItemDrop.Position = Global.Player.Position;
-		Delete();
+		Global.Player.Inventory.Drop(this);
 	}
 	public Item()
 	{

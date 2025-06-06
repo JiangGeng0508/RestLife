@@ -40,6 +40,15 @@ public partial class Inventory : Node
 		}
 		UI.Update();
 	}
+	public void Drop(Item item)
+	{
+		var drop = GD.Load<PackedScene>("res://Scenes/Buildings/ItemDrop.tscn").Instantiate<ItemDrop>();
+		drop.Item = item;
+		drop.Position = Global.Player.Character.GetGlobalPosition();
+		AddChild(drop);
+		GD.Print(drop.GetParent().Name);
+		RemoveItem(item);
+	}
 	public Dictionary<string, Item> GetItems()
 	{
 		return Items;
