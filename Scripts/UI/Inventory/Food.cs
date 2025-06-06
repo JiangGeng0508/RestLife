@@ -12,6 +12,7 @@ public partial class Food : Item
 	{
 		Global.Player.Character.Energy.Value += EnergyBonus;
 		Global.Player.Character.Hunger.Value += HungerBonus;
+		Global.Player.Character.PlayerAnim.Play("Use");
 		AddNumber(-1);
 	}
 

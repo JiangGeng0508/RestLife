@@ -12,7 +12,7 @@ public enum CharacterState
 public partial class Character : CharacterBody2D
 {
 	Area2D reachArea;
-	AnimatedSprite2D PlayerAnim;
+	public AnimatedSprite2D PlayerAnim;
 	TargetNotifer tarPosNotifer;
 	InteractableItem interactItem;
 	RideableItem ridingItem;
@@ -260,7 +260,14 @@ public partial class Character : CharacterBody2D
 				{
 					if (isRunning)
 					{
-						PlayerAnim.Play("Walk");
+						if (IsMoving() || IsMovingbyKeyboard())
+						{
+							PlayerAnim.Play("Walk");
+						}
+						else
+						{
+							PlayerAnim.Play("Idle");
+						}
 					}
 					isRunning = false;
 					Speed = 150f;

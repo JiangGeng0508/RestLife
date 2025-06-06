@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://bto6gsdtdxftl"]
+[gd_scene load_steps=19 format=3 uid="uid://bto6gsdtdxftl"]
 
+[ext_resource type="Script" uid="uid://fynd0dweoayb" path="res://Scenes/MainScene.cs" id="1_enc0b"]
 [ext_resource type="PackedScene" uid="uid://b0kw6xwewc6vv" path="res://Scenes/Buildings/StairDown.tscn" id="1_xb4mg"]
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Buildings/wall.tscn" id="2_6t1o7"]
 [ext_resource type="PackedScene" uid="uid://861bfrm35j5o" path="res://Scenes/Buildings/SelectIntItem.tscn" id="3_5qxwa"]
@@ -21,51 +22,9 @@
 radius = 3.0
 
 [node name="MainScene" type="Node2D"]
-
-[node name="Buildings" type="Node" parent="."]
-
-[node name="WallBody" parent="Buildings" instance=ExtResource("2_6t1o7")]
-position = Vector2(-831, 2)
-scale = Vector2(1, 3)
-
-[node name="SelectIntItem" parent="Buildings" instance=ExtResource("3_5qxwa")]
-position = Vector2(-154, -6)
-
-[node name="RideableItem" parent="Buildings" instance=ExtResource("4_xc4hf")]
-position = Vector2(284, 0)
-scale = Vector2(2, 2)
-
-[node name="InteractableItem" parent="Buildings" instance=ExtResource("5_6rnll")]
-position = Vector2(-366, 0)
-scale = Vector2(4, 4)
-
-[node name="Bed" parent="Buildings" instance=ExtResource("6_5qxwa")]
-position = Vector2(-588, 2)
-scale = Vector2(3.6, 1)
-
-[node name="TeleportItem" parent="Buildings" instance=ExtResource("13_6t1o7")]
-position = Vector2(867, -21)
-scale = Vector2(1.12503, 3.14354)
-
-[node name="StairDown" parent="Buildings" instance=ExtResource("1_xb4mg")]
-position = Vector2(500, -8)
-
-[node name="StairDown2" parent="Buildings" instance=ExtResource("1_xb4mg")]
-position = Vector2(638, -204)
-
-[node name="StairUp" parent="Buildings" instance=ExtResource("15_xc4hf")]
-position = Vector2(636, -4)
-
-[node name="StairUp2" parent="Buildings" instance=ExtResource("15_xc4hf")]
-position = Vector2(491, 193)
-
-[node name="InfCrate" parent="Buildings" instance=ExtResource("9_5qxwa")]
-position = Vector2(1071, -2)
+script = ExtResource("1_enc0b")
 
 [node name="HUD" parent="." instance=ExtResource("10_gyaec")]
-
-[node name="Npc" parent="." instance=ExtResource("7_6t1o7")]
-position = Vector2(116, 0)
 
 [node name="Cursur" type="Area2D" parent="."]
 script = ExtResource("9_c1ier")
@@ -80,12 +39,57 @@ shape = SubResource("CircleShape2D_bmxlf")
 
 [node name="DialogueLayer" parent="." instance=ExtResource("14_5qxwa")]
 
-[node name="PlayerSpawner" parent="." instance=ExtResource("13_5qxwa")]
-position = Vector2(-51, 1)
-
 [node name="ItemDrop" parent="." instance=ExtResource("15_6rnll")]
 position = Vector2(956, 1)
 Item = ExtResource("16_6rnll")
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="PlayerSpawner" parent="Map" instance=ExtResource("13_5qxwa")]
+position = Vector2(-51, 1)
+
+[node name="Buildings" type="Node" parent="Map"]
+
+[node name="WallBody" parent="Map/Buildings" instance=ExtResource("2_6t1o7")]
+position = Vector2(-793, 1)
+scale = Vector2(1, 3)
+
+[node name="SelectIntItem" parent="Map/Buildings" instance=ExtResource("3_5qxwa")]
+position = Vector2(-154, -6)
+
+[node name="RideableItem" parent="Map/Buildings" instance=ExtResource("4_xc4hf")]
+position = Vector2(284, 0)
+scale = Vector2(2, 2)
+
+[node name="InteractableItem" parent="Map/Buildings" instance=ExtResource("5_6rnll")]
+position = Vector2(-366, 0)
+scale = Vector2(4, 4)
+
+[node name="Bed" parent="Map/Buildings" instance=ExtResource("6_5qxwa")]
+position = Vector2(-588, 2)
+scale = Vector2(3.6, 1)
+
+[node name="TeleportItem" parent="Map/Buildings" instance=ExtResource("13_6t1o7")]
+position = Vector2(867, -21)
+scale = Vector2(1.12503, 3.14354)
+
+[node name="StairDown" parent="Map/Buildings" instance=ExtResource("1_xb4mg")]
+position = Vector2(500, -8)
+
+[node name="StairDown2" parent="Map/Buildings" instance=ExtResource("1_xb4mg")]
+position = Vector2(638, -204)
+
+[node name="StairUp" parent="Map/Buildings" instance=ExtResource("15_xc4hf")]
+position = Vector2(636, -4)
+
+[node name="StairUp2" parent="Map/Buildings" instance=ExtResource("15_xc4hf")]
+position = Vector2(491, 193)
+
+[node name="InfCrate" parent="Map/Buildings" instance=ExtResource("9_5qxwa")]
+position = Vector2(1071, -2)
+
+[node name="Npc" parent="Map/Buildings" instance=ExtResource("7_6t1o7")]
+position = Vector2(116, 0)
 
 [connection signal="area_entered" from="Cursur" to="Cursur" method="OnAreaEntered"]
 [connection signal="area_exited" from="Cursur" to="Cursur" method="OnAreaExited"]

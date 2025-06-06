@@ -27,8 +27,7 @@ shape = SubResource("CircleShape2D_jp4cy")
 [node name="PlayerAnim" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("3_l3y44")
-animation = &"Lay"
-frame_progress = 0.408711
+animation = &"Use"
 
 [connection signal="area_entered" from="ReachArea" to="." method="OnAreaEntered"]
 [connection signal="area_exited" from="ReachArea" to="." method="OnAreaExited"]

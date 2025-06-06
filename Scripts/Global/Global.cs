@@ -10,6 +10,7 @@ public partial class Global : Node
 	public static Saver Saver;
 	public static EventBus EventBus;
 	public static ItemManager ItemManager;
+	public static MainScene MainScene;
 
 	public override void _Ready()
 	{

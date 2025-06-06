@@ -30,6 +30,7 @@ public partial class EventBus : Node
 	public void DebugRegister()
 	{
 		var q = new QuestTimeTrigger("Day",">",5);
+		q.Name = "Five Days";
 		Register(q);
 	}
 }

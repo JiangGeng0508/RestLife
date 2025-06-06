@@ -6,7 +6,12 @@ public partial class InfCrate : InteractableItem
 	public GridContainer Grid;
 	public override void Init()
 	{
-		Grid = GetNode<GridContainer>("InfItemGrid");
+		Grid = GetNode<GridContainer>("Popup/InfItemGrid");
+		Grid.Hide();
+		Grid.FocusNext += () =>
+		{
+			Grid.Hide();
+		};
 		foreach (Item item in Global.ItemManager.RegisteredItems)
 		{
 			var button = new Button()

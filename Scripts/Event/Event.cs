@@ -10,6 +10,7 @@ public interface IEvent
 
 public partial class Quest : GodotObject,IEvent
 {
+	public string Name { get; set; }
 	public Condition TriggerCondition { get; set; }
 	// public Condition VanishCondition { get; set; }
 	public void Check()
@@ -19,7 +20,7 @@ public partial class Quest : GodotObject,IEvent
 	}
 	public virtual void Trigger()
 	{
-		GD.Print("void trigger");
+		GD.Print($"Quest {Name} Finished");
 		Vanish();
 	}
 	public virtual void Vanish()

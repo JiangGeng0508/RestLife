@@ -6,6 +6,22 @@
 [node name="InfCrate" instance=ExtResource("1_bmeja")]
 script = ExtResource("2_unco7")
 
-[node name="InfItemGrid" type="GridContainer" parent="." index="2"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Popup" type="Popup" parent="." index="2"]
+title = "asdasdasd"
+initial_position = 2
+size = Vector2i(200, 200)
+visible = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Popup" index="0"]
+visible = false
+offset_left = -187.0
+offset_top = -114.0
+offset_right = 426.0
+offset_bottom = 309.0
+
+[node name="InfItemGrid" type="GridContainer" parent="Popup" index="1"]
+offset_left = -187.0
+offset_top = -114.0
+offset_right = 426.0
+offset_bottom = 309.0
+columns = 9

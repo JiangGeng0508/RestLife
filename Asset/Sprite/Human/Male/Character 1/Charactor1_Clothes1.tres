@@ -275,8 +275,11 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("57_5vqxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_xte7w")
 }],
-"loop": true,
+"loop": false,
 "name": &"Use",
 "speed": 8.0
 }, {

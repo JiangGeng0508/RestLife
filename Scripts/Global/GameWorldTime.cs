@@ -53,7 +53,7 @@ public partial class GameWorldTime : Node
 	public override void _Ready()
 	{
 		Global.GameWorldTime = this;
-		OnDayChange += days => { GD.Print("Day changed to " + Days);};
+		OnDayChange += days => { GD.Print($"{days} days.");};
 	}
 
 	public override void _Process(double delta)
