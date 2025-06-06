@@ -22,8 +22,4 @@ public partial class Food : Item
 		AddAction(Consume);
 	}
 	public Food() { }
-	public Food(string name, Texture2D icon, float energyBonus, float hungerBonus)
-	{
-
-	}
 }

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/Jam.png" id="1_wrm3a"]
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_ame57"]
+
+[resource]
+script = ExtResource("2_ame57")
+EnergyBonus = 10.0
+HungerBonus = 10.0
+Name = "Jam"
+Icon = ExtResource("1_wrm3a")
+Number = 1

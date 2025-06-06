@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/Pepperoni.png" id="1_y24aw"]
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_570np"]
+
+[resource]
+script = ExtResource("2_570np")
+EnergyBonus = 10.0
+HungerBonus = 10.0
+Name = "Pepperoni"
+Icon = ExtResource("1_y24aw")
+Number = 1
