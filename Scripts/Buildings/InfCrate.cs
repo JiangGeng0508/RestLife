@@ -4,14 +4,20 @@ using System;
 public partial class InfCrate : InteractableItem
 {
 	public GridContainer Grid;
+	public Window window;
 	public override void Init()
 	{
-		Grid = GetNode<GridContainer>("Popup/InfItemGrid");
-		Grid.Hide();
-		Grid.FocusNext += () =>
+		window = GetNode<Window>("Window");
+		window.Hide();
+		window.FocusExited += () =>
 		{
-			Grid.Hide();
+			window.Hide();
 		};
+		window.CloseRequested += () =>
+		{
+			window.Hide();
+		};
+		Grid = GetNode<GridContainer>("Window/InfItemGrid");
 		foreach (Item item in Global.ItemManager.RegisteredItems)
 		{
 			var button = new Button()
@@ -29,6 +35,6 @@ public partial class InfCrate : InteractableItem
 	}
 	public override void Action()
 	{
-		Grid.Show();
+		window.Show();
 	}
 }
