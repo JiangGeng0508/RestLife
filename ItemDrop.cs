@@ -5,12 +5,8 @@ public partial class ItemDrop : InteractableItem
 {
 	[Export]
 	public Item Item;
-	int Number;
-	Sprite2D Icon;
-	public override void Init()
-	{
-		Icon = GetNode<Sprite2D>("Icon");
-	}
+	public int Number;
+	public Sprite2D Icon;
 	public override void Action()
 	{
 		GD.Print("Pick up " + Item.Name);
@@ -21,6 +17,8 @@ public partial class ItemDrop : InteractableItem
 	public ItemDrop(Item item)
 	{
 		Item = item;
+		Icon = new Sprite2D();
+		AddChild(Icon);
 		Icon.Texture = item.Icon;
 		Number = item.Number;
 	}

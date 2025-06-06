@@ -53,6 +53,7 @@ public partial class Item : Resource
 	}
 	public virtual void Init()
 	{
+		actions = new Action[9];
 		AddAction(Drop);
 	}
 }
