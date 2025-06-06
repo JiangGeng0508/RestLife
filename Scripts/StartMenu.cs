@@ -8,6 +8,8 @@ public partial class StartMenu : Node2D
 		GetNode<Button>("StartGame").Pressed += StartGamePressed;
 		GetNode<Button>("Load").Pressed += LoadPressed;
 		GetNode<Button>("Quit").Pressed += QuitPressed;
+		//清空Player
+		Global.Player = null;
 	}
 	public void StartGamePressed()
 	{
