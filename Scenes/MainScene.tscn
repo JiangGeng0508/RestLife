@@ -11,12 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://413h3wiwich5" path="res://Scenes/Buildings/InfCrate.tscn" id="9_5qxwa"]
 [ext_resource type="Script" uid="uid://di14nm0jvgxks" path="res://Scripts/UI/Cursur.cs" id="9_c1ier"]
 [ext_resource type="PackedScene" uid="uid://dc74ltyvfx87h" path="res://Scenes/UI/HUD.tscn" id="10_gyaec"]
-[ext_resource type="PackedScene" uid="uid://cicpm70axugfq" path="res://Scenes/Buildings/PlayerSpawner.tscn" id="13_5qxwa"]
 [ext_resource type="PackedScene" uid="uid://cll3uw2476v3x" path="res://Scenes/Buildings/TeleportItem.tscn" id="13_6t1o7"]
 [ext_resource type="PackedScene" uid="uid://vvjn0laj7y1g" path="res://Scenes/UI/DialogueLayer.tscn" id="14_5qxwa"]
 [ext_resource type="PackedScene" uid="uid://dkaut72cokf7a" path="res://Scenes/Buildings/ItemDrop.tscn" id="15_6rnll"]
 [ext_resource type="PackedScene" uid="uid://bdfw1wr7t12kg" path="res://Scenes/Buildings/StairUp.tscn" id="15_xc4hf"]
 [ext_resource type="Resource" uid="uid://bn4agutinxfi" path="res://Asset/Data/Items/Apple.tres" id="16_6rnll"]
+[ext_resource type="Script" uid="uid://cujrn3m7p14ux" path="res://Scripts/Buildings/PlayerSpawner.cs" id="17_enc0b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmxlf"]
 radius = 3.0
@@ -26,71 +26,77 @@ script = ExtResource("1_enc0b")
 
 [node name="HUD" parent="." instance=ExtResource("10_gyaec")]
 
-[node name="Cursur" type="Area2D" parent="."]
+[node name="Cursur" type="Area2D" parent="HUD"]
 script = ExtResource("9_c1ier")
 
-[node name="TooltipLabel" type="Label" parent="Cursur"]
+[node name="TooltipLabel" type="Label" parent="HUD/Cursur"]
 offset_right = 40.0
 offset_bottom = 23.0
 text = "12"
 
-[node name="CursurShape" type="CollisionShape2D" parent="Cursur"]
+[node name="CursurShape" type="CollisionShape2D" parent="HUD/Cursur"]
 shape = SubResource("CircleShape2D_bmxlf")
 
 [node name="DialogueLayer" parent="." instance=ExtResource("14_5qxwa")]
 
-[node name="ItemDrop" parent="." instance=ExtResource("15_6rnll")]
-position = Vector2(956, 1)
-Item = ExtResource("16_6rnll")
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://t6xbv8fwvhft")
+spawn_path = NodePath(".")
+script = ExtResource("17_enc0b")
 
 [node name="Map" type="Node" parent="."]
 
-[node name="PlayerSpawner" parent="Map" instance=ExtResource("13_5qxwa")]
-position = Vector2(-51, 1)
+[node name="TestMap1" type="Node2D" parent="Map"]
 
-[node name="Buildings" type="Node" parent="Map"]
+[node name="Buildings" type="Node" parent="Map/TestMap1"]
 
-[node name="WallBody" parent="Map/Buildings" instance=ExtResource("2_6t1o7")]
+[node name="WallBody" parent="Map/TestMap1/Buildings" instance=ExtResource("2_6t1o7")]
 position = Vector2(-793, 1)
 scale = Vector2(1, 3)
 
-[node name="SelectIntItem" parent="Map/Buildings" instance=ExtResource("3_5qxwa")]
+[node name="SelectIntItem" parent="Map/TestMap1/Buildings" instance=ExtResource("3_5qxwa")]
 position = Vector2(-154, -6)
 
-[node name="RideableItem" parent="Map/Buildings" instance=ExtResource("4_xc4hf")]
+[node name="RideableItem" parent="Map/TestMap1/Buildings" instance=ExtResource("4_xc4hf")]
 position = Vector2(284, 0)
 scale = Vector2(2, 2)
 RiderOffset = Vector2(0, -20)
 
-[node name="InteractableItem" parent="Map/Buildings" instance=ExtResource("5_6rnll")]
+[node name="InteractableItem" parent="Map/TestMap1/Buildings" instance=ExtResource("5_6rnll")]
 position = Vector2(-366, 0)
 scale = Vector2(4, 4)
 
-[node name="Bed" parent="Map/Buildings" instance=ExtResource("6_5qxwa")]
+[node name="Bed" parent="Map/TestMap1/Buildings" instance=ExtResource("6_5qxwa")]
 position = Vector2(-588, 2)
 scale = Vector2(3.6, 1)
 
-[node name="TeleportItem" parent="Map/Buildings" instance=ExtResource("13_6t1o7")]
+[node name="TeleportItem" parent="Map/TestMap1/Buildings" instance=ExtResource("13_6t1o7")]
 position = Vector2(867, -21)
 scale = Vector2(1.12503, 3.14354)
 
-[node name="StairDown" parent="Map/Buildings" instance=ExtResource("1_xb4mg")]
+[node name="StairDown" parent="Map/TestMap1/Buildings" instance=ExtResource("1_xb4mg")]
 position = Vector2(500, -8)
 
-[node name="StairDown2" parent="Map/Buildings" instance=ExtResource("1_xb4mg")]
+[node name="StairDown2" parent="Map/TestMap1/Buildings" instance=ExtResource("1_xb4mg")]
 position = Vector2(638, -204)
 
-[node name="StairUp" parent="Map/Buildings" instance=ExtResource("15_xc4hf")]
+[node name="StairUp" parent="Map/TestMap1/Buildings" instance=ExtResource("15_xc4hf")]
 position = Vector2(636, -4)
 
-[node name="StairUp2" parent="Map/Buildings" instance=ExtResource("15_xc4hf")]
+[node name="StairUp2" parent="Map/TestMap1/Buildings" instance=ExtResource("15_xc4hf")]
 position = Vector2(491, 193)
 
-[node name="InfCrate" parent="Map/Buildings" instance=ExtResource("9_5qxwa")]
+[node name="InfCrate" parent="Map/TestMap1/Buildings" instance=ExtResource("9_5qxwa")]
 position = Vector2(1071, -2)
 
-[node name="Npc" parent="Map/Buildings" instance=ExtResource("7_6t1o7")]
+[node name="ItemDrop" parent="Map/TestMap1/Buildings" instance=ExtResource("15_6rnll")]
+position = Vector2(956, 1)
+Item = ExtResource("16_6rnll")
+
+[node name="NPC" type="Node" parent="Map/TestMap1"]
+
+[node name="Npc" parent="Map/TestMap1/NPC" instance=ExtResource("7_6t1o7")]
 position = Vector2(116, 0)
 
-[connection signal="area_entered" from="Cursur" to="Cursur" method="OnAreaEntered"]
-[connection signal="area_exited" from="Cursur" to="Cursur" method="OnAreaExited"]
+[connection signal="area_entered" from="HUD/Cursur" to="HUD/Cursur" method="OnAreaEntered"]
+[connection signal="area_exited" from="HUD/Cursur" to="HUD/Cursur" method="OnAreaExited"]

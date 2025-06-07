@@ -12,4 +12,8 @@ public partial class Player : Node2D
 		Character = GetNode<Character>("Character");
 		Inventory = GetNode<Inventory>("Inventory");
 	}
+	public void OnSpawn(Variant data)
+	{
+		
+	}
 }
