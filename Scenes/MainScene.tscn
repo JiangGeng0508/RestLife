@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bto6gsdtdxftl"]
 
-[ext_resource type="Script" uid="uid://fynd0dweoayb" path="res://MainScene.cs" id="1_enc0b"]
-[ext_resource type="Script" uid="uid://cjijf43p4nyu8" path="res://MapManager.cs" id="6_q68mp"]
+[ext_resource type="Script" uid="uid://fynd0dweoayb" path="res://Scripts/Scene/MainScene.cs" id="1_enc0b"]
+[ext_resource type="Script" uid="uid://cjijf43p4nyu8" path="res://Scripts/Scene/MapManager.cs" id="6_q68mp"]
 [ext_resource type="PackedScene" uid="uid://b3enhlg2fdncp" path="res://Scenes/Scene/TestMap1.tscn" id="6_y4jh7"]
 [ext_resource type="Script" uid="uid://di14nm0jvgxks" path="res://Scripts/UI/Cursur.cs" id="9_c1ier"]
 [ext_resource type="PackedScene" uid="uid://dc74ltyvfx87h" path="res://Scenes/UI/HUD.tscn" id="10_gyaec"]

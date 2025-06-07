@@ -1,24 +1,38 @@
 [gd_scene load_steps=5 format=3 uid="uid://bswjsiltxgp1c"]
 
 [ext_resource type="Texture2D" uid="uid://brevgmydtmix1" path="res://Asset/Sprite/Landscape/nature_1/1.png" id="1_vmgj0"]
-[ext_resource type="Texture2D" uid="uid://b4rj2xqkdnya4" path="res://Asset/Sprite/Landscape/nature_1/10.png" id="2_y6hft"]
-[ext_resource type="Texture2D" uid="uid://crgnpy5vw16re" path="res://Asset/Sprite/Landscape/nature_1/8.png" id="3_00hcm"]
-[ext_resource type="PackedScene" uid="uid://dc74ltyvfx87h" path="res://Scenes/UI/HUD.tscn" id="5_00hcm"]
+[ext_resource type="Texture2D" uid="uid://ckq3uqbee8t6i" path="res://Asset/Sprite/Landscape/nature_1/2.png" id="2_y6hft"]
+[ext_resource type="Texture2D" uid="uid://bun88knkga3mg" path="res://Asset/Sprite/Landscape/nature_1/3.png" id="3_00hcm"]
+[ext_resource type="Texture2D" uid="uid://dsyl2oxk4s82e" path="res://Asset/Sprite/Landscape/nature_1/5.png" id="4_quimb"]
 
 [node name="TutorialScene" type="Node2D"]
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
+[node name="Background" type="ParallaxBackground" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
-scale = Vector2(2, 2)
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(0.1, 1)
+motion_offset = Vector2(200, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer"]
+scale = Vector2(10, 10)
 texture = ExtResource("1_vmgj0")
 
-[node name="10" type="Sprite2D" parent="Parallax2D"]
-scale = Vector2(2, 2)
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(0.5, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer2"]
+scale = Vector2(10, 10)
 texture = ExtResource("2_y6hft")
 
-[node name="8" type="Sprite2D" parent="Parallax2D"]
-scale = Vector2(2, 2)
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(0.5, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer3"]
+scale = Vector2(10, 10)
 texture = ExtResource("3_00hcm")
 
-[node name="HUD" parent="." instance=ExtResource("5_00hcm")]
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Background"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer4"]
+scale = Vector2(10, 10)
+texture = ExtResource("4_quimb")

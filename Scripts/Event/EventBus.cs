@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Godot;
 
-//AutoLoad Script
 public partial class EventBus : Node
 {
 	public List<IEvent> RegisteredEvents = [];

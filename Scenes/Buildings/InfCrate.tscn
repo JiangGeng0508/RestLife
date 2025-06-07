@@ -9,8 +9,13 @@ script = ExtResource("2_unco7")
 [node name="Window" type="Window" parent="." index="2"]
 initial_position = 2
 size = Vector2i(500, 300)
+visible = false
 
-[node name="InfItemGrid" type="GridContainer" parent="Window" index="0"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Window" index="0"]
 offset_right = 500.0
 offset_bottom = 300.0
-columns = 9
+
+[node name="InfItemGrid" type="GridContainer" parent="Window/ScrollContainer" index="0"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+columns = 3

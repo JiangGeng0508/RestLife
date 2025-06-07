@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgp6ecfpmnbma"]
+
+[ext_resource type="Script" uid="uid://bf0mssycqhjtw" path="res://Scripts/Scene/Map.cs" id="1_4xaap"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_4xaap")
+
+[node name="Buildings" type="Node" parent="."]
+
+[node name="SpawnPoint" type="Node2D" parent="Buildings"]
+
+[node name="Entities" type="Node" parent="."]
