@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://cbkucgjj7m2ti"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/ChickenLeg.png" id="1_i2b4d"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_4de3v"]
+[ext_resource type="Texture2D" uid="uid://c40bvauv8xn2n" path="res://Asset/Sprite/Food/Food/ChickenLeg.png" id="1_i2b4d"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_4de3v"]
 
 [resource]
 script = ExtResource("2_4de3v")
-EnergyBonus = 10.0
-HungerBonus = 10.0
+EnergyBonus = 15.0
+HungerBonus = 15.0
 Name = "ChickenLeg"
 Icon = ExtResource("1_i2b4d")
 Number = 1

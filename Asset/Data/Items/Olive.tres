@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://bflx524kh0jtn"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/Olive.png" id="1_ho1pg"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_yd31r"]
+[ext_resource type="Texture2D" uid="uid://cxw4jj3ceb3ey" path="res://Asset/Sprite/Food/Food/Olive.png" id="1_ho1pg"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_yd31r"]
 
 [resource]
 script = ExtResource("2_yd31r")
-EnergyBonus = 10.0
+EnergyBonus = 5.0
 HungerBonus = 10.0
 Name = "Olive"
 Icon = ExtResource("1_ho1pg")

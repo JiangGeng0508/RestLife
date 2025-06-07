@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://bxlk17yl4fjdn"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/Pretzel.png" id="1_jy4ja"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_h4tum"]
+[ext_resource type="Texture2D" uid="uid://ds2uv3ro6h78b" path="res://Asset/Sprite/Food/Food/Pretzel.png" id="1_jy4ja"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_h4tum"]
 
 [resource]
 script = ExtResource("2_h4tum")
-EnergyBonus = 10.0
+EnergyBonus = 5.0
 HungerBonus = 10.0
 Name = "Pretzel"
 Icon = ExtResource("1_jy4ja")

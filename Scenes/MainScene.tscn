@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://bto6gsdtdxftl"]
 
-[ext_resource type="Script" uid="uid://fynd0dweoayb" path="res://Scenes/MainScene.cs" id="1_enc0b"]
+[ext_resource type="Script" uid="uid://fynd0dweoayb" path="res://MainScene.cs" id="1_enc0b"]
 [ext_resource type="PackedScene" uid="uid://b0kw6xwewc6vv" path="res://Scenes/Buildings/StairDown.tscn" id="1_xb4mg"]
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Buildings/wall.tscn" id="2_6t1o7"]
 [ext_resource type="PackedScene" uid="uid://861bfrm35j5o" path="res://Scenes/Buildings/SelectIntItem.tscn" id="3_5qxwa"]
@@ -43,7 +43,7 @@ shape = SubResource("CircleShape2D_bmxlf")
 position = Vector2(956, 1)
 Item = ExtResource("16_6rnll")
 
-[node name="Map" type="Node2D" parent="."]
+[node name="Map" type="Node" parent="."]
 
 [node name="PlayerSpawner" parent="Map" instance=ExtResource("13_5qxwa")]
 position = Vector2(-51, 1)
@@ -60,6 +60,7 @@ position = Vector2(-154, -6)
 [node name="RideableItem" parent="Map/Buildings" instance=ExtResource("4_xc4hf")]
 position = Vector2(284, 0)
 scale = Vector2(2, 2)
+RiderOffset = Vector2(0, -20)
 
 [node name="InteractableItem" parent="Map/Buildings" instance=ExtResource("5_6rnll")]
 position = Vector2(-366, 0)

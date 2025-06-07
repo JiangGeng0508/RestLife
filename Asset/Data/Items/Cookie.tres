@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://c3sc88weekr02"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/Cookie.png" id="1_lkdpk"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_518mx"]
+[ext_resource type="Texture2D" uid="uid://g65elk1e5hlc" path="res://Asset/Sprite/Food/Food/Cookie.png" id="1_lkdpk"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_518mx"]
 
 [resource]
 script = ExtResource("2_518mx")
-EnergyBonus = 10.0
-HungerBonus = 10.0
+EnergyBonus = 12.0
+HungerBonus = 3.0
 Name = "Cookie"
 Icon = ExtResource("1_lkdpk")
 Number = 1

@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://bvrxg31jp6m86"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/Honey.png" id="1_c14jw"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_rdgk6"]
+[ext_resource type="Texture2D" uid="uid://jvk8h0yjnqcm" path="res://Asset/Sprite/Food/Food/Honey.png" id="1_c14jw"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_rdgk6"]
 
 [resource]
 script = ExtResource("2_rdgk6")
-EnergyBonus = 10.0
-HungerBonus = 10.0
+EnergyBonus = 20.0
+HungerBonus = 0.0
 Name = "Honey"
 Icon = ExtResource("1_c14jw")
 Number = 1

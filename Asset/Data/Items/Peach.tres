@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://b0l77o3e8chre"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/Peach.png" id="1_d8n7a"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_gt1f6"]
+[ext_resource type="Texture2D" uid="uid://c2v6b6ixsnl7m" path="res://Asset/Sprite/Food/Food/Peach.png" id="1_d8n7a"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_gt1f6"]
 
 [resource]
 script = ExtResource("2_gt1f6")
 EnergyBonus = 10.0
-HungerBonus = 10.0
+HungerBonus = 5.0
 Name = "Peach"
 Icon = ExtResource("1_d8n7a")
 Number = 1

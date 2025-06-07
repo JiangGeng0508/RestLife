@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://j0qn3i1fsvlx"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/DragonFruit.png" id="1_d2qak"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_nroex"]
+[ext_resource type="Texture2D" uid="uid://0cq0y5kdm0bx" path="res://Asset/Sprite/Food/Food/DragonFruit.png" id="1_d2qak"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_nroex"]
 
 [resource]
 script = ExtResource("2_nroex")
 EnergyBonus = 10.0
-HungerBonus = 10.0
+HungerBonus = 5.0
 Name = "DragonFruit"
 Icon = ExtResource("1_d2qak")
 Number = 1

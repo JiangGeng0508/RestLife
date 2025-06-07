@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://bf3hhga3xctfg"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/PieLemon.png" id="1_2c32y"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_muisp"]
+[ext_resource type="Texture2D" uid="uid://o2sgfcojisal" path="res://Asset/Sprite/Food/Food/PieLemon.png" id="1_2c32y"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_muisp"]
 
 [resource]
 script = ExtResource("2_muisp")
-EnergyBonus = 10.0
-HungerBonus = 10.0
+EnergyBonus = 15.0
+HungerBonus = 30.0
 Name = "PieLemon"
 Icon = ExtResource("1_2c32y")
 Number = 1

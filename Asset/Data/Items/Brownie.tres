@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://dap4qnr4d30ep"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/Brownie.png" id="1_ph8m2"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_q42nh"]
+[ext_resource type="Texture2D" uid="uid://befhh5iq5nsvn" path="res://Asset/Sprite/Food/Food/Brownie.png" id="1_ph8m2"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_q42nh"]
 
 [resource]
 script = ExtResource("2_q42nh")
-EnergyBonus = 10.0
-HungerBonus = 10.0
+EnergyBonus = 20.0
+HungerBonus = 20.0
 Name = "Brownie"
 Icon = ExtResource("1_ph8m2")
 Number = 1

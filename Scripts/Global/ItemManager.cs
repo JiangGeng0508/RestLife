@@ -18,18 +18,6 @@ public partial class ItemManager : Node
 			var item = GD.Load<Item>("res://Asset/Data/Items/" + file);
 			Register(item);
 		}
-		//从Texture创建Food
-		using var dir2 = DirAccess.Open("res://Asset/Sprite/Food/Food/");
-		var files2 = dir2.GetFiles();
-		foreach (var file in files2)
-		{
-			if (file.GetExtension() != "png") continue;
-			GD.Print("Creating item from texture: " + file);
-			var item = ShapeFoodFromTexture("res://Asset/Sprite/Food/Food/" + file);
-			item.Name = file.GetBaseName().Split('.')[0];
-			Register(item);
-			// Export(item);
-		}
 	}
 	public void Register(Item item)
 	{
@@ -40,6 +28,21 @@ public partial class ItemManager : Node
 		foreach (var item in items)
 		{
 			RegisteredItems.Add(item);
+		}
+	}
+	public void ImportTexture(string dictPath)
+	{
+		//从Texture创建Food
+		using var dir2 = DirAccess.Open(dictPath);//以'/'结尾
+		var files2 = dir2.GetFiles();
+		foreach (var file in files2)
+		{
+			if (file.GetExtension() != "png") continue;
+			GD.Print("Creating item from texture: " + file);
+			var item = ShapeFoodFromTexture(dictPath + file);
+			item.Name = file.GetBaseName().Split('.')[0];
+			Register(item);
+			// Export(item);
 		}
 	}
 	public Food ShapeFoodFromTexture(string texturePath)

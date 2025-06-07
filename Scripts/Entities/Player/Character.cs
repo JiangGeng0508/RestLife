@@ -75,6 +75,7 @@ public partial class Character : CharacterBody2D
 		tarPosNotifer = GetNode<TargetNotifer>("../TargetNotifier");
 		targetPosition = Position;
 		PlayerAnim = GetNode<AnimatedSprite2D>("PlayerAnim");
+		PlayerAnim.AnimationFinished += UpdataAnim;
 		PlayerAnim.Play("Idle");
 	}
 
@@ -132,7 +133,7 @@ public partial class Character : CharacterBody2D
 				{
 					State = CharacterState.Idle;
 				}
-				
+
 				Energy.Value -= 0.1f * (float)delta;
 				Hunger.Value -= 0.1f * (float)delta;
 				if (isRunning)
@@ -280,7 +281,7 @@ public partial class Character : CharacterBody2D
 		if (!IsRiding() && !IsWaiting())
 		{
 			_prevPosition = Position;
-			Position = chair.Position + chair.riderOffset;
+			Position = chair.Position + chair.RiderOffset;
 			ridingItem = chair;
 			State = CharacterState.Riding;
 		}
@@ -304,6 +305,30 @@ public partial class Character : CharacterBody2D
 			KeyDirection = 0;
 			State = CharacterState.Idle;
 		}
-		PlayerAnim.Play("Interact");
+		switch (interactItem.GetType().Name)
+		{
+			case "ItemDrop":
+				PlayerAnim.Play("Pickup");
+				break;
+			case "InfCrate":
+			case "SelectIntItem":
+				PlayerAnim.Play("Wait");
+				break;
+			case "Npc":
+				PlayerAnim.Play("Talk");
+				break;
+			default:
+				PlayerAnim.Play("Interact");
+				break;
+		}
+	}
+	public void UpdataAnim()
+	{
+		switch (State)
+		{
+			default:
+				PlayerAnim.Play("Idle");
+				break;
+		}
 	}
 }

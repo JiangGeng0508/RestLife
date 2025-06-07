@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://bf4cp5t2r4ay4"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/Waffles.png" id="1_fsuie"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_n6340"]
+[ext_resource type="Texture2D" uid="uid://7umv7cmi7d5h" path="res://Asset/Sprite/Food/Food/Waffles.png" id="1_fsuie"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_n6340"]
 
 [resource]
 script = ExtResource("2_n6340")
-EnergyBonus = 10.0
-HungerBonus = 10.0
+EnergyBonus = 15.0
+HungerBonus = 5.0
 Name = "Waffles"
 Icon = ExtResource("1_fsuie")
 Number = 1

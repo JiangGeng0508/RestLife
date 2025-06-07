@@ -5,4 +5,3 @@
 
 [node name="StairDown" instance=ExtResource("1_y1v7r")]
 script = ExtResource("2_ln1e2")
-Direction = 0

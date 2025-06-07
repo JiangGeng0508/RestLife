@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://cr0qnvoi1etdg"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/Potato.png" id="1_sgl2f"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_mud0x"]
+[ext_resource type="Texture2D" uid="uid://chgfv031m7546" path="res://Asset/Sprite/Food/Food/Potato.png" id="1_sgl2f"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_mud0x"]
 
 [resource]
 script = ExtResource("2_mud0x")
-EnergyBonus = 10.0
+EnergyBonus = 0.0
 HungerBonus = 10.0
 Name = "Potato"
 Icon = ExtResource("1_sgl2f")

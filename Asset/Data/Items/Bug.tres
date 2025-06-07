@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://h238o8uefq4n"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/Bug.png" id="1_pl610"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_ropxx"]
+[ext_resource type="Texture2D" uid="uid://7on5pmrjc5s1" path="res://Asset/Sprite/Food/Food/Bug.png" id="1_pl610"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_ropxx"]
 
 [resource]
 script = ExtResource("2_ropxx")
-EnergyBonus = 10.0
-HungerBonus = 10.0
+EnergyBonus = -20.0
+HungerBonus = 1.0
 Name = "Bug"
 Icon = ExtResource("1_pl610")
 Number = 1

@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://bg2y35ec4xlpt"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/Strawberry.png" id="1_2hjeg"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_cprn0"]
+[ext_resource type="Texture2D" uid="uid://b7tq6yul1eit" path="res://Asset/Sprite/Food/Food/Strawberry.png" id="1_2hjeg"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_cprn0"]
 
 [resource]
 script = ExtResource("2_cprn0")
 EnergyBonus = 10.0
-HungerBonus = 10.0
+HungerBonus = 2.0
 Name = "Strawberry"
 Icon = ExtResource("1_2hjeg")
 Number = 1

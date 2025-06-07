@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://dqnjh8j4x2glg"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/Ribs.png" id="1_65qis"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_vrfgb"]
+[ext_resource type="Texture2D" uid="uid://87sr8qq287c0" path="res://Asset/Sprite/Food/Food/Ribs.png" id="1_65qis"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_vrfgb"]
 
 [resource]
 script = ExtResource("2_vrfgb")
-EnergyBonus = 10.0
+EnergyBonus = 2.0
 HungerBonus = 10.0
 Name = "Ribs"
 Icon = ExtResource("1_65qis")

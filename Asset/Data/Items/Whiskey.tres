@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://b07npiefxwotg"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/Whiskey.png" id="1_m4268"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_dx134"]
+[ext_resource type="Texture2D" uid="uid://b5yqwp0w28g7b" path="res://Asset/Sprite/Food/Food/Whiskey.png" id="1_m4268"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_dx134"]
 
 [resource]
 script = ExtResource("2_dx134")
-EnergyBonus = 10.0
-HungerBonus = 10.0
+EnergyBonus = 20.0
+HungerBonus = -5.0
 Name = "Whiskey"
 Icon = ExtResource("1_m4268")
 Number = 1

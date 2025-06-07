@@ -15,6 +15,7 @@ public partial class SelectIntItem : InteractableItem
 		popup.Position = new Vector2I(600, 300);
 		AddChild(popup);
 		popup.AddChild(grid);
+		popup.PopupHide += Global.Player.Character.UpdataAnim;
 
 		OnBegin();
 	}

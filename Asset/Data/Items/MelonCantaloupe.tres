@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Food" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://cwkdpqb76ugqa"]
 
-[ext_resource type="Texture2D" path="res://Asset/Sprite/Food/Food/MelonCantaloupe.png" id="1_7dpyi"]
-[ext_resource type="Script" path="res://Scripts/UI/Inventory/Food.cs" id="2_snwon"]
+[ext_resource type="Texture2D" uid="uid://ci3seoci84eat" path="res://Asset/Sprite/Food/Food/MelonCantaloupe.png" id="1_7dpyi"]
+[ext_resource type="Script" uid="uid://klt430g1yd76" path="res://Scripts/UI/Inventory/Food.cs" id="2_snwon"]
 
 [resource]
 script = ExtResource("2_snwon")
-EnergyBonus = 10.0
-HungerBonus = 10.0
+EnergyBonus = 15.0
+HungerBonus = 2.0
 Name = "MelonCantaloupe"
 Icon = ExtResource("1_7dpyi")
 Number = 1
