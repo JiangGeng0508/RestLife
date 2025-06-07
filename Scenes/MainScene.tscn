@@ -1,21 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://bto6gsdtdxftl"]
+[gd_scene load_steps=9 format=3 uid="uid://bto6gsdtdxftl"]
 
 [ext_resource type="Script" uid="uid://fynd0dweoayb" path="res://MainScene.cs" id="1_enc0b"]
-[ext_resource type="PackedScene" uid="uid://b0kw6xwewc6vv" path="res://Scenes/Buildings/StairDown.tscn" id="1_xb4mg"]
-[ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Buildings/wall.tscn" id="2_6t1o7"]
-[ext_resource type="PackedScene" uid="uid://861bfrm35j5o" path="res://Scenes/Buildings/SelectIntItem.tscn" id="3_5qxwa"]
-[ext_resource type="PackedScene" uid="uid://b47gxbo06clen" path="res://Scenes/Buildings/RideableItem.tscn" id="4_xc4hf"]
-[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/InteractableItem.tscn" id="5_6rnll"]
-[ext_resource type="PackedScene" uid="uid://kdouq2pmhyo6" path="res://Scenes/Buildings/Bed.tscn" id="6_5qxwa"]
-[ext_resource type="PackedScene" uid="uid://c45lo0s8hq66p" path="res://Scenes/Entities/NPC.tscn" id="7_6t1o7"]
-[ext_resource type="PackedScene" uid="uid://413h3wiwich5" path="res://Scenes/Buildings/InfCrate.tscn" id="9_5qxwa"]
+[ext_resource type="Script" uid="uid://cjijf43p4nyu8" path="res://MapManager.cs" id="6_q68mp"]
+[ext_resource type="PackedScene" uid="uid://b3enhlg2fdncp" path="res://Scenes/Scene/TestMap1.tscn" id="6_y4jh7"]
 [ext_resource type="Script" uid="uid://di14nm0jvgxks" path="res://Scripts/UI/Cursur.cs" id="9_c1ier"]
 [ext_resource type="PackedScene" uid="uid://dc74ltyvfx87h" path="res://Scenes/UI/HUD.tscn" id="10_gyaec"]
-[ext_resource type="PackedScene" uid="uid://cll3uw2476v3x" path="res://Scenes/Buildings/TeleportItem.tscn" id="13_6t1o7"]
 [ext_resource type="PackedScene" uid="uid://vvjn0laj7y1g" path="res://Scenes/UI/DialogueLayer.tscn" id="14_5qxwa"]
-[ext_resource type="PackedScene" uid="uid://dkaut72cokf7a" path="res://Scenes/Buildings/ItemDrop.tscn" id="15_6rnll"]
-[ext_resource type="PackedScene" uid="uid://bdfw1wr7t12kg" path="res://Scenes/Buildings/StairUp.tscn" id="15_xc4hf"]
-[ext_resource type="Resource" uid="uid://bn4agutinxfi" path="res://Asset/Data/Items/Apple.tres" id="16_6rnll"]
 [ext_resource type="Script" uid="uid://cujrn3m7p14ux" path="res://Scripts/Buildings/PlayerSpawner.cs" id="17_enc0b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmxlf"]
@@ -44,59 +34,10 @@ _spawnable_scenes = PackedStringArray("uid://t6xbv8fwvhft")
 spawn_path = NodePath(".")
 script = ExtResource("17_enc0b")
 
-[node name="Map" type="Node" parent="."]
+[node name="MapManager" type="Node" parent="."]
+script = ExtResource("6_q68mp")
 
-[node name="TestMap1" type="Node2D" parent="Map"]
-
-[node name="Buildings" type="Node" parent="Map/TestMap1"]
-
-[node name="WallBody" parent="Map/TestMap1/Buildings" instance=ExtResource("2_6t1o7")]
-position = Vector2(-793, 1)
-scale = Vector2(1, 3)
-
-[node name="SelectIntItem" parent="Map/TestMap1/Buildings" instance=ExtResource("3_5qxwa")]
-position = Vector2(-154, -6)
-
-[node name="RideableItem" parent="Map/TestMap1/Buildings" instance=ExtResource("4_xc4hf")]
-position = Vector2(284, 0)
-scale = Vector2(2, 2)
-RiderOffset = Vector2(0, -20)
-
-[node name="InteractableItem" parent="Map/TestMap1/Buildings" instance=ExtResource("5_6rnll")]
-position = Vector2(-366, 0)
-scale = Vector2(4, 4)
-
-[node name="Bed" parent="Map/TestMap1/Buildings" instance=ExtResource("6_5qxwa")]
-position = Vector2(-588, 2)
-scale = Vector2(3.6, 1)
-
-[node name="TeleportItem" parent="Map/TestMap1/Buildings" instance=ExtResource("13_6t1o7")]
-position = Vector2(867, -21)
-scale = Vector2(1.12503, 3.14354)
-
-[node name="StairDown" parent="Map/TestMap1/Buildings" instance=ExtResource("1_xb4mg")]
-position = Vector2(500, -8)
-
-[node name="StairDown2" parent="Map/TestMap1/Buildings" instance=ExtResource("1_xb4mg")]
-position = Vector2(638, -204)
-
-[node name="StairUp" parent="Map/TestMap1/Buildings" instance=ExtResource("15_xc4hf")]
-position = Vector2(636, -4)
-
-[node name="StairUp2" parent="Map/TestMap1/Buildings" instance=ExtResource("15_xc4hf")]
-position = Vector2(491, 193)
-
-[node name="InfCrate" parent="Map/TestMap1/Buildings" instance=ExtResource("9_5qxwa")]
-position = Vector2(1071, -2)
-
-[node name="ItemDrop" parent="Map/TestMap1/Buildings" instance=ExtResource("15_6rnll")]
-position = Vector2(956, 1)
-Item = ExtResource("16_6rnll")
-
-[node name="NPC" type="Node" parent="Map/TestMap1"]
-
-[node name="Npc" parent="Map/TestMap1/NPC" instance=ExtResource("7_6t1o7")]
-position = Vector2(116, 0)
+[node name="TestMap1" parent="MapManager" instance=ExtResource("6_y4jh7")]
 
 [connection signal="area_entered" from="HUD/Cursur" to="HUD/Cursur" method="OnAreaEntered"]
 [connection signal="area_exited" from="HUD/Cursur" to="HUD/Cursur" method="OnAreaExited"]

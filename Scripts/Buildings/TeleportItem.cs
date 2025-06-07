@@ -3,9 +3,9 @@ using System;
 
 public partial class TeleportItem : InteractableItem
 {
-	[Export] public string ScenePath { get; set; } = "res://Scenes/Scene/Tutorial.tscn";
+	[Export] public string SceneName { get; set; } = "Tutorial";
 	public override void Action()
 	{
-		GetTree().ChangeSceneToFile(ScenePath);
+		Global.MainScene.MapManager.ChangeMap(SceneName);
 	}
 }
