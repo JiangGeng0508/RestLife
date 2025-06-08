@@ -20,8 +20,8 @@ public partial class Hud : CanvasLayer
 
     public override void _Process(double delta)
     {
-        EnergyBar.Value = Global.Player.Character.Energy.Value;
-        HungryBar.Value = Global.Player.Character.Hunger.Value;
+        EnergyBar.Value = Global.Player.Attributes.Energy.Value;
+        HungryBar.Value = Global.Player.Attributes.Hunger.Value;
 
         string formattedTime = $"Day: {Global.GameWorldTime.Days} Time: {Global.GameWorldTime.Hours:D2}:{Global.GameWorldTime.Minutes:00.}";
         GameWorldInfo.GetNode<Label>("Time").Text = formattedTime;

@@ -15,9 +15,9 @@ public partial class Saver : Node
 	{
 		GD.Print("Saving game...");
 		Dictionary<string, float> playerAttributes = new Dictionary<string, float>();
-		playerAttributes.Add("Health", Global.Player.Character.Health.Value);
-		playerAttributes.Add("Energy", Global.Player.Character.Energy.Value);
-		playerAttributes.Add("Hunger", Global.Player.Character.Hunger.Value);
+		playerAttributes.Add("Health", Global.Player.Attributes.Health.Value);
+		playerAttributes.Add("Energy", Global.Player.Attributes.Energy.Value);
+		playerAttributes.Add("Hunger", Global.Player.Attributes.Hunger.Value);
 		Dictionary<string, int> gameTime = new Dictionary<string, int>();
 		gameTime.Add("Day", Global.GameWorldTime.Days);
 		gameTime.Add("Hour", Global.GameWorldTime.Hours);

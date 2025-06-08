@@ -16,6 +16,7 @@ public partial class Character : CharacterBody2D
 	TargetNotifer tarPosNotifer;
 	InteractableItem interactItem;
 	RideableItem ridingItem;
+	AttributeManager attributes;
 	public ulong Id = 0;
 	bool isRunning = false;
 	bool handable = false;
@@ -64,10 +65,6 @@ public partial class Character : CharacterBody2D
 	private Vector2 _prevPosition = Vector2.Zero;
 	int KeyDirection = 0;
 
-	// 状态值
-	public Attribute Health = new(50f);
-	public Attribute Energy = new(100f);
-	public Attribute Hunger = new(100f);
 	public override void _Ready()
 	{
 		Id = GetInstanceId();
@@ -77,6 +74,7 @@ public partial class Character : CharacterBody2D
 		PlayerAnim = GetNode<AnimatedSprite2D>("PlayerAnim");
 		PlayerAnim.AnimationFinished += UpdataAnim;
 		PlayerAnim.Play("Idle");
+		attributes = GetNode<AttributeManager>("../AttributeManager");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -84,7 +82,7 @@ public partial class Character : CharacterBody2D
 		switch (State)
 		{
 			case CharacterState.Idle:
-				Hunger.Value -= 0.1f * (float)delta;
+				attributes.Hunger.Value -= 0.1f * (float)delta;
 				break;
 			case CharacterState.Moving:
 				if ((targetPosition - Position).Length() > 10f)
@@ -107,12 +105,12 @@ public partial class Character : CharacterBody2D
 				{
 					State = CharacterState.Idle;
 				}
-				Energy.Value -= 0.1f * (float)delta;
-				Hunger.Value -= 0.1f * (float)delta;
+				attributes.Energy.Value -= 0.1f * (float)delta;
+				attributes.Hunger.Value -= 0.1f * (float)delta;
 				if (isRunning)
 				{
-					Hunger.Value -= 0.3f * (float)delta;
-					Energy.Value -= 0.2f * (float)delta;
+					attributes.Hunger.Value -= 0.3f * (float)delta;
+					attributes.Energy.Value -= 0.2f * (float)delta;
 				}
 				break;
 			case CharacterState.MovingbyKeyboard:
@@ -134,17 +132,17 @@ public partial class Character : CharacterBody2D
 					State = CharacterState.Idle;
 				}
 
-				Energy.Value -= 0.1f * (float)delta;
-				Hunger.Value -= 0.1f * (float)delta;
+				attributes.Energy.Value -= 0.1f * (float)delta;
+				attributes.Hunger.Value -= 0.1f * (float)delta;
 				if (isRunning)
 				{
-					Hunger.Value -= 0.3f * (float)delta;
-					Energy.Value -= 0.2f * (float)delta;
+					attributes.Hunger.Value -= 0.3f * (float)delta;
+					attributes.Energy.Value -= 0.2f * (float)delta;
 				}
 				break;
 			case CharacterState.Riding:
-				Energy.Value += 0.5f * (float)delta;
-				Hunger.Value -= 0.1f * (float)delta;
+				attributes.Energy.Value += 0.5f * (float)delta;
+				attributes.Hunger.Value -= 0.1f * (float)delta;
 				break;
 			case CharacterState.Waiting:
 				break;

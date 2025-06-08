@@ -17,7 +17,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_jt2rc"]
 font = ExtResource("12_18ujm")
 font_size = 25
-font_color = Color(0, 0, 0, 1)
+font_color = Color(0.740966, 0.424545, 0, 1)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_lelo4")

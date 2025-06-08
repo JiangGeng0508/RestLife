@@ -6,6 +6,6 @@ public partial class TeleportItem : InteractableItem
 	[Export] public string SceneName { get; set; } = "Tutorial";
 	public override void Action()
 	{
-		Global.MainScene.MapManager.ChangeMap(SceneName);
+		Global.MainScene.MapManager.Teleport(SceneName);
 	}
 }

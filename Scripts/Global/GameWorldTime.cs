@@ -5,6 +5,11 @@ public partial class GameWorldTime : Node
 {
 	[Signal]
 	public delegate void OnDayChangeEventHandler(int days);
+	[Signal]
+	public delegate void OnHourChangeEventHandler(int hours);
+	[Signal]
+	public delegate void OnMinuteChangeEventHandler(float minutes);
+
 	private float _minutes = 0;
 	public float Minutes
 	{
@@ -20,6 +25,7 @@ public partial class GameWorldTime : Node
 			{
 				_minutes = value;
 			}
+			EmitSignal(nameof(OnMinuteChange), Minutes);
 		}
 	}
 	private int _hours = 6;
@@ -37,6 +43,7 @@ public partial class GameWorldTime : Node
 			{
 				_hours = value;
 			}
+			EmitSignal(nameof(OnHourChange), Hours);
 		}
 	}
 	private int _days = 1;

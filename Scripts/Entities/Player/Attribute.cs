@@ -1,6 +1,13 @@
 using System;
 using Godot;
 
+public enum AttrOperator
+{
+	Add,
+	Multiply,
+	MaxAdd,
+	MaxMultiply
+}
 public struct Attribute
 {
 	public static float MaxValue;
@@ -26,6 +33,42 @@ public struct Attribute
 			{
 				_value = value;
 			}
+		}
+	}
+	public void ApplyBonus(AttrOperator op, float value)
+	{
+		switch (op)
+		{
+			case AttrOperator.Add:
+				Value += value;
+				break;
+			case AttrOperator.Multiply:
+				Value *= value;
+				break;
+			case AttrOperator.MaxAdd:
+				MaxValue += value;
+				break;
+			case AttrOperator.MaxMultiply:
+				MaxValue *= value;
+				break;
+		}
+	}
+	public void BackBonus(AttrOperator op, float value)
+	{
+		switch (op)
+		{
+			case AttrOperator.Add:
+				Value -= value;
+				break;
+			case AttrOperator.Multiply:
+				Value /= value;
+				break;
+			case AttrOperator.MaxAdd:
+				MaxValue -= value;
+				break;
+			case AttrOperator.MaxMultiply:
+				MaxValue /= value;
+				break;
 		}
 	}
 	public Attribute(float maxValue)
