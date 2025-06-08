@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://c2vk1r4c1bp8h"]
+
+[ext_resource type="Texture2D" uid="uid://js6y4nd72pj6" path="res://Asset/Sprite/UI/ClockArrow.png" id="1_8fnkv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smm5k"]
+atlas = ExtResource("1_8fnkv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo32p"]
+atlas = ExtResource("1_8fnkv")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxlyf"]
+atlas = ExtResource("1_8fnkv")
+region = Rect2(0, 32, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smm5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo32p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxlyf")
+}],
+"loop": false,
+"name": &"Arrow",
+"speed": 0.0
+}]

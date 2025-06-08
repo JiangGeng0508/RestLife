@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bto6gsdtdxftl"]
+[gd_scene load_steps=11 format=3 uid="uid://bto6gsdtdxftl"]
 
 [ext_resource type="Script" uid="uid://fynd0dweoayb" path="res://Scripts/Scene/MainScene.cs" id="1_enc0b"]
 [ext_resource type="Script" uid="uid://cjijf43p4nyu8" path="res://Scripts/Scene/MapManager.cs" id="6_q68mp"]
 [ext_resource type="PackedScene" uid="uid://b3enhlg2fdncp" path="res://Scenes/Scene/TestMap1.tscn" id="6_y4jh7"]
+[ext_resource type="AudioStream" uid="uid://cwoynma8p575h" path="res://Asset/Audio/BGM/Interior Birdecorator Decorate.ogg" id="8_0iob3"]
 [ext_resource type="Script" uid="uid://bkrgvj2u087bn" path="res://BgmPlayer.cs" id="8_f140w"]
 [ext_resource type="Script" uid="uid://di14nm0jvgxks" path="res://Scripts/UI/Cursur.cs" id="9_c1ier"]
 [ext_resource type="PackedScene" uid="uid://dc74ltyvfx87h" path="res://Scenes/UI/HUD.tscn" id="10_gyaec"]
@@ -41,6 +42,8 @@ script = ExtResource("6_q68mp")
 [node name="TestMap1" parent="MapManager" instance=ExtResource("6_y4jh7")]
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0iob3")
+autoplay = true
 script = ExtResource("8_f140w")
 
 [connection signal="area_entered" from="HUD/Cursur" to="HUD/Cursur" method="OnAreaEntered"]
