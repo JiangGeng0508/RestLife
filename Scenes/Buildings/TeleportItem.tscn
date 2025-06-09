@@ -5,4 +5,4 @@
 
 [node name="TeleportItem" instance=ExtResource("1_erhgy")]
 script = ExtResource("2_jm0yw")
-ScenePath = "res://Scenes/Scene/Tutorial.tscn"
+SceneName = "Tutorial"

@@ -1,0 +1,68 @@
+[gd_scene load_steps=14 format=3 uid="uid://dxsirjgldro8x"]
+
+[ext_resource type="PackedScene" uid="uid://dgp6ecfpmnbma" path="res://Scenes/Scene/Map.tscn" id="1_jswgi"]
+[ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Buildings/wall.tscn" id="2_7u223"]
+[ext_resource type="PackedScene" uid="uid://861bfrm35j5o" path="res://Scenes/Buildings/SelectIntItem.tscn" id="3_5l8jl"]
+[ext_resource type="PackedScene" uid="uid://b47gxbo06clen" path="res://Scenes/Buildings/RideableItem.tscn" id="4_w30qg"]
+[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/InteractableItem.tscn" id="5_bswna"]
+[ext_resource type="PackedScene" uid="uid://kdouq2pmhyo6" path="res://Scenes/Buildings/Bed.tscn" id="6_vvytd"]
+[ext_resource type="PackedScene" uid="uid://cll3uw2476v3x" path="res://Scenes/Buildings/TeleportItem.tscn" id="7_jnwd5"]
+[ext_resource type="PackedScene" uid="uid://b0kw6xwewc6vv" path="res://Scenes/Buildings/StairDown.tscn" id="8_6fgvc"]
+[ext_resource type="PackedScene" uid="uid://bdfw1wr7t12kg" path="res://Scenes/Buildings/StairUp.tscn" id="9_b2l4a"]
+[ext_resource type="PackedScene" uid="uid://413h3wiwich5" path="res://Scenes/Buildings/InfCrate.tscn" id="10_gid3v"]
+[ext_resource type="PackedScene" uid="uid://dkaut72cokf7a" path="res://Scenes/Buildings/ItemDrop.tscn" id="11_010ov"]
+[ext_resource type="Resource" uid="uid://bn4agutinxfi" path="res://Asset/Data/Items/Apple.tres" id="12_hrqpu"]
+[ext_resource type="PackedScene" uid="uid://c45lo0s8hq66p" path="res://Scenes/Entities/NPC.tscn" id="13_57y38"]
+
+[node name="TestMap2" instance=ExtResource("1_jswgi")]
+
+[node name="WallBody" parent="Buildings" index="1" instance=ExtResource("2_7u223")]
+position = Vector2(-793, 1)
+scale = Vector2(1, 3)
+
+[node name="SelectIntItem" parent="Buildings" index="2" instance=ExtResource("3_5l8jl")]
+position = Vector2(-154, -6)
+
+[node name="RideableItem" parent="Buildings" index="3" instance=ExtResource("4_w30qg")]
+position = Vector2(284, 0)
+scale = Vector2(2, 2)
+RiderOffset = Vector2(0, -20)
+
+[node name="InteractableItem" parent="Buildings" index="4" instance=ExtResource("5_bswna")]
+position = Vector2(-366, 0)
+scale = Vector2(4, 4)
+
+[node name="Bed" parent="Buildings" index="5" instance=ExtResource("6_vvytd")]
+position = Vector2(-588, 2)
+scale = Vector2(3.6, 1)
+
+[node name="TeleportItem2" parent="Buildings" index="6" instance=ExtResource("7_jnwd5")]
+position = Vector2(400, 200)
+scale = Vector2(1.12503, 3.14354)
+
+[node name="StairDown" parent="Buildings" index="7" instance=ExtResource("8_6fgvc")]
+position = Vector2(500, 0)
+
+[node name="StairDown2" parent="Buildings" index="8" instance=ExtResource("8_6fgvc")]
+position = Vector2(600, -200)
+
+[node name="StairUp" parent="Buildings" index="9" instance=ExtResource("9_b2l4a")]
+position = Vector2(600, 0)
+
+[node name="StairUp2" parent="Buildings" index="10" instance=ExtResource("9_b2l4a")]
+position = Vector2(500, 200)
+
+[node name="InfCrate" parent="Buildings" index="11" instance=ExtResource("10_gid3v")]
+position = Vector2(1071, -2)
+
+[node name="ItemDrop" parent="Buildings" index="12" instance=ExtResource("11_010ov")]
+position = Vector2(956, 1)
+Item = ExtResource("12_hrqpu")
+
+[node name="TeleportItem3" parent="Buildings" index="13" instance=ExtResource("7_jnwd5")]
+position = Vector2(609, 198)
+scale = Vector2(1.12503, 3.14354)
+SceneName = "Map"
+
+[node name="Npc" parent="Entities" index="0" instance=ExtResource("13_57y38")]
+position = Vector2(116, 0)

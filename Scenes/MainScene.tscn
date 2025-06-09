@@ -18,17 +18,6 @@ script = ExtResource("1_enc0b")
 
 [node name="HUD" parent="." instance=ExtResource("10_gyaec")]
 
-[node name="Cursur" type="Area2D" parent="HUD"]
-script = ExtResource("9_c1ier")
-
-[node name="TooltipLabel" type="Label" parent="HUD/Cursur"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "12"
-
-[node name="CursurShape" type="CollisionShape2D" parent="HUD/Cursur"]
-shape = SubResource("CircleShape2D_bmxlf")
-
 [node name="DialogueLayer" parent="." instance=ExtResource("14_5qxwa")]
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
@@ -46,5 +35,16 @@ stream = ExtResource("8_0iob3")
 autoplay = true
 script = ExtResource("8_f140w")
 
-[connection signal="area_entered" from="HUD/Cursur" to="HUD/Cursur" method="OnAreaEntered"]
-[connection signal="area_exited" from="HUD/Cursur" to="HUD/Cursur" method="OnAreaExited"]
+[node name="Cursur" type="Area2D" parent="."]
+script = ExtResource("9_c1ier")
+
+[node name="TooltipLabel" type="Label" parent="Cursur"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "12"
+
+[node name="CursurShape" type="CollisionShape2D" parent="Cursur"]
+shape = SubResource("CircleShape2D_bmxlf")
+
+[connection signal="area_entered" from="Cursur" to="Cursur" method="OnAreaEntered"]
+[connection signal="area_exited" from="Cursur" to="Cursur" method="OnAreaExited"]

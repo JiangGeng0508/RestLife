@@ -6,15 +6,17 @@ public partial class MapManager : Node
 	Vector2 lastPosition = Vector2.Zero;
 	public void Teleport(string mapName)
 	{
+		if (GetChild(0) is Map map)
+		{
+		map.SpawnPoint.Position = Global.Player.Character.Position;
+		}
 		ChangeMap(mapName);
-		lastPosition = Global.Player.Character.Position;
-		GD.Print(lastPosition);
 	}
 	public void ChangeMap(string mapName)
 	{
 		if (GetChildCount() == 0)
 		{
-			AddChild(GD.Load<PackedScene>("res://Scenes/Scene/TestMap1.tscn").Instantiate());
+			AddChild(GD.Load<PackedScene>("res://Scenes/Scene/TestMap2.tscn").Instantiate());
 		}
 		var preChildren = GetChildren();
 		foreach (var child in preChildren)
@@ -22,10 +24,5 @@ public partial class MapManager : Node
 			RemoveChild(child);
 		}
 		AddChild(GD.Load<PackedScene>("res://Scenes/Scene/" + mapName + ".tscn").Instantiate());
-		if (lastPosition == Vector2.Zero)
-		{
-			Global.Player.Character.Position = lastPosition;
-			lastPosition = Vector2.Zero;
-		}
 	}
 }

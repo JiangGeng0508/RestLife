@@ -41,8 +41,8 @@ public partial class InteractableItem : Area2D
 		{
 			if (IsPlayerClosed && MouseIn && mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed )
 			{
-				Action();
 				CharaReachArea.GetParent().Call("AfterAction");
+				Action();
 			}
 		}
 	}

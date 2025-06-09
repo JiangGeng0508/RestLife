@@ -40,7 +40,6 @@ scale = Vector2(3.6, 1)
 [node name="TeleportItem" parent="Buildings" instance=ExtResource("6_hu22l")]
 position = Vector2(400, 200)
 scale = Vector2(1.12503, 3.14354)
-SceneName = "Tutorial"
 
 [node name="StairDown" parent="Buildings" instance=ExtResource("7_h46am")]
 position = Vector2(500, 0)
