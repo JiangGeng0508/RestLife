@@ -34,18 +34,17 @@ public partial class InteractableItem : Area2D
 			ColorRect.Color = new Color(1, 1, 1, 1);//白色
 		}
 	}
-
-	public override void _Input(InputEvent @event)
-	{
-		if (@event is InputEventMouseButton mouseEvent)
-		{
-			if (IsPlayerClosed && MouseIn && mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed )
-			{
-				CharaReachArea.GetParent().Call("AfterAction");
-				Action();
-			}
-		}
-	}
+	// public override void _Input(InputEvent @event)
+	// {
+	// 	if (@event is InputEventMouseButton mouseEvent)
+	// 	{
+	// 		if (IsPlayerClosed && MouseIn && mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed )
+	// 		{
+	// 			CharaReachArea.GetParent().Call("AfterAction");
+	// 			Action();
+	// 		}
+	// 	}
+	// }
 	public void onAreaEntered(Area2D area)
 	{
 		if (area is ReachArea reachArea)
@@ -72,6 +71,14 @@ public partial class InteractableItem : Area2D
 		else if (area is Cursur cursur)
 		{
 			MouseIn = false;
+		}
+	}
+	public void Click()
+	{
+		if (IsPlayerClosed)
+		{
+			CharaReachArea.GetParent().Call("AfterAction");
+			Action();
 		}
 	}
 	public virtual void Init() { }
