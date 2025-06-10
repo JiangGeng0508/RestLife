@@ -40,5 +40,7 @@ offset_left = 239.0
 offset_top = 39.0
 offset_right = 279.0
 offset_bottom = 78.0
+flat = false
+item_count = 0
 
 [connection signal="pressed" from="Window/Control/ItemSelectSlot" to="Window/Control/ItemSelectSlot" method="OnPressed"]
