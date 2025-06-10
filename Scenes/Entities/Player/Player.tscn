@@ -17,6 +17,9 @@ disable_mode = 1
 position = Vector2(151, -644)
 
 [node name="MainCamera" type="Camera2D" parent="."]
+limit_left = -1000
+limit_right = 1000
+limit_smoothed = true
 script = ExtResource("3_tm67w")
 
 [node name="Inventory" type="Node" parent="."]

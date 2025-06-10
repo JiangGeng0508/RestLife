@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://2uwypax5a35y"]
+
+[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/InteractableItem.tscn" id="1_uuso1"]
+[ext_resource type="Script" uid="uid://boe7cu27b6dc4" path="res://Scripts/Buildings/Cauldron.cs" id="2_oxrh5"]
+[ext_resource type="PackedScene" uid="uid://cqsx76p8hhrm4" path="res://Scenes/UI/ItemSelectSlot.tscn" id="3_oxrh5"]
+
+[node name="Cauldron" instance=ExtResource("1_uuso1")]
+script = ExtResource("2_oxrh5")
+
+[node name="Window" type="Window" parent="." index="2"]
+auto_translate_mode = 1
+initial_position = 2
+size = Vector2i(500, 300)
+
+[node name="Control" type="Control" parent="Window" index="0"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 300.0
+
+[node name="MenuButton" type="MenuButton" parent="Window/Control" index="0"]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 76.0
+offset_right = 340.0
+offset_bottom = 110.0
+text = "as"
+
+[node name="MenuButton2" type="MenuButton" parent="Window/Control" index="1"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 78.0
+offset_right = 228.0
+offset_bottom = 112.0
+text = "asdads"
+
+[node name="ItemSelectSlot" parent="Window/Control" index="2" instance=ExtResource("3_oxrh5")]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 39.0
+offset_right = 279.0
+offset_bottom = 78.0
+
+[connection signal="pressed" from="Window/Control/ItemSelectSlot" to="Window/Control/ItemSelectSlot" method="OnPressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3enhlg2fdncp"]
+[gd_scene load_steps=14 format=3 uid="uid://b3enhlg2fdncp"]
 
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Buildings/wall.tscn" id="1_4fgoq"]
 [ext_resource type="PackedScene" uid="uid://861bfrm35j5o" path="res://Scenes/Buildings/SelectIntItem.tscn" id="2_qarpt"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://413h3wiwich5" path="res://Scenes/Buildings/InfCrate.tscn" id="9_tsqae"]
 [ext_resource type="PackedScene" uid="uid://dkaut72cokf7a" path="res://Scenes/Buildings/ItemDrop.tscn" id="10_i0eft"]
 [ext_resource type="Resource" uid="uid://bn4agutinxfi" path="res://Asset/Data/Items/Apple.tres" id="11_odisq"]
+[ext_resource type="PackedScene" uid="uid://2uwypax5a35y" path="res://Scenes/Buildings/Cauldron.tscn" id="12_qarpt"]
 [ext_resource type="PackedScene" uid="uid://c45lo0s8hq66p" path="res://Scenes/Entities/NPC.tscn" id="12_t6e7l"]
 
 [node name="TestMap1" type="Node2D"]
@@ -40,6 +41,7 @@ scale = Vector2(3.6, 1)
 [node name="TeleportItem" parent="Buildings" instance=ExtResource("6_hu22l")]
 position = Vector2(400, 200)
 scale = Vector2(1.12503, 3.14354)
+SceneName = "BackgroundTst"
 
 [node name="StairDown" parent="Buildings" instance=ExtResource("7_h46am")]
 position = Vector2(500, 0)
@@ -54,16 +56,19 @@ position = Vector2(600, 0)
 position = Vector2(500, 200)
 
 [node name="InfCrate" parent="Buildings" instance=ExtResource("9_tsqae")]
-position = Vector2(1071, -2)
+position = Vector2(806, -2)
 
 [node name="ItemDrop" parent="Buildings" instance=ExtResource("10_i0eft")]
-position = Vector2(956, 1)
+position = Vector2(691, 1)
 Item = ExtResource("11_odisq")
 
 [node name="TeleportItem2" parent="Buildings" instance=ExtResource("6_hu22l")]
 position = Vector2(609, 198)
 scale = Vector2(1.12503, 3.14354)
 SceneName = "Map"
+
+[node name="Cauldron" parent="Buildings" instance=ExtResource("12_qarpt")]
+position = Vector2(450, -200)
 
 [node name="NPC" type="Node" parent="."]
 
