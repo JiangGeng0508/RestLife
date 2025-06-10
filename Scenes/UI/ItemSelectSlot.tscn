@@ -11,6 +11,7 @@ offset_top = 47.0
 offset_right = 272.0
 offset_bottom = 86.0
 icon = ExtResource("1_r80jr")
+flat = false
 icon_alignment = 1
 item_count = 2
 popup/item_0/text = "asd"
@@ -20,3 +21,5 @@ popup/item_1/text = "22dd"
 popup/item_1/icon = ExtResource("3_3yxgf")
 popup/item_1/id = 1
 script = ExtResource("4_fmvkp")
+
+[connection signal="pressed" from="." to="." method="OnPressed"]
