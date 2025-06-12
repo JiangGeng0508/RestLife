@@ -2,15 +2,10 @@ using System;
 using Godot;
 using Godot.Collections;
 
-public partial class Saver : Node
+public static  class Saver
 {
-	public SceneTree MainSceneTree;
 	//private static readonly string SavePath = "res://savegame.save";
 
-	public override void _Ready()
-	{
-		Global.Saver = this;
-	}
 	public static void Save()
 	{
 		GD.Print("Saving game...");
@@ -25,6 +20,15 @@ public partial class Saver : Node
 		Dictionary<string, Item> inventoryData = new Dictionary<string, Item>();
 		//Event
 		//Scene
+		var scene = new PackedScene();
+		if (scene.Pack(Global.MainScene) == Error.Ok)
+		{
+			Error error = ResourceSaver.Save(scene, $"res://Save/{Global.MainScene.Name}.tscn");
+			if (error != Error.Ok)
+			{
+				GD.PushError($"An error occurred while saving the scene: {error}");
+			}
+		}
 		GD.Print("Game saved.");
 	}
 	public static void SaveScene(Node node)

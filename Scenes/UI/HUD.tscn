@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dc74ltyvfx87h"]
+[gd_scene load_steps=16 format=3 uid="uid://dc74ltyvfx87h"]
 
 [ext_resource type="Script" uid="uid://bn5qycss666ik" path="res://Scripts/UI/Hud/Hud.cs" id="1_lelo4"]
 [ext_resource type="Script" uid="uid://b78vbe0hqa2ni" path="res://Scripts/UI/Hud/SelectMenu.cs" id="1_ne771"]
 [ext_resource type="Script" uid="uid://cihgy0uhufudw" path="res://Scripts/UI/Hud/InventoryUI.cs" id="2_lelo4"]
 [ext_resource type="Script" uid="uid://cmss037nrmq3g" path="res://Scripts/UI/Hud/RightClickMenu.cs" id="4_1and6"]
+[ext_resource type="Script" uid="uid://c6qhn0rwj1ss4" path="res://Scripts/UI/Hud/Setting.cs" id="6_jt2rc"]
 [ext_resource type="Script" uid="uid://dgpb36bqvvo54" path="res://Scripts/UI/Menu.cs" id="7_1ree7"]
 [ext_resource type="Script" uid="uid://41coxb86rtok" path="res://Scripts/UI/Hud/PickupNotifer.cs" id="7_d2sja"]
 [ext_resource type="Script" uid="uid://bcfcwrvroa6lo" path="res://Scripts/UI/Hud/GodMode.cs" id="8_d2sja"]
@@ -32,10 +33,11 @@ offset_left = 1350.54
 offset_top = 347.352
 offset_right = 542.004
 offset_bottom = 297.0
-current_tab = 0
+current_tab = 2
 script = ExtResource("1_ne771")
 
 [node name="Inventory" type="SplitContainer" parent="SelectMenu"]
+visible = false
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 dragging_enabled = false
@@ -79,14 +81,14 @@ offset_bottom = 114.0
 action_mode = 0
 text = "Save"
 
-[node name="SaveScene" type="Button" parent="SelectMenu/Menu"]
+[node name="Load" type="Button" parent="SelectMenu/Menu"]
 layout_mode = 0
 offset_left = 73.004
 offset_top = 140.0
 offset_right = 232.004
 offset_bottom = 186.0
 action_mode = 0
-text = "SaveScene"
+text = "Load"
 
 [node name="Esc" type="Button" parent="SelectMenu/Menu"]
 layout_mode = 0
@@ -96,11 +98,34 @@ offset_right = 225.004
 offset_bottom = 254.0
 text = "Esc"
 
+[node name="Setting" type="VFlowContainer" parent="SelectMenu"]
+layout_mode = 2
+script = ExtResource("6_jt2rc")
+metadata/_tab_index = 2
+
+[node name="Volume" type="VBoxContainer" parent="SelectMenu/Setting"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SelectMenu/Setting/Volume"]
+layout_mode = 2
+text = "Volume"
+
+[node name="HSlider" type="HSlider" parent="SelectMenu/Setting/Volume"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = -10.0
+max_value = 40.0
+step = 0.1
+value = 40.0
+tick_count = 5
+ticks_on_borders = true
+
 [node name="GodMode" type="VBoxContainer" parent="SelectMenu"]
 visible = false
 layout_mode = 2
 script = ExtResource("8_d2sja")
-metadata/_tab_index = 2
+metadata/_tab_index = 3
 
 [node name="Clock" type="Control" parent="."]
 layout_mode = 3
