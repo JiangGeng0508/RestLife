@@ -5,11 +5,14 @@ public partial class CauldronSystem : Control
 	ItemSelectSlot Slot1;
 	ItemSelectSlot Slot2;
 	ItemSelectSlot Slot3;
+	Button Check;
 	public override void _Ready()
 	{
 		Slot1 = GetNode<ItemSelectSlot>("ItemSelectSlot1");
 		Slot2 = GetNode<ItemSelectSlot>("ItemSelectSlot2");
 		Slot3 = GetNode<ItemSelectSlot>("ItemSelectSlot3");
+		Check = GetNode<Button>("Check");
+		Check.Pressed += () => CheckCraft();
 
 		// Recipe recipe1 = new Recipe();
 		// recipe1.Name = "Recipe1";

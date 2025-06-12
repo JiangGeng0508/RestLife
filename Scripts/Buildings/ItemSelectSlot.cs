@@ -44,7 +44,7 @@ public partial class ItemSelectSlot : MenuButton
 		}
 		popup.IdPressed += (id) =>
 		{
-			Global.Player.Inventory.RemoveItem(items[(int)id], 1);
+			Global.Player.Inventory.RemoveItem(items[(int)id]);
 			SettedItem = items[(int)id];
 			Icon = items[(int)id].Icon;
 		};

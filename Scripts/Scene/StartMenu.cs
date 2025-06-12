@@ -3,6 +3,8 @@ using System;
 
 public partial class StartMenu : Node2D
 {
+	[Export]
+	PackedScene LoadScene  {get; set;} = GD.Load<PackedScene>("res://Save/MainScene.tscn");
 	public override void _Ready()
 	{
 		GetNode<Button>("StartGame").Pressed += StartGamePressed;
@@ -17,11 +19,7 @@ public partial class StartMenu : Node2D
 	}
 	public void LoadPressed()
 	{
-		var file = "res://Save/MainScene.tscn";
-		if (FileAccess.FileExists(file))
-		{
-			GetTree().ChangeSceneToFile(file);
-		}
+		GetTree().ChangeSceneToPacked(LoadScene);
 	}
 	public void QuitPressed()
 	{
