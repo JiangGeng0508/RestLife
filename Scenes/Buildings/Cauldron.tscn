@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://2uwypax5a35y"]
+[gd_scene load_steps=6 format=3 uid="uid://2uwypax5a35y"]
 
 [ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/InteractableItem.tscn" id="1_uuso1"]
-[ext_resource type="Script" uid="uid://boe7cu27b6dc4" path="res://Scripts/Buildings/Cauldron.cs" id="2_oxrh5"]
+[ext_resource type="Script" uid="uid://caiywmm3gc34m" path="res://Scripts/Buildings/Cauldron.cs" id="2_oxrh5"]
 [ext_resource type="PackedScene" uid="uid://cqsx76p8hhrm4" path="res://Scenes/UI/ItemSelectSlot.tscn" id="3_oxrh5"]
-[ext_resource type="Script" uid="uid://cp1ki60qepxdj" path="res://Scripts/UI/CauldronSystem.cs" id="3_xg6cq"]
+[ext_resource type="Script" uid="uid://cogbfcp5go86u" path="res://Scripts/UI/CauldronSystem.cs" id="3_xg6cq"]
+[ext_resource type="Texture2D" uid="uid://0f72cxkgdma2" path="res://Asset/Sprite/Icon/node/icon_hand.png" id="5_nfkqy"]
 
 [node name="Cauldron" instance=ExtResource("1_uuso1")]
 script = ExtResource("2_oxrh5")
@@ -26,8 +27,10 @@ offset_left = 191.0
 offset_top = 96.0
 offset_right = 319.0
 offset_bottom = 217.0
+icon = ExtResource("5_nfkqy")
 expand_icon = true
 item_count = 0
+DefaultIcon = ExtResource("5_nfkqy")
 
 [node name="ItemSelectSlot2" parent="Window/CauldronSystem" index="1" instance=ExtResource("3_oxrh5")]
 layout_mode = 0
@@ -35,7 +38,9 @@ offset_left = 102.0
 offset_top = 61.0
 offset_right = 176.0
 offset_bottom = 136.0
+icon = ExtResource("5_nfkqy")
 expand_icon = true
+DefaultIcon = ExtResource("5_nfkqy")
 
 [node name="ItemSelectSlot3" parent="Window/CauldronSystem" index="2" instance=ExtResource("3_oxrh5")]
 layout_mode = 0
@@ -44,7 +49,9 @@ offset_top = 63.0
 offset_right = 405.0
 offset_bottom = 146.0
 scale = Vector2(1, 0.954256)
+icon = ExtResource("5_nfkqy")
 expand_icon = true
+DefaultIcon = ExtResource("5_nfkqy")
 
 [node name="Check" type="Button" parent="Window/CauldronSystem" index="3"]
 layout_mode = 0
