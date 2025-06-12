@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://b8a8cylj6r3oa"]
+
+[ext_resource type="Texture2D" uid="uid://3pxehs86pdtf" path="res://Asset/Sprite/UI/Clock/Weather_Icons_smal_freel.png" id="2_imw4f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3x7e"]
+atlas = ExtResource("2_imw4f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5jk6"]
+atlas = ExtResource("2_imw4f")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i1tk"]
+atlas = ExtResource("2_imw4f")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68b5m"]
+atlas = ExtResource("2_imw4f")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0kkl"]
+atlas = ExtResource("2_imw4f")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c8dv"]
+atlas = ExtResource("2_imw4f")
+region = Rect2(32, 32, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3x7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5jk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1i1tk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68b5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0kkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c8dv")
+}],
+"loop": false,
+"name": &"Weather",
+"speed": 0.0
+}]
