@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://byyt4bfqoywbo" path="res://Scripts/Entities/Player/AttributeManager.cs" id="6_84utv"]
 
 [node name="Player" type="Node2D"]
+z_index = 10
 script = ExtResource("1_tm67w")
 
 [node name="Character" parent="." instance=ExtResource("1_pmdnf")]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://kdouq2pmhyo6"]
+[gd_scene load_steps=4 format=3 uid="uid://kdouq2pmhyo6"]
 
 [ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/InteractableItem.tscn" id="1_4ciib"]
 [ext_resource type="Script" uid="uid://bd4842utkx5yw" path="res://Scripts/Buildings/Bed.cs" id="2_tfnd1"]
+[ext_resource type="Texture2D" uid="uid://d2ba3e72qhb81" path="res://Asset/Sprite/Misc/Furniture/Bed_Angle1.png" id="3_0hnmo"]
 
 [node name="Bed" instance=ExtResource("1_4ciib")]
 script = ExtResource("2_tfnd1")
@@ -11,3 +12,7 @@ initial_position = 2
 ok_button_text = "Yes"
 dialog_text = "Sure to sleep?"
 cancel_button_text = "Later"
+
+[node name="BedAngle1" type="Sprite2D" parent="." index="3"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_0hnmo")
