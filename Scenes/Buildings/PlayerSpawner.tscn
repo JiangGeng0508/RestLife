@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cicpm70axugfq"]
 
-[ext_resource type="Script" uid="uid://cujrn3m7p14ux" path="res://Scripts/Buildings/PlayerSpawner.cs" id="1_lfgd7"]
+[ext_resource type="Script" uid="uid://cujrn3m7p14ux" path="res://Scripts/Buildings/PlayerSpawner.cs" id="1_cgqra"]
 
 [node name="PlayerSpawner" type="MultiplayerSpawner"]
 _spawnable_scenes = PackedStringArray("uid://t6xbv8fwvhft")
 spawn_path = NodePath(".")
-script = ExtResource("1_lfgd7")
+script = ExtResource("1_cgqra")

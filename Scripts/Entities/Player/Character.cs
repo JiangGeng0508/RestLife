@@ -68,6 +68,7 @@ public partial class Character : CharacterBody2D
 	public override void _Ready()
 	{
 		Id = GetInstanceId();
+		GD.Print($"My Id is {Id}");
 		reachArea = GetNode<Area2D>("ReachArea");
 		tarPosNotifer = GetNode<TargetNotifer>("../TargetNotifier");
 		targetPosition = Position;
@@ -75,6 +76,12 @@ public partial class Character : CharacterBody2D
 		PlayerAnim.AnimationFinished += UpdataAnim;
 		PlayerAnim.Play("Idle");
 		attributes = GetNode<AttributeManager>("../AttributeManager");
+
+		Multiplayer.ConnectedToServer += () =>
+		{
+			GD.Print($"Connected to server, my Id is {Id}");
+			Id = (ulong)GetMultiplayerAuthority();
+		};
 	}
 
 	public override void _PhysicsProcess(double delta)

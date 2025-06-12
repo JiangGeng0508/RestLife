@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqsx76p8hhrm4"]
 
-[ext_resource type="Texture2D" uid="uid://0w3ncpvlg3h5" path="res://Asset/Sprite/Icon/control/icon_interrogation.png" id="1_r80jr"]
+[ext_resource type="Texture2D" uid="uid://0w3ncpvlg3h5" path="res://Asset/Sprite/icon_interrogation.png" id="1_r80jr"]
 [ext_resource type="Texture2D" uid="uid://dro5pvu2qefg3" path="res://Asset/Sprite/Icon/control/icon_grid.png" id="2_s5ak2"]
 [ext_resource type="Texture2D" uid="uid://cdkmt3w02wx2w" path="res://Asset/Sprite/Icon/control/icon_heart.png" id="3_3yxgf"]
 [ext_resource type="Script" uid="uid://bphva45vomwii" path="res://Scripts/Buildings/ItemSelectSlot.cs" id="4_fmvkp"]
@@ -21,5 +21,6 @@ popup/item_1/text = "22dd"
 popup/item_1/icon = ExtResource("3_3yxgf")
 popup/item_1/id = 1
 script = ExtResource("4_fmvkp")
+DefaultIcon = ExtResource("1_r80jr")
 
 [connection signal="pressed" from="." to="." method="OnPressed"]

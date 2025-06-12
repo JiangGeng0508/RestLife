@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://b3enhlg2fdncp" path="res://Scenes/Scene/TestMap1.tscn" id="6_y4jh7"]
 [ext_resource type="AudioStream" uid="uid://cwoynma8p575h" path="res://Asset/Audio/BGM/Interior Birdecorator Decorate.ogg" id="8_0iob3"]
 [ext_resource type="Script" uid="uid://bkrgvj2u087bn" path="res://Scripts/UI/BgmPlayer.cs" id="8_f140w"]
+[ext_resource type="PackedScene" uid="uid://cicpm70axugfq" path="res://Scenes/Buildings/PlayerSpawner.tscn" id="9_0iob3"]
 [ext_resource type="Script" uid="uid://di14nm0jvgxks" path="res://Scripts/UI/Cursur.cs" id="9_c1ier"]
 [ext_resource type="PackedScene" uid="uid://dc74ltyvfx87h" path="res://Scenes/UI/HUD.tscn" id="10_gyaec"]
 [ext_resource type="PackedScene" uid="uid://vvjn0laj7y1g" path="res://Scenes/UI/DialogueLayer.tscn" id="14_5qxwa"]
-[ext_resource type="Script" uid="uid://cujrn3m7p14ux" path="res://Scripts/Buildings/PlayerSpawner.cs" id="17_enc0b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmxlf"]
 radius = 3.0
@@ -20,10 +20,7 @@ script = ExtResource("1_enc0b")
 
 [node name="DialogueLayer" parent="." instance=ExtResource("14_5qxwa")]
 
-[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://t6xbv8fwvhft")
-spawn_path = NodePath(".")
-script = ExtResource("17_enc0b")
+[node name="PlayerSpawner" parent="." instance=ExtResource("9_0iob3")]
 
 [node name="MapManager" type="Node" parent="."]
 script = ExtResource("6_q68mp")
@@ -32,6 +29,7 @@ script = ExtResource("6_q68mp")
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_0iob3")
+volume_db = -10.0
 autoplay = true
 script = ExtResource("8_f140w")
 

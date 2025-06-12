@@ -11,6 +11,7 @@ public partial class EventBus : Node
 	{
 		Global.EventBus = this;
 		Global.GameWorldTime.OnDayChange += (int days) => { DayTimeTrigger(); };
+		DebugRegister();
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -26,10 +27,10 @@ public partial class EventBus : Node
 		Global.GameWorldTime.OnDayChange -= quest.TriggerCondition.CheckHandler;
 	}
 	//debug
-	public void DebugRegister()
+	public void DebugRegister(int d = 5)
 	{
-		var q = new QuestTimeTrigger("Day",">",5);
-		q.Name = "Five Days";
+		var q = new QuestTimeTrigger("Day",">",d);
+		q.Name = d + " Days";
 		Register(q);
 	}
 }

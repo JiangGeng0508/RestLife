@@ -10,6 +10,7 @@ public partial class Global : Node
 	public static EventBus EventBus;
 	public static ItemManager ItemManager;
 	public static MainScene MainScene;
+	public static RecipeManager RecipeManager;
 
 	public override void _Ready()
 	{
@@ -21,5 +22,7 @@ public partial class Global : Node
 		AddChild(EventBus, true);
 		ItemManager = new();
 		AddChild(ItemManager, true);
+		RecipeManager = new();
+		AddChild(RecipeManager, true);
 	}
 }
