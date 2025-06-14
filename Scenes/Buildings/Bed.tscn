@@ -7,6 +7,9 @@
 [node name="Bed" instance=ExtResource("1_4ciib")]
 script = ExtResource("2_tfnd1")
 
+[node name="ColorRect" parent="." index="0"]
+visible = false
+
 [node name="SleepConfirm" type="ConfirmationDialog" parent="." index="2"]
 initial_position = 2
 ok_button_text = "Yes"
@@ -14,5 +17,5 @@ dialog_text = "Sure to sleep?"
 cancel_button_text = "Later"
 
 [node name="BedAngle1" type="Sprite2D" parent="." index="3"]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 texture = ExtResource("3_0hnmo")

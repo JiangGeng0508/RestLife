@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6cueq7i4uuuv"]
+
+[ext_resource type="PackedScene" uid="uid://c45lo0s8hq66p" path="res://Scenes/Entities/NPC.tscn" id="1_ycprt"]
+[ext_resource type="SpriteFrames" uid="uid://dily5v8rgqjq6" path="res://Asset/Sprite/Human/NPC CCBY/1/Smoker.tres" id="2_e2leo"]
+
+[node name="Smoker" instance=ExtResource("1_ycprt")]
+
+[node name="ColorRect" parent="." index="0"]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(7, 1)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_e2leo")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.912283

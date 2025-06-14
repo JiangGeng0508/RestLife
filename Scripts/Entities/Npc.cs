@@ -8,8 +8,15 @@ public enum NpcState
 	Backwarding,//有目的地，前往目的地
 	Busying,//忙碌
 }
+public enum NpcActivity
+{
+	Random,//随机行动
+	Idle,//静止
+}
 public partial class Npc : SelectIntItem
 {
+	[Export]
+	public NpcActivity Activity { get; set; } = NpcActivity.Idle;
 	public bool Interactable = true;
 	Random Random = new();
 	float RandomDirection = 0;
@@ -24,7 +31,6 @@ public partial class Npc : SelectIntItem
 		}
 		set
 		{
-			ColorRect.Color = new Color(1, 1, 1);//白色
 			DelFunc(PickUpQuest);
 			switch (value)
 			{
@@ -32,7 +38,6 @@ public partial class Npc : SelectIntItem
 					Interactable = true;
 					break;
 				case NpcState.WaitingWithQuest:
-					ColorRect.Color = new Color(1, 0, 0);//红色
 					MergeVoidFunc(PickUpQuest);
 					Interactable = true;
 					break;
@@ -54,11 +59,13 @@ public partial class Npc : SelectIntItem
 		Timer = GetNode<Timer>("Timer");
 		Timer.Start();
 		Timer.WaitTime = 1f;
-		Timer.Connect("timeout", new Callable(this, "OnTimerTimeout"));
+		Timer.Timeout += OnTimerTimeout;
 		MergeVoidFunc(ChangeState);
 
-		//debug
-		ColorRect = GetNode<ColorRect>("ColorRect");
+		if (Activity == NpcActivity.Idle)
+		{
+			Timer.Stop();
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -73,7 +80,7 @@ public partial class Npc : SelectIntItem
 				Position += new Vector2(RandomDirection, 0) * Speed * (float)delta;
 				break;
 			case NpcState.Backwarding:
-				if (Position.DistanceTo(Vector2.Zero) < 1)
+				if (Position.DistanceTo(Vector2.Zero) < 10)
 				{
 					State = NpcState.Idle;
 					break;

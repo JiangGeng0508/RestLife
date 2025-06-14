@@ -7,7 +7,8 @@ public enum CharacterState
 	Moving,
 	MovingbyKeyboard,
 	Riding,
-	Waiting
+	Waiting,
+	Sleeping,
 }
 public partial class Character : CharacterBody2D
 {
@@ -54,6 +55,9 @@ public partial class Character : CharacterBody2D
 					case CharacterState.Waiting:
 						PlayerAnim.Play("Wait");
 						break;
+					case CharacterState.Sleeping:
+						PlayerAnim.Play("Lay");
+						break;
 				}
 			}
 		}
@@ -63,7 +67,7 @@ public partial class Character : CharacterBody2D
 
 	float Speed = 150f;
 	private Vector2 _prevPosition = Vector2.Zero;
-	int KeyDirection = 0;
+	private int KeyDirection = 0;
 
 	public override void _Ready()
 	{
