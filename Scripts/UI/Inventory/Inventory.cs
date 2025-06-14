@@ -3,6 +3,8 @@ using Godot.Collections;
 
 public partial class Inventory : Node
 {
+	[Signal]
+	public delegate void ItemAddedEventHandler(Item item, int number);
 	public Dictionary<string, Item> Items = [];
 	public InventoryUI UI;
 	public override void _Ready()
@@ -22,6 +24,7 @@ public partial class Inventory : Node
 			item.Init();
 			Items.Add(item.Name, item);
 		}
+		EmitSignal(nameof(ItemAdded), item, number);
 		UI.Update();
 	}
 	public void RemoveItem(Item item, int number = -1)

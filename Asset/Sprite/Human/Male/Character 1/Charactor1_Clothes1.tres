@@ -169,7 +169,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("29_g5gy3")
 }],
-"loop": true,
+"loop": false,
 "name": &"Pickup",
 "speed": 8.0
 }, {

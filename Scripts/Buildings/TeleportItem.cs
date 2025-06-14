@@ -7,6 +7,9 @@ public partial class TeleportItem : InteractableItem
 	public override void Action()
 	{
 		GetNode<Sprite2D>("Door/DoorFrontLeft").Hide();
-		Global.MainScene.MapManager.Teleport(SceneName);
+		GetTree().CreateTimer(0.5f).Timeout += () =>
+		{
+			Global.MainScene.MapManager.Teleport(SceneName);
+		};
 	}
 }

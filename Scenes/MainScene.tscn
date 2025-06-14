@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bto6gsdtdxftl"]
+[gd_scene load_steps=12 format=3 uid="uid://bto6gsdtdxftl"]
 
 [ext_resource type="Script" uid="uid://fynd0dweoayb" path="res://Scripts/Scene/MainScene.cs" id="1_enc0b"]
+[ext_resource type="Script" uid="uid://41coxb86rtok" path="res://Scripts/UI/Hud/PickupNotifer.cs" id="4_4b75m"]
 [ext_resource type="Script" uid="uid://cjijf43p4nyu8" path="res://Scripts/Scene/MapManager.cs" id="6_q68mp"]
 [ext_resource type="PackedScene" uid="uid://b3enhlg2fdncp" path="res://Scenes/Scene/TestMap1.tscn" id="6_y4jh7"]
 [ext_resource type="AudioStream" uid="uid://cwoynma8p575h" path="res://Asset/Audio/BGM/Interior Birdecorator Decorate.ogg" id="8_0iob3"]
@@ -18,9 +19,19 @@ script = ExtResource("1_enc0b")
 
 [node name="HUD" parent="." instance=ExtResource("10_gyaec")]
 
+[node name="PlayerSpawner" parent="." instance=ExtResource("9_0iob3")]
+
 [node name="DialogueLayer" parent="." instance=ExtResource("14_5qxwa")]
 
-[node name="PlayerSpawner" parent="." instance=ExtResource("9_0iob3")]
+[node name="PickupNotifer" type="VBoxContainer" parent="DialogueLayer"]
+offset_left = 934.0
+offset_top = 329.0
+offset_right = 1150.0
+offset_bottom = 648.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+script = ExtResource("4_4b75m")
 
 [node name="MapManager" type="Node" parent="."]
 script = ExtResource("6_q68mp")

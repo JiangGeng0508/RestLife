@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dc74ltyvfx87h"]
+[gd_scene load_steps=15 format=3 uid="uid://dc74ltyvfx87h"]
 
 [ext_resource type="Script" uid="uid://bn5qycss666ik" path="res://Scripts/UI/Hud/Hud.cs" id="1_lelo4"]
 [ext_resource type="Script" uid="uid://b78vbe0hqa2ni" path="res://Scripts/UI/Hud/SelectMenu.cs" id="1_ne771"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://cmss037nrmq3g" path="res://Scripts/UI/Hud/RightClickMenu.cs" id="4_1and6"]
 [ext_resource type="Script" uid="uid://c6qhn0rwj1ss4" path="res://Scripts/UI/Hud/Setting.cs" id="6_jt2rc"]
 [ext_resource type="Script" uid="uid://dgpb36bqvvo54" path="res://Scripts/UI/Menu.cs" id="7_1ree7"]
-[ext_resource type="Script" uid="uid://41coxb86rtok" path="res://Scripts/UI/Hud/PickupNotifer.cs" id="7_d2sja"]
 [ext_resource type="Script" uid="uid://bcfcwrvroa6lo" path="res://Scripts/UI/Hud/GodMode.cs" id="8_d2sja"]
 [ext_resource type="Script" uid="uid://bd0dvnmycar3a" path="res://Scripts/UI/Hud/Clock.cs" id="8_eebq5"]
 [ext_resource type="Texture2D" uid="uid://bcoi46vchdh2d" path="res://Asset/Sprite/UI/Clock/EmptyUI.png" id="8_i4i0y"]
@@ -194,12 +193,6 @@ offset_bottom = 630.0
 tooltip_text = "HungryBar"
 fill_mode = 3
 show_percentage = false
-
-[node name="PickupNotifer" type="MarginContainer" parent="."]
-offset_top = 138.0
-offset_right = 218.0
-offset_bottom = 285.0
-script = ExtResource("7_d2sja")
 
 [connection signal="item_clicked" from="SelectMenu/Inventory/InventoryList" to="SelectMenu/Inventory" method="OnItemClicked"]
 [connection signal="id_pressed" from="SelectMenu/Inventory/RightClickMenu" to="SelectMenu/Inventory/RightClickMenu" method="OnIdPressed"]

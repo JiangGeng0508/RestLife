@@ -31,7 +31,6 @@ offset_bottom = 217.0
 icon = ExtResource("5_nfkqy")
 expand_icon = true
 item_count = 0
-DefaultIcon = ExtResource("5_nfkqy")
 
 [node name="ItemSelectSlot2" parent="Window/CauldronSystem" index="1" instance=ExtResource("3_oxrh5")]
 layout_mode = 0
@@ -41,7 +40,6 @@ offset_right = 176.0
 offset_bottom = 136.0
 icon = ExtResource("5_nfkqy")
 expand_icon = true
-DefaultIcon = ExtResource("5_nfkqy")
 
 [node name="ItemSelectSlot3" parent="Window/CauldronSystem" index="2" instance=ExtResource("3_oxrh5")]
 layout_mode = 0
@@ -52,7 +50,6 @@ offset_bottom = 146.0
 scale = Vector2(1, 0.954256)
 icon = ExtResource("5_nfkqy")
 expand_icon = true
-DefaultIcon = ExtResource("5_nfkqy")
 
 [node name="Check" type="Button" parent="Window/CauldronSystem" index="3"]
 layout_mode = 0
