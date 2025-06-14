@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Dialog" load_steps=2 format=3 uid="uid://dluaqqwmwvvsk"]
+
+[ext_resource type="Script" uid="uid://bbvqrf1yakidi" path="res://Scripts/Event/Dialog.cs" id="1_hg4d0"]
+
+[resource]
+script = ExtResource("1_hg4d0")
+DialogText = "Greeting '\\n' Make a decision"
+metadata/_custom_type_script = "uid://bbvqrf1yakidi"

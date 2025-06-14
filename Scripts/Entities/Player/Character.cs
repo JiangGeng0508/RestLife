@@ -49,7 +49,7 @@ public partial class Character : CharacterBody2D
 						}
 						break;
 					case CharacterState.Riding:
-						PlayerAnim.Play("Interact");
+						PlayerAnim.Play("Sit");
 						break;
 					case CharacterState.Waiting:
 						PlayerAnim.Play("Wait");
@@ -321,6 +321,9 @@ public partial class Character : CharacterBody2D
 				break;
 			case "Npc":
 				PlayerAnim.Play("Talk");
+				break;
+			case "RideableItem":
+				PlayerAnim.Play("Sit");
 				break;
 			default:
 				PlayerAnim.Play("Interact");

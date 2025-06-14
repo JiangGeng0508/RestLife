@@ -12,4 +12,5 @@ Item = null
 visible = false
 
 [node name="Icon" type="Sprite2D" parent="." index="2"]
+position = Vector2(0, 19)
 texture = ExtResource("3_l2wf7")

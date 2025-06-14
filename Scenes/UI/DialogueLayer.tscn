@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://vvjn0laj7y1g"]
+[gd_scene load_steps=4 format=3 uid="uid://vvjn0laj7y1g"]
 
 [ext_resource type="Script" uid="uid://d2rew2e3y5lyx" path="res://Scripts/UI/DialogueLayer.cs" id="1_ev3om"]
+[ext_resource type="Resource" uid="uid://dluaqqwmwvvsk" path="res://Asset/Data/Dialogs/StartDialog.tres" id="2_qx1lv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5qxwa"]
 font_size = 32
 
 [node name="DialogueLayer" type="CanvasLayer"]
 script = ExtResource("1_ev3om")
+StartDialog = ExtResource("2_qx1lv")
 
 [node name="DialogueLabel" type="Label" parent="."]
 visible = false
@@ -25,6 +27,7 @@ initial_position = 2
 size = Vector2i(500, 184)
 visible = true
 ok_button_text = "Accept"
+dialog_autowrap = true
 cancel_button_text = "Deny"
 
 [node name="DialogueTextLabel" type="RichTextLabel" parent="DialoguePop"]
