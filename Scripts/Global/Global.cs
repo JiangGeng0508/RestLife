@@ -11,6 +11,9 @@ public partial class Global : Node
 	public static MainScene MainScene;
 	public static RecipeManager RecipeManager;
 
+	// Rename This
+	public static SelectMenu SelectMenu;
+
 	public override void _Ready()
 	{
 		GameWorldTime = new();

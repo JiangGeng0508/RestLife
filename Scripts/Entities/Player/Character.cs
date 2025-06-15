@@ -224,19 +224,6 @@ public partial class Character : CharacterBody2D
 				{
 					StopRiding();
 				}
-				if (keyEvent.Keycode == Key.Tab)
-				{
-					if (!IsWaiting())
-					{
-						prevState = (State == CharacterState.Moving) ? CharacterState.Idle : State;
-						KeyDirection = 0;
-						State = CharacterState.Waiting;
-					}
-					else
-					{
-						State = prevState;
-					}
-				}
 			}
 			else if (IsMovingbyKeyboard())//按键抬起时处理
 			{
@@ -341,6 +328,20 @@ public partial class Character : CharacterBody2D
 			default:
 				PlayerAnim.Play("Idle");
 				break;
+		}
+	}
+
+	public void OnToggleMenu()
+	{
+		if (Global.SelectMenu.Visible)
+		{
+			prevState = (State == CharacterState.Moving) ? CharacterState.Idle : State;
+			KeyDirection = 0;
+			State = CharacterState.Waiting;
+		}
+		else
+		{
+			State = prevState;
 		}
 	}
 }
