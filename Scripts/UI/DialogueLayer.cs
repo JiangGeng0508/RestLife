@@ -10,7 +10,7 @@ public partial class DialogueLayer : CanvasLayer
 	ConfirmationDialog DialoguePop;
 	RichTextLabel DialogueTextLabel;
 	[Export]
-	public Dialog StartDialog { get; set; }
+	public BranchDialog StartDialog { get; set; }
 	public override void _Ready()
 	{
 		DialogueLabel = GetNode<Label>("DialogueLabel");
@@ -50,11 +50,28 @@ public partial class DialogueLayer : CanvasLayer
 		{
 			GD.Print("Confirmed");
 			dialog.OnOK();
+			DialoguePop.Confirmed -= () => { };
 		};
 		DialoguePop.Canceled += () =>
 		{
 			GD.Print("Canceled");
 			dialog.OnCancel();
+		};
+	}
+	public void PopupBranchChoice(BranchDialog branchDialog)
+	{
+		ShowPopup(branchDialog.DialogText);
+		DialoguePop.Confirmed += () =>
+		{
+			GD.Print("Confirmed");
+			branchDialog.OnOK();
+			PopupBranchChoice(branchDialog.OKDialog);
+		};
+		DialoguePop.Canceled += () =>
+		{
+			GD.Print("Canceled");
+			branchDialog.OnCancel();
+			PopupBranchChoice(branchDialog.CancelDialog);
 		};
 	}
 }

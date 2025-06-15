@@ -30,6 +30,7 @@ public partial class Character : CharacterBody2D
 			if (_state != value)
 			{
 				_state = value;
+				Engine.TimeScale = 1f;
 				switch (_state)
 				{
 					case CharacterState.Idle:
@@ -57,6 +58,7 @@ public partial class Character : CharacterBody2D
 						break;
 					case CharacterState.Sleeping:
 						PlayerAnim.Play("Lay");
+						Engine.TimeScale = 10f;
 						break;
 				}
 			}

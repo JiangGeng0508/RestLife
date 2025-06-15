@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_hg4d0")
-DialogText = "Greeting '\\n' Make a decision"
+DialogText = "Make a decision"
 metadata/_custom_type_script = "uid://bbvqrf1yakidi"

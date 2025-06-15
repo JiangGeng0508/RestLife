@@ -1,12 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://vvjn0laj7y1g"]
 
 [ext_resource type="Script" uid="uid://d2rew2e3y5lyx" path="res://Scripts/UI/DialogueLayer.cs" id="1_ev3om"]
-[ext_resource type="Resource" uid="uid://dluaqqwmwvvsk" path="res://Asset/Data/Dialogs/StartDialog.tres" id="2_qx1lv"]
+[ext_resource type="Resource" uid="uid://disafempvyk0" path="res://Asset/Data/Dialogs/StartBranch.tres" id="2_qx1lv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5qxwa"]
 font_size = 32
 
 [node name="DialogueLayer" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_ev3om")
 StartDialog = ExtResource("2_qx1lv")
 
