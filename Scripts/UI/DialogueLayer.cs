@@ -68,6 +68,8 @@ public partial class DialogueLayer : CanvasLayer
 			OnConfirmed += () =>
 			{
 				PopupBranchChoice(dialog.OKDialog);
+				DialoguePop.Confirmed -= OnConfirmed;
+				DialoguePop.Canceled -= OnCanceled;
 			};
 		}
 		if (dialog.CancelDialog != null)
@@ -75,6 +77,8 @@ public partial class DialogueLayer : CanvasLayer
 			OnCanceled += () =>
 			{
 				PopupBranchChoice(dialog.CancelDialog);
+				DialoguePop.Confirmed -= OnConfirmed;
+				DialoguePop.Canceled -= OnCanceled;
 			};
 		}
 		
