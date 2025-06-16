@@ -55,6 +55,8 @@ public partial class DialogueLayer : CanvasLayer
 			dialog.OnOK();
 			DialoguePop.Confirmed -= OnConfirmed;
 			DialoguePop.Canceled -= OnCanceled;
+			OnConfirmed = null;
+			OnCanceled = null;
 		};
 		OnCanceled += () =>
 		{
@@ -62,6 +64,8 @@ public partial class DialogueLayer : CanvasLayer
 			dialog.OnCancel();
 			DialoguePop.Confirmed -= OnConfirmed;
 			DialoguePop.Canceled -= OnCanceled;
+			OnConfirmed = null;
+			OnCanceled = null;
 		};
 		if (dialog.OKDialog != null)
 		{
