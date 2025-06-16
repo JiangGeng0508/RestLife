@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="Dialog" load_steps=2 format=3 uid="uid://dnp6605i42jv0"]
+[gd_resource type="Resource" script_class="Dialog" load_steps=3 format=3 uid="uid://dnp6605i42jv0"]
 
+[ext_resource type="Resource" uid="uid://b6l4jmvfsuuiw" path="res://Asset/Data/Dialogs/StartDialog2.tres" id="1_4x6nt"]
 [ext_resource type="Script" uid="uid://bbvqrf1yakidi" path="res://Scripts/Event/Dialog.cs" id="1_ntlhv"]
 
 [resource]
 script = ExtResource("1_ntlhv")
 DialogText = "Another hello"
+OKDialog = ExtResource("1_4x6nt")
 metadata/_custom_type_script = "uid://bbvqrf1yakidi"
