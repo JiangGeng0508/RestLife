@@ -18,12 +18,12 @@ public partial class FileBrowser : ItemList
 		Clear();
 		DictTree.Clear();
 		using var DirAc = DirAccess.Open(path);
-		if (DirAc.GetCurrentDir() != "res://Asset/")
+		var dirs = DirAc.GetCurrentDir().Split("/");
+		if (path != "res://Asset/")
 		{
 			AddItem("..");
+			DictTree[0] = DirAc.GetCurrentDir().Replace(dirs[^1], "");
 		}
-		var dirs = DirAc.GetCurrentDir().Split("/");
-		DictTree[0] = DirAc.GetCurrentDir().Replace(dirs[^1], "");
 		foreach (var dict in DirAc.GetDirectories())
 		{
 			AddItem(dict);
