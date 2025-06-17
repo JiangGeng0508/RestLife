@@ -4,6 +4,7 @@ using System;
 
 public partial class FileBrowser : ItemList
 {
+	public string CurrentPath = "";
 	public Dictionary<long, string> DictTree = [];
 	public override void _Ready()
 	{
@@ -17,6 +18,7 @@ public partial class FileBrowser : ItemList
 	{
 		Clear();
 		DictTree.Clear();
+		GetNode<IconPreviewGrid>("../Scroll/IconPreviewGrid").ReadFolder(path);
 		using var DirAc = DirAccess.Open(path);
 		var dirs = DirAc.GetCurrentDir().Split("/");
 		if (path != "res://Asset/")

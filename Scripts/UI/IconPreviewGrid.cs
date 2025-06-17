@@ -10,15 +10,23 @@ public partial class IconPreviewGrid : GridContainer
 
 	public override void _Ready()
 	{
-		using var dir = DirAccess.Open(IconPath);
+		ReadFolder(IconPath);
+	}
+	public void ReadFolder(string path)
+	{
+		foreach (var child in GetChildren())
+		{
+			child.QueueFree();
+		}
+		using var dir = DirAccess.Open(path);
 		var files = dir.GetFiles();
 		foreach (var file in files)
 		{
-			if (file.EndsWith(".import"))
+			if (!file.EndsWith(".png"))
 			{
 				continue;
 			}
-			var icon = GD.Load<Texture2D>(IconPath + file);
+			var icon = GD.Load<Texture2D>(path + "/" +file);
 			var button = new Button
 			{
 				Icon = icon,
