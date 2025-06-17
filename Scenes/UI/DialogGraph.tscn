@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://n08w3eb6osdi"]
+
+[ext_resource type="Script" uid="uid://b8x4spe3ulbea" path="res://Scripts/UI/DialogGraph.cs" id="1_yewga"]
+[ext_resource type="Resource" uid="uid://cucjvevsybxpj" path="res://Asset/Data/Dialogs/StartDialog.tres" id="2_m2cs3"]
+
+[node name="DialogGraph" type="GraphNode"]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 471.0
+offset_top = 232.0
+offset_right = 768.0
+offset_bottom = 413.0
+mouse_filter = 1
+title = "DialogGraph"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 1
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = true
+slot/1/left_type = 1
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = true
+slot/1/right_type = 1
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_yewga")
+dialog = ExtResource("2_m2cs3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Hello from DialogGraph"
+
+[node name="Label" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Cancel" type="Label" parent="Label"]
+layout_mode = 2
+offset_left = 209.0
+offset_top = 25.0
+offset_right = 268.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cancel"
+
+[node name="Confirm" type="Label" parent="Label"]
+layout_mode = 2
+offset_left = 202.0
+offset_top = -38.0
+offset_right = 269.0
+offset_bottom = -15.0
+text = "Confirm"
+
+[node name="From" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 23.0
+offset_right = 64.0
+offset_bottom = 53.0
+text = "From"

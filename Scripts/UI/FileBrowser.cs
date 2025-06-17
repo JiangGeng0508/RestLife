@@ -11,6 +11,7 @@ public partial class FileBrowser : ItemList
 		OpenFolder("res://Asset/Sprite/");
 		ItemSelected += (index) =>
 		{
+			GetNode<IconPreviewGrid>("../Scroll/IconPreviewGrid").ReadFolder(DictTree[index]);
 			OpenFolder(DictTree[index]);
 		};
 	}
@@ -18,10 +19,10 @@ public partial class FileBrowser : ItemList
 	{
 		Clear();
 		DictTree.Clear();
-		GetNode<IconPreviewGrid>("../Scroll/IconPreviewGrid").ReadFolder(path);
+		
 		using var DirAc = DirAccess.Open(path);
 		var dirs = DirAc.GetCurrentDir().Split("/");
-		if (path != "res://Asset/")
+		if (path != "res://Asset/Sprite/")
 		{
 			AddItem("..");
 			DictTree[0] = DirAc.GetCurrentDir().Replace(dirs[^1], "");
