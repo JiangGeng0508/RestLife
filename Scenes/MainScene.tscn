@@ -22,6 +22,7 @@ script = ExtResource("1_enc0b")
 [node name="PlayerSpawner" parent="." instance=ExtResource("9_0iob3")]
 
 [node name="DialogueLayer" parent="." instance=ExtResource("14_5qxwa")]
+visible = true
 
 [node name="PickupNotifer" type="VBoxContainer" parent="DialogueLayer"]
 offset_left = 934.0

@@ -1,0 +1,126 @@
+[gd_scene load_steps=6 format=3 uid="uid://m5acmtxvql1i"]
+
+[ext_resource type="Script" uid="uid://exrhm3ls5rre" path="res://Scripts/UI/ItemEditor.cs" id="1_dtg8x"]
+[ext_resource type="Texture2D" uid="uid://cium8vb687otd" path="res://Asset/Sprite/Icon/control/icon_file.png" id="1_wp2bh"]
+[ext_resource type="Script" uid="uid://djd8wk4xahccb" path="res://Scripts/UI/IconPreviewGrid.cs" id="2_otgjg"]
+[ext_resource type="Script" uid="uid://cjymj025wyrt8" path="res://Scripts/UI/FileBrowser.cs" id="4_tsgv1"]
+[ext_resource type="Script" uid="uid://cvyng44fbq2lr" path="res://Scripts/UI/FoodEditor.cs" id="4_w33ih"]
+
+[node name="TresEditor" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="Item" type="Control" parent="."]
+layout_mode = 2
+script = ExtResource("1_dtg8x")
+metadata/_tab_index = 0
+
+[node name="Icon" type="TextureRect" parent="Item"]
+offset_left = 913.0
+offset_top = 159.0
+offset_right = 1020.0
+offset_bottom = 260.0
+
+[node name="Name" type="LineEdit" parent="Item"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 287.0
+offset_top = 305.0
+offset_right = 499.0
+offset_bottom = 360.0
+grow_horizontal = 2
+placeholder_text = "Name"
+
+[node name="Confirm" type="Button" parent="Item"]
+layout_mode = 2
+offset_left = 924.0
+offset_top = 472.0
+offset_right = 1010.0
+offset_bottom = 556.0
+icon = ExtResource("1_wp2bh")
+icon_alignment = 1
+expand_icon = true
+
+[node name="IconPreviewGrid" type="GridContainer" parent="Item"]
+custom_minimum_size = Vector2(400, 400)
+offset_left = 389.0
+offset_top = 103.0
+offset_right = 789.0
+offset_bottom = 503.0
+columns = 4
+script = ExtResource("2_otgjg")
+
+[node name="FileBrowser" type="ItemList" parent="Item"]
+custom_minimum_size = Vector2(200, 500)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 50.0
+offset_right = 224.0
+offset_bottom = 550.0
+script = ExtResource("4_tsgv1")
+
+[node name="Food" type="Control" parent="."]
+visible = false
+layout_mode = 2
+script = ExtResource("4_w33ih")
+metadata/_tab_index = 1
+
+[node name="Icon" type="TextureRect" parent="Food"]
+layout_mode = 0
+offset_left = 922.0
+offset_top = 126.0
+offset_right = 1029.0
+offset_bottom = 227.0
+
+[node name="Name" type="LineEdit" parent="Food"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 293.0
+offset_top = 248.0
+offset_right = 505.0
+offset_bottom = 303.0
+grow_horizontal = 2
+placeholder_text = "Name"
+
+[node name="Confirm" type="Button" parent="Food"]
+layout_mode = 2
+offset_left = 924.0
+offset_top = 472.0
+offset_right = 1010.0
+offset_bottom = 556.0
+icon = ExtResource("1_wp2bh")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Energy" type="LineEdit" parent="Food"]
+layout_mode = 2
+offset_left = 871.0
+offset_top = 322.0
+offset_right = 1076.0
+offset_bottom = 376.0
+placeholder_text = "Energy"
+
+[node name="Hunger" type="LineEdit" parent="Food"]
+offset_left = 870.0
+offset_top = 388.0
+offset_right = 1075.0
+offset_bottom = 442.0
+placeholder_text = "Hunger"
+
+[node name="IconPreviewGrid" type="GridContainer" parent="Food"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 0
+offset_left = 373.0
+offset_top = 110.0
+offset_right = 773.0
+offset_bottom = 510.0
+columns = 4
+script = ExtResource("2_otgjg")

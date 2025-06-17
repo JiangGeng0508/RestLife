@@ -44,11 +44,7 @@ public partial class InteractableItem : Area2D
 	}
 	public void Click()
 	{
-		if (IsPlayerClosed)
-		{
-			CharaReachArea.GetParent().Call("AfterAction");
-			Action();
-		}
+		Action();
 	}
 	public virtual void Init() { }
 	public virtual void Action() { }

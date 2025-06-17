@@ -8,13 +8,11 @@ public partial class ItemManager : Node
 	public override void _Ready()
 	{
 		Global.ItemManager = this;
-		GD.Print("ItemManager is ready");
 		//注册所有Item
 		using var dir = DirAccess.Open("res://Asset/Data/Items/");
 		var files = dir.GetFiles();
 		foreach (var file in files)
 		{
-			GD.Print("Loading item: " + file);
 			var item = GD.Load<Item>("res://Asset/Data/Items/" + file);
 			Register(item);
 		}
@@ -38,7 +36,6 @@ public partial class ItemManager : Node
 		foreach (var file in files2)
 		{
 			if (file.GetExtension() != "png") continue;
-			GD.Print("Creating item from texture: " + file);
 			var item = ShapeFoodFromTexture(dictPath + file);
 			item.Name = file.GetBaseName().Split('.')[0];
 			Register(item);
