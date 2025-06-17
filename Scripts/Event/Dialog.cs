@@ -4,6 +4,8 @@ using Godot;
 public partial class Dialog : Resource
 {
 	[Export]
+	public string Title { get; set; }
+	[Export]
 	public string DialogText { get; set; }
 	[Export]
 	public Dialog OKDialog { get; set; }

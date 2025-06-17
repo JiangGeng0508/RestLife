@@ -1,5 +1,4 @@
 using Godot;
-using Godot.Collections;
 
 public partial class DialogEditor : GraphEdit
 {
@@ -7,15 +6,22 @@ public partial class DialogEditor : GraphEdit
 	{
 		OS.LowProcessorUsageMode = true;
 		GetNode<Button>("New").Pressed += SummonGraphNode;
+		GetNode<Button>("Update").Pressed += () =>
+		{
+			ArrangeNodes();
+		};
 		ConnectionRequest += (fromNode, fromPort, toNode, toPort) =>
 		{
-			GD.Print("Connection Request from " + fromNode + " to " + toNode + " fromPort " + fromPort + " to " + toPort );
-			ConnectNode(fromNode, (int)fromPort, toNode, (int)toPort, true);
-			GD.Print("Connections: " + Connections.Count);
+			if (IsNodeConnected(fromNode, (int)fromPort, toNode, (int)toPort))
+			{
+				DisconnectNode(fromNode, (int)fromPort, toNode, (int)toPort);
+			}
+			else
+			{
+				ConnectNode(fromNode, (int)fromPort, toNode, (int)toPort, true);
+			}
 		};
-		ConnectionDragStarted += (Node, Port,KeepAlive) =>
-		{
-		};
+		
 	}
 	public void SummonGraphNode()
 	{

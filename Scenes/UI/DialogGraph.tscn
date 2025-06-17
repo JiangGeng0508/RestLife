@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://n08w3eb6osdi"]
+[gd_scene load_steps=6 format=3 uid="uid://n08w3eb6osdi"]
 
 [ext_resource type="Script" uid="uid://b8x4spe3ulbea" path="res://Scripts/UI/DialogGraph.cs" id="1_yewga"]
-[ext_resource type="Resource" uid="uid://cucjvevsybxpj" path="res://Asset/Data/Dialogs/StartDialog.tres" id="2_m2cs3"]
+[ext_resource type="Texture2D" uid="uid://bx0rfm6r0xd4x" path="res://Asset/Sprite/Icon/true.png" id="1_yts6d"]
+[ext_resource type="Texture2D" uid="uid://cw5pc1dsfcl85" path="res://Asset/Sprite/Icon/from_arrow.png" id="2_hb4p2"]
+[ext_resource type="Texture2D" uid="uid://7qf0l3os3ve8" path="res://Asset/Sprite/Icon/false.png" id="3_ymn6e"]
+[ext_resource type="Texture2D" uid="uid://c3evm7lmrvdxy" path="res://Asset/Sprite/Icon/node/icon_save.png" id="5_hb4p2"]
 
 [node name="DialogGraph" type="GraphNode"]
 custom_minimum_size = Vector2(100, 100)
-offset_left = 471.0
-offset_top = 232.0
-offset_right = 768.0
-offset_bottom = 413.0
+offset_right = 300.0
+offset_bottom = 180.0
 mouse_filter = 1
 title = "DialogGraph"
 slot/0/left_enabled = false
@@ -18,51 +19,77 @@ slot/0/left_icon = null
 slot/0/right_enabled = true
 slot/0/right_type = 1
 slot/0/right_color = Color(1, 1, 1, 1)
-slot/0/right_icon = null
+slot/0/right_icon = ExtResource("1_yts6d")
 slot/0/draw_stylebox = true
 slot/1/left_enabled = true
 slot/1/left_type = 1
 slot/1/left_color = Color(1, 1, 1, 1)
-slot/1/left_icon = null
+slot/1/left_icon = ExtResource("2_hb4p2")
 slot/1/right_enabled = true
 slot/1/right_type = 1
 slot/1/right_color = Color(1, 1, 1, 1)
-slot/1/right_icon = null
+slot/1/right_icon = ExtResource("3_ymn6e")
 slot/1/draw_stylebox = true
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 1, 1, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
 script = ExtResource("1_yewga")
-dialog = ExtResource("2_m2cs3")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(100, 50)
+[node name="Title" type="HSplitContainer" parent="."]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-text = "Hello from DialogGraph"
+split_offset = 200
+dragging_enabled = false
+dragger_visibility = 1
+
+[node name="DialogTitle" type="LineEdit" parent="Title"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Title"]
+layout_mode = 2
+icon = ExtResource("5_hb4p2")
+icon_alignment = 1
+
+[node name="EditContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(100, 85)
+layout_mode = 2
+
+[node name="DialogText" type="TextEdit" parent="EditContainer"]
+custom_minimum_size = Vector2(260, 85)
+layout_mode = 2
 
 [node name="Label" type="Control" parent="."]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="Cancel" type="Label" parent="Label"]
 layout_mode = 2
-offset_left = 209.0
-offset_top = 25.0
-offset_right = 268.0
-offset_bottom = 48.0
+offset_left = 251.0
+offset_top = -36.0
+offset_right = 310.0
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Cancel"
 
 [node name="Confirm" type="Label" parent="Label"]
 layout_mode = 2
-offset_left = 202.0
-offset_top = -38.0
-offset_right = 269.0
-offset_bottom = -15.0
+offset_left = 251.0
+offset_top = -143.0
+offset_right = 318.0
+offset_bottom = -120.0
 text = "Confirm"
 
 [node name="From" type="Label" parent="Label"]
 layout_mode = 0
-offset_left = -5.0
-offset_top = 23.0
-offset_right = 64.0
-offset_bottom = 53.0
+offset_left = -38.0
+offset_top = -36.0
+offset_right = 31.0
+offset_bottom = -6.0
 text = "From"

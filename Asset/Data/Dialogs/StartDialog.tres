@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_hg4d0")
+Title = "StartDialog"
 DialogText = "Make a decision"
 OKDialog = ExtResource("1_hg45s")
 metadata/_custom_type_script = "uid://bbvqrf1yakidi"
