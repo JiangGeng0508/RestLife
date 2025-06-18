@@ -22,19 +22,16 @@ public partial class DialogGraph : GraphNode
 		textEdit = GetNode<TextEdit>("EditContainer/DialogText");
 		if (dialog != null)
 		{
+			Name = dialog.Title;
 			title.Text = dialog.Title;
 			textEdit.Text = dialog.DialogText;
 		}
-		SlotUpdated += (slot) =>
-		{
-			GD.Print("Slot updated" + slot);
-		};
 	}
 	public string ExportDialog()
 	{
-		if (title == null || textEdit == null)
+		if (title.Text == null || textEdit.Text == null)
 		{
-			return "Fail";
+			return null;
 		}
 		dialog = new Dialog
 		{

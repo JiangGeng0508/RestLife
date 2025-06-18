@@ -40,6 +40,7 @@ slot/2/right_color = Color(1, 1, 1, 1)
 slot/2/right_icon = null
 slot/2/draw_stylebox = true
 script = ExtResource("1_yewga")
+ExportPath = "res://Asset/Data/Dialogs/"
 
 [node name="Title" type="HSplitContainer" parent="."]
 custom_minimum_size = Vector2(50, 0)

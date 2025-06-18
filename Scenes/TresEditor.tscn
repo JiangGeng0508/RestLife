@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://m5acmtxvql1i"]
+[gd_scene load_steps=8 format=3 uid="uid://m5acmtxvql1i"]
 
 [ext_resource type="Script" uid="uid://exrhm3ls5rre" path="res://Scripts/UI/ItemEditor.cs" id="1_dtg8x"]
 [ext_resource type="Script" uid="uid://djd8wk4xahccb" path="res://Scripts/UI/IconPreviewGrid.cs" id="2_otgjg"]
@@ -6,10 +6,7 @@
 [ext_resource type="Script" uid="uid://cjymj025wyrt8" path="res://Scripts/UI/FileBrowser.cs" id="4_tsgv1"]
 [ext_resource type="Script" uid="uid://cvyng44fbq2lr" path="res://Scripts/UI/FoodEditor.cs" id="4_w33ih"]
 [ext_resource type="Script" uid="uid://bi2exwmse8t5r" path="res://Scripts/UI/DialogEditor.cs" id="6_wm2yl"]
-[ext_resource type="PackedScene" uid="uid://n08w3eb6osdi" path="res://Scenes/UI/DialogGraph.tscn" id="7_swd8s"]
-[ext_resource type="Resource" uid="uid://dnp6605i42jv0" path="res://Asset/Data/Dialogs/StartDialog1.tres" id="8_ldeoh"]
-[ext_resource type="Resource" uid="uid://b6l4jmvfsuuiw" path="res://Asset/Data/Dialogs/StartDialog2.tres" id="9_btlp4"]
-[ext_resource type="Resource" uid="uid://bmwcahx861m23" path="res://Asset/Data/Dialogs/StartDialog3.tres" id="10_68hnm"]
+[ext_resource type="Resource" uid="uid://dre520n26mrcm" path="res://Asset/Data/Dialogs/StartDialog.tres" id="8_1ttnp"]
 
 [node name="TresEditor" type="TabContainer"]
 anchors_preset = 15
@@ -171,9 +168,11 @@ script = ExtResource("2_otgjg")
 
 [node name="Dialog" type="GraphEdit" parent="."]
 layout_mode = 2
+scroll_offset = Vector2(0, -31)
 right_disconnects = true
 minimap_size = Vector2(150, 100)
 script = ExtResource("6_wm2yl")
+StartDialogPaths = [ExtResource("8_1ttnp")]
 metadata/_tab_index = 2
 
 [node name="New" type="Button" parent="Dialog"]
@@ -183,33 +182,6 @@ offset_top = 11.0
 offset_right = 434.0
 offset_bottom = 44.0
 text = "New"
-
-[node name="DialogGraph" parent="Dialog" instance=ExtResource("7_swd8s")]
-layout_mode = 0
-offset_left = 142.0
-offset_top = 100.0
-offset_right = 439.0
-offset_bottom = 281.0
-position_offset = Vector2(142, 100)
-dialog = ExtResource("8_ldeoh")
-
-[node name="DialogGraph2" parent="Dialog" instance=ExtResource("7_swd8s")]
-layout_mode = 0
-offset_left = 180.0
-offset_top = 310.0
-offset_right = 477.0
-offset_bottom = 491.0
-position_offset = Vector2(180, 310)
-dialog = ExtResource("9_btlp4")
-
-[node name="DialogGraph3" parent="Dialog" instance=ExtResource("7_swd8s")]
-layout_mode = 0
-offset_left = 517.0
-offset_top = 144.0
-offset_right = 814.0
-offset_bottom = 325.0
-position_offset = Vector2(517, 144)
-dialog = ExtResource("10_68hnm")
 
 [node name="Update" type="Button" parent="Dialog"]
 layout_mode = 0

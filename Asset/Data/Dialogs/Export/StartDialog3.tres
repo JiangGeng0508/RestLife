@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Dialog" load_steps=2 format=3 uid="uid://cn17om57nisbb"]
-
-[ext_resource type="Script" uid="uid://bbvqrf1yakidi" path="res://Scripts/Event/Dialog.cs" id="1_do8ti"]
-
-[resource]
-script = ExtResource("1_do8ti")
-Title = "StartDialog3"
-DialogText = "Count 3"

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Dialog" load_steps=3 format=3 uid="uid://b6l4jmvfsuuiw"]
+[gd_resource type="Resource" script_class="Dialog" load_steps=3 format=3 uid="uid://c6l0e2ai6ciry"]
 
-[ext_resource type="Resource" uid="uid://bmwcahx861m23" path="res://Asset/Data/Dialogs/StartDialog3.tres" id="1_ef3tu"]
+[ext_resource type="Resource" path="res://Asset/Data/Dialogs/StartDialog3.tres" id="1_ef3tu"]
 [ext_resource type="Script" uid="uid://bbvqrf1yakidi" path="res://Scripts/Event/Dialog.cs" id="1_hha2n"]
 
 [resource]
