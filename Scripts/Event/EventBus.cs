@@ -2,32 +2,28 @@ using System;
 using System.Collections.Generic;
 using Godot;
 
-public partial class EventBus : Node
+public static class EventBus
 {
-	public List<IEvent> RegisteredEvents = [];
-	public Action DayTimeTrigger;
+	public static List<IEvent> RegisteredEvents = new List<IEvent>();
+	public static Action<string, int> TimeChangeTrigger;
+	public static Action<Attribute> AttributeChangeTrigger;
 	//检测事件以及属性变化
-	public override void _Ready()
+	public static void Init()
 	{
-		Global.EventBus = this;
-		Global.GameWorldTime.OnDayChange += (int days) => { DayTimeTrigger(); };
+		Global.GameWorldTime.OnDayChange += days => { TimeChangeTrigger?.Invoke("Day", days); };
 		DebugRegister();
 	}
-	public override void _PhysicsProcess(double delta)
+	public static void Register(IEvent e)
 	{
-
+		RegisteredEvents.Add(e);
 	}
-	public void Register(Quest quest)
-	{
-		RegisteredEvents.Add(quest);
-	}
-	public void Unregister(Quest quest)
+	public static void Unregister(Quest quest)
 	{
 		RegisteredEvents.Remove(quest);
 		Global.GameWorldTime.OnDayChange -= quest.TriggerCondition.CheckHandler;
 	}
 	//debug
-	public void DebugRegister(int d = 5)
+	public static void DebugRegister(int d = 5)
 	{
 		var q = new QuestTimeTrigger("Day",">",d);
 		q.Name = d + " Days";

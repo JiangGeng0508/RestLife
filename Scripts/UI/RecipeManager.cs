@@ -2,11 +2,11 @@ using System;
 using Godot;
 using System.Collections.Generic;
 
-public partial class RecipeManager : Node
+public static class RecipeManager
 {
-	public static List<Recipe> RegisteredRecipes = [];
+	public static List<Recipe> RegisteredRecipes = new List<Recipe>();
 
-	public override void _Ready()
+	public static void Init()
 	{
 		using var dir = DirAccess.Open("res://Asset/Data/Recipes/");
 		var files = dir.GetFiles();

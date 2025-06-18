@@ -10,6 +10,7 @@ public enum AttrOperator
 }
 public struct Attribute
 {
+	public Action OnChange;
 	public static float MaxValue;
 	private float _value;
 	public float Value
@@ -33,6 +34,7 @@ public struct Attribute
 			{
 				_value = value;
 			}
+			OnChange?.Invoke();
 		}
 	}
 	public void ApplyBonus(AttrOperator op, float value)

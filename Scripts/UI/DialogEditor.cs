@@ -25,7 +25,6 @@ public partial class DialogEditor : GraphEdit
 		};
 		ConnectionRequest += (fromNode, fromPort, toNode, toPort) =>
 		{
-			GD.Print("Connect " + fromNode + " " + fromPort + " to " + toNode + " " + toPort);
 			var From = GetNode<DialogGraph>((string)fromNode);
 			var To = GetNode<DialogGraph>((string)toNode);
 			if (IsNodeConnected(fromNode, (int)fromPort, toNode, (int)toPort))

@@ -51,7 +51,6 @@ public partial class DialogueLayer : CanvasLayer
 		ShowPopup(dialog.DialogText);
 		OnConfirmed += () =>
 		{
-			GD.Print("Confirmed");
 			dialog.OnOK();
 			DialoguePop.Confirmed -= OnConfirmed;
 			DialoguePop.Canceled -= OnCanceled;
@@ -60,7 +59,6 @@ public partial class DialogueLayer : CanvasLayer
 		};
 		OnCanceled += () =>
 		{
-			GD.Print("Canceled");
 			dialog.OnCancel();
 			DialoguePop.Confirmed -= OnConfirmed;
 			DialoguePop.Canceled -= OnCanceled;

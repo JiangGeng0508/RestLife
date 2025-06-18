@@ -25,7 +25,7 @@ public partial class Quest : GodotObject,IEvent
 	}
 	public virtual void Vanish()
 	{
-		Global.EventBus.Unregister(this);
+		EventBus.Unregister(this);
 		TriggerCondition.Meet = null;
 		Free();
 	}
@@ -45,7 +45,7 @@ public partial class QuestTimeTrigger : Quest
 	public QuestTimeTrigger(string Resolution,string Operator, float value)
 	{
 		var op = ConditionOperator.Equal;
-		Global.EventBus.DayTimeTrigger += Check;
+		EventBus.TimeChangeTrigger += (_,_) => { Check(); };
 		switch (Operator)
 		{
 			case "==":
