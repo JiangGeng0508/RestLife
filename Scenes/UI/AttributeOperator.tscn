@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgwhab0oxxck0"]
+
+[ext_resource type="Script" uid="uid://byed7hwipvdd6" path="res://Scripts/UI/AttributeOperator.cs" id="1_sp2vo"]
+[ext_resource type="Texture2D" uid="uid://pnbi7n2ojn4t" path="res://Asset/Sprite/Icon/ADD.png" id="2_enn3l"]
+[ext_resource type="Texture2D" uid="uid://7qf0l3os3ve8" path="res://Asset/Sprite/Icon/Cross.png" id="3_qpnwe"]
+
+[node name="AttributeOperator" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+script = ExtResource("1_sp2vo")
+
+[node name="Attribute" type="MenuButton" parent="."]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+text = "Attribute"
+flat = false
+item_count = 1
+popup/item_0/text = "asd"
+popup/item_0/id = 0
+
+[node name="Operator" type="MenuButton" parent="."]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+text = "Operator"
+flat = false
+item_count = 2
+popup/item_0/text = "Add"
+popup/item_0/icon = ExtResource("2_enn3l")
+popup/item_0/id = 0
+popup/item_1/text = "Multi"
+popup/item_1/icon = ExtResource("3_qpnwe")
+popup/item_1/id = 1
+
+[node name="SpinBox" type="SpinBox" parent="."]
+layout_mode = 2

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Dialog" load_steps=2 format=3 uid="uid://c8vmx16aiq1kr"]
+
+[ext_resource type="Script" uid="uid://bbvqrf1yakidi" path="res://Scripts/Event/Dialog.cs" id="1_va7up"]
+
+[resource]
+script = ExtResource("1_va7up")
+Title = "TestDialog"
+DialogText = "dialog for test"

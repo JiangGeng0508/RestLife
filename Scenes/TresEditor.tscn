@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://m5acmtxvql1i"]
+[gd_scene load_steps=12 format=3 uid="uid://m5acmtxvql1i"]
 
 [ext_resource type="Script" uid="uid://exrhm3ls5rre" path="res://Scripts/UI/ItemEditor.cs" id="1_dtg8x"]
 [ext_resource type="Script" uid="uid://djd8wk4xahccb" path="res://Scripts/UI/IconPreviewGrid.cs" id="2_otgjg"]
@@ -6,7 +6,11 @@
 [ext_resource type="Script" uid="uid://cjymj025wyrt8" path="res://Scripts/UI/FileBrowser.cs" id="4_tsgv1"]
 [ext_resource type="Script" uid="uid://cvyng44fbq2lr" path="res://Scripts/UI/FoodEditor.cs" id="4_w33ih"]
 [ext_resource type="Script" uid="uid://bi2exwmse8t5r" path="res://Scripts/UI/DialogEditor.cs" id="6_wm2yl"]
-[ext_resource type="Resource" uid="uid://dre520n26mrcm" path="res://Asset/Data/Dialogs/StartDialog.tres" id="8_1ttnp"]
+[ext_resource type="Resource" uid="uid://cuh4wgesr67xu" path="res://Asset/Data/Dialogs/StartDialog.tres" id="8_1ttnp"]
+[ext_resource type="Texture2D" uid="uid://dwfkqdxhp5frj" path="res://Asset/Sprite/Icon/node/icon_file.png" id="8_xsluh"]
+[ext_resource type="Texture2D" uid="uid://cq7bk56swi3be" path="res://Asset/Sprite/Icon/node/icon_follow.png" id="9_xsluh"]
+[ext_resource type="Texture2D" uid="uid://dexmtv3hspov5" path="res://Asset/Sprite/Icon/node/icon_reset.png" id="10_ldeoh"]
+[ext_resource type="Texture2D" uid="uid://c3evm7lmrvdxy" path="res://Asset/Sprite/Icon/node/icon_save.png" id="11_btlp4"]
 
 [node name="TresEditor" type="TabContainer"]
 anchors_preset = 15
@@ -177,16 +181,42 @@ metadata/_tab_index = 2
 
 [node name="New" type="Button" parent="Dialog"]
 layout_mode = 0
-offset_left = 311.0
-offset_top = 11.0
-offset_right = 434.0
-offset_bottom = 44.0
-text = "New"
+offset_left = 316.0
+offset_top = 8.0
+offset_right = 356.0
+offset_bottom = 48.0
+tooltip_text = "Create new dialog"
+icon = ExtResource("8_xsluh")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Update" type="Button" parent="Dialog"]
 layout_mode = 0
-offset_left = 445.0
-offset_top = 10.0
-offset_right = 568.0
-offset_bottom = 43.0
-text = "Rearrange"
+offset_left = 371.0
+offset_top = 9.0
+offset_right = 411.0
+offset_bottom = 49.0
+tooltip_text = "Rearrange"
+icon = ExtResource("9_xsluh")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Refresh" type="Button" parent="Dialog"]
+offset_left = 425.0
+offset_top = 9.0
+offset_right = 465.0
+offset_bottom = 49.0
+tooltip_text = "Reload current scence"
+icon = ExtResource("10_ldeoh")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Save" type="Button" parent="Dialog"]
+offset_left = 479.0
+offset_top = 11.0
+offset_right = 519.0
+offset_bottom = 51.0
+tooltip_text = "Save all dialogs"
+icon = ExtResource("11_btlp4")
+icon_alignment = 1
+expand_icon = true

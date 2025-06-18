@@ -7,8 +7,22 @@ public partial class DialogEditor : GraphEdit
 	public override void _Ready()
 	{
 		OS.LowProcessorUsageMode = true;
-		GetNode<Button>("New").Pressed += () => { AddChild(GD.Load<PackedScene>("res://Scenes/UI/DialogGraph.tscn").Instantiate()); };
+		GetNode<Button>("New").Pressed += () =>
+		{
+			AddChild(GD.Load<PackedScene>("res://Scenes/UI/DialogGraph.tscn").Instantiate()); 
+		};
 		GetNode<Button>("Update").Pressed += () => { ArrangeNodes(); };
+		GetNode<Button>("Refresh").Pressed += () => { GetTree().ReloadCurrentScene(); };
+		GetNode<Button>("Save").Pressed += () =>
+		{
+			foreach (var node in GetChildren())
+			{
+				if (node is DialogGraph graph)
+				{
+					graph.ExportDialog();
+				}
+			}
+		};
 		ConnectionRequest += (fromNode, fromPort, toNode, toPort) =>
 		{
 			GD.Print("Connect " + fromNode + " " + fromPort + " to " + toNode + " " + toPort);
@@ -57,26 +71,13 @@ public partial class DialogEditor : GraphEdit
 			LoadDialog(dialogPath);
 		}
 	}
-	public DialogGraph LoadDialog(string dialogPath)
-	{
-		var dialog = ResourceLoader.Load<Dialog>(dialogPath);
-		var graph = GD.Load<PackedScene>("res://Scenes/UI/DialogGraph.tscn").Instantiate<DialogGraph>();
-		graph.dialog = dialog;
-		AddChild(graph);
-		if (dialog.OKDialog != null)
-		{
-			var okGraph = LoadDialog(dialog.OKDialog);
-			ConnectNode(graph.title.Text, 0, okGraph.title.Text, 0, true);
-		}
-		if (dialog.CancelDialog != null)
-		{
-			var cancelGraph = LoadDialog(dialog.CancelDialog);
-			ConnectNode(graph.title.Text, 1, cancelGraph.title.Text, 0, true);
-		}
-		return graph;
-	}
 	public DialogGraph LoadDialog(Dialog dialog)
 	{
+		var node = GetNodeOrNull<DialogGraph>(dialog.Title);
+		if (node != null)
+		{
+			return node;
+		}
 		var graph = GD.Load<PackedScene>("res://Scenes/UI/DialogGraph.tscn").Instantiate<DialogGraph>();
 		graph.dialog = dialog;
 		AddChild(graph);

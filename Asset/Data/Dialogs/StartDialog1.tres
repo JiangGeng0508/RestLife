@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Dialog" load_steps=2 format=3 uid="uid://b6rxtecb2mxls"]
-
-[ext_resource type="Script" uid="uid://bbvqrf1yakidi" path="res://Scripts/Event/Dialog.cs" id="1_ntlhv"]
-
-[resource]
-script = ExtResource("1_ntlhv")
-Title = "StartDialog1"
-DialogText = "Another hello"
-metadata/_custom_type_script = "uid://bbvqrf1yakidi"
