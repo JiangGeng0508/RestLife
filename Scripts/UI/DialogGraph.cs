@@ -6,6 +6,8 @@ public partial class DialogGraph : GraphNode
 {
 	[Export]
 	public Dialog dialog { get; set; }
+	[Export]
+	public string ExportPath { get; set; } = "res://Asset/Data/Dialogs/Export/";
 	public Dialog ConfirmDialog;
 	public Dialog CancelDialog;
 	public TextEdit textEdit;
@@ -15,7 +17,7 @@ public partial class DialogGraph : GraphNode
 		title = GetNode<LineEdit>("Title/DialogTitle");
 		GetNode<Button>("Title/Button").Pressed += () =>
 		{
-			ExportDialog(dialog);
+			ExportDialog();
 		};
 		textEdit = GetNode<TextEdit>("EditContainer/DialogText");
 		if (dialog != null)
@@ -23,15 +25,25 @@ public partial class DialogGraph : GraphNode
 			title.Text = dialog.Title;
 			textEdit.Text = dialog.DialogText;
 		}
+		SlotUpdated += (slot) =>
+		{
+			GD.Print("Slot updated" + slot);
+		};
 	}
-	public void ExportDialog(Dialog dialog)
+	public string ExportDialog()
 	{
 		if (title == null || textEdit == null)
 		{
-			return;
+			return "Fail";
 		}
-		GD.Print("Exported Dialog: " + dialog.Title);
-		ResourceSaver.Save(dialog, "res://Asset/Data/Dialogs/Export/" + dialog.Title + ".tres");
+		dialog = new Dialog
+		{
+			Title = title.Text,
+			DialogText = textEdit.Text,
+			OKDialog = ConfirmDialog,
+			CancelDialog = CancelDialog
+		};
+		ResourceSaver.Save(dialog, ExportPath + dialog.Title + ".tres");
+		return ExportPath + dialog.Title + ".tres";
 	}
-
 }

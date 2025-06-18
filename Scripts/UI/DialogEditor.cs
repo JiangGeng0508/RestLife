@@ -19,6 +19,23 @@ public partial class DialogEditor : GraphEdit
 			else
 			{
 				ConnectNode(fromNode, (int)fromPort, toNode, (int)toPort, true);
+				var From = GetNode<DialogGraph>((string)fromNode);
+				var To = GetNode<DialogGraph>((string)toNode);
+				var export = To.ExportDialog();
+				GD.Print(fromPort);
+				switch ((int)fromPort)
+				{
+					case 0:
+						From.ConfirmDialog = GD.Load<Dialog>(export);
+						break;
+					case 1:
+						From.CancelDialog = GD.Load<Dialog>(export);
+						break;
+					default:
+						GD.PrintErr("Invalid port");
+						break;
+				}
+				From.ExportDialog();
 			}
 		};
 		
