@@ -1,12 +1,9 @@
-[gd_resource type="Resource" script_class="Dialog" load_steps=3 format=3 uid="uid://cuh4wgesr67xu"]
+[gd_resource type="Resource" script_class="Dialog" load_steps=2 format=3 uid="uid://7jxbyof4wp5v"]
 
 [ext_resource type="Script" uid="uid://bbvqrf1yakidi" path="res://Scripts/Event/Dialog.cs" id="1_hg4d0"]
-[ext_resource type="Resource" path="res://Asset/Data/Dialogs/TestDialog.tres" id="1_hg45s"]
 
 [resource]
 script = ExtResource("1_hg4d0")
 Title = "StartDialog"
 DialogText = "Make a decision"
-OKDialog = ExtResource("1_hg45s")
-CancelDialog = ExtResource("1_hg45s")
 metadata/_custom_type_script = "uid://bbvqrf1yakidi"

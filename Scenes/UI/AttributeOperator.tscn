@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://pnbi7n2ojn4t" path="res://Asset/Sprite/Icon/ADD.png" id="2_enn3l"]
 [ext_resource type="Texture2D" uid="uid://7qf0l3os3ve8" path="res://Asset/Sprite/Icon/Cross.png" id="3_qpnwe"]
 
-[node name="AttributeOperator" type="HBoxContainer"]
+[node name="AttributeOperatorComponent" type="HBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 script = ExtResource("1_sp2vo")
 

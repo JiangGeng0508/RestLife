@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cjymj025wyrt8" path="res://Scripts/UI/FileBrowser.cs" id="4_tsgv1"]
 [ext_resource type="Script" uid="uid://cvyng44fbq2lr" path="res://Scripts/UI/FoodEditor.cs" id="4_w33ih"]
 [ext_resource type="Script" uid="uid://bi2exwmse8t5r" path="res://Scripts/UI/DialogEditor.cs" id="6_wm2yl"]
-[ext_resource type="Resource" uid="uid://cuh4wgesr67xu" path="res://Asset/Data/Dialogs/StartDialog.tres" id="8_1ttnp"]
+[ext_resource type="Resource" uid="uid://7jxbyof4wp5v" path="res://Asset/Data/Dialogs/StartDialog.tres" id="8_1ttnp"]
 [ext_resource type="Texture2D" uid="uid://dwfkqdxhp5frj" path="res://Asset/Sprite/Icon/node/icon_file.png" id="8_xsluh"]
 [ext_resource type="Texture2D" uid="uid://cq7bk56swi3be" path="res://Asset/Sprite/Icon/node/icon_follow.png" id="9_xsluh"]
 [ext_resource type="Texture2D" uid="uid://dexmtv3hspov5" path="res://Asset/Sprite/Icon/node/icon_reset.png" id="10_ldeoh"]
@@ -202,6 +202,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Refresh" type="Button" parent="Dialog"]
+layout_mode = 0
 offset_left = 425.0
 offset_top = 9.0
 offset_right = 465.0
@@ -212,6 +213,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Save" type="Button" parent="Dialog"]
+layout_mode = 0
 offset_left = 479.0
 offset_top = 11.0
 offset_right = 519.0

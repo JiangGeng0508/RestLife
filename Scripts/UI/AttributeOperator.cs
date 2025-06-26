@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class AttributeOperator : HBoxContainer
+public partial class AttributeOperator : HBoxContainer,Component
 {
 	public string SelectedAttribute { get; set; }
 	public MenuButton Attribute => GetNode<MenuButton>("Attribute");
