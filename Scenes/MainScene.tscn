@@ -43,6 +43,7 @@ script = ExtResource("6_q68mp")
 stream = ExtResource("8_0iob3")
 volume_db = -10.0
 autoplay = true
+parameters/looping = true
 script = ExtResource("8_f140w")
 
 [node name="Cursur" type="Area2D" parent="."]
