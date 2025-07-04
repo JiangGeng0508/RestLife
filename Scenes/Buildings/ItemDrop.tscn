@@ -7,6 +7,7 @@
 [node name="ItemDrop" instance=ExtResource("1_eqe13")]
 script = ExtResource("2_l2wf7")
 Item = null
+HintColor = Color(0.5, 0.8, 0.1, 1)
 
 [node name="ColorRect" parent="." index="0"]
 visible = false
@@ -14,3 +15,12 @@ visible = false
 [node name="Icon" type="Sprite2D" parent="." index="2"]
 position = Vector2(0, 19)
 texture = ExtResource("3_l2wf7")
+
+[node name="Hint" type="RichTextLabel" parent="." index="3"]
+offset_top = -40.0
+offset_right = 161.0
+offset_bottom = -17.0
+bbcode_enabled = true
+text = "Test"
+fit_content = true
+scroll_active = false
