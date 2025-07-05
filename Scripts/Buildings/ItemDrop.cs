@@ -12,7 +12,7 @@ public partial class ItemDrop : InteractableItem
 
 	public RichTextLabel Hint;
 
-	[Export]
+	[Export(PropertyHint.ColorNoAlpha)]
 	public Color HintColor = new Color(0.5f, 0.8f, 0.1f);
 
 	private Tween tween;
@@ -38,7 +38,7 @@ public partial class ItemDrop : InteractableItem
 
 	private void StartFloatingAnimation()
 	{
-		float startY = Position.Y;
+		float startY = 0;
 
 		tween.TweenProperty(Hint, "position:y", startY, 1f);
 		tween.TweenProperty(Hint, "position:y", startY - 12.5f, 1f);
