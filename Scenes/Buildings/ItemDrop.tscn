@@ -1,13 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkaut72cokf7a"]
+[gd_scene load_steps=7 format=3 uid="uid://dkaut72cokf7a"]
 
 [ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/InteractableItem.tscn" id="1_eqe13"]
 [ext_resource type="Script" uid="uid://behfumwhg7ed4" path="res://Scripts/Buildings/ItemDrop.cs" id="2_l2wf7"]
 [ext_resource type="Texture2D" uid="uid://f87qh4m6frf2" path="res://Asset/Sprite/Food/Food/Apple.png" id="3_l2wf7"]
+[ext_resource type="Texture2D" uid="uid://bjqegcecet3ha" path="res://icon.svg" id="3_u8pqq"]
+[ext_resource type="Script" uid="uid://ln761a4ckt8o" path="res://Scripts/UI/Inventory/Item.cs" id="4_voaww"]
+
+[sub_resource type="Resource" id="Resource_etw32"]
+script = ExtResource("4_voaww")
+Name = "None"
+Icon = ExtResource("3_u8pqq")
+Number = 1
+metadata/_custom_type_script = "uid://ln761a4ckt8o"
 
 [node name="ItemDrop" instance=ExtResource("1_eqe13")]
 script = ExtResource("2_l2wf7")
-Item = null
-HintColor = Color(0.5, 0.8, 0.1, 1)
+Item = SubResource("Resource_etw32")
+HintColor = Color(1, 0.113405, 0.284403, 1)
+EColor = Color(0, 0.647221, 0.1906, 1)
 
 [node name="ColorRect" parent="." index="0"]
 visible = false
