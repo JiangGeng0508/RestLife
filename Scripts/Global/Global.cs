@@ -6,8 +6,8 @@ public partial class Global : Node
 	public static Player Player;
 	public static GameWorldTime GameWorldTime;
 	public static InventoryUI InventoryUI;
-	public static ItemManager ItemManager;
 	public static MainScene MainScene;
+	public static NeoInventory NeoInventory;
 
 	// Rename This
 	public static SelectMenu SelectMenu;
@@ -16,9 +16,8 @@ public partial class Global : Node
 	{
 		GameWorldTime = new();
 		AddChild(GameWorldTime, true);
-		ItemManager = new();
-		AddChild(ItemManager, true);
-
+		
+		ItemManager.Init();
 		EventBus.Init();
 		RecipeManager.Init();
 	}

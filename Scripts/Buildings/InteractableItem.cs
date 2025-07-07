@@ -11,7 +11,6 @@ public partial class InteractableItem : Area2D
 	{
 		AreaEntered += onAreaEntered;
 		AreaExited += onAreaExited;
-
 		Init();
 	}
 	public void onAreaEntered(Area2D area)

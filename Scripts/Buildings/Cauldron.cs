@@ -12,7 +12,7 @@ public partial class Cauldron : InteractableItem
 		{
 			window.Hide();
 		};
-		foreach (Item item in Global.ItemManager.RegisteredItems)
+		foreach (Item item in ItemManager.RegisteredItems)
 		{
 			var button = new Button()
 			{

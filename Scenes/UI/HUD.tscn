@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dc74ltyvfx87h"]
+[gd_scene load_steps=18 format=3 uid="uid://dc74ltyvfx87h"]
 
 [ext_resource type="Script" uid="uid://bn5qycss666ik" path="res://Scripts/UI/Hud/Hud.cs" id="1_lelo4"]
 [ext_resource type="Script" uid="uid://b78vbe0hqa2ni" path="res://Scripts/UI/Hud/SelectMenu.cs" id="1_ne771"]
@@ -6,13 +6,16 @@
 [ext_resource type="Script" uid="uid://cmss037nrmq3g" path="res://Scripts/UI/Hud/RightClickMenu.cs" id="4_1and6"]
 [ext_resource type="Script" uid="uid://c6qhn0rwj1ss4" path="res://Scripts/UI/Hud/Setting.cs" id="6_jt2rc"]
 [ext_resource type="Script" uid="uid://dgpb36bqvvo54" path="res://Scripts/UI/Menu.cs" id="7_1ree7"]
+[ext_resource type="Script" uid="uid://cvep73thsbh4q" path="res://Scripts/UI/Inventory/SlotGrid.cs" id="8_ako3u"]
 [ext_resource type="Script" uid="uid://bcfcwrvroa6lo" path="res://Scripts/UI/Hud/GodMode.cs" id="8_d2sja"]
 [ext_resource type="Script" uid="uid://bd0dvnmycar3a" path="res://Scripts/UI/Hud/Clock.cs" id="8_eebq5"]
 [ext_resource type="Texture2D" uid="uid://bcoi46vchdh2d" path="res://Asset/Sprite/UI/Clock/EmptyUI.png" id="8_i4i0y"]
+[ext_resource type="Script" uid="uid://dnhqgy52urau" path="res://Scripts/UI/Inventory/NeoInventory.cs" id="8_yd1yt"]
 [ext_resource type="SpriteFrames" uid="uid://b8a8cylj6r3oa" path="res://Asset/Sprite/UI/Clock/Weather.tres" id="8_yenib"]
 [ext_resource type="Texture2D" uid="uid://bqynijwq674is" path="res://Asset/Sprite/UI/Clock/ClockFace.png" id="9_yenib"]
 [ext_resource type="SpriteFrames" uid="uid://c2vk1r4c1bp8h" path="res://Asset/Sprite/UI/Clock/ClockArrow.tres" id="11_pydgx"]
 [ext_resource type="FontFile" uid="uid://c61e7n6lbdqi5" path="res://Asset/Silver.ttf" id="12_18ujm"]
+[ext_resource type="Script" uid="uid://d0tcyqw7y3ib6" path="res://Scripts/UI/Hud/NeoCauldron.cs" id="18_b3vmo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jt2rc"]
 font = ExtResource("12_18ujm")
@@ -23,19 +26,15 @@ font_color = Color(0.740966, 0.424545, 0, 1)
 script = ExtResource("1_lelo4")
 
 [node name="SelectMenu" type="TabContainer" parent="."]
-anchors_preset = -1
-anchor_left = -0.497
-anchor_top = -0.499
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 1350.54
-offset_top = 347.352
-offset_right = 542.004
-offset_bottom = 297.0
-current_tab = 0
+offset_left = 777.996
+offset_top = 24.0
+offset_right = 1118.0
+offset_bottom = 621.0
+current_tab = 4
 script = ExtResource("1_ne771")
 
 [node name="Inventory" type="SplitContainer" parent="SelectMenu"]
+visible = false
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 dragging_enabled = false
@@ -56,7 +55,7 @@ auto_width = true
 
 [node name="RightClickMenu" type="PopupMenu" parent="SelectMenu/Inventory"]
 auto_translate_mode = 1
-position = Vector2i(700, 184)
+position = Vector2i(700, 181)
 size = Vector2i(50, 100)
 visible = true
 unfocusable = true
@@ -126,6 +125,16 @@ layout_mode = 2
 script = ExtResource("8_d2sja")
 metadata/_tab_index = 3
 
+[node name="NeoInventory" type="ScrollContainer" parent="SelectMenu"]
+layout_mode = 2
+script = ExtResource("8_yd1yt")
+metadata/_tab_index = 4
+
+[node name="SlotGrid" type="GridContainer" parent="SelectMenu/NeoInventory"]
+layout_mode = 2
+columns = 6
+script = ExtResource("8_ako3u")
+
 [node name="Clock" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -193,6 +202,12 @@ offset_bottom = 630.0
 tooltip_text = "HungryBar"
 fill_mode = 3
 show_percentage = false
+
+[node name="NeoCauldron" type="Window" parent="."]
+title = "NeoCauldron"
+initial_position = 1
+size = Vector2i(400, 200)
+script = ExtResource("18_b3vmo")
 
 [connection signal="item_clicked" from="SelectMenu/Inventory/InventoryList" to="SelectMenu/Inventory" method="OnItemClicked"]
 [connection signal="id_pressed" from="SelectMenu/Inventory/RightClickMenu" to="SelectMenu/Inventory/RightClickMenu" method="OnIdPressed"]

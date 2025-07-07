@@ -18,7 +18,7 @@ public partial class InfCrate : InteractableItem
 			window.Hide();
 		};
 		Grid = GetNode<GridContainer>("Window/ScrollContainer/InfItemGrid");
-		foreach (Item item in Global.ItemManager.RegisteredItems)
+		foreach (Item item in ItemManager.RegisteredItems)
 		{
 			var button = new Button()
 			{

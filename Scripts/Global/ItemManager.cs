@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using Godot;
 
-public partial class ItemManager : Node
+public static class ItemManager
 {
-	public List<Item> RegisteredItems { get; set; } = [];
-	public override void _Ready()
+	public static List<Item> RegisteredItems { get; set; } = new List<Item>();
+	public static Dictionary<string, Item> ItemDict { get; set; } = new Dictionary<string, Item>();
+
+	public static void Init()
 	{
-		Global.ItemManager = this;
 		//注册所有Item
 		using var dir = DirAccess.Open("res://Asset/Data/Items/");
 		var files = dir.GetFiles();
@@ -17,18 +18,20 @@ public partial class ItemManager : Node
 			Register(item);
 		}
 	}
-	public void Register(Item item)
+	public static void Register(Item item)
 	{
 		RegisteredItems.Add(item);
+		ItemDict[item.Name] = item;
 	}
-	public void Register(params Item[] items)
+	public static void Register(params Item[] items)
 	{
 		foreach (var item in items)
 		{
 			RegisteredItems.Add(item);
+			ItemDict[item.Name] = item;
 		}
 	}
-	public void ImportTexture(string dictPath)
+	public static void ImportTexture(string dictPath)
 	{
 		//从Texture创建Food
 		using var dir2 = DirAccess.Open(dictPath);//以'/'结尾
@@ -42,13 +45,13 @@ public partial class ItemManager : Node
 			// Export(item);
 		}
 	}
-	public Food ShapeFoodFromTexture(string texturePath)
+	public static Food ShapeFoodFromTexture(string texturePath)
 	{
 		var item = new Food();
 		item.Icon = GD.Load<Texture2D>(texturePath);
 		return item;
 	}
-	public void Export(Food food)
+	public static void Export(Food food)
 	{
 		var path = "res://Asset/Data/Items/Export/" + food.Name + ".tres";
 		ResourceSaver.Save(food, path);
