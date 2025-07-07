@@ -209,6 +209,11 @@ initial_position = 1
 size = Vector2i(400, 200)
 script = ExtResource("18_b3vmo")
 
+[node name="BoxContainer" type="BoxContainer" parent="NeoCauldron"]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 403.0
+offset_bottom = 197.0
+
 [connection signal="item_clicked" from="SelectMenu/Inventory/InventoryList" to="SelectMenu/Inventory" method="OnItemClicked"]
 [connection signal="id_pressed" from="SelectMenu/Inventory/RightClickMenu" to="SelectMenu/Inventory/RightClickMenu" method="OnIdPressed"]
 [connection signal="popup_hide" from="SelectMenu/Inventory/RightClickMenu" to="SelectMenu/Inventory/RightClickMenu" method="OnLoseFocus"]
