@@ -30,7 +30,7 @@ public partial class ItemDrop : InteractableItem
 			Icon.Texture = Item.Icon;
 			Name = Item.Name;
 			Number = Item.Number;
-			Hint.Text = $"[color={EColor.ToHtml()}]E[/color] [color={HintColor.ToHtml()}]to pick up {Name}x{Number}[/color]";
+			Hint.Text = $"[color={EColor.ToHtml()}]E[/color] [color={HintColor.ToHtml()}]to pick up {Name} x{Number}[/color]";
 		}
 		// 初始化浮动动画
 		StartFloatingAnimation();
