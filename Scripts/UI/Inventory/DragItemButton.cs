@@ -14,6 +14,7 @@ public partial class DragItemButton : TextureButton
 		StretchMode = StretchModeEnum.Scale;
 		ActionMode = ActionModeEnum.Press;
 		CustomMinimumSize = new Vector2(50, 50);
+		ZIndex = 10;
 		if (Item == null) return;
 		TextureNormal = Item.Icon;
 		Pressed += OnPressed;

@@ -7,9 +7,11 @@ public partial class Inventory : Node
 	public delegate void ItemAddedEventHandler(Item item, int number);
 	public Dictionary<string, Item> Items = [];
 	public InventoryUI UI;
+	public NeoInventory NeoInventory;
 	public override void _Ready()
 	{
 		UI = Global.InventoryUI;
+		NeoInventory = Global.NeoInventory;
 		//TODO: Load
 
 	}

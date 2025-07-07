@@ -8,11 +8,11 @@ public partial class SlotGrid : GridContainer
 	public override void _Ready()
 	{
 		GetTree().CreateTimer(0.5f).Timeout += () =>
-		{	
+		{
 			var slot = new DragSlotButton();
 			AddChild(slot);
 			slot.AddChild(new DragItemButton(ItemManager.ItemDict["Apple"]));
-			for (int i = 0; i < 41; i++)
+			for (int i = 0; i < 29; i++)
 				AddChild(new DragSlotButton());
 		};
 	}
@@ -54,6 +54,17 @@ public partial class SlotGrid : GridContainer
 					pickedNode.GlobalPosition = PrevPosition;
 					pickedNode = null;
 				}
+			}
+		}
+	}
+	public void AddItem(Item item)
+	{
+		foreach (DragSlotButton slot in GetChildren())
+		{
+			if (slot.GetChildCount() < 1)
+			{
+				slot.AddChild(new DragItemButton(item));
+				return;
 			}
 		}
 	}

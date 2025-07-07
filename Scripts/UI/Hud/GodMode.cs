@@ -16,6 +16,8 @@ public partial class GodMode : VBoxContainer
 		AddDebugSelection("TogglePause", () => { Engine.TimeScale = Engine.TimeScale == 0 ? 1 : 0; });
 		AddDebugSelection("DebugRegister", () => { EventBus.DebugRegister(); });
 		AddDebugSelection("NextHour", () => { Global.GameWorldTime.Hours++; });
+		AddDebugSelection("AddApple", () => { Global.NeoInventory.SlotGrid.AddItem(ItemManager.ItemDict["Apple"]); });
+		AddDebugSelection("AddFish", () => { Global.NeoInventory.SlotGrid.AddItem(ItemManager.ItemDict["Fish"]); });
 	}
 	public void AddDebugSelection(string name, Action action)
 	{
