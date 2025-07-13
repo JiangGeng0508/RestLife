@@ -4,12 +4,9 @@ using System;
 public partial class StartMenu : Node2D
 {
 	[Export]
-	PackedScene LoadScene  {get; set;} = GD.Load<PackedScene>("res://Save/MainScene.tscn");
+	PackedScene LoadScene { get; set; } = GD.Load<PackedScene>("res://Save/MainScene.tscn");
 	public override void _Ready()
 	{
-		GetNode<Button>("StartGame").Pressed += StartGamePressed;
-		GetNode<Button>("Load").Pressed += LoadPressed;
-		GetNode<Button>("Quit").Pressed += QuitPressed;
 		//清空Player
 		Global.Player = null;
 	}
@@ -24,5 +21,9 @@ public partial class StartMenu : Node2D
 	public void QuitPressed()
 	{
 		GetTree().Quit();
+	}
+	public void EditorPressed()
+	{
+		GetTree().ChangeSceneToFile("res://Scenes/TresEditor/TresEditor.tscn");
 	}
 }

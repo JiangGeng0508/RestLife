@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgwhab0oxxck0"]
 
-[ext_resource type="Script" uid="uid://byed7hwipvdd6" path="res://Scripts/UI/AttributeOperator.cs" id="1_sp2vo"]
+[ext_resource type="Script" uid="uid://byed7hwipvdd6" path="res://Scripts/UI/TresEditor/AttributeOperator.cs" id="1_sp2vo"]
 [ext_resource type="Texture2D" uid="uid://pnbi7n2ojn4t" path="res://Asset/Sprite/Icon/ADD.png" id="2_enn3l"]
 [ext_resource type="Texture2D" uid="uid://7qf0l3os3ve8" path="res://Asset/Sprite/Icon/Cross.png" id="3_qpnwe"]
 

@@ -77,7 +77,7 @@ public partial class DialogEditor : GraphEdit
 		{
 			return node;
 		}
-		var graph = GD.Load<PackedScene>("res://Scenes/UI/DialogGraph.tscn").Instantiate<DialogGraph>();
+		var graph = GD.Load<PackedScene>("res://Scenes/TresEditor/DialogGraph.tscn").Instantiate<DialogGraph>();
 		graph.dialog = dialog;
 		AddChild(graph);
 		if (dialog.OKDialog != null)

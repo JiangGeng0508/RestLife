@@ -27,3 +27,15 @@ offset_top = 220.0
 offset_right = 144.0
 offset_bottom = 276.0
 text = "Quit"
+
+[node name="TresEditor" type="Button" parent="."]
+offset_left = 174.0
+offset_top = 139.0
+offset_right = 248.0
+offset_bottom = 204.0
+text = "Tres"
+
+[connection signal="pressed" from="StartGame" to="." method="StartGamePressed"]
+[connection signal="pressed" from="Load" to="." method="LoadPressed"]
+[connection signal="pressed" from="Quit" to="." method="QuitPressed"]
+[connection signal="pressed" from="TresEditor" to="." method="EditorPressed"]

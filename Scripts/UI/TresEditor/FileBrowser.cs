@@ -4,14 +4,20 @@ using System;
 
 public partial class FileBrowser : ItemList
 {
+	[Signal]
+	public delegate void ReadFolderEventHandler(string path);
+	[Export]
+	public string ReadPath { get; set; } = "res://Asset/";
+	
 	public string CurrentPath = "";
 	public Dictionary<long, string> DictTree = [];
 	public override void _Ready()
 	{
-		OpenFolder("res://Asset/Sprite/");
+		OpenFolder(ReadPath);
 		ItemSelected += (index) =>
 		{
-			GetNode<IconPreviewGrid>("../Scroll/IconPreviewGrid").ReadFolder(DictTree[index]);
+			EmitSignal(nameof(ReadFolder), DictTree[index]);
+			// GetNode<IconPreviewGrid>("../Scroll/IconPreviewGrid").ReadFolder(DictTree[index]);
 			OpenFolder(DictTree[index]);
 		};
 	}
@@ -22,7 +28,7 @@ public partial class FileBrowser : ItemList
 		
 		using var DirAc = DirAccess.Open(path);
 		var dirs = DirAc.GetCurrentDir().Split("/");
-		if (path != "res://Asset/Sprite/")
+		if (path != ReadPath)
 		{
 			AddItem("..");
 			DictTree[0] = DirAc.GetCurrentDir().Replace(dirs[^1], "");

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhipu8k0mr8h4"]
+
+[ext_resource type="Script" uid="uid://cjymj025wyrt8" path="res://Scripts/UI/TresEditor/FileBrowser.cs" id="1_rk4lc"]
+
+[node name="FileBrowser" type="ItemList"]
+custom_minimum_size = Vector2(200, 500)
+offset_left = 24.0
+offset_top = 50.0
+offset_right = 224.0
+offset_bottom = 550.0
+script = ExtResource("1_rk4lc")
