@@ -34,4 +34,8 @@ public partial class ItemSelectButton : Button
 	{
 		EmitSignal(nameof(ItemSelectButtonPressed), this);
 	}
+	public void OnGetButtonPressed()
+	{
+		
+	}
 }

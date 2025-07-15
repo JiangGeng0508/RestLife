@@ -9,6 +9,7 @@ offset_right = 100.0
 offset_bottom = 100.0
 icon = ExtResource("1_5scjf")
 icon_alignment = 1
+expand_icon = true
 script = ExtResource("2_r71jm")
 
 [node name="Get" type="Button" parent="."]
@@ -19,4 +20,5 @@ offset_right = 100.0
 offset_bottom = 100.0
 icon = ExtResource("3_ebmg2")
 
-[connection signal="pressed" from="Get" to="." method="OnItemSelectButtonPressed"]
+[connection signal="pressed" from="." to="." method="OnItemSelectButtonPressed"]
+[connection signal="pressed" from="Get" to="." method="OnGetButtonPressed"]

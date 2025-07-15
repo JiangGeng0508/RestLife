@@ -29,23 +29,19 @@ public static class RecipeManager
 	{
 		foreach (var recipe in RegisteredRecipes)
 		{
-			if (recipe.Ingredients.Length == ingredients.Length)
+			bool match = true;
+			Item[] StIngredients = recipe.Ingredients;
+			for (int i = 0; i < 9; i++)
 			{
-				bool match = true;
-				for (int i = 0; i < recipe.Ingredients.Length; i++)
+				if (StIngredients[i] != ingredients[i])
 				{
-					GD.Print("Checking " + ingredients[i].Name);
-					if (recipe.Ingredients[i] != ingredients[i])
-					{
-						match = false;
-						break;
-					}
+					match = false;
+					break;
 				}
-				if (match)
-				{
-					return recipe.Result;
-					
-				}
+			}
+			if (match)
+			{
+				return recipe.Result;
 			}
 		}
 		GD.PrintErr("No recipe found for ingredients");

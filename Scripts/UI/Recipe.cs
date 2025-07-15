@@ -5,11 +5,14 @@ using Godot;
 public partial class Recipe : Resource
 {
 	[Export]
-	public Item[] Ingredients { get; set; }
+	public Item[] Ingredients { get; set; } = new Item[9];
 	[Export]
 	public Item Result { get; set; }
-	// public int Time { get; set; }
-	public Recipe()
+	public int Time { get; set; } = 0;
+	public Recipe() { }
+	public Recipe(Item[] ingredients, Item result)
 	{
+		Ingredients = ingredients;
+		Result = result;
 	}
 }
