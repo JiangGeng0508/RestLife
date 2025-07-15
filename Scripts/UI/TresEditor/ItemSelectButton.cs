@@ -17,11 +17,11 @@ public partial class ItemSelectButton : Button
 			_item = value;
 			if (_item != null)
 			{
-				GetButton.Icon = _item.Icon;
+				Icon = _item.Icon;
 			}
 			else
 			{
-				GetButton.Icon = DefaultIcon;
+				Icon = DefaultIcon;
 			}
 		}
 	}

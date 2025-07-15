@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://cx2fnm2h4u2q" path="res://Scripts/UI/TresEditor/CreativeItemList.cs" id="1_dlv23"]
 
 [node name="CreativeItemList" type="ItemList"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_right = 0.347
+anchor_bottom = 0.617
+offset_right = 0.255981
+offset_bottom = 0.18396
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dlv23")

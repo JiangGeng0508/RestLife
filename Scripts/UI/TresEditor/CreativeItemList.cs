@@ -3,7 +3,7 @@ using System;
 
 public partial class CreativeItemList : ItemList
 {
-	public ItemSelectButton GetButton;
+	public ItemSelectButton ItemButton;
 	public override void _Ready()
 	{
 		foreach (Item item in ItemManager.RegisteredItems)
@@ -15,6 +15,13 @@ public partial class CreativeItemList : ItemList
 	public void ItemSelectButtonPressed(ItemSelectButton button)
 	{
 		Show();
-		GetButton = button;
+		GD.Print($"{button.Name} select button pressed");
+		ItemButton = button;
+	}
+	public void OnItemSelected(int index)
+	{
+		GD.Print("Item selected: " + GetItemText(index));
+		ItemButton.Item = ItemManager.ItemDict[GetItemText(index)];
+		Hide();
 	}
 }

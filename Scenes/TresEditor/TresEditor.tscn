@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://m5acmtxvql1i"]
+[gd_scene load_steps=15 format=3 uid="uid://m5acmtxvql1i"]
 
 [ext_resource type="Script" uid="uid://bgs7w2x4qlvda" path="res://Scripts/UI/TresEditor/EditorOption.cs" id="1_i3xhl"]
 [ext_resource type="Script" uid="uid://exrhm3ls5rre" path="res://Scripts/UI/TresEditor/ItemEditor.cs" id="2_suqs0"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cq7bk56swi3be" path="res://Asset/Sprite/Icon/node/icon_follow.png" id="10_q2jct"]
 [ext_resource type="Texture2D" uid="uid://dexmtv3hspov5" path="res://Asset/Sprite/Icon/node/icon_reset.png" id="11_gbg8r"]
 [ext_resource type="Texture2D" uid="uid://c3evm7lmrvdxy" path="res://Asset/Sprite/Icon/node/icon_save.png" id="12_juev0"]
+[ext_resource type="Script" uid="uid://cx2fnm2h4u2q" path="res://Scripts/UI/TresEditor/CreativeItemList.cs" id="13_gt5p2"]
 [ext_resource type="PackedScene" uid="uid://bdrb1p5xenpjc" path="res://Scenes/TresEditor/ItemSelectButton.tscn" id="13_suqs0"]
 
 [node name="TresEditor" type="TabContainer"]
@@ -163,6 +164,7 @@ offset_right = 1075.0
 offset_bottom = 442.0
 
 [node name="FileBrowser" parent="Food" instance=ExtResource("4_gt5p2")]
+layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 200.0
@@ -240,6 +242,29 @@ expand_icon = true
 layout_mode = 2
 metadata/_tab_index = 4
 
+[node name="CreativeItemList" type="ItemList" parent="Recipe"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 656.0
+offset_top = 77.0
+offset_right = -96.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_gt5p2")
+
+[node name="Hide" type="Button" parent="Recipe/CreativeItemList"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 29.0
+grow_horizontal = 0
+text = "-"
+
 [node name="NineCraftGrid" type="GridContainer" parent="Recipe"]
 layout_mode = 0
 offset_left = 137.0
@@ -286,10 +311,22 @@ layout_mode = 2
 
 [node name="ItemSelectButton" parent="Recipe" instance=ExtResource("13_suqs0")]
 layout_mode = 2
-offset_left = 575.0
-offset_top = 253.0
-offset_right = 675.0
-offset_bottom = 353.0
+offset_left = 506.0
+offset_top = 249.0
+offset_right = 606.0
+offset_bottom = 349.0
 
 [connection signal="pressed" from="Option/Back" to="Option" method="BackToMenu"]
 [connection signal="ReadFolder" from="Food/FileBrowser" to="Food/Scroll/IconPreviewGrid" method="ReadFolder"]
+[connection signal="item_selected" from="Recipe/CreativeItemList" to="Recipe/CreativeItemList" method="OnItemSelected"]
+[connection signal="pressed" from="Recipe/CreativeItemList/Hide" to="Recipe/CreativeItemList" method="hide"]
+[connection signal="ItemSelectButtonPressed" from="Recipe/NineCraftGrid/ItemSelectButton1" to="Recipe/CreativeItemList" method="ItemSelectButtonPressed"]
+[connection signal="ItemSelectButtonPressed" from="Recipe/NineCraftGrid/ItemSelectButton2" to="Recipe/CreativeItemList" method="ItemSelectButtonPressed"]
+[connection signal="ItemSelectButtonPressed" from="Recipe/NineCraftGrid/ItemSelectButton3" to="Recipe/CreativeItemList" method="ItemSelectButtonPressed"]
+[connection signal="ItemSelectButtonPressed" from="Recipe/NineCraftGrid/ItemSelectButton4" to="Recipe/CreativeItemList" method="ItemSelectButtonPressed"]
+[connection signal="ItemSelectButtonPressed" from="Recipe/NineCraftGrid/ItemSelectButton5" to="Recipe/CreativeItemList" method="ItemSelectButtonPressed"]
+[connection signal="ItemSelectButtonPressed" from="Recipe/NineCraftGrid/ItemSelectButton6" to="Recipe/CreativeItemList" method="ItemSelectButtonPressed"]
+[connection signal="ItemSelectButtonPressed" from="Recipe/NineCraftGrid/ItemSelectButton7" to="Recipe/CreativeItemList" method="ItemSelectButtonPressed"]
+[connection signal="ItemSelectButtonPressed" from="Recipe/NineCraftGrid/ItemSelectButton8" to="Recipe/CreativeItemList" method="ItemSelectButtonPressed"]
+[connection signal="ItemSelectButtonPressed" from="Recipe/NineCraftGrid/ItemSelectButton9" to="Recipe/CreativeItemList" method="ItemSelectButtonPressed"]
+[connection signal="ItemSelectButtonPressed" from="Recipe/ItemSelectButton" to="Recipe/CreativeItemList" method="ItemSelectButtonPressed"]
