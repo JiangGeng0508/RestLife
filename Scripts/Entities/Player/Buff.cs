@@ -8,6 +8,9 @@ public partial class Buff : Resource
 	public float Value { get; set; } = 0;
 	public float Time { get; set; } = 0;// minutes(actually seconds)
 	public Buff() { }
+	//通过属性名 运算符 数值 时间 创建Buff
+	//属性名：Health Hunger Energy
+	//运算符：Add Multiply MaxAdd MaxMultiply
 	public Buff(AttrOperator op, string attr, float value, float time)
 	{
 		AttrName = attr;

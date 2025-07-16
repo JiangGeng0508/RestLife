@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3enhlg2fdncp"]
+[gd_scene load_steps=15 format=3 uid="uid://b3enhlg2fdncp"]
 
 [ext_resource type="PackedScene" uid="uid://cpft6b8dk6e0w" path="res://Scenes/Buildings/wall.tscn" id="1_4fgoq"]
 [ext_resource type="PackedScene" uid="uid://861bfrm35j5o" path="res://Scenes/Buildings/SelectIntItem.tscn" id="2_qarpt"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://bn4agutinxfi" path="res://Asset/Data/Items/Apple.tres" id="11_odisq"]
 [ext_resource type="PackedScene" uid="uid://2uwypax5a35y" path="res://Scenes/Buildings/Cauldron.tscn" id="12_qarpt"]
 [ext_resource type="PackedScene" uid="uid://c6cueq7i4uuuv" path="res://Scenes/Entities/Smoker.tscn" id="13_qarpt"]
+[ext_resource type="PackedScene" uid="uid://coiqx1tqwjrwi" path="res://Scenes/Buildings/CraftStation.tscn" id="14_n1mwn"]
 
 [node name="TestMap1" type="Node2D"]
 
@@ -71,3 +72,6 @@ position = Vector2(450, -200)
 position = Vector2(75, -1)
 
 [node name="NPC" type="Node" parent="."]
+
+[node name="CraftStation" parent="." instance=ExtResource("14_n1mwn")]
+position = Vector2(727, -190)

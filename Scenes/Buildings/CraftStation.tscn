@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://coiqx1tqwjrwi"]
+
+[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/InteractableItem.tscn" id="1_1vwrn"]
+[ext_resource type="Script" uid="uid://cfortjd5grvae" path="res://Scripts/UI/TresEditor/CraftUi.cs" id="2_sq8bx"]
+[ext_resource type="PackedScene" uid="uid://bdrb1p5xenpjc" path="res://Scenes/TresEditor/ItemSelectButton.tscn" id="2_yjfew"]
+
+[node name="CraftStation" instance=ExtResource("1_1vwrn")]
+
+[node name="Window" type="Window" parent="." index="2"]
+initial_position = 2
+size = Vector2i(500, 500)
+wrap_controls = true
+popup_window = true
+
+[node name="CraftUI" type="Control" parent="Window" index="0"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 101.0
+offset_bottom = 101.0
+script = ExtResource("2_sq8bx")
+
+[node name="Ingredient1" parent="Window/CraftUI" index="0" instance=ExtResource("2_yjfew")]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 92.0
+offset_right = 129.0
+offset_bottom = 192.0
+
+[node name="Ingredient2" parent="Window/CraftUI" index="1" instance=ExtResource("2_yjfew")]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 93.0
+offset_right = 231.0
+offset_bottom = 193.0
+
+[node name="Ingredient3" parent="Window/CraftUI" index="2" instance=ExtResource("2_yjfew")]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 92.0
+offset_right = 334.0
+offset_bottom = 192.0
+
+[node name="Ingredient4" parent="Window/CraftUI" index="3" instance=ExtResource("2_yjfew")]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 196.0
+offset_right = 129.0
+offset_bottom = 296.0
+
+[node name="Ingredient5" parent="Window/CraftUI" index="4" instance=ExtResource("2_yjfew")]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 195.0
+offset_right = 232.0
+offset_bottom = 295.0
+
+[node name="Ingredient6" parent="Window/CraftUI" index="5" instance=ExtResource("2_yjfew")]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 196.0
+offset_right = 335.0
+offset_bottom = 296.0
+
+[node name="Ingredient7" parent="Window/CraftUI" index="6" instance=ExtResource("2_yjfew")]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 299.0
+offset_right = 130.0
+offset_bottom = 399.0
+
+[node name="Ingredient8" parent="Window/CraftUI" index="7" instance=ExtResource("2_yjfew")]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 297.0
+offset_right = 234.0
+offset_bottom = 397.0
+
+[node name="Ingredient9" parent="Window/CraftUI" index="8" instance=ExtResource("2_yjfew")]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 297.0
+offset_right = 337.0
+offset_bottom = 397.0
+
+[node name="Result" parent="Window/CraftUI" index="9" instance=ExtResource("2_yjfew")]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 196.0
+offset_right = 473.0
+offset_bottom = 296.0
+
+[connection signal="OnAction" from="." to="Window" method="show"]
+[connection signal="close_requested" from="Window" to="Window" method="hide"]

@@ -3,7 +3,6 @@ using System;
 
 public partial class ItemSelectButton : Button
 {
-	public Button GetButton;
 	public Item _item;
 	[Export]
 	public Texture2D DefaultIcon { get; set; } = GD.Load<Texture2D>("res://Asset/Sprite/Icon/control/icon_money_bag.png");
@@ -25,17 +24,13 @@ public partial class ItemSelectButton : Button
 			}
 		}
 	}
-
-	public override void _Ready()
+	public void OnItemSelectButtonPressed()//<-点击时触发
 	{
-		GetButton = GetNode<Button>("Get");
-	}
-	public void OnItemSelectButtonPressed()
-	{
+		//点击后发出信号
 		EmitSignal(nameof(ItemSelectButtonPressed), this);
 	}
 	public void OnGetButtonPressed()
 	{
-		
+		Item = null;
 	}
 }

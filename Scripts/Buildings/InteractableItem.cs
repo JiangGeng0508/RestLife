@@ -3,6 +3,10 @@ using System;
 
 public partial class InteractableItem : Area2D
 {
+	[Signal]
+	public delegate void OnClickEventHandler();
+	[Signal]
+	public delegate void OnActionEventHandler();
 	public bool IsPlayerClosed = false;
 	public bool MouseIn = false;
 	public Area2D CharaReachArea;
@@ -44,7 +48,11 @@ public partial class InteractableItem : Area2D
 	public void Click()
 	{
 		Action();
+		EmitSignal(nameof(OnClick));
 	}
 	public virtual void Init() { }
-	public virtual void Action() { }
+	public virtual void Action()
+	{
+		EmitSignal(nameof(OnAction));
+	}
 }

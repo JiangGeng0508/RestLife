@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://m5acmtxvql1i"]
+[gd_scene load_steps=17 format=3 uid="uid://m5acmtxvql1i"]
 
 [ext_resource type="Script" uid="uid://bgs7w2x4qlvda" path="res://Scripts/UI/TresEditor/EditorOption.cs" id="1_i3xhl"]
 [ext_resource type="Script" uid="uid://exrhm3ls5rre" path="res://Scripts/UI/TresEditor/ItemEditor.cs" id="2_suqs0"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://b45q325vrbdyt" path="res://Scripts/UI/TresEditor/RecipeEditor.cs" id="13_2f1e0"]
 [ext_resource type="Script" uid="uid://cx2fnm2h4u2q" path="res://Scripts/UI/TresEditor/CreativeItemList.cs" id="13_gt5p2"]
 [ext_resource type="PackedScene" uid="uid://bdrb1p5xenpjc" path="res://Scenes/TresEditor/ItemSelectButton.tscn" id="13_suqs0"]
+[ext_resource type="Script" uid="uid://c8wemwvep62og" path="res://Scripts/UI/TresEditor/MapEditor.cs" id="16_spdc0"]
 
 [node name="TresEditor" type="TabContainer"]
 anchors_preset = 15
@@ -327,6 +328,12 @@ offset_bottom = 442.0
 icon = ExtResource("3_gt5p2")
 icon_alignment = 1
 expand_icon = true
+
+[node name="Map" type="Control" parent="."]
+visible = false
+layout_mode = 2
+script = ExtResource("16_spdc0")
+metadata/_tab_index = 5
 
 [connection signal="pressed" from="Option/Back" to="Option" method="BackToMenu"]
 [connection signal="ReadFolder" from="Food/FileBrowser" to="Food/Scroll/IconPreviewGrid" method="ReadFolder"]

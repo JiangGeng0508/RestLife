@@ -37,6 +37,7 @@ public struct Attribute
 			OnChange?.Invoke();
 		}
 	}
+	//应用buff
 	public void ApplyBonus(AttrOperator op, float value)
 	{
 		switch (op)
@@ -55,6 +56,7 @@ public struct Attribute
 				break;
 		}
 	}
+	//结束buff
 	public void BackBonus(AttrOperator op, float value)
 	{
 		switch (op)
@@ -73,6 +75,7 @@ public struct Attribute
 				break;
 		}
 	}
+	//主构造函数，从最大值初始化
 	public Attribute(float maxValue)
 	{
 		MaxValue = maxValue;

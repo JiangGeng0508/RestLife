@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cbtcrk6b5gmcf" path="res://Asset/Sprite/Icon/control/icon_money_bag.png" id="1_5scjf"]
 [ext_resource type="Script" uid="uid://bdydv0ajpoeoi" path="res://Scripts/UI/TresEditor/ItemSelectButton.cs" id="2_r71jm"]
-[ext_resource type="Texture2D" uid="uid://dvgx1gd5h3w86" path="res://Asset/Sprite/Icon/control/icon_folder.png" id="3_ebmg2"]
+[ext_resource type="Texture2D" uid="uid://7qf0l3os3ve8" path="res://Asset/Sprite/Icon/Cross.png" id="3_ebmg2"]
 
 [node name="ItemSelectButton" type="Button"]
 offset_right = 100.0
@@ -12,7 +12,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_r71jm")
 
-[node name="Get" type="Button" parent="."]
+[node name="Clear" type="Button" parent="."]
 layout_mode = 0
 offset_left = 76.0
 offset_top = 76.0
@@ -21,4 +21,4 @@ offset_bottom = 100.0
 icon = ExtResource("3_ebmg2")
 
 [connection signal="pressed" from="." to="." method="OnItemSelectButtonPressed"]
-[connection signal="pressed" from="Get" to="." method="OnGetButtonPressed"]
+[connection signal="pressed" from="Clear" to="." method="OnGetButtonPressed"]

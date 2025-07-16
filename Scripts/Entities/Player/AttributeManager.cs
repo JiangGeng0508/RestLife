@@ -3,6 +3,7 @@ using Godot;
 
 public partial class AttributeManager : Node
 {
+	//任意属性变化时触发
 	public Action AttributeChanged;
 	// 状态值
 	public Attribute Health = new(50f);
@@ -11,11 +12,12 @@ public partial class AttributeManager : Node
 
 	public override void _Ready()
 	{
+		//属性变化时连锁触发AttributeChanged
 		Health.OnChange += () => { AttributeChanged?.Invoke(); };
 		Energy.OnChange += () => { AttributeChanged?.Invoke(); };
 		Hunger.OnChange += () => { AttributeChanged?.Invoke(); };
 	}
-
+	//应用buff
 	public void ApplyBuff(Buff buff)
 	{
 		switch (buff.AttrName)

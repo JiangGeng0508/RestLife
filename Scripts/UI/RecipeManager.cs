@@ -15,7 +15,6 @@ public static class RecipeManager
 		{
 			GD.Print("Loading Recipe: " + file);
 			var recipe = GD.Load<Recipe>("res://Asset/Data/Recipes/" + file);
-			GD.Print($"{recipe.Ingredients[0].Name} -> {recipe.Result.Name}");
 			RegisterRecipe(recipe);
 			count++;
 		}

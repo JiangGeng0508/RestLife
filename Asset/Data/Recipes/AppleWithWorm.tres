@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3]
+
+[ext_resource type="Resource" path="res://Asset/Data/Items/Apple.tres" id="1_ilqwl"]
+[ext_resource type="Resource" path="res://Asset/Data/Items/Bug.tres" id="2_bv2xa"]
+[ext_resource type="Resource" path="res://Asset/Data/Items/AppleWorm.tres" id="3_5s1hy"]
+[ext_resource type="Script" path="res://Scripts/UI/Recipe.cs" id="4_6bqt6"]
+
+[resource]
+script = ExtResource("4_6bqt6")
+Ingredients = [null, null, null, null, ExtResource("1_ilqwl"), ExtResource("2_bv2xa"), null, null, null]
+Result = ExtResource("3_5s1hy")

@@ -208,6 +208,7 @@ show_percentage = false
 title = "NeoCauldron"
 initial_position = 1
 size = Vector2i(400, 200)
+visible = false
 script = ExtResource("18_b3vmo")
 
 [connection signal="item_clicked" from="SelectMenu/Inventory/InventoryList" to="SelectMenu/Inventory" method="OnItemClicked"]
