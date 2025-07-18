@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://coiqx1tqwjrwi"]
 
-[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/InteractableItem.tscn" id="1_1vwrn"]
+[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/BaseItem/InteractableItem.tscn" id="1_1vwrn"]
 [ext_resource type="Script" uid="uid://cfortjd5grvae" path="res://Scripts/UI/TresEditor/CraftUi.cs" id="2_sq8bx"]
 [ext_resource type="PackedScene" uid="uid://bdrb1p5xenpjc" path="res://Scenes/TresEditor/ItemSelectButton.tscn" id="2_yjfew"]
 

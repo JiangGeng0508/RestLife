@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://2uwypax5a35y"]
 
-[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/InteractableItem.tscn" id="1_uuso1"]
+[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/BaseItem/InteractableItem.tscn" id="1_uuso1"]
 [ext_resource type="Script" uid="uid://boe7cu27b6dc4" path="res://Scripts/Buildings/Cauldron.cs" id="2_oxrh5"]
 [ext_resource type="PackedScene" uid="uid://cqsx76p8hhrm4" path="res://Scenes/UI/ItemSelectSlot.tscn" id="3_oxrh5"]
 [ext_resource type="Script" uid="uid://cp1ki60qepxdj" path="res://Scripts/UI/CauldronSystem.cs" id="3_xg6cq"]

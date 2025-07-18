@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://413h3wiwich5"]
 
-[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/InteractableItem.tscn" id="1_bmeja"]
+[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/BaseItem/InteractableItem.tscn" id="1_bmeja"]
 [ext_resource type="Script" uid="uid://dpjfjg4k8wqf4" path="res://Scripts/Buildings/InfCrate.cs" id="2_unco7"]
 
 [node name="InfCrate" instance=ExtResource("1_bmeja")]

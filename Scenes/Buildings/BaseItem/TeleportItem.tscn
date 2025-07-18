@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cll3uw2476v3x"]
 
-[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/InteractableItem.tscn" id="1_erhgy"]
+[ext_resource type="PackedScene" uid="uid://cnovmushulktm" path="res://Scenes/Buildings/BaseItem/InteractableItem.tscn" id="1_erhgy"]
 [ext_resource type="Script" uid="uid://ctxdnmvrjrwie" path="res://Scripts/Buildings/TeleportItem.cs" id="2_jm0yw"]
 [ext_resource type="Texture2D" uid="uid://c3dmxuvjvooa7" path="res://Asset/Sprite/Misc/House/DoorFrame_LeftDoor_Left.png" id="3_4jgbo"]
 [ext_resource type="Texture2D" uid="uid://mwb1mpnonm2d" path="res://Asset/Sprite/Misc/House/DoorFrame_LeftDoor_Right.png" id="4_0i6xd"]

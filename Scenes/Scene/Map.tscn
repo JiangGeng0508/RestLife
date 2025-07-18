@@ -1,16 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgp6ecfpmnbma"]
+[gd_scene load_steps=4 format=4 uid="uid://dgp6ecfpmnbma"]
 
 [ext_resource type="Script" uid="uid://bf0mssycqhjtw" path="res://Scripts/Scene/Map.cs" id="1_4xaap"]
-[ext_resource type="PackedScene" uid="uid://cll3uw2476v3x" path="res://Scenes/Buildings/TeleportItem.tscn" id="2_6713e"]
+[ext_resource type="PackedScene" uid="uid://cll3uw2476v3x" path="res://Scenes/Buildings/BaseItem/TeleportItem.tscn" id="2_6713e"]
+[ext_resource type="TileSet" uid="uid://dmh58p3hwq2no" path="res://Asset/Sprite/Misc/MapTileset.tres" id="2_n7dr0"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_4xaap")
+
+[node name="Background" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD//wAAAQAHAAkAAAD5/wEAAQADAAMAAAD6/wEAAQADAAMAAAD7/wEAAQAEAAMAAAD8/wEAAQADAAMAAAD9/wEAAQAEAAMAAAD+/wEAAQADAAMAAAD//wEAAQAEAAMAAAAAAAEAAQAEAAMAAAABAAEAAQADAAMAAAACAAEAAQADAAMAAAADAAEAAQAEAAMAAAAEAAEAAQADAAMAAAAFAAEAAQAEAAMAAAAHAAEAAQAEAAMAAAAIAAEAAQADAAMAAAAJAAEAAQAEAAMAAAAGAAEAAQADAAMAAAAKAAEAAQAJAAQAAAACAP//AAAGAAIAAAAEAAAAAAAIAAEAAAABAAAAAAAAAAIAAAABAP//AAAFAAMAAAD9/wAAAAACAAEAAAD6/wAAAAAIAAQAAAD7/wAAAAAIAAQAAAD8/wAAAAAJAAQAAAD5/wAAAAAIAAQAAAD4/wAAAAAHAAQAAAD4/wEAAQADAAMAAAD3/wEAAQADAAMAAAD2/wEAAQACAAQAAAA=")
+tile_set = ExtResource("2_n7dr0")
 
 [node name="Buildings" type="Node" parent="."]
 
 [node name="SpawnPoint" type="Node2D" parent="Buildings"]
 
 [node name="TeleportItem" parent="Buildings" instance=ExtResource("2_6713e")]
+visible = false
 SceneName = "TestMap1"
 
 [node name="Entities" type="Node" parent="."]
