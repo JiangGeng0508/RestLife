@@ -16,18 +16,11 @@ public partial class InventoryUI : SplitContainer
 		InventoryList = GetNode<ItemList>("InventoryList");
 		NumberList = GetNode<ItemList>("NumberList");
 	}
-	public void AddItem(Item item)//添加物品,默认加入第一个位置
-	{
-		if (item == null) return;
-		InventoryList.AddItem(item.Name, item.Icon);
-		NumberList.AddItem(item.Number.ToString());
-		Update();
-	}
 	public void OnItemClicked(int index, Vector2 position, int mouseButtonIndex)
 	{
 		if (mouseButtonIndex == 2)//右键点击
 		{
-			rightClickMenu.Invoke(InventoryList.GetItemText(index), position);
+			// rightClickMenu.Invoke(Global.Player.Inventory.Items[InventoryList.GetItemText(index)], position);
 		}
 	}
 	public void Update()//更新背包显示
@@ -37,8 +30,8 @@ public partial class InventoryUI : SplitContainer
 		NumberList.Clear();
 		foreach (var item in items)
 		{
-			ItemsInUI[item.Key] = InventoryList.AddItem(item.Value.Name, item.Value.Icon);
-			NumberList.AddItem(item.Value.Number.ToString());
+			ItemsInUI[item.Key.Name] = InventoryList.AddItem(item.Key.Name, item.Key.Icon);
+			NumberList.AddItem(item.Value.ToString());
 		}
 	}
 	public void DeleteItem(string name)

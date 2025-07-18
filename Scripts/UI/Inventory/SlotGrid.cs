@@ -3,6 +3,10 @@ using System;
 
 public partial class SlotGrid : GridContainer
 {
+	[Signal]
+	public delegate void ItemAddedEventHandler(Item item);
+	[Signal]
+	public delegate void ItemRemovedEventHandler(Item item);
 	Control pickedNode;
 	Vector2 PrevPosition;
 	public override void _Ready()
@@ -64,6 +68,7 @@ public partial class SlotGrid : GridContainer
 			if (slot.GetChildCount() < 1)
 			{
 				slot.AddChild(new DragItemButton(item));
+				EmitSignal(nameof(ItemAddedEventHandler), item);
 				return;
 			}
 		}

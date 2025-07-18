@@ -6,8 +6,6 @@ public partial class ItemDrop : InteractableItem
 	[Export]
 	public Item Item;
 
-	public int Number;
-
 	public Sprite2D Icon;
 
 	public RichTextLabel Hint;
@@ -29,8 +27,7 @@ public partial class ItemDrop : InteractableItem
 		{
 			Icon.Texture = Item.Icon;
 			Name = Item.Name;
-			Number = Item.Number;
-			Hint.Text = $"[color={EColor.ToHtml()}][E][/color] [color={HintColor.ToHtml()}]to pick up {Name} x{Number}[/color]";
+			Hint.Text = $"[color={EColor.ToHtml()}][E][/color] [color={HintColor.ToHtml()}]to pick up {Name}[/color]";
 		}
 		// 初始化浮动动画
 		StartFloatingAnimation();
@@ -48,7 +45,7 @@ public partial class ItemDrop : InteractableItem
 	public override void Action()
 	{
 		GD.Print("Pick up " + Item.Name);
-		Global.Player.Inventory.Call("AddItem", Item, Number);
+		Global.Player.Inventory.Call("AddItem", Item , 1);
 		QueueFree();
 	}
 

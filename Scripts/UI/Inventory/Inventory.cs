@@ -5,7 +5,7 @@ public partial class Inventory : Node
 {
 	[Signal]
 	public delegate void ItemAddedEventHandler(Item item, int number);
-	public Dictionary<string, Item> Items = [];
+	public Dictionary<Item, int> Items = [];
 	public InventoryUI UI;
 	public NeoInventory NeoInventory;
 	public override void _Ready()
@@ -17,32 +17,31 @@ public partial class Inventory : Node
 	}
 	public void AddItem(Item item, int number = 1)
 	{
-		if (Items.ContainsKey(item.Name))
+		if (Items.TryGetValue(item, out int value))
 		{
-			Items[item.Name].AddNumber(number);
+			value += number;
 		}
 		else
 		{
 			item.Init();
-			Items.Add(item.Name, item);
+			Items.Add(item, number);
 		}
 		EmitSignal(nameof(ItemAdded), item, number);
 		UI.Update();
 	}
 	public void RemoveItem(Item item, int number = -1)
 	{
-		if (!Items.ContainsKey(item.Name))
+		if (Items.TryGetValue(item, out int value))
 		{
-			return;
-		}
-		if (number == -1)
-		{
-			Items.Remove(item.Name);
-		}
-		else
-		{
-			Items[item.Name].AddNumber(-number);
-		}
+				if (number <= 0 || value <= number)
+			{
+				Items.Remove(item);
+			}
+			else
+			{
+				Items[item] -= number;
+			}
+		}	
 		UI.Update();
 	}
 	public void Drop(Item item)
@@ -54,7 +53,7 @@ public partial class Inventory : Node
 		GD.Print(drop.GetParent().Name);
 		RemoveItem(item);
 	}
-	public Dictionary<string, Item> GetItems()
+	public Dictionary<Item, int> GetItems()
 	{
 		return Items;
 	}

@@ -13,7 +13,6 @@ public partial class Food : Item
 		Global.Player.Attributes.Energy.Value += EnergyBonus;
 		Global.Player.Attributes.Hunger.Value += HungerBonus;
 		Global.Player.Character.PlayerAnim.Play("Use");
-		AddNumber(-1);
 	}
 
 	public override void Init()

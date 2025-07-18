@@ -12,9 +12,9 @@ public partial class RightClickMenu : PopupMenu
 		ParentOffset = (Vector2I)GetParent<Control>().GlobalPosition;
 		Hide();
 	}
-	public void Invoke(string item,Vector2 position)//调出时更新
+	public void Invoke(Item item,Vector2 position)//调出时更新
 	{
-		foreach (var action in Global.Player.Inventory.Items[item].actions)
+		foreach (var action in item.actions)
 		{
 			if (action is not null)
 			{

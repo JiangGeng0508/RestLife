@@ -28,7 +28,7 @@ public partial class ItemSelectSlot : MenuButton
 		var popup = GetPopup();
 		if (SettedItem != null)
 		{
-			Global.Player.Inventory.AddItem(SettedItem, SettedItem.Number);
+			Global.Player.Inventory.AddItem(SettedItem);
 			SettedItem = null;
 			popup.Hide();
 			return;
@@ -38,8 +38,8 @@ public partial class ItemSelectSlot : MenuButton
 		popup.Clear();
 		foreach (var item in Global.Player.Inventory.Items)
 		{
-			popup.AddItem(item.Value.Name + "(" + item.Value.Number + ")", ID);
-			items[ID] = item.Value;
+			popup.AddItem(item.Key.Name + "(" + item.Value + ")", ID);
+			items[ID] = item.Key;
 			ID++;
 		}
 		popup.IdPressed += (id) =>
